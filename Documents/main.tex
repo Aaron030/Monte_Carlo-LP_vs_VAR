@@ -1,0 +1,62 @@
+\documentclass[a4paper, 11pt]{article}
+\input{settings/packages}
+\input{settings/new_cmd}
+
+\begin{document}
+
+\input{settings/titlepage}
+
+\thispagestyle{empty}
+
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents 
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+\clearpage
+\renewcommand{\listfigurename}{List of Figures}
+\listoffigures
+\addcontentsline{toc}{section}{\listfigurename}
+
+\clearpage
+\renewcommand{\listtablename}{List of Tables}
+\listoftables
+\addcontentsline{toc}{section}{\listtablename}
+
+%\clearpage
+%\section*{List of Abbreviations}
+%\addcontentsline{toc}{section}{List of Abbreviations}
+%\input{section/0_Abbrev}
+
+\clearpage
+\pagenumbering{arabic}
+
+\input{chap/chap_1.tex}
+
+\input{chap/chap_2.tex}
+
+\input{chap/chap_3.tex}
+
+\input{chap/chap_4.tex}
+
+\input{chap/chap_5.tex}
+
+\input{chap/chap_6.tex}
+
+
+\clearpage
+\printbibliography
+\addcontentsline{toc}{section}{\numberline{} References}
+
+\clearpage
+%\section*{Appendix}
+%\input{section/6_Appendix}
+%\addcontentsline{toc}{section}{\numberline{} Appendix}
+
+\clearpage
+\section*{Declaration of independence}
+
+
+
+
+\end{document}

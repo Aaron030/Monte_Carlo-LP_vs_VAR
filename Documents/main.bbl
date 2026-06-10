@@ -1,0 +1,77 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{ludwig2026local}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b23e6cee5b9b78bb88861ae2fde1fca8}{%
+           family={Ludwig},
+           familyi={L\bibinitperiod},
+           given={Julian\bibnamedelima F},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{fullhash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{bibnamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authorbibnamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authornamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authorfullhash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Available at SSRN 6441981}
+      \field{title}{Local projections are VAR predictions of increasing order}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{ludwig2026local}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b23e6cee5b9b78bb88861ae2fde1fca8}{%
+           family={Ludwig},
+           familyi={L\bibinitperiod},
+           given={Julian\bibnamedelima F},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{fullhash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{bibnamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authorbibnamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authornamehash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \strng{authorfullhash}{b23e6cee5b9b78bb88861ae2fde1fca8}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Available at SSRN 6441981}
+      \field{title}{Local projections are VAR predictions of increasing order}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

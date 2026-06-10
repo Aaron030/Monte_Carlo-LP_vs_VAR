@@ -1,0 +1,139 @@
+
+% Sprach- und Zeichensatzeinstellungen
+\usepackage[english, german]{babel}  
+\usepackage{pdfpages}
+% Mehrsprachigkeit (Deutsch und Englisch)
+\usepackage[T1]{fontenc}            % Zeichensatz
+\usepackage[utf8]{inputenc}         % UTF-8 Eingabe
+
+% Seitenlayout
+\usepackage[a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+
+% Kopf- und Fußzeile
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhf{} % Kopf- und Fußzeilen leeren
+\fancyfoot[C]{\thepage}
+
+% Linien für die Kopfzeile deaktivieren
+%\renewcommand{\headrulewidth}{1 pt} 
+%%%%%%%%%% Wegen Format bashing we need to stick to one-side
+%\setlength{\headheight}{35pt}
+%\fancyhead[L]{%
+%    \ifodd\value{page}
+%        {\large \textit{Düsseldorf Student Economic Review Vol. 2}}\\
+%        \vspace*{-0.3cm}
+%        
+%    \else
+%        {}
+%    \fi
+%}
+
+%\fancyhead[R]{%
+%    \ifodd\value{page}
+%        {}
+%    \else
+%        {\large \textit{\articletitle}}\\
+%        \vspace*{-0.3cm}
+%    \fi
+%}
+
+
+
+% Grafiken und Tabellen
+\usepackage{graphicx}                 % Einfügen von Bildern
+\usepackage{caption}                  % Bildunterschriften
+\usepackage{tabularx}                   % Einfügen von Tabellen
+\usepackage{subcaption}               % Mehrere Bilder nebeneinander
+\usepackage{booktabs}                 % Tabellenlinien
+\usepackage{threeparttable}           % Tabellenfußnoten
+\usepackage{float}                    % Flexible Positionierung von Objekten
+
+% Farben und Hyperlinks
+\usepackage[hidelinks]{hyperref}      % Hyperlinks ohne sichtbare Rahmen
+\usepackage{xcolor}                   % Farben für Text und Elemente
+\usepackage{colortbl}               % Für Farben in Tabellen
+
+% Mathematik
+\usepackage{amsmath, amsfonts, mathrsfs} % Erweiterte Mathematikpakete
+\usepackage{bbm} %math numbers
+\usepackage{dsfont}
+\usepackage{bbold} % coole 1 
+
+% Algorithmen und Code
+\usepackage{algorithm}                % Algorithmenumgebung
+\usepackage{algpseudocode}            % Pseudocode für Algorithmen
+\usepackage{listings}                 % Quellcode-Darstellung
+
+% Nummerierte und unnummerierte Listen
+\usepackage{enumitem}                 % Anpassbare Listen
+
+% Struktur und Titel/Verzeichnisse
+\usepackage{titlesec}                 % Anpassung von Überschriften
+\titleformat{\section}                % Redefinition der Sections
+  {\normalfont\Large\bfseries}{\thesection.}{1em}{}
+  \usepackage{titlesec}
+\setcounter{tocdepth}{4} % Tiefe des Inhaltsverzeichnisses
+\usepackage[backend=biber, style=apa, maxcitenames=1, mincitenames=1, uniquename=false, uniquelist = false, labeldateparts=true]{biblatex}  % Literaturverzeichnis
+% Bei mehr als zwei Autoren: Zeige nur den ersten Autor mit "et al."
+%\AtEveryCitekey{\ifthenelse{\value{listtotal} > 2}{\defcounter{maxnames}{1}}{}}
+
+\usepackage{url} % damit Urls im Literaturverzeichnis nicht die Seitenränder überschreiten  
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+
+\DeclareDelimFormat{finalnamedelim}{\addspace\&\space}
+\DeclareDelimFormat{multinamedelim}{\addcomma\space}
+
+
+
+% Customize page prefixes for each language
+\DefineBibliographyStrings{english}{
+  page = {p.}, % Prefix for English pages
+  pages = {pp.} % Prefix for multiple pages in English
+}
+
+% einzelne Literaturverzeichnisse
+\addbibresource{bibtex.bib}
+
+% Zusätzliche Pakete für Spezialfälle
+\usepackage{authblk}                  % Autoreninformationen
+\usepackage{appendix}                 % Anhänge
+\usepackage{csquotes}                 % Zitate
+\usepackage{diagbox}                  % Diagonale Zellen in Tabellen
+\usepackage{tcolorbox}                % Farbboxen für Hervorhebungen
+\usepackage{tikz}                     % Grafiken
+\usepackage{wrapfig}
+\usetikzlibrary{arrows.meta, positioning} % TikZ-Erweiterungen
+
+
+% Tabellen-Unterschriften oben 
+\captionsetup[table]{position=top}   % Tabellenunterschrift oben
+
+% Abstände und Zeilenabstand
+%\usepackage{parskip}
+%\setlength{\parskip}{1em}             % Abstand zwischen Absätzen
+\usepackage[onehalfspacing]{setspace} % 1,5 Zeilenabstand
+
+
+% Sonderzeichen
+\usepackage{eurosym}
+
+\usepackage{pdflscape} % quere Seiten ermöglichen
+
+
+%%%%%%%%%%%%%%% Testing %%%%%%%%%%%%%%%%%
+\usepackage[format=plain,justification=centerlast]{caption} % centered captions (graphs)
+
+\usepackage{colortbl} % Wichtig für farbige Linien
+
+\sloppy
+\interfootnotelinepenalty=10000
+\DeclareUnicodeCharacter{0308}{\"}
+\usepackage{romannum}
+\usepackage{siunitx} % Degree celsius \SI{29}{\degreeCelsius}
+
+\usepackage{multirow}
+%\usepackage{microtype} % against hbox under/overfull
+
