@@ -1,12 +1,32 @@
-\section{Theoretical Background}
-In this section, we will estiablish the theoretical background for our Monte Carlo simulations by discussing the relevant literature on Vector Autoregressions (VARs) and Local Projections (LPs). Further, we will discuss the theoretical results on the equivalence of VARs and LPs in terms of population and in sample impulse responses.
-\subsection{Introduction to VARS}
+\section{Theoretical Background (total: 5-6.5 pages)}
+Impulse response functions can be nonparametically defined as the difference between two conditional forecasts of the outcome variable (e.g. Koop (1996)). Both forecasts are conditioned on the same history up to period $t-1$, but differ in the realization at time $t$. While one conditions on a shock of size $\delta$ to the variable of interest while the other one does not. The observed difference in the projected paths at horizon $h$ then identifies the causal effect of the shock in population:
+
+\begin{equation}
+    IR(t, h,\delta) \equiv \mathbb{E}\left[y_{t+h}|s_t = s_0 + \delta; \mathbf{x_t}\right] - \mathbb{E}\left[y_{t+h}|s_t = s_0; \mathbf{x_t}\right]
+\end{equation}
+
+Vector Autoregressions and Local Projections hereby serve as as two ways of estimating the in sample impulse responses. The first, introduced by \textcite{sims1980macroeconomics} does this and that, the latter established by \textcite{jorda2005estimation} by that and this. 
+
+While \textcite{plagborg2021local} have shown that asymptotically VARs and LPs estimate the same impule responses, \textcite{li2024local}, \textcite{olea2025local} have demonstrated that both lie on the opposite ends of the bias-variance spectrum. However, more recently \textcite{ludwig2026local} has shown that the comparison of both methods is constrained when size of the lagged controls is fixed, resulting in an unfit comparison.
+
+\subsection{Introduction to VARS (1.5 - 2 pages)}
 Here I will write an introduction to VARs, their estimation and inference, and the corresponding impulse response functions. I will also discuss the potential issues with VAR estimation, such as lag length selection and dynamic misspecification.
 
-\subsection{Introduction to Local Projections}
-Here I will introduce the concept of Local Projections (LPs) as an alternative to VARs for estimating impulse responses. I will explain how LPs work, their advantages and disadvantages compared to VARs, and the conditions under which they are equivalent to VARs in terms of population impulse responses.
+\subsection{Introduction to Local Projections (1.5 -2 pages)}
+Whereas the vector autoregression recovers the impulse response function by first estimating the full system dynamics and then interating the fitted model forward, the local projection approach estimates the same object directly, horizon by horizon, through a sequence of OLS regressions.
 
-\subsection{On the Equivalence of VARs and Local Projections}
+Assuming orthogonality of the shock with the projection error term and a linear projection model, we can obtain the impulse response to the shock at time h using the following OLS model: 
+
+\begin{equation}
+    y_{t+h} = 
+\end{equation}
+
+
+
+
+\subsection{On the Equivalence of VARs and Local Projections (2-2.5 pages)}
+
+As Local Projection inference gained in popularity over the last couple of years, more and more scholars have started comparing the asymptotical and finite sample trade-offs of both methods. 
 
 Here I will discuss the theoretical results that establish the equivalence of VARs and LPs under certain conditions, as shown by Plagborg-Moller \& Wolf (2021) and Fusari et al. (2026). I will also explain how this equivalence is affected by finite sample properties and dynamic misspecification, as discussed by Li et al. (2024), Montiel Olea et al. (2025), and Ludwig (2026).
 

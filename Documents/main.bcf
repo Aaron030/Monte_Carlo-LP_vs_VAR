@@ -2831,6 +2831,18 @@
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">ludwig2026local</bcf:citekey>
     <bcf:citekey order="2" intorder="1">ludwig2026local</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">sims1980macroeconomics</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">sims1980macroeconomics</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">jorda2005estimation</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">jorda2005estimation</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">plagborg2021local</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">plagborg2021local</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">li2024local</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">li2024local</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">olea2025local</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">olea2025local</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">ludwig2026local</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">ludwig2026local</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

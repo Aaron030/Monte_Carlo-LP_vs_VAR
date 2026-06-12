@@ -19,6 +19,74 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global}
+    \entry{jorda2005estimation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{fullhash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{bibnamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authorbibnamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authornamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authorfullhash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{Estimation and inference of impulse responses by local projections}
+      \field{volume}{95}
+      \field{year}{2005}
+      \field{pages}{161\bibrangedash 182}
+      \range{pages}{22}
+    \endentry
+    \entry{li2024local}{article}{}
+      \name{author}{3}{}{%
+        {{hash=65b74c9b26cc597fb899472376d98895}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Dake},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{4c86fab55aa8bd0d93d71b2297231817}
+      \strng{fullhash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{bibnamehash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{authorbibnamehash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{authornamehash}{4c86fab55aa8bd0d93d71b2297231817}
+      \strng{authorfullhash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Local projections vs. VARs: Lessons from thousands of DGPs}
+      \field{volume}{244}
+      \field{year}{2024}
+      \field{pages}{105722}
+      \range{pages}{1}
+    \endentry
     \entry{ludwig2026local}{article}{}
       \name{author}{1}{}{%
         {{hash=b23e6cee5b9b78bb88861ae2fde1fca8}{%
@@ -44,8 +112,180 @@
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
     \endentry
+    \entry{olea2025local}{report}{}
+      \name{author}{4}{}{%
+        {{hash=98a30c83feb9d34615354c108e00c902}{%
+           family={Olea},
+           familyi={O\bibinitperiod},
+           given={José\bibnamedelimb Luis\bibnamedelima Montiel},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eedce9f1f12f03153078515223ebcbbd}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{ebb84a1be31d4071fc6e3d085758ee83}
+      \strng{fullhash}{1972c94653f59b936c25e90c23716dea}
+      \strng{bibnamehash}{1972c94653f59b936c25e90c23716dea}
+      \strng{authorbibnamehash}{1972c94653f59b936c25e90c23716dea}
+      \strng{authornamehash}{ebb84a1be31d4071fc6e3d085758ee83}
+      \strng{authorfullhash}{1972c94653f59b936c25e90c23716dea}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Local projections or VARs? a primer for macroeconomists}
+      \field{type}{techreport}
+      \field{year}{2025}
+    \endentry
+    \entry{plagborg2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{655911429432172cc2f4aa224ade936b}
+      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
+      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{2}
+      \field{title}{Local projections and VARs estimate the same impulse responses}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{955\bibrangedash 980}
+      \range{pages}{26}
+    \endentry
+    \entry{sims1980macroeconomics}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6ea5ed711258737020e21f785822b8e5}{%
+           family={Sims},
+           familyi={S\bibinitperiod},
+           given={Christopher\bibnamedelima A},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{fullhash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{bibnamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authorbibnamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authornamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authorfullhash}{6ea5ed711258737020e21f785822b8e5}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica: journal of the Econometric Society}
+      \field{title}{Macroeconomics and reality}
+      \field{year}{1980}
+      \field{pages}{1\bibrangedash 48}
+      \range{pages}{48}
+    \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global}
+    \entry{jorda2005estimation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{fullhash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{bibnamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authorbibnamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authornamehash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \strng{authorfullhash}{3e5c33a3778b8b654ea5cbde29d38d07}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{Estimation and inference of impulse responses by local projections}
+      \field{volume}{95}
+      \field{year}{2005}
+      \field{pages}{161\bibrangedash 182}
+      \range{pages}{22}
+    \endentry
+    \entry{li2024local}{article}{}
+      \name{author}{3}{}{%
+        {{hash=65b74c9b26cc597fb899472376d98895}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Dake},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{4c86fab55aa8bd0d93d71b2297231817}
+      \strng{fullhash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{bibnamehash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{authorbibnamehash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \strng{authornamehash}{4c86fab55aa8bd0d93d71b2297231817}
+      \strng{authorfullhash}{2b6c02e70af2f1824f8bf44d2d808ea2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Local projections vs. VARs: Lessons from thousands of DGPs}
+      \field{volume}{244}
+      \field{year}{2024}
+      \field{pages}{105722}
+      \range{pages}{1}
+    \endentry
     \entry{ludwig2026local}{article}{}
       \name{author}{1}{}{%
         {{hash=b23e6cee5b9b78bb88861ae2fde1fca8}{%
@@ -70,6 +310,110 @@
       \field{journaltitle}{Available at SSRN 6441981}
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
+    \endentry
+    \entry{olea2025local}{report}{}
+      \name{author}{4}{}{%
+        {{hash=98a30c83feb9d34615354c108e00c902}{%
+           family={Olea},
+           familyi={O\bibinitperiod},
+           given={José\bibnamedelimb Luis\bibnamedelima Montiel},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eedce9f1f12f03153078515223ebcbbd}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{ebb84a1be31d4071fc6e3d085758ee83}
+      \strng{fullhash}{1972c94653f59b936c25e90c23716dea}
+      \strng{bibnamehash}{1972c94653f59b936c25e90c23716dea}
+      \strng{authorbibnamehash}{1972c94653f59b936c25e90c23716dea}
+      \strng{authornamehash}{ebb84a1be31d4071fc6e3d085758ee83}
+      \strng{authorfullhash}{1972c94653f59b936c25e90c23716dea}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Local projections or VARs? a primer for macroeconomists}
+      \field{type}{techreport}
+      \field{year}{2025}
+    \endentry
+    \entry{plagborg2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{655911429432172cc2f4aa224ade936b}
+      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
+      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{2}
+      \field{title}{Local projections and VARs estimate the same impulse responses}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{955\bibrangedash 980}
+      \range{pages}{26}
+    \endentry
+    \entry{sims1980macroeconomics}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6ea5ed711258737020e21f785822b8e5}{%
+           family={Sims},
+           familyi={S\bibinitperiod},
+           given={Christopher\bibnamedelima A},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{fullhash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{bibnamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authorbibnamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authornamehash}{6ea5ed711258737020e21f785822b8e5}
+      \strng{authorfullhash}{6ea5ed711258737020e21f785822b8e5}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica: journal of the Econometric Society}
+      \field{title}{Macroeconomics and reality}
+      \field{year}{1980}
+      \field{pages}{1\bibrangedash 48}
+      \range{pages}{48}
     \endentry
   \enddatalist
 \endrefsection
