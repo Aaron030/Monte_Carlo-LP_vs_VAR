@@ -155,39 +155,36 @@
       \field{type}{techreport}
       \field{year}{2025}
     \endentry
-    \entry{plagborg2021local}{article}{}
-      \name{author}{2}{}{%
-        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
-           family={Plagborg-M{ø}ller},
-           familyi={P\bibinithyphendelim M\bibinitperiod},
-           given={Mikkel},
-           giveni={M\bibinitperiod}}}%
-        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
-           family={Wolf},
-           familyi={W\bibinitperiod},
-           given={Christian\bibnamedelima K},
-           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+    \entry{ramey2016macroeconomic}{article}{}
+      \name{author}{1}{}{%
+        {{hash=034b2cb93928873885c91989e9dcfe3b}{%
+           family={Ramey},
+           familyi={R\bibinitperiod},
+           given={Valerie\bibnamedelima A},
+           giveni={V\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \strng{namehash}{655911429432172cc2f4aa224ade936b}
-      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
-      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{fullhash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{bibnamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authorbibnamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authornamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authorfullhash}{034b2cb93928873885c91989e9dcfe3b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Econometrica}
-      \field{number}{2}
-      \field{title}{Local projections and VARs estimate the same impulse responses}
-      \field{volume}{89}
-      \field{year}{2021}
-      \field{pages}{955\bibrangedash 980}
-      \range{pages}{26}
+      \field{journaltitle}{Handbook of macroeconomics}
+      \field{title}{Macroeconomic shocks and their propagation}
+      \field{volume}{2}
+      \field{year}{2016}
+      \field{pages}{71\bibrangedash 162}
+      \range{pages}{92}
     \endentry
     \entry{sims1980macroeconomics}{article}{}
       \name{author}{1}{}{%
@@ -354,39 +351,36 @@
       \field{type}{techreport}
       \field{year}{2025}
     \endentry
-    \entry{plagborg2021local}{article}{}
-      \name{author}{2}{}{%
-        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
-           family={Plagborg-M{ø}ller},
-           familyi={P\bibinithyphendelim M\bibinitperiod},
-           given={Mikkel},
-           giveni={M\bibinitperiod}}}%
-        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
-           family={Wolf},
-           familyi={W\bibinitperiod},
-           given={Christian\bibnamedelima K},
-           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+    \entry{ramey2016macroeconomic}{article}{}
+      \name{author}{1}{}{%
+        {{hash=034b2cb93928873885c91989e9dcfe3b}{%
+           family={Ramey},
+           familyi={R\bibinitperiod},
+           given={Valerie\bibnamedelima A},
+           giveni={V\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \strng{namehash}{655911429432172cc2f4aa224ade936b}
-      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
-      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
-      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{fullhash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{bibnamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authorbibnamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authornamehash}{034b2cb93928873885c91989e9dcfe3b}
+      \strng{authorfullhash}{034b2cb93928873885c91989e9dcfe3b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Econometrica}
-      \field{number}{2}
-      \field{title}{Local projections and VARs estimate the same impulse responses}
-      \field{volume}{89}
-      \field{year}{2021}
-      \field{pages}{955\bibrangedash 980}
-      \range{pages}{26}
+      \field{journaltitle}{Handbook of macroeconomics}
+      \field{title}{Macroeconomic shocks and their propagation}
+      \field{volume}{2}
+      \field{year}{2016}
+      \field{pages}{71\bibrangedash 162}
+      \range{pages}{92}
     \endentry
     \entry{sims1980macroeconomics}{article}{}
       \name{author}{1}{}{%
