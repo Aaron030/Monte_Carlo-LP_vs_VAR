@@ -2841,6 +2841,8 @@
     <bcf:citekey order="10" intorder="1">olea2025local</bcf:citekey>
     <bcf:citekey order="11" intorder="1">ludwig2026local</bcf:citekey>
     <bcf:citekey order="12" intorder="1">ludwig2026local</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">luethkepohl2006new</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">luethkepohl2006new</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

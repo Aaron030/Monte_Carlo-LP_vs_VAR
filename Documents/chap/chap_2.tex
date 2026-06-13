@@ -11,8 +11,38 @@ More recently, however, \textcite{ludwig2026local} shows that the equal-order co
 
 
 \subsection{Introduction to VARS (1.5 - 2 pages)}
-Here I will write an introduction to VARs, their estimation and inference, and the corresponding impulse response functions. I will also discuss the potential issues with VAR estimation, such as lag length selection and dynamic misspecification.
 
+Following \textcite{luethkepohl2006new}, we starting by defining a zero mean VAR(p) model of the form where the outcome of interest, $y_t$, is a $K x 1$ random vector, $A_i$ are fixed $KxK$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \sum_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s\right] = 0$ for $t\neq s$. 
+
+\begin{equation}
+    y_t = \nu + A_1 y_{t-1} + \dots + A_py_{t-p} + u_t, \quad t = 0, \pm 1, \pm 2,\dots
+\end{equation}
+
+or simply 
+
+\begin{equation}
+    Y_t = \boldsymbol{\nu} + \mathbf{A} Y_{t-1} + U_t
+\end{equation}
+
+where
+
+\begin{equation*}
+Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix}, 
+\boldsymbol{\nu} := \begin{bmatrix} \nu \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+\mathbf{A} := \begin{bmatrix} 
+A_1 & A_2 & \cdots & A_{p-1} & A_p \\ 
+I_K & 0   & \cdots & 0       & 0   \\
+0   & I_K &        & 0       & 0   \\
+\vdots & & \ddots & & \vdots \\
+0   & 0   & \cdots & I_K     & 0
+\end{bmatrix},
+U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix}_{(Kp \times 1)}
+\end{equation*}
+
+Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation.
+\begin{equation}
+det(I_{Kp} - \mathbb{A}z) \neq 0 \text{ for }\abs{z} \le 1 \leftrightarrow 
+\end{equation}
 \subsection{Introduction to Local Projections (1.5 -2 pages)}
 Whereas the vector autoregression recovers the impulse response function by first estimating the full system dynamics and then interating the fitted model forward, the local projection approach estimates the same object directly, horizon by horizon, through a sequence of OLS regressions.
 

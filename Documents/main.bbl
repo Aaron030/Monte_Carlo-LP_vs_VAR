@@ -112,6 +112,33 @@
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
     \endentry
+    \entry{luethkepohl2006new}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b7bd5cb53d3716e05a7b71ac0af680a6}{%
+           family={Lüthkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer}%
+      }
+      \strng{namehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{fullhash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{bibnamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authorbibnamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authornamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authorfullhash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{New Introduction to Multiple Time Series Analyses}
+      \field{year}{2006}
+    \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
         {{hash=98a30c83feb9d34615354c108e00c902}{%
@@ -307,6 +334,33 @@
       \field{journaltitle}{Available at SSRN 6441981}
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
+    \endentry
+    \entry{luethkepohl2006new}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b7bd5cb53d3716e05a7b71ac0af680a6}{%
+           family={Lüthkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer}%
+      }
+      \strng{namehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{fullhash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{bibnamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authorbibnamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authornamehash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \strng{authorfullhash}{b7bd5cb53d3716e05a7b71ac0af680a6}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{New Introduction to Multiple Time Series Analyses}
+      \field{year}{2006}
     \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
