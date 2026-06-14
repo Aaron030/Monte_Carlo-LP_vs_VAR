@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global}
+    \entry{herbst2021bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4024d724acadd9e571757574aaa599f9}{%
+           family={Herbst},
+           familyi={H\bibinitperiod},
+           given={Edward\bibnamedelima P},
+           giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6449613364864f0f5141c8c4b35d5ab7}{%
+           family={Johannsen},
+           familyi={J\bibinitperiod},
+           given={Benjamin\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{fullhash}{e5840a759a59085862134ff7b34ea104}
+      \strng{bibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{Washington: Board of Governors of the Federal Reserve System}
+      \field{journaltitle}{Finance and Economics Discussion Series}
+      \field{title}{Bias in local projections}
+      \field{volume}{2020-010r1}
+      \field{year}{2021}
+    \endentry
     \entry{jorda2005estimation}{article}{}
       \name{author}{1}{}{%
         {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
@@ -47,6 +79,141 @@
       \field{year}{2005}
       \field{pages}{161\bibrangedash 182}
       \range{pages}{22}
+    \endentry
+    \entry{kilian1998small}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 238 Main St., Suite 500, Cambridge, MA 02142-1046, USA journals~…}%
+      }
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{1}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of economics and statistics}
+      \field{number}{2}
+      \field{title}{Small-sample confidence intervals for impulse response functions}
+      \field{volume}{80}
+      \field{year}{1998}
+      \field{pages}{218\bibrangedash 230}
+      \range{pages}{13}
+    \endentry
+    \entry{kilian1999finite}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 238 Main St., Suite 500, Cambridge, MA 02142-1046, USA journals~…}%
+      }
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Economics and Statistics}
+      \field{number}{4}
+      \field{title}{Finite-sample properties of percentile and percentile-t bootstrap confidence intervals for impulse responses}
+      \field{volume}{81}
+      \field{year}{1999}
+      \field{pages}{652\bibrangedash 660}
+      \range{pages}{9}
+    \endentry
+    \entry{kilian2000accurate}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d5f477708aede87e2ac5a30252851d9d}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Pao-Li},
+           giveni={P\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{beff4d6194852965f32150275062d6dc}
+      \strng{fullhash}{beff4d6194852965f32150275062d6dc}
+      \strng{bibnamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authorbibnamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authornamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authorfullhash}{beff4d6194852965f32150275062d6dc}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Economics Letters}
+      \field{number}{3}
+      \field{title}{How accurate are confidence intervals for impulse responses in large VAR models?}
+      \field{volume}{69}
+      \field{year}{2000}
+      \field{pages}{299\bibrangedash 307}
+      \range{pages}{9}
+    \endentry
+    \entry{kilian2017structural}{book}{}
+      \name{author}{2}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d400c31862099db9f37a97b35e10814d}{%
+           family={Lütkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{fullhash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{bibnamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authorbibnamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authornamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authorfullhash}{28964ceb833c0e39494402466ba0fe44}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Structural vector autoregressive analysis}
+      \field{year}{2017}
     \endentry
     \entry{li2024local}{article}{}
       \name{author}{3}{}{%
@@ -112,7 +279,7 @@
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
     \endentry
-    \entry{luethkepohl2006new}{misc}{}
+    \entry{luethkepohl2005new}{misc}{}
       \name{author}{1}{}{%
         {{hash=b7bd5cb53d3716e05a7b71ac0af680a6}{%
            family={Lüthkepohl},
@@ -137,7 +304,79 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{New Introduction to Multiple Time Series Analyses}
+      \field{year}{2005}
+    \endentry
+    \entry{lutkepohl1990asymptotic}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d400c31862099db9f37a97b35e10814d}{%
+           family={Lütkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{fullhash}{d400c31862099db9f37a97b35e10814d}
+      \strng{bibnamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authorbibnamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authornamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authorfullhash}{d400c31862099db9f37a97b35e10814d}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The review of economics and statistics}
+      \field{title}{Asymptotic distributions of impulse response functions and forecast error variance decompositions of vector autoregressive models}
+      \field{year}{1990}
+      \field{pages}{116\bibrangedash 125}
+      \range{pages}{10}
+    \endentry
+    \entry{marcellino2006comparison}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9a2e3d65329af03acd5f62d53e2cb4f4}{%
+           family={Marcellino},
+           familyi={M\bibinitperiod},
+           given={Massimiliano},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2d01c3b46f4061430cc9eb2a1f6408a4}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a4050fd715c1bcb50e38ec0f1c74b6bf}{%
+           family={Watson},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{bfcdc67816892fdb6dae4a33674b96f2}
+      \strng{fullhash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{bibnamehash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{authorbibnamehash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{authornamehash}{bfcdc67816892fdb6dae4a33674b96f2}
+      \strng{authorfullhash}{a5afb252a73e4e332d0ccce449377dc8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{1-2}
+      \field{title}{A comparison of direct and iterated multistep AR methods for forecasting macroeconomic time series}
+      \field{volume}{135}
       \field{year}{2006}
+      \field{pages}{499\bibrangedash 526}
+      \range{pages}{28}
     \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
@@ -181,6 +420,72 @@
       \field{title}{Local projections or VARs? a primer for macroeconomists}
       \field{type}{techreport}
       \field{year}{2025}
+    \endentry
+    \entry{phillips1998impulse}{article}{}
+      \name{author}{1}{}{%
+        {{hash=10ed28fafaff02f63917d3120eec9502}{%
+           family={Phillips},
+           familyi={P\bibinitperiod},
+           given={Peter\bibnamedelima CB},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{fullhash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{bibnamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authorbibnamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authornamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authorfullhash}{10ed28fafaff02f63917d3120eec9502}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{1-2}
+      \field{title}{Impulse response and forecast error variance asymptotics in nonstationary VARs}
+      \field{volume}{83}
+      \field{year}{1998}
+      \field{pages}{21\bibrangedash 56}
+      \range{pages}{36}
+    \endentry
+    \entry{plagborg2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{655911429432172cc2f4aa224ade936b}
+      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
+      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{2}
+      \field{title}{Local projections and VARs estimate the same impulse responses}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{955\bibrangedash 980}
+      \range{pages}{26}
     \endentry
     \entry{ramey2016macroeconomic}{article}{}
       \name{author}{1}{}{%
@@ -242,6 +547,38 @@
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global}
+    \entry{herbst2021bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4024d724acadd9e571757574aaa599f9}{%
+           family={Herbst},
+           familyi={H\bibinitperiod},
+           given={Edward\bibnamedelima P},
+           giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6449613364864f0f5141c8c4b35d5ab7}{%
+           family={Johannsen},
+           familyi={J\bibinitperiod},
+           given={Benjamin\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{fullhash}{e5840a759a59085862134ff7b34ea104}
+      \strng{bibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{Washington: Board of Governors of the Federal Reserve System}
+      \field{journaltitle}{Finance and Economics Discussion Series}
+      \field{title}{Bias in local projections}
+      \field{volume}{2020-010r1}
+      \field{year}{2021}
+    \endentry
     \entry{jorda2005estimation}{article}{}
       \name{author}{1}{}{%
         {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
@@ -270,6 +607,141 @@
       \field{year}{2005}
       \field{pages}{161\bibrangedash 182}
       \range{pages}{22}
+    \endentry
+    \entry{kilian1998small}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 238 Main St., Suite 500, Cambridge, MA 02142-1046, USA journals~…}%
+      }
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{1}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of economics and statistics}
+      \field{number}{2}
+      \field{title}{Small-sample confidence intervals for impulse response functions}
+      \field{volume}{80}
+      \field{year}{1998}
+      \field{pages}{218\bibrangedash 230}
+      \range{pages}{13}
+    \endentry
+    \entry{kilian1999finite}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 238 Main St., Suite 500, Cambridge, MA 02142-1046, USA journals~…}%
+      }
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Economics and Statistics}
+      \field{number}{4}
+      \field{title}{Finite-sample properties of percentile and percentile-t bootstrap confidence intervals for impulse responses}
+      \field{volume}{81}
+      \field{year}{1999}
+      \field{pages}{652\bibrangedash 660}
+      \range{pages}{9}
+    \endentry
+    \entry{kilian2000accurate}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d5f477708aede87e2ac5a30252851d9d}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Pao-Li},
+           giveni={P\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{beff4d6194852965f32150275062d6dc}
+      \strng{fullhash}{beff4d6194852965f32150275062d6dc}
+      \strng{bibnamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authorbibnamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authornamehash}{beff4d6194852965f32150275062d6dc}
+      \strng{authorfullhash}{beff4d6194852965f32150275062d6dc}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Economics Letters}
+      \field{number}{3}
+      \field{title}{How accurate are confidence intervals for impulse responses in large VAR models?}
+      \field{volume}{69}
+      \field{year}{2000}
+      \field{pages}{299\bibrangedash 307}
+      \range{pages}{9}
+    \endentry
+    \entry{kilian2017structural}{book}{}
+      \name{author}{2}{}{%
+        {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
+           family={Kilian},
+           familyi={K\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d400c31862099db9f37a97b35e10814d}{%
+           family={Lütkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{fullhash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{bibnamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authorbibnamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authornamehash}{28964ceb833c0e39494402466ba0fe44}
+      \strng{authorfullhash}{28964ceb833c0e39494402466ba0fe44}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Structural vector autoregressive analysis}
+      \field{year}{2017}
     \endentry
     \entry{li2024local}{article}{}
       \name{author}{3}{}{%
@@ -335,7 +807,7 @@
       \field{title}{Local projections are VAR predictions of increasing order}
       \field{year}{2026}
     \endentry
-    \entry{luethkepohl2006new}{misc}{}
+    \entry{luethkepohl2005new}{misc}{}
       \name{author}{1}{}{%
         {{hash=b7bd5cb53d3716e05a7b71ac0af680a6}{%
            family={Lüthkepohl},
@@ -360,7 +832,79 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{New Introduction to Multiple Time Series Analyses}
+      \field{year}{2005}
+    \endentry
+    \entry{lutkepohl1990asymptotic}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d400c31862099db9f37a97b35e10814d}{%
+           family={Lütkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{fullhash}{d400c31862099db9f37a97b35e10814d}
+      \strng{bibnamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authorbibnamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authornamehash}{d400c31862099db9f37a97b35e10814d}
+      \strng{authorfullhash}{d400c31862099db9f37a97b35e10814d}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The review of economics and statistics}
+      \field{title}{Asymptotic distributions of impulse response functions and forecast error variance decompositions of vector autoregressive models}
+      \field{year}{1990}
+      \field{pages}{116\bibrangedash 125}
+      \range{pages}{10}
+    \endentry
+    \entry{marcellino2006comparison}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9a2e3d65329af03acd5f62d53e2cb4f4}{%
+           family={Marcellino},
+           familyi={M\bibinitperiod},
+           given={Massimiliano},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2d01c3b46f4061430cc9eb2a1f6408a4}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a4050fd715c1bcb50e38ec0f1c74b6bf}{%
+           family={Watson},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{bfcdc67816892fdb6dae4a33674b96f2}
+      \strng{fullhash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{bibnamehash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{authorbibnamehash}{a5afb252a73e4e332d0ccce449377dc8}
+      \strng{authornamehash}{bfcdc67816892fdb6dae4a33674b96f2}
+      \strng{authorfullhash}{a5afb252a73e4e332d0ccce449377dc8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{1-2}
+      \field{title}{A comparison of direct and iterated multistep AR methods for forecasting macroeconomic time series}
+      \field{volume}{135}
       \field{year}{2006}
+      \field{pages}{499\bibrangedash 526}
+      \range{pages}{28}
     \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
@@ -404,6 +948,72 @@
       \field{title}{Local projections or VARs? a primer for macroeconomists}
       \field{type}{techreport}
       \field{year}{2025}
+    \endentry
+    \entry{phillips1998impulse}{article}{}
+      \name{author}{1}{}{%
+        {{hash=10ed28fafaff02f63917d3120eec9502}{%
+           family={Phillips},
+           familyi={P\bibinitperiod},
+           given={Peter\bibnamedelima CB},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{fullhash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{bibnamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authorbibnamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authornamehash}{10ed28fafaff02f63917d3120eec9502}
+      \strng{authorfullhash}{10ed28fafaff02f63917d3120eec9502}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{1-2}
+      \field{title}{Impulse response and forecast error variance asymptotics in nonstationary VARs}
+      \field{volume}{83}
+      \field{year}{1998}
+      \field{pages}{21\bibrangedash 56}
+      \range{pages}{36}
+    \endentry
+    \entry{plagborg2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fe94a35dfe4f638fa771a91a015f09a4}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{655911429432172cc2f4aa224ade936b}
+      \strng{fullhash}{655911429432172cc2f4aa224ade936b}
+      \strng{bibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorbibnamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authornamehash}{655911429432172cc2f4aa224ade936b}
+      \strng{authorfullhash}{655911429432172cc2f4aa224ade936b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{2}
+      \field{title}{Local projections and VARs estimate the same impulse responses}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{955\bibrangedash 980}
+      \range{pages}{26}
     \endentry
     \entry{ramey2016macroeconomic}{article}{}
       \name{author}{1}{}{%
