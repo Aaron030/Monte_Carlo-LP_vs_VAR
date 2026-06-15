@@ -1,3 +1,5 @@
+% !TEX root = ../main.tex
+
 \section{Theoretical Background (total: 5-6.5 pages)}
 Impulse response functions can be nonparametically defined as the difference between two conditional forecasts of the outcome variable (e.g. Koop (1996)). Both forecasts are conditioned on the same history up to period $t-1$, but differ in the realization at time $t$. While one conditions on a shock of size $\delta$ to the variable of interest, the other one does not. Following \textcite{ramey2016macroeconomic} shocks hereby refers to a significant exogenous force representing unanticipated movements in exogeneous variables, that is uncorrelated with other current and lagged control variables and other exogeneous shocks. The observed difference in the projected paths at horizon $h$ then identifies the causal effect of the shock in population:
 
@@ -12,7 +14,7 @@ More recently, however, \textcite{ludwig2026local} shows that the equal-order co
 
 \subsection{Introduction to VARS (1.5 - 2 pages)}
 
-Following \textcite{luethkepohl2005new}, we start by defining a zero mean VAR(p) model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$ 
+Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$ 
 %
 \begin{equation}
     y_t = \nu + A_1 y_{t-1} + \dots + A_py_{t-p} + u_t, \quad t = 0, \pm 1, \pm 2,\dots
@@ -84,7 +86,7 @@ equation by equation by ordinary least squares. Since every equation
 contains the same set of regressors—a constant and $p$ lags of all 
 variables—generalised least squares offers no efficiency gain over 
 equation-by-equation OLS, and the two estimators coincide 
-\textbf{zellner1962efficient}. Collecting the coefficients in 
+\textcite{zellner1962efficient}. Collecting the coefficients in 
 $\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$, the OLS estimator is 
 consistent and asymptotically normal under the stability condition,
 %
@@ -95,11 +97,11 @@ consistent and asymptotically normal under the stability condition,
 %
 where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the 
 stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$ 
-\textbf{lutkepohl2005}. The innovation covariance matrix is 
+\textcite{lutkepohl2005}. The innovation covariance matrix is 
 estimated by the residual analogue $\hat{\Sigma}_u = (T - Kp - 1)^{-1} 
 \sum_{t} \hat{u}_t \hat{u}_t'$. The lag order $p$ is selected by an 
-information criterion such as the AIC \textbf{akaike1974new} or the 
-BIC \textbf{schwarz1978estimating}, which balance in-sample fit against 
+information criterion such as the AIC \textcite{akaike1974new} or the 
+BIC \textcite{schwarz1978estimating}, which balance in-sample fit against 
 model complexity.
 
 In the second stage, the structural objects are recovered from the 
@@ -156,13 +158,13 @@ asymptotic normality through the Jacobian of $g$, yielding
 where the Jacobian of the reduced-form responses 
 $G_h = \partial\,\mathrm{vec}(\Psi_h)/\partial\alpha'$ has the closed form 
 $G_h = \sum_{m=0}^{h-1} J(\mathbf{A}')^{h-1-m} \otimes \Psi_m$ 
-\textbf{lutkepohl2005}. The resulting standard errors deliver 
+\textcite{lutkepohl2005}. The resulting standard errors deliver 
 confidence intervals for $\hat{\theta}_h^{ij}$ that are valid pointwise in 
 the horizon $h$, provided the process is stationary with roots bounded away 
 from the unit circle.
 
 This pointwise validity comes with an important caveat. As 
-\textbf{lutkepohl2005} notes, the asymptotic covariance matrix 
+\textcite{lutkepohl2005} notes, the asymptotic covariance matrix 
 in the proposition can become singular for certain parameter 
 configurations, in which case the usual $t$-ratios are no longer 
 asymptotically standard normal and inference based on them may be 
