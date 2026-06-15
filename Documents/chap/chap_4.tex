@@ -2,6 +2,55 @@
 
 \subsection{Simulation Design}
 
+Extension~1 examines 
+whether the finite-sample MSE ranking between LP(4) and the complexity-adjusted 
+VAR sweep is robust to dynamic misspecification of the Wold representation. The 
+baseline VAR(4) is augmented by a first-order moving average component, yielding 
+a VARMA(4,1) DGP:
+
+\begin{equation}
+    y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} 
+    + u_t + \Theta u_{t-1}, \quad u_t = B\varepsilon_t, \quad 
+    \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0, I_2)
+\end{equation}
+
+where $\Theta = \theta I_2$ is a scalar-scaled MA impact matrix, with 
+misspecification strength $\theta \in \{0.1, 0.3, 0.6\}$. The case $\theta = 0$ 
+nests back to the baseline VAR(4), ensuring continuity across designs. The VAR 
+coefficient matrices $A_1, \ldots, A_4$ and the impact matrix $B$ are inherited 
+from the baseline DGP, so that all variation across Extension~1 scenarios is 
+attributable exclusively to the MA component.
+
+The VARMA(4,1) DGP is invertible for all $\theta \in \{0.1, 0.3, 0.6\}$, 
+admitting an infinite-order VAR representation. This means the complexity-adjusted 
+VAR sweep retains its theoretical motivation: higher-order VAR$(q)$ specifications 
+progressively approximate the true dynamics as $q \to \infty$, though at the cost 
+of increasing parameter proliferation in finite samples. The central question is 
+therefore whether LP(4) --- which is robust to this misspecification by virtue of 
+its zero asymptotic bias \parencite{olea2025local} --- retains its MSE 
+advantage over the equal-lag VAR(4), and where on the complexity-adjusted VAR 
+frontier it sits relative to the baseline.
+
+Persistence is varied across $\rho \in (0.5, 0.95)$ as in the baseline, 
+since the degree to which the MA component distorts finite-sample VAR 
+approximations depends directly on the persistence of the underlying process: 
+at high $\rho$, shocks decay slowly and the MA term remains influential at 
+longer horizons, amplifying the VAR's approximation bias. Sample sizes follow 
+the baseline design, $T \in \{100, 200, 240, 500\}$. The misspecification 
+strength $\theta \in \{0.1, 0.3, 0.6\}$ is thus varied jointly with 
+persistence and sample size, yielding a three-way design that isolates the 
+marginal contribution of MA misspecification from the persistence and 
+finite-sample channels already documented in the baseline.
+
+The structural estimand $\theta_h = \Psi_h^{\mathrm{VARMA}} B e_1$ is defined 
+with respect to the true VARMA moving-average matrices $\Psi_h^{\mathrm{VARMA}}$, 
+computed analytically from the VARMA companion representation prior to each 
+simulation run. Both estimators --- LP(4) and the VAR$(q)$ sweep --- are applied 
+without modification to the VARMA-generated data, so that the misspecification 
+is fully absorbed into the finite-sample performance of each estimator rather 
+than accommodated by the estimation procedure. Performance measures are identical 
+to the baseline.
+
 \subsection{Simulation Results}
 
 

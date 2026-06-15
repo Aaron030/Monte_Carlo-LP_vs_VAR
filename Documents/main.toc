@@ -12,9 +12,9 @@
 \contentsline {subsection}{\numberline {3.2}Simulation Results}{10}{subsection.3.2}%
 \contentsline {section}{\numberline {4}Extension 1: Dynamic Misspecification (3-4 pages)}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Simulation Design}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Simulation Results}{10}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Extension 2: Functional Misspecification (3-4 pages)}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Simulation Design}{10}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Simulation Results}{10}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Discussion (1.5-2 pages)}{10}{section.6}%
-\contentsline {section}{\hbox to\@tempdima {\hfil } References}{11}{section.6}%
+\contentsline {subsection}{\numberline {4.2}Simulation Results}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Extension 2: Functional Misspecification (3-4 pages)}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Simulation Design}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Simulation Results}{12}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Discussion (1.5-2 pages)}{12}{section.6}%
+\contentsline {section}{\hbox to\@tempdima {\hfil } References}{13}{section.6}%

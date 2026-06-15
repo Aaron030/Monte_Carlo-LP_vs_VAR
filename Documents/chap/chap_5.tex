@@ -2,7 +2,76 @@
 
 \subsection{Simulation Design}
 
+Extension~2 examines 
+whether the finite-sample MSE ranking between LP(4) and the complexity-adjusted 
+VAR sweep is robust to functional misspecification of the DGP. The baseline 
+VAR(4) is augmented by a quadratic term in the first structural shock, yielding 
+a nonlinear DGP:
 
+\begin{equation}
+    y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} 
+    + u_t + \gamma \cdot c(\varepsilon_{1,t}), \quad u_t = B\varepsilon_t, 
+    \quad \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0, I_2)
+\end{equation}
+
+where $c(\varepsilon_{1,t}) = (0,\ \varepsilon_{1,t}^2 - 1)'$ is a 
+mean-zero quadratic term in the first structural shock entering the second 
+equation only, and $\gamma \in \{0.3, 0.6\}$ controls the degree of 
+nonlinearity. The centering $\varepsilon_{1,t}^2 - 1$ ensures that the 
+nonlinear term has mean zero, so that $\gamma = 0$ nests back to the 
+baseline VAR(4).
+
+This shock-quadratic specification is adopted in place of a level-quadratic 
+or lag-quadratic formulation for two reasons. First, a quadratic term in 
+lagged levels introduces positive feedback into the system dynamics and is 
+explosive for moderate values of $\gamma$, violating the covariance 
+stationarity required for the estimand $\theta_h$ to be well-defined. 
+Second, and more importantly, a quadratic term in the structural shock 
+isolates the nonlinearity in the transmission mechanism rather than in the 
+propagation dynamics. This distinction matters for the research question: 
+since the Cholesky-identified structural shock $\varepsilon_{1,t}$ enters 
+the system linearly in the baseline VAR(4), a shock-quadratic extension 
+targets precisely the channel emphasized by \textcite{plagborg2021local} 
+--- namely, that linear LP and linear VAR are both blind to nonlinearities 
+in the shock transmission in population (Proposition~1, p.~960). A 
+lag-quadratic specification would instead distort the propagation dynamics 
+and complicate the identification of the structural shock, confounding the 
+comparison with the baseline DGP. The shock-quadratic formulation thus 
+provides the cleanest test of whether the complexity-adjusted VAR sweep 
+offers any finite-sample advantage when functional misspecification is 
+present but structurally uninvertible --- that is, not approximable by 
+higher-order linear VARs regardless of lag length.
+
+The key theoretical motivation for this extension follows from 
+\textcite{plagborg2021local}, who establish that linear LP and linear VAR 
+estimate the same best linear approximation to the true IRF in population, 
+regardless of whether the DGP is linear (Proposition~1, p.~960). Under 
+equal lag length, both estimators are therefore equally blind to the 
+quadratic misspecification in population, and any finite-sample divergence 
+reflects differences in the bias-variance tradeoff and the inference channel 
+rather than differential robustness to nonlinearity per se. This makes 
+Extension~2 complementary to Extension~1: whereas Extension~1 isolates the 
+bias channel under invertible dynamic misspecification, Extension~2 isolates 
+the inference channel, since the nonlinear DGP generates non-Gaussian and 
+serially dependent Wold innovations that affect the finite-sample coverage 
+of LP and VAR differently. Critically, unlike the VARMA misspecification in 
+Extension~1, the quadratic term is not approximable by higher-order linear 
+VARs, which implies that the complexity-adjusted VAR sweep has no 
+approximation advantage over VAR(4) in this setting.
+
+The structural estimand is the best linear approximation to the true 
+nonlinear IRF, $\theta_h^{\mathrm{lin}} = \Psi_h B e_1$, where $\Psi_h$ 
+and $B$ are defined with respect to the linear component of the DGP. Since 
+both LP and VAR target this same linear estimand in population 
+\parencite{plagborg2021local}, the comparison remains well-defined under 
+nonlinear misspecification. Persistence is varied across $\rho \in (0.5, 
+0.95)$ as in the baseline and Extension~1, and sample sizes follow the 
+baseline design $T \in \{100, 200, 240, 500\}$. The nonlinearity strength 
+$\gamma \in \{0.3, 0.6\}$ is varied jointly with persistence and sample 
+size. Both estimators are applied without modification to the 
+nonlinearity-generated data, so that the misspecification is fully absorbed 
+into the finite-sample performance of each estimator. Performance measures 
+are identical to the baseline.
 \subsection{Simulation Results}
 
 
