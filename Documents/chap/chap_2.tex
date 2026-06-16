@@ -14,73 +14,72 @@ More recently, however, \textcite{ludwig2026local} shows that the equal-order co
 
 \subsection{Introduction to VARS (1.5 - 2 pages)}
 
-Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$ 
+Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model the model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
 %
 \begin{equation}
-    y_t = \nu + A_1 y_{t-1} + \dots + A_py_{t-p} + u_t, \quad t = 0, \pm 1, \pm 2,\dots
-\end{equation}
-%
-or simply in form of the companion VAR(1)
-%
-\begin{equation}
-    Y_t = \boldsymbol{\nu} + \mathbf{A} Y_{t-1} + U_t
+    Y_t = \mathbf{A} Y_{t-1} + U_t
 \end{equation}
 %
 where
 %
 \begin{equation*}
-Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix}, 
-\boldsymbol{\nu} := \begin{bmatrix} \nu \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix} _{Kp\times 1}, 
 \mathbf{A} := \begin{bmatrix} 
 A_1 & A_2 & \cdots & A_{p-1} & A_p \\ 
 I_K & 0   & \cdots & 0       & 0   \\
 0   & I_K &        & 0       & 0   \\
 \vdots & & \ddots & & \vdots \\
 0   & 0   & \cdots & I_K     & 0
-\end{bmatrix},
-U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix}.
+\end{bmatrix} _{Kp\times Kp},
+U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix} _{Kp\times 1}.
 \end{equation*}
 %
-Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation.
+Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation:
 %
 \begin{equation}
-det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \sum_{i=0}^{\infty}\mathbf{A}^{i}U_{t-i}
+det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \sum_{l=0}^{\infty}\mathbf{A}^{l}U_{t-l}.
 \end{equation}
 %
-The Wold moving-average coefficients for a specific horizon $h$, $\Psi_h \equiv [\mathbf{A}^h]$ are obtained by noting that since $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$  has nonzero entries only in its first $K$ positions. The effect of  $u_{t-i}$ on $y_t$ is therefore fully captured by the upper-left $K \times K$  block of $\mathbf{A}^i$. Extracting its upper-left $K \times K$ block thus yields  $\Psi_h$ corresponing to the impulse response of $y_t$  to a unit reduced-form innovation $h$ periods ago. 
-However, since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural  identification is only achieved by imposing restrictions on the impact matrix  $B$ in the decomposition $u_t = B\varepsilon_t$, where $\varepsilon_t  \sim (0, I_K)$ are mutually uncorrelated structural shocks. 
-
-The most common approach is recursive Cholesky identification, which 
-restricts $B$ to be lower triangular with positive diagonal entries, 
-uniquely recovering $B$ as the Cholesky factor of $\Sigma_u = BB'$. 
-The recursive ordering imposes a causal structure on the system: the 
-variable ordered first responds contemporaneously to all shocks, while 
-the variable ordered last is insulated from all contemporaneous feedback. 
-Defining the orthogonalised innovations $w_t := B^{-1}u_t$ yields 
-$\mathbb{E}(w_t w_t') = B^{-1}\Sigma_u (B^{-1})' = I_K$, so that the 
-components of $w_t$ are mutually uncorrelated with unit variance. 
-Substituting into the Wold representation gives the structural 
-moving-average representation
+Restricting attention to the top $K$ rows of the Wold MA representation yields the moving-average representation for $y_t$:
 %
 \begin{equation}
-    y_t = \sum_{j=0}^{\infty} \Theta_j w_{t-j}, 
-    \qquad \Theta_j := \Psi_j B,
+    y_t = \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell}, 
+\qquad \Psi_\ell := [\mathbf{A}^\ell]_{1:K,\,1:K}
+    \label{eq:wold_yt}
+\end{equation}
+%
+where $\Psi_h$ is the reduced-form impulse response function at horizon $h$, measuring the response of $y_t$ to a unit reduced-form innovation $u_{t-h}$. It corresponds to the upper-left $K \times K$ block of $\mathbf{A}^h$, which follows directly from the fact that $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$ has nonzero entries only in its first $K$ positions. Since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural identification is achieved by imposing restrictions on  the impact matrix $B$ in $u_t = B\varepsilon_t$, where $\varepsilon_t \sim (0, I_K)$ are mutually uncorrelated structural shocks, so that $\Sigma_u = BB'$.
+
+
+The most common approach is recursive Cholesky identification \parencite{ramey2016macroeconomic}, which restricts $B$ to be lower triangular with positive diagonal entries, uniquely recovering $B$ as the Cholesky factor of $\Sigma_u$. The recursive ordering imposes a causal structure as the variable ordered first responds contemporaneously to all shocks, while the variable ordered last is insulated from all contemporaneous feedback. 
+Substituting $u_t = B\varepsilon_t$ into \eqref{eq:wold_yt} yields the structural moving-average representation
+%
+\begin{equation}
+    y_t = \sum_{\ell=0}^{\infty} \Theta_\ell\, \varepsilon_{t-\ell}, 
+\qquad \Theta_\ell := \Psi_\ell B, 
+    \qquad B = \begin{pmatrix} 
+b_{11} & 0      & \cdots & 0      \\ 
+b_{21} & b_{22} & \cdots & 0      \\ 
+\vdots &        & \ddots & \vdots \\ 
+b_{K1} & b_{K2} & \cdots & b_{KK} 
+\end{pmatrix}
     \label{eq:sma}
 \end{equation}
 %
-where the $jk$-th element of $\Theta_h$ measures the response of variable 
-$j$ to a unit innovation in the $k$-th orthogonalised shock $h$ periods 
-ago. Selecting the response of variable $i$ to the $j$-th shock yields 
-the structural impulse response at horizon $h$,
+where the $(i,j)$-th element of $\Theta_h$ measures the response of 
+variable $i$ to a unit innovation in structural shock $j$ at horizon $h$. 
+The structural impulse response of variable $i$ to shock $j$ is thus
 %
 \begin{equation}
-    \theta_h^{ij} = e_i'\,\Psi_h\, B\, e_j,
+    \theta_h^{ij} = [\Psi_h B]_{ij}
     \label{eq:sirf}
 \end{equation}
 %
-where $e_i, e_j \in \mathbb{R}^K$ are standard basis vectors.
+where $[\,\cdot\,]_{ij}$ denotes the $(i,j)$-th element of a matrix.
+
 \subsubsection{POINT ESTIMATION}
-Estimation of the structural impulse response $\theta_h^{ij}$ proceeds in 
+
+Estimation of the structural impulse response $\hat \theta_h^{ij}$ proceeds in 
 two stages. In the first stage, the reduced-form VAR is estimated 
 equation by equation by ordinary least squares. Since every equation 
 contains the same set of regressors—a constant and $p$ lags of all 
