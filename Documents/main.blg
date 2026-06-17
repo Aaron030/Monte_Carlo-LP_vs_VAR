@@ -1,23 +1,23 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[30] biber-darwin:340> INFO - === Wed Jun 17, 2026, 05:09:08
-[39] Biber.pm:419> INFO - Reading 'main.bcf'
-[90] Biber.pm:979> INFO - Found 26 citekeys in bib section 0
-[102] Biber.pm:4419> INFO - Processing section 0
-[108] Biber.pm:4610> INFO - Looking for bibtex file 'bibtex.bib' for section 0
-[109] bibtex.pm:1713> INFO - LaTeX decoding ...
-[128] bibtex.pm:1519> INFO - Found BibTeX data source 'bibtex.bib'
-[207] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[207] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[207] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[207] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
-[230] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[230] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[230] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[230] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
-[242] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[256] bbl.pm:763> INFO - Output to main.bbl
-[257] Biber.pm:131> WARN - Duplicate entry key: 'kilian1999finite' in file 'bibtex.bib', skipping ...
-[257] Biber.pm:131> WARN - Duplicate entry key: 'montiel2021local' in file 'bibtex.bib', skipping ...
-[257] Biber.pm:131> WARN - Duplicate entry key: 'li2024local' in file 'bibtex.bib', skipping ...
-[257] Biber.pm:133> INFO - WARNINGS: 3
+[57] biber-darwin:340> INFO - === Wed Jun 17, 2026, 23:16:42
+[72] Biber.pm:419> INFO - Reading 'main.bcf'
+[152] Biber.pm:979> INFO - Found 26 citekeys in bib section 0
+[169] Biber.pm:4419> INFO - Processing section 0
+[179] Biber.pm:4610> INFO - Looking for bibtex file 'bibtex.bib' for section 0
+[182] bibtex.pm:1713> INFO - LaTeX decoding ...
+[212] bibtex.pm:1519> INFO - Found BibTeX data source 'bibtex.bib'
+[343] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[344] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[344] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[344] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[381] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[381] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[381] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[381] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[401] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[424] bbl.pm:763> INFO - Output to main.bbl
+[424] Biber.pm:131> WARN - Duplicate entry key: 'kilian1999finite' in file 'bibtex.bib', skipping ...
+[424] Biber.pm:131> WARN - Duplicate entry key: 'montiel2021local' in file 'bibtex.bib', skipping ...
+[424] Biber.pm:131> WARN - Duplicate entry key: 'li2024local' in file 'bibtex.bib', skipping ...
+[424] Biber.pm:133> INFO - WARNINGS: 3
