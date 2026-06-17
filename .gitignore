@@ -29,14 +29,6 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Project outputs (keep dirs via .gitkeep, ignore files)
-results/*
-!results/.gitkeep
-figures/*
-!figures/.gitkeep
-logs/
-*.log
-
 # Caches
 .cache/
 .pytest_cache/
