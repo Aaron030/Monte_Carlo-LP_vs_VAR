@@ -286,3 +286,119 @@ def simulate_varma(
     if return_shocks:
         return y[burnin:], eps[burnin:]
     return y[burnin:]
+
+
+# ---------------------------------------------------------------------------
+# VAR(p) with a mean-zero quadratic structural-shock term (Extension 2)
+# ---------------------------------------------------------------------------
+#
+# Used by Extension 2 (functional misspecification): the linear VAR dynamics of
+# the baseline are augmented by a nonlinear, mean-zero quadratic term in the
+# first structural shock. The LP and VAR estimators are applied unchanged, so
+# the nonlinearity is a *functional* misspecification of their linear model.
+
+
+@dataclass
+class QuadShockVARSpec:
+    """VAR(p) with a mean-zero quadratic structural-shock term (Extension 2).
+
+        y_t = A_1 y_{t-1} + ... + A_p y_{t-p} + u_t + gamma * c(eps_{1,t}),
+        u_t = B eps_t,   eps_t ~ iid N(0, I_K),
+        c(eps_{1,t}) = (0, eps_{1,t}^2 - 1)'  (mean-zero quadratic in the first
+        structural shock, entering the *second* equation only).
+
+    Parameters
+    ----------
+    A : array (p, K, K)
+        Autoregressive matrices A_1, ..., A_p (the linear component, as in
+        :class:`VARSpec`). The quadratic term does not affect stability.
+    B : array (K, K)
+        Lower-triangular structural impact matrix, Sigma_u = B B' (as in VARSpec).
+    gamma : float
+        Nonlinearity strength. ``gamma = 0`` nests the baseline :class:`VARSpec`.
+
+    Notes
+    -----
+    The centring ``eps_{1,t}^2 - 1`` makes the quadratic term mean-zero, so the
+    *best linear approximation* to the (nonlinear) IRF is the linear-component
+    IRF ``theta_h = (Psi_h B)[response, shock]`` -- which is gamma-INDEPENDENT
+    and equals the baseline VAR(4) estimand. Both LP and VAR target this same
+    linear object in population (Plagborg-Moller & Wright, Prop. 1), so the
+    quadratic term is not approximable by higher-order linear VARs: the
+    complexity-adjusted VAR sweep has no approximation advantage here, and any
+    finite-sample divergence reflects the inference channel (non-Gaussian,
+    square-dependent Wold innovations) rather than differential bias.
+    """
+
+    A: np.ndarray
+    B: np.ndarray
+    gamma: float = 0.0
+
+    def __post_init__(self):
+        self.A = np.asarray(self.A, dtype=float)
+        self.B = np.asarray(self.B, dtype=float)
+        self.gamma = float(self.gamma)
+        if self.A.ndim != 3 or self.A.shape[1] != self.A.shape[2]:
+            raise ValueError("A must have shape (p, K, K).")
+        if self.A.shape[1] < 2:
+            raise ValueError("QuadShockVARSpec needs K >= 2 (term enters eq. 2).")
+        if self.B.shape != (self.A.shape[1], self.A.shape[1]):
+            raise ValueError("B must have shape (K, K) matching A.")
+
+    @property
+    def p(self) -> int:
+        return self.A.shape[0]
+
+    @property
+    def k(self) -> int:
+        return self.A.shape[1]
+
+    def linear_spec(self) -> "VARSpec":
+        """The linear-component VAR (drop the quadratic term)."""
+        return VARSpec(A=self.A, B=self.B)
+
+
+def quad_shock_irf(
+    spec: QuadShockVARSpec, horizon: int, shock: int = 0, response: int = 0
+) -> np.ndarray:
+    """Best-linear-approximation IRF of the quadratic-shock DGP, h = 0..H.
+
+    Because the quadratic term is mean-zero, the estimand both LP and VAR target
+    in population is the linear-component IRF ``theta_h = (Psi_h B)[response,
+    shock]`` -- identical to the baseline VAR(p) and INDEPENDENT of ``gamma``.
+    """
+    return var_irf(spec.linear_spec(), horizon, shock=shock, response=response)
+
+
+def simulate_quad_shock_var(
+    spec: QuadShockVARSpec,
+    T: int,
+    rng: np.random.Generator,
+    burnin: int = 200,
+    return_shocks: bool = False,
+):
+    """Simulate a length-T path from a quadratic-shock VAR, discarding burn-in.
+
+    Returns an array of shape (T, K). If ``return_shocks`` is True, returns the
+    tuple ``(y, eps)`` where ``eps`` (shape (T, K)) are the structural shocks
+    that generated ``y``, aligned row-for-row.
+    """
+    A, B, gamma = spec.A, spec.B, spec.gamma
+    p, k = spec.p, spec.k
+    n = T + burnin
+    eps = rng.standard_normal((n, k))
+    # Mean-zero quadratic term c(eps_{1,t}) = (0, eps_{1,t}^2 - 1)': nonzero in eq. 2.
+    c = np.zeros((n, k))
+    c[:, 1] = eps[:, 0] ** 2 - 1.0
+    y = np.zeros((n, k))
+    # np.errstate: macOS Accelerate BLAS spuriously raises FPE flags in matmul.
+    with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
+        u = eps @ B.T + gamma * c  # reduced-form innovation + nonlinear shock term
+        for t in range(p, n):
+            val = u[t].copy()
+            for i in range(1, p + 1):
+                val += A[i - 1] @ y[t - i]
+            y[t] = val
+    if return_shocks:
+        return y[burnin:], eps[burnin:]
+    return y[burnin:]
