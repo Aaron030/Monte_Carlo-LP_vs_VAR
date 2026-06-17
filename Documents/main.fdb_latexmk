@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1781663536 "main.bcf" "main.bbl" "main" 1781663552 0
-  "./bibtex.bib" 1781663529 8626 17b524947b0bec263274452f272fbc45 ""
-  "main.bcf" 1781663552 129857 8a9dad8d08b567f17c67f58a20112675 "pdflatex"
+["biber main"] 1781665746 "main.bcf" "main.bbl" "main" 1781665757 0
+  "./bibtex.bib" 1781665730 10447 6af10a8bdb988c522df02bd39da0e571 ""
+  "main.bcf" 1781665757 132748 054e68b16c9f1c6831b6c85bcff1c837 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1781663548 "/Users/patricktenner/GitHub/MonteCarloSeminar/Documents/main.tex" "main.pdf" "main" 1781663552 0
+["pdflatex"] 1781665753 "/Users/patricktenner/GitHub/MonteCarloSeminar/Documents/main.tex" "main.pdf" "main" 1781665757 0
   "/Users/patricktenner/GitHub/MonteCarloSeminar/Documents/main.tex" 1781291877 1102 1081f76bcc5d1a93ba2cde2e4c8055ed ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -276,20 +276,20 @@
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1710416338 7883460 d95ec2ff367bb956238e3af5eaf0e88b ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "chap/chap_1.tex" 1781624077 4185 7e3445a26cae942fb2029bd685fb43bd ""
-  "chap/chap_2.tex" 1781663529 15599 12b9971e1a5495d9ef4a097a98bb8478 ""
+  "chap/chap_2.tex" 1781665730 24340 aa36c9a003b7ddde501108a8920a4055 ""
   "chap/chap_3.tex" 1781624077 11681 c52bfb68bf959c761d5c98bf8ccfebe2 ""
   "chap/chap_4.tex" 1781624077 3098 de29f2486f9366ddb2d4abaa5bd5c727 ""
   "chap/chap_5.tex" 1781624077 4563 7d3efe82f74269755945269695ff974e ""
   "chap/chap_6.tex" 1781624077 61 c7cb7a1fc0d0dec7eb39aa49233dc683 ""
   "graph/sigillum.png" 1781209904 320585 57131ef3bcfba901e575bf6769aac43e ""
-  "main.aux" 1781663552 12564 41036f88a423bf9a529338425ab6648b "pdflatex"
-  "main.bbl" 1781663539 58198 6ed571290747b9a70b4124bc36213142 "biber main"
-  "main.lof" 1781663552 29 b30e294a26ba8a1b918ee7f216435239 "pdflatex"
-  "main.lot" 1781663552 29 b30e294a26ba8a1b918ee7f216435239 "pdflatex"
-  "main.out" 1781663552 3702 cb9bc69471afa33cf2ffe5dd25b39cf6 "pdflatex"
-  "main.run.xml" 1781663552 2487 b29687a4a5ec1742cd57b487bb975993 "pdflatex"
+  "main.aux" 1781665757 18505 0f15de948e148dcc91e752dc5534c917 "pdflatex"
+  "main.bbl" 1781665748 73886 fcaa43cd602332398ee8a01f338d34ac "biber main"
+  "main.lof" 1781665757 29 b30e294a26ba8a1b918ee7f216435239 "pdflatex"
+  "main.lot" 1781665757 29 b30e294a26ba8a1b918ee7f216435239 "pdflatex"
+  "main.out" 1781665757 3702 cb9bc69471afa33cf2ffe5dd25b39cf6 "pdflatex"
+  "main.run.xml" 1781665757 2487 b29687a4a5ec1742cd57b487bb975993 "pdflatex"
   "main.tex" 1781291877 1102 1081f76bcc5d1a93ba2cde2e4c8055ed ""
-  "main.toc" 1781663552 1634 dfa03954ee9f104654d3b8646b99c238 "pdflatex"
+  "main.toc" 1781665757 1637 fb49fe2de3ee0df1925bf7a7ca84bf61 "pdflatex"
   "settings/new_cmd.tex" 1781020591 0 d41d8cd98f00b204e9800998ecf8427e ""
   "settings/packages.tex" 1781125865 4585 4c1243102741931df53ed57a2b3ff09e ""
   "settings/titlepage.tex" 1781210581 992 92fa1f2ae6ec977dfde6f86422053a4a ""

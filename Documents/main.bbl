@@ -75,6 +75,7 @@
       \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
       \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
       \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{extraname}{1}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
@@ -87,6 +88,44 @@
       \field{title}{Bias in local projections}
       \field{volume}{2020-010r1}
       \field{year}{2021}
+    \endentry
+    \entry{herbst2024bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4024d724acadd9e571757574aaa599f9}{%
+           family={Herbst},
+           familyi={H\bibinitperiod},
+           given={Edward\bibnamedelima P},
+           giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6449613364864f0f5141c8c4b35d5ab7}{%
+           family={Johannsen},
+           familyi={J\bibinitperiod},
+           given={Benjamin\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{fullhash}{e5840a759a59085862134ff7b34ea104}
+      \strng{bibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{1}
+      \field{title}{Bias in local projections}
+      \field{volume}{240}
+      \field{year}{2024}
+      \field{pages}{105655}
+      \range{pages}{1}
     \endentry
     \entry{jorda2005estimation}{article}{}
       \name{author}{1}{}{%
@@ -116,6 +155,83 @@
       \field{year}{2005}
       \field{pages}{161\bibrangedash 182}
       \range{pages}{22}
+    \endentry
+    \entry{jorda2025local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+        {{hash=810c6df15faaa9bc8e8020d1cc34a9c3}{%
+           family={Taylor},
+           familyi={T\bibinitperiod},
+           given={Alan\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203-2425}%
+      }
+      \strng{namehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{fullhash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{bibnamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authorbibnamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authornamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authorfullhash}{478a6d842e319eeae37437f8c419dc52}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Literature}
+      \field{number}{1}
+      \field{title}{Local projections}
+      \field{volume}{63}
+      \field{year}{2025}
+      \field{pages}{59\bibrangedash 110}
+      \range{pages}{52}
+    \endentry
+    \entry{jorda2024long}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+        {{hash=5ff43f41de58feed44476ac3501f2db9}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Sanjay\bibnamedelima R},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=810c6df15faaa9bc8e8020d1cc34a9c3}{%
+           family={Taylor},
+           familyi={T\bibinitperiod},
+           given={Alan\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 255 Main Street, 9th Floor, Cambridge, Massachusetts 02142, USA~…}%
+      }
+      \strng{namehash}{48974cff901840f14bc688d0a173fb4b}
+      \strng{fullhash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{bibnamehash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{authorbibnamehash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{authornamehash}{48974cff901840f14bc688d0a173fb4b}
+      \strng{authorfullhash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Economics and Statistics}
+      \field{title}{The long-run effects of monetary policy}
+      \field{year}{2024}
+      \field{pages}{1\bibrangedash 49}
+      \range{pages}{49}
     \endentry
     \entry{kilian1998small}{article}{}
       \name{author}{1}{}{%
@@ -453,6 +569,43 @@
       \field{pages}{390\bibrangedash 402}
       \range{pages}{13}
     \endentry
+    \entry{montiel2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8c2744d17d5291b37947907f0ae4b852}{%
+           family={Montiel\bibnamedelima Olea},
+           familyi={M\bibinitperiod\bibinitdelim O\bibinitperiod},
+           given={José\bibnamedelima Luis},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{fullhash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{bibnamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authorbibnamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authornamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authorfullhash}{edaf90113714b15bef567b13431fbb4f}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{4}
+      \field{title}{Local projection inference is simpler and more robust than you think}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{1789\bibrangedash 1823}
+      \range{pages}{35}
+    \endentry
     \entry{nicholls1988bias}{article}{}
       \name{author}{2}{}{%
         {{hash=a550464d2b6ad5fa38c271522f483e24}{%
@@ -720,6 +873,43 @@
       \field{year}{1980}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
+    \endentry
+    \entry{stock2018identification}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2d01c3b46f4061430cc9eb2a1f6408a4}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a4050fd715c1bcb50e38ec0f1c74b6bf}{%
+           family={Watson},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press Oxford, UK}%
+      }
+      \strng{namehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{fullhash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{bibnamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authorbibnamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authornamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authorfullhash}{73bd348d7c311859349e1b99e53d984a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{610}
+      \field{title}{Identification and estimation of dynamic causal effects in macroeconomics using external instruments}
+      \field{volume}{128}
+      \field{year}{2018}
+      \field{pages}{917\bibrangedash 948}
+      \range{pages}{32}
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global}
@@ -779,6 +969,7 @@
       \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
       \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
       \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{extraname}{1}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
@@ -791,6 +982,44 @@
       \field{title}{Bias in local projections}
       \field{volume}{2020-010r1}
       \field{year}{2021}
+    \endentry
+    \entry{herbst2024bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4024d724acadd9e571757574aaa599f9}{%
+           family={Herbst},
+           familyi={H\bibinitperiod},
+           given={Edward\bibnamedelima P},
+           giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6449613364864f0f5141c8c4b35d5ab7}{%
+           family={Johannsen},
+           familyi={J\bibinitperiod},
+           given={Benjamin\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{fullhash}{e5840a759a59085862134ff7b34ea104}
+      \strng{bibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorbibnamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authornamehash}{e5840a759a59085862134ff7b34ea104}
+      \strng{authorfullhash}{e5840a759a59085862134ff7b34ea104}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{1}
+      \field{title}{Bias in local projections}
+      \field{volume}{240}
+      \field{year}{2024}
+      \field{pages}{105655}
+      \range{pages}{1}
     \endentry
     \entry{jorda2005estimation}{article}{}
       \name{author}{1}{}{%
@@ -820,6 +1049,83 @@
       \field{year}{2005}
       \field{pages}{161\bibrangedash 182}
       \range{pages}{22}
+    \endentry
+    \entry{jorda2024long}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+        {{hash=5ff43f41de58feed44476ac3501f2db9}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Sanjay\bibnamedelima R},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=810c6df15faaa9bc8e8020d1cc34a9c3}{%
+           family={Taylor},
+           familyi={T\bibinitperiod},
+           given={Alan\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press 255 Main Street, 9th Floor, Cambridge, Massachusetts 02142, USA~…}%
+      }
+      \strng{namehash}{48974cff901840f14bc688d0a173fb4b}
+      \strng{fullhash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{bibnamehash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{authorbibnamehash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \strng{authornamehash}{48974cff901840f14bc688d0a173fb4b}
+      \strng{authorfullhash}{ba6f57ce57ffdb0eb82328c72768941a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Economics and Statistics}
+      \field{title}{The long-run effects of monetary policy}
+      \field{year}{2024}
+      \field{pages}{1\bibrangedash 49}
+      \range{pages}{49}
+    \endentry
+    \entry{jorda2025local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3e5c33a3778b8b654ea5cbde29d38d07}{%
+           family={Jordà},
+           familyi={J\bibinitperiod},
+           given={Òscar},
+           giveni={Ò\bibinitperiod}}}%
+        {{hash=810c6df15faaa9bc8e8020d1cc34a9c3}{%
+           family={Taylor},
+           familyi={T\bibinitperiod},
+           given={Alan\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203-2425}%
+      }
+      \strng{namehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{fullhash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{bibnamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authorbibnamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authornamehash}{478a6d842e319eeae37437f8c419dc52}
+      \strng{authorfullhash}{478a6d842e319eeae37437f8c419dc52}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Literature}
+      \field{number}{1}
+      \field{title}{Local projections}
+      \field{volume}{63}
+      \field{year}{2025}
+      \field{pages}{59\bibrangedash 110}
+      \range{pages}{52}
     \endentry
     \entry{kilian1998small}{article}{}
       \name{author}{1}{}{%
@@ -1157,6 +1463,43 @@
       \field{pages}{390\bibrangedash 402}
       \range{pages}{13}
     \endentry
+    \entry{montiel2021local}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8c2744d17d5291b37947907f0ae4b852}{%
+           family={Montiel\bibnamedelima Olea},
+           familyi={M\bibinitperiod\bibinitdelim O\bibinitperiod},
+           given={José\bibnamedelima Luis},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=5f6cf2ac45cd8a96f620c751c55b8bc3}{%
+           family={Plagborg-M{ø}ller},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Mikkel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{fullhash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{bibnamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authorbibnamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authornamehash}{edaf90113714b15bef567b13431fbb4f}
+      \strng{authorfullhash}{edaf90113714b15bef567b13431fbb4f}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{4}
+      \field{title}{Local projection inference is simpler and more robust than you think}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{1789\bibrangedash 1823}
+      \range{pages}{35}
+    \endentry
     \entry{nicholls1988bias}{article}{}
       \name{author}{2}{}{%
         {{hash=a550464d2b6ad5fa38c271522f483e24}{%
@@ -1424,6 +1767,43 @@
       \field{year}{1980}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
+    \endentry
+    \entry{stock2018identification}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2d01c3b46f4061430cc9eb2a1f6408a4}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a4050fd715c1bcb50e38ec0f1c74b6bf}{%
+           family={Watson},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press Oxford, UK}%
+      }
+      \strng{namehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{fullhash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{bibnamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authorbibnamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authornamehash}{73bd348d7c311859349e1b99e53d984a}
+      \strng{authorfullhash}{73bd348d7c311859349e1b99e53d984a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{610}
+      \field{title}{Identification and estimation of dynamic causal effects in macroeconomics using external instruments}
+      \field{volume}{128}
+      \field{year}{2018}
+      \field{pages}{917\bibrangedash 948}
+      \range{pages}{32}
     \endentry
   \enddatalist
 \endrefsection
