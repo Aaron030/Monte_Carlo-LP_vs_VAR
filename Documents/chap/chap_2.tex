@@ -14,81 +14,73 @@ More recently, however, \textcite{ludwig2026local} shows that the equal-order co
 
 \subsection{Introduction to VARS (1.5 - 2 pages)}
 
-Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$ 
+Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model the model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
 %
 \begin{equation}
-    y_t = \nu + A_1 y_{t-1} + \dots + A_py_{t-p} + u_t, \quad t = 0, \pm 1, \pm 2,\dots
-\end{equation}
-%
-or simply in form of the companion VAR(1)
-%
-\begin{equation}
-    Y_t = \boldsymbol{\nu} + \mathbf{A} Y_{t-1} + U_t
+    Y_t = \mathbf{A} Y_{t-1} + U_t
 \end{equation}
 %
 where
 %
 \begin{equation*}
-Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix}, 
-\boldsymbol{\nu} := \begin{bmatrix} \nu \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix} _{Kp\times 1}, 
 \mathbf{A} := \begin{bmatrix} 
 A_1 & A_2 & \cdots & A_{p-1} & A_p \\ 
 I_K & 0   & \cdots & 0       & 0   \\
 0   & I_K &        & 0       & 0   \\
 \vdots & & \ddots & & \vdots \\
 0   & 0   & \cdots & I_K     & 0
-\end{bmatrix},
-U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix}.
+\end{bmatrix} _{Kp\times Kp},
+U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix} _{Kp\times 1}.
 \end{equation*}
 %
-Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation.
+Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation:
 %
 \begin{equation}
-det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \sum_{i=0}^{\infty}\mathbf{A}^{i}U_{t-i}
+det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \sum_{l=0}^{\infty}\mathbf{A}^{l}U_{t-l}.
 \end{equation}
 %
-The Wold moving-average coefficients for a specific horizon $h$, $\Psi_h \equiv [\mathbf{A}^h]$ are obtained by noting that since $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$  has nonzero entries only in its first $K$ positions. The effect of  $u_{t-i}$ on $y_t$ is therefore fully captured by the upper-left $K \times K$  block of $\mathbf{A}^i$. Extracting its upper-left $K \times K$ block thus yields  $\Psi_h$ corresponing to the impulse response of $y_t$  to a unit reduced-form innovation $h$ periods ago. 
-However, since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural  identification is only achieved by imposing restrictions on the impact matrix  $B$ in the decomposition $u_t = B\varepsilon_t$, where $\varepsilon_t  \sim (0, I_K)$ are mutually uncorrelated structural shocks. 
-
-The most common approach is recursive Cholesky identification, which 
-restricts $B$ to be lower triangular with positive diagonal entries, 
-uniquely recovering $B$ as the Cholesky factor of $\Sigma_u = BB'$. 
-The recursive ordering imposes a causal structure on the system: the 
-variable ordered first responds contemporaneously to all shocks, while 
-the variable ordered last is insulated from all contemporaneous feedback. 
-Defining the orthogonalised innovations $w_t := B^{-1}u_t$ yields 
-$\mathbb{E}(w_t w_t') = B^{-1}\Sigma_u (B^{-1})' = I_K$, so that the 
-components of $w_t$ are mutually uncorrelated with unit variance. 
-Substituting into the Wold representation gives the structural 
-moving-average representation
+Restricting attention to the top $K$ rows of the Wold MA representation yields the moving-average representation for $y_t$:
 %
 \begin{equation}
-    y_t = \sum_{j=0}^{\infty} \Theta_j w_{t-j}, 
-    \qquad \Theta_j := \Psi_j B,
+    y_t = \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell}, 
+\qquad \Psi_\ell := [\mathbf{A}^\ell]_{1:K,\,1:K}
+    \label{eq:wold_yt}
+\end{equation}
+%
+where $\Psi_h$ is the reduced-form impulse response function at horizon $h$, measuring the response of $y_t$ to a unit reduced-form innovation $u_{t-h}$. It corresponds to the upper-left $K \times K$ block of $\mathbf{A}^h$, which follows directly from the fact that $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$ has nonzero entries only in its first $K$ positions. Since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural identification is achieved by imposing restrictions on  the impact matrix $B$ in $u_t = B\varepsilon_t$, where $\varepsilon_t \sim (0, I_K)$ are mutually uncorrelated structural shocks, so that $\Sigma_u = BB'$.
+
+
+The most common approach is recursive Cholesky identification \parencite{ramey2016macroeconomic}, which restricts $B$ to be lower triangular with positive diagonal entries, uniquely recovering $B$ as the Cholesky factor of $\Sigma_u$. The recursive ordering imposes a causal structure: the variable ordered first responds contemporaneously to all shocks, while the variable ordered last is insulated from all  contemporaneous feedback. The diagonal entries $b_{ii}$, $i = 1, \ldots, K$, measure the direct impact of structural shock $i$ on variable $i$, while the off-diagonal entries $b_{ij}$, $1 \leq j < i \leq K$, capture the contemporaneous spillover from structural shock $j$ to variable $i$.
+Substituting $u_t = B\varepsilon_t$ into \eqref{eq:wold_yt} yields the structural moving-average representation
+%
+\begin{equation}
+    y_t = \sum_{\ell=0}^{\infty} \Theta_\ell\, \varepsilon_{t-\ell}, 
+\qquad \Theta_\ell := \Psi_\ell B, 
+    \qquad B = \begin{pmatrix} 
+b_{11} & 0      & \cdots & 0      \\ 
+b_{21} & b_{22} & \cdots & 0      \\ 
+\vdots &        & \ddots & \vdots \\ 
+b_{K1} & b_{K2} & \cdots & b_{KK} 
+\end{pmatrix}
     \label{eq:sma}
 \end{equation}
 %
-where the $jk$-th element of $\Theta_h$ measures the response of variable 
-$j$ to a unit innovation in the $k$-th orthogonalised shock $h$ periods 
-ago. Selecting the response of variable $i$ to the $j$-th shock yields 
-the structural impulse response at horizon $h$,
+where the $(i,j)$-th element of $\Theta_h$ measures the response of 
+variable $i$ to a unit innovation in structural shock $j$ at horizon $h$. 
+The structural impulse response of variable $i$ to shock $j$ is thus
 %
 \begin{equation}
-    \theta_h^{ij} = e_i'\,\Psi_h\, B\, e_j,
+    \theta_h^{ij} = [\Psi_h B]_{ij}
     \label{eq:sirf}
 \end{equation}
 %
-where $e_i, e_j \in \mathbb{R}^K$ are standard basis vectors.
-\subsubsection{POINT ESTIMATION}
-Estimation of the structural impulse response $\theta_h^{ij}$ proceeds in 
-two stages. In the first stage, the reduced-form VAR is estimated 
-equation by equation by ordinary least squares. Since every equation 
-contains the same set of regressors—a constant and $p$ lags of all 
-variables—generalised least squares offers no efficiency gain over 
-equation-by-equation OLS, and the two estimators coincide 
-\textcite{zellner1962efficient}. Collecting the coefficients in 
-$\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$, the OLS estimator is 
-consistent and asymptotically normal under the stability condition,
+where $[\,\cdot\,]_{ij}$ denotes the $(i,j)$-th element of a matrix.
+
+Estimation of the structural impulse response $\hat{\theta}_h^{ij}$ 
+proceeds in two stages. In the first stage, the VAR coefficient matrices 
+$\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$ are estimated equation-by-equation 
+via OLS, which is efficient under the stability condition and yields
 %
 \begin{equation}
     \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr) 
@@ -96,157 +88,194 @@ consistent and asymptotically normal under the stability condition,
 \end{equation}
 %
 where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the 
-stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$ 
-\textcite{lutkepohl2005}. The innovation covariance matrix is 
-estimated by the residual analogue $\hat{\Sigma}_u = (T - Kp - 1)^{-1} 
-\sum_{t} \hat{u}_t \hat{u}_t'$. The lag order $p$ is selected by an 
-information criterion such as the AIC \textcite{akaike1974new} or the 
-BIC \textcite{schwarz1978estimating}, which balance in-sample fit against 
-model complexity.
+stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$, and the 
+innovation covariance $\Sigma_u$ is replaced by its residual analogue 
+$\hat{\Sigma}_u$ \parencite{lutkepohl2005}. %Lag order selection follows standard information criteria \textcite{akaike1974new,schwarz1978estimating}.
 
-In the second stage, the structural objects are recovered from the 
-reduced-form estimates. The impact matrix $\hat{B}$ is obtained as the 
-Cholesky factor of $\hat{\Sigma}_u$, and the reduced-form impulse 
-responses $\hat{\Psi}_h$ are computed from $\hat{A}$ via the recursion
+In the second stage, structural objects are recovered from the 
+reduced-form estimates. The impact matrix $\hat{B}$ is the Cholesky 
+factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are 
+obtained via the recursion $\hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)} 
+\hat{A}_\ell\,\hat{\Psi}_{h-\ell}$, $\hat{\Psi}_0 = I_K$. The 
+structural impulse response estimator is then a smooth nonlinear function of the first-stage estimates.
 %
 \begin{equation}
-    \hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)} \hat{A}_\ell\, \hat{\Psi}_{h-\ell}, 
-    \qquad \hat{\Psi}_0 = I_K,
+    \hat{\theta}_h^{ij} = e_i'\,\hat{\Psi}_h\,\hat{B}\,e_j.
 \end{equation}
 %
-or equivalently as the upper-left block of $\hat{\mathbf{A}}^h$. The 
-structural impulse response estimator is then
+
+Since $\hat{\theta}_h^{ij} = g(\hat{\alpha},\hat{\sigma})$ is 
+differentiable, the delta method yields
 %
 \begin{equation}
-    \hat{\theta}_h^{ij} = e_i'\, \hat{\Psi}_h\, \hat{B}\, e_j,
+    \sqrt{T}\,\bigl(\hat{\theta}_h^{ij} - \theta_h^{ij}\bigr)
+    \xrightarrow{d}
+    \mathcal{N}\!\left(0,\;
+    \frac{\partial g}{\partial\alpha'}\,\Sigma_{\alpha}\,
+    \frac{\partial g'}{\partial\alpha}
+    +
+    \frac{\partial g}{\partial\sigma'}\,\Sigma_{\sigma}\,
+    \frac{\partial g'}{\partial\sigma}
+    \right),
 \end{equation}
 %
-a smooth nonlinear function of the first-stage estimates $\hat{A}$ and 
-$\hat{\Sigma}_u$.
+where $\alpha = \mathrm{vec}(A)$, $\sigma = \mathrm{vech}(\Sigma_u)$, 
+and the Jacobian $\partial\,\mathrm{vec}(\Psi_h)/\partial\alpha'$ 
+admits a closed-form expression \parencite{lutkepohl1990asymptotic}. The resulting confidence intervals are valid pointwise in $h$ under stationarity, but not uniformly over the persistence of the process, motivating a direct examination of finite-sample behaviour.
 
-\subsubsection*{ASYMPTOTIC INFERENCE}
-
-Because the structural impulse response $\hat{\theta}_h^{ij}$ is a smooth 
-nonlinear function of the first-stage estimates, its asymptotic 
-distribution follows from the delta method. Let $\alpha = \mathrm{vec}(A_1, 
-\ldots, A_p)$ and $\sigma = \mathrm{vech}(\Sigma_u)$ collect the 
-reduced-form parameters, with the joint estimator satisfying
-%
-\begin{equation}
-    \sqrt{T}
-    \begin{pmatrix} \hat{\alpha} - \alpha \\ \hat{\sigma} - \sigma \end{pmatrix}
-    \xrightarrow{d} 
-    \mathcal{N}\!\left(0,\; 
-    \begin{pmatrix} \Sigma_{\alpha} & 0 \\ 0 & \Sigma_{\sigma} \end{pmatrix}
-    \right).
-\end{equation}
-%
-Since the impulse response is obtained through the differentiable mapping 
-$\theta_h^{ij} = g(\alpha, \sigma)$, the delta method propagates this 
-asymptotic normality through the Jacobian of $g$, yielding
-%
-\begin{equation}
-    \sqrt{T}\,\bigl(\hat{\theta}_h^{ij} - \theta_h^{ij}\bigr) 
-    \xrightarrow{d} 
-    \mathcal{N}\!\left(0,\; 
-    \frac{\partial g}{\partial \alpha'}\,\Sigma_{\alpha}\,
-    \frac{\partial g'}{\partial \alpha}
-    + \frac{\partial g}{\partial \sigma'}\,\Sigma_{\sigma}\,
-    \frac{\partial g'}{\partial \sigma}\right),
-\end{equation}
-%
-where the Jacobian of the reduced-form responses 
-$G_h = \partial\,\mathrm{vec}(\Psi_h)/\partial\alpha'$ has the closed form 
-$G_h = \sum_{m=0}^{h-1} J(\mathbf{A}')^{h-1-m} \otimes \Psi_m$ 
-\textcite{lutkepohl2005}. The resulting standard errors deliver 
-confidence intervals for $\hat{\theta}_h^{ij}$ that are valid pointwise in 
-the horizon $h$, provided the process is stationary with roots bounded away 
-from the unit circle.
-
-This pointwise validity comes with an important caveat. As 
-\textcite{lutkepohl2005} notes, the asymptotic covariance matrix 
-in the proposition can become singular for certain parameter 
-configurations, in which case the usual $t$-ratios are no longer 
-asymptotically standard normal and inference based on them may be 
-misleading. More fundamentally, the delta-method approximation is valid 
-only pointwise: it is not guaranteed to hold uniformly over the persistence 
-of the process, nor at horizons that grow with the sample size 
-\textbf{mikusheva2012onedimensional}. These qualifications motivate a 
-closer look at the finite-sample behaviour of VAR-based inference.
-
-\subsubsection*{Small-Sample Limitations}
-
-The favourable asymptotic properties established above are qualified by 
-three interrelated problems that arise in the sample sizes typical of 
-macroeconomic applications. All three originate in the same feature that 
-gives the VAR its parsimony: impulse responses are obtained by iterating 
-the estimated one-step dynamics forward, so that estimation error enters 
-the response nonlinearly and accumulates across horizons.
-
+The favourable asymptotic properties established above are qualified by three interrelated problems that arise in the sample sizes typical of macroeconomic applications.
+that arise in the sample sizes typical of macroeconomic applications.
 First, estimation error propagates through iteration. Because 
 $\hat{\Psi}_h$ is the upper-left block of $\hat{\mathbf{A}}^h$, error in 
 $\hat{A}$ enters the impulse response through powers of the companion 
 matrix and is compounded multiplicatively as the horizon grows. Even small 
 coefficient biases therefore translate into substantial distortions of the 
-estimated responses at longer horizons \textbf{kilian1998small}. In the 
-limiting case of unit or near-unit roots, \textbf{phillips1998impulse} 
+estimated responses at longer horizons \parencite{kilian1998small}. In the 
+limiting case of unit or near-unit roots, \textcite{phillips1998impulse} 
 shows that long-horizon impulse responses from unrestricted VARs are not 
 even consistently estimated, converging instead to random variables rather 
 than the true responses.
-
 Second, the autoregressive coefficients themselves are biased downward in 
 short samples. It is a long-established result that least squares 
 underestimates the persistence of an autoregressive process 
-\textbf{pope1990biases}, and because $\hat{\Psi}_h$ inherits this bias 
-through the recursion, the estimated impulse responses decay too quickly 
-and understate the true persistence of the system. The distortion is most 
-severe precisely when persistence is high and the sample is short—the 
-empirically relevant case for many macroeconomic series.
+\parencites{marriott1954bias}{nicholls1988bias}{pope1990biases}, and because $\hat{\Psi}_h$ inherits this bias through the recursion, the estimated impulse responses decay too quickly and understate the true persistence of the system. The distortion is most severe precisely when persistence is high and the sample is short. 
+Third, these distortions undermine delta-method inference. When the largest roots approach the unit circle, the asymptotic normal approximation deteriorates and the resulting confidence intervals undercover, increasingly so at longer horizons \parencites{kilian1998small}{kilian1999finite}. 
 
-Third, these distortions undermine delta-method inference. When the largest 
-roots approach the unit circle, the asymptotic normal approximation 
-deteriorates and the resulting confidence intervals undercover, 
-increasingly so at longer horizons \textbf{kilian1998small}. The failure 
-is not merely a finite-sample inconvenience but reflects the non-uniformity 
-of the underlying asymptotics: the normal approximation holds pointwise but 
-not uniformly over the persistence parameter 
-\textbf{mikusheva2012onedimensional}. The standard practical remedy is 
-the bias-corrected bootstrap of \textbf{kilian1998small}, which 
-bias-adjusts the estimated coefficients before resampling and thereby 
-accounts for both the bias and the skewness of the small-sample impulse 
-response distribution.
+Furthermore, a distinct class of distortions arises when the 
+autoregressive structure is itself misspecified: if the true process has 
+moving-average components, a finite-order VAR is generically 
+inconsistent regardless of sample size, and while higher-order AR 
+approximations can asymptotically absorb the omitted MA dynamics, the 
+required lag expansion rapidly exhausts degrees of freedom in samples of 
+typical macroeconomic length \parencite{braun1993misspecifications}. The 
+consequences of lag-order choice are strongly asymmetric---overfitting 
+merely inflates variance, whereas underfitting eliminates higher-order 
+dynamics of the response curve and produces spuriously tight intervals 
+with coverage far below nominal levels \parencite{kilian2001impulse}. 
+Crucially, both channels are population-level phenomena: 
+\textcite{ravenna2007vector} shows that truncation bias in the VAR 
+coefficients and the resulting contamination of the structural rotation 
+matrix persist even as $T \to \infty$.
 
-Taken together, these limitations—all rooted in the iterated-forecasting 
-structure of the VAR—motivate the study of estimators that recover impulse 
-responses directly at each horizon, without iterating a fitted one-step 
-model forward. The local projection approach of the following section is 
-precisely such an alternative.
-
-\textbf{Asymptotic Inference}: \textcite{lutkepohl1990asymptotic}, \textcite{phillips1998impulse}
-
-
-\textbf{Small-sample limitations}:
-\textbf{Bias propagation through iterated forcasting}:
-
-
-\textbf{Downward bias in autoregressive samples}:
-
-\textbf{Failure of delta-method inference under high persistence and long horizon}
-\textcite{kilian1998small}
-\textcite{kilian1999finite}
-\textcite{kilian2000accurate}
 
 \subsection{Introduction to Local Projections (1.5 -2 pages)}
 
-Whereas the vector autoregression recovers the impulse response function by first estimating the full system dynamics and then interating the fitted model forward, the local projection approach estimates the same object directly, horizon by horizon, through a sequence of OLS regressions.
-
-Assuming orthogonality of the shock with the projection error term and a linear projection model, we can obtain the impulse response to the shock at time h using the following OLS model: 
-
+Whereas the VAR recovers the impulse response by iterating a single fitted
+model forward through powers of the companion matrix, the local projection
+estimates each horizon's response directly from a separate regression
+\parencite{jorda2005estimation}. Following \textcite{jorda2005estimation} and
+\textcite{jorda2025local}, fix a horizon $h$ and project the future outcome
+$y_{t+h}$ onto the current observation $y_t$, controlling for the $p$ lags
+that span the conditioning information of the system,
+%
 \begin{equation}
-    y_{t+h} = 
+    y_{t+h} = \nu_h + \Phi_h\, y_t
+            + \sum_{\ell=1}^{p} \Xi_{h,\ell}\, y_{t-\ell}
+            + \xi_{t+h}^{(h)},
+    \qquad h = 0, 1, \ldots, H,
+    \label{eq:lp_reduced}
 \end{equation}
+%
+where $\nu_h$ is a $K \times 1$ vector of constants, $\Phi_h$ and
+$\Xi_{h,\ell}$ are $K \times K$ coefficient matrices, and $\xi_{t+h}^{(h)}$
+is the horizon-$h$ projection residual. The collection of $H+1$ separate
+regressions in \eqref{eq:lp_reduced} is what \textcite{jorda2005estimation} terms the local projection. Each is estimated in isolation, so the lag length $p$ need not be common across horizons and no parametric model of the propagation
+mechanism is imposed.
+ 
+The object of interest is the coefficient on the contemporaneous regressor.
+Partialling the $p$ lags out of $y_t$ leaves the one-step reduced-form
+innovation $u_t = y_t - \mathbb{E}\!\left[y_t \mid y_{t-1}, \ldots,
+y_{t-p}\right]$, so by the Frisch--Waugh--Lovell theorem $\Phi_h$ equals the population projection coefficient of $y_{t+h}$ on $u_t$. Inserting the Wold representation \eqref{eq:wold_yt}, $y_{t+h} = \sum_{\ell=0}^{\infty}
+\Psi_\ell\, u_{t+h-\ell}$, and using that $u_t$ is orthogonal to every
+$u_{t+h-\ell}$ with $\ell \neq h$, the projection isolates a single term,
+%
+\begin{equation}
+    \Phi_h = \mathbb{E}\!\left[y_{t+h}\, u_t'\right]
+             \bigl(\mathbb{E}\!\left[u_t u_t'\right]\bigr)^{-1}
+           = \Psi_h,
+    \qquad \Phi_0 = \Psi_0 = I_K.
+    \label{eq:lp_psi}
+\end{equation}
+%
+The local projection slope therefore recovers exactly the reduced-form
+impulse response $\Psi_h$ of \eqref{eq:wold_yt}, but reads it off a direct
+regression rather than from the recursion $\hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)}
+\hat{A}_\ell \hat{\Psi}_{h-\ell}$.
+ 
+Structural identification proceeds exactly as in the VAR case and is
+logically distinct from the choice of estimator
+\parencite{plagborg2021local}. Any identification scheme selects the
+structural shock as a fixed linear combination of the reduced-form
+innovations, $\varepsilon_{j,t} = \bigl(B^{-1}\bigr)_{j\cdot}\, u_t$
+\parencite[p.~967]{plagborg2021local}, so the structural response is obtained
+by post-multiplying the reduced-form responses by the impact matrix $B$,
+%
+\begin{equation}
+    \theta_h^{ij} = [\Phi_h B]_{ij} = [\Psi_h B]_{ij}
+                  = e_i'\, \Psi_h\, B\, e_j,
+    \label{eq:lp_sirf}
+\end{equation}
+%
+which is the same estimand as \eqref{eq:sirf}. Under recursive
+(Cholesky) identification $B$ is the lower-triangular factor of $\Sigma_u$,
+and \eqref{eq:lp_sirf} can equivalently be obtained in a single step by
+ordering the variables and regressing $y_{i,t+h}$ on the contemporaneous
+value of the shock-bearing variable, controlling for the variables ordered
+before it together with the lags \parencites{jorda2005estimation}{plagborg2021local}.
+ 
+The same construction accommodates the remaining standard schemes. Recursive, long-run, and sign restrictions are each implementable through the projection \eqref{eq:lp_reduced} because all of them merely fix the vector $b$ that maps the Wold innovations into the shock of interest
+\parencite[p.~967]{plagborg2021local}. When an external instrument or proxy for the shock is available, ordering the instrument first in the conditioning set---the ``internal instrument'' approach---identifies the relative structural responses even when the shock is noninvertible, whereas the external SVAR-IV/LP-IV implementation of \textcite{stock2018identification} requires invertibility \parencite[p.~973]{plagborg2021local}. Because identification operates on the population innovations rather than on the estimator, any scheme available to the VAR can be carried out with local projections and vice versa \parencite[p.~975]{plagborg2021local}.
+ 
+Each regression in \eqref{eq:lp_reduced} is estimated equation-by-equation by OLS, and the structural estimator $\hat{\theta}_h^{ij} = e_i'\, \hat{\Phi}_h\, \hat{B}\, e_j$ is, like its VAR counterpart, a smooth function of the first-stage coefficients and the residual covariance. Because the projection coefficient \emph{is} the impulse response, no companion-matrix recursion intervenes between estimation and the reported response
+\parencite[p.~65]{jorda2025local}. Inference, however, is complicated by the overlapping-horizon structure of the residual: iterating \eqref{eq:lp_reduced} shows that $\xi_{t+h}^{(h)}$ is a moving average of the one-step forecast errors accruing between $t$ and $t+h$, and is therefore serially correlated of order $h-1$ even when the innovations are white noise \parencite[p.~163]{jorda2005estimation}. Accordingly \textcite{jorda2005estimation} recommends a
+heteroskedasticity- and autocorrelation-consistent (HAC) covariance
+estimator, such as Newey--West \parencite[p.~75]{jorda2025local}, which
+delivers pointwise-valid, asymptotically normal inference under stationarity, but---mirroring the delta-method intervals of the VAR---neither uniformly over the persistence of the process nor at horizons that grow with the sample.
+ 
+\textcite{montiel2021local} show that a minimal modification removes the need for the HAC correction. Augmenting the projection with one additional lag renders the effective regressor of interest stationary even under a unit root; in the leading scalar case the lag-augmented projection
+%
+\begin{equation}
+    y_{t+h} = \beta_h\, y_t + \tilde{\beta}_h\, y_{t-1} + \xi_{t+h}^{(h)}
+    \label{eq:lp_aug}
+\end{equation}
+%
+has a coefficient on $y_t$ that equals the coefficient on the residualized
+innovation $u_t$ in a regression on $(u_t, y_{t-1})$. The regression score
+$\xi_{t+h}^{(h)} u_t$ is then serially uncorrelated---because $u_t$ is
+uncorrelated with its own leads and lags---so that, contrary to conventional
+wisdom, the ordinary heteroskedasticity-robust Eicker--Huber--White standard
+error is sufficient despite the serially correlated residual
+\parencite[pp.~1794--1795]{montiel2021local}. The resulting $t$-statistic is
+asymptotically standard normal \emph{uniformly} over $\rho \in [-1,1]$ and
+over horizons satisfying $h/T \to 0$, dispensing with the bandwidth and kernel
+choices of HAC inference and restoring exactly the robustness to persistence
+and long horizons that VAR inference lacks
+\parencite[p.~1809]{montiel2021local}; \parencite[p.~76]{jorda2025local}.
+ 
 
-
+The favourable and robust properties just described are, as for the VAR,
+qualified in the sample sizes typical of macroeconomic applications, and the qualifications run largely opposite to those of the autoregression.
+ 
+First, the price of estimating each horizon by an unrestricted regression is variance. The local projection discards the cross-equation and cross-horizon restrictions that the VAR exploits through its recursion, an efficiency loss that is increasing in the horizon \parencite{li2024local}. Since the two estimators target the same response in population \parencite[p.~975]{plagborg2021local},
+no method dominates in mean squared error across data-generating processes; in
+finite samples the comparison reduces to a bias--variance trade-off in which
+the VAR is typically more precise at short horizons and the local projection
+less biased at long ones \parencites{li2024local}{montiel2021local}.
+ 
+Second, the local projection is not unbiased in finite samples.
+\textcite{herbst2024bias} show that when the data are persistent---the case of
+interest for impulse-response analysis---LP point estimates can be severely
+biased at the sample lengths common in the literature, that the bias links the
+horizons to one another, and that it admits a simple analytical approximation
+and bias correction. The near-unit-root downward bias familiar from
+autoregressive estimation thus re-emerges directly in the projection
+coefficient \parencite[p.~75]{jorda2025local}.
+ 
+Third, and offsetting these costs, the single-equation structure confers a
+robustness the VAR lacks. Because the response is estimated directly rather
+than by iterating a fitted model, specification errors do not compound across
+horizons: \textcite{jorda2024long} show that in infinite-order
+processes the local projection has lower bias than the VAR at horizons beyond the truncation lag, precisely because the coefficient is estimated without propagating coefficient error through powers of the companion matrix, which also makes the projection more forgiving of lag-length misspecification \parencite[p.~65]{jorda2025local}. This robustness is not unqualified on the inference side, however: \textcite{herbst2024bias} caution that in the same small, persistent samples the autocorrelation-robust standard errors of the classical approach can substantially understate sampling uncertainty---a further argument for the lag-augmented, heteroskedasticity-robust inference of \textcite{montiel2021local}.
 
 
 \subsection{On the Equivalence of VARs and Local Projections (2-2.5 pages)}
