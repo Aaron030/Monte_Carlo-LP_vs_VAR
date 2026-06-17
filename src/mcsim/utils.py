@@ -13,10 +13,6 @@ RESULTS_DIR = PROJECT_ROOT / "results"
 FIGURES_DIR = PROJECT_ROOT / "figures"
 
 
-def make_rng(seed: int) -> np.random.Generator:
-    return np.random.default_rng(seed)
-
-
 def load_config(path: str | Path) -> dict:
     with open(path) as f:
         return yaml.safe_load(f)
