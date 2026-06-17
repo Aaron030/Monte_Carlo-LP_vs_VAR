@@ -12,36 +12,6 @@ import numpy as np
 from .dgp import var_ma_matrices
 
 
-def fit_ar_ols(y: np.ndarray, p: int) -> tuple[np.ndarray, float]:
-    """OLS fit of AR(p) without intercept. Returns (phi, sigma2)."""
-    y = np.asarray(y, dtype=float)
-    T = y.size
-    X = np.column_stack([y[p - 1 - k : T - 1 - k] for k in range(p)])
-    y_dep = y[p:]
-    # np.errstate: macOS Accelerate BLAS spuriously raises FPE flags in matmul.
-    with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
-        phi = np.linalg.solve(X.T @ X, X.T @ y_dep)
-        resid = y_dep - X @ phi
-        sigma2 = float(resid @ resid) / (T - p - p)
-    return phi, sigma2
-
-
-def ar_irf_from_coefs(phi: np.ndarray, horizon: int) -> np.ndarray:
-    """IRF of an AR(p) with coefficients phi to a unit innovation."""
-    p = phi.size
-    psi = np.zeros(horizon + 1)
-    psi[0] = 1.0
-    for h in range(1, horizon + 1):
-        psi[h] = sum(phi[j] * psi[h - j - 1] for j in range(p) if h - j - 1 >= 0)
-    return psi
-
-
-def estimate_ar_irf(y: np.ndarray, p: int, horizon: int) -> np.ndarray:
-    """Fit AR(p) by OLS and return its implied IRF."""
-    phi, _ = fit_ar_ols(y, p)
-    return ar_irf_from_coefs(phi, horizon)
-
-
 # ---------------------------------------------------------------------------
 # VAR(p): reduced-form OLS, recursive identification, structural IRF
 # ---------------------------------------------------------------------------
