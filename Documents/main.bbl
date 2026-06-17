@@ -19,37 +19,42 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global}
-    \entry{akaike1974new}{article}{}
-      \name{author}{1}{}{%
-        {{hash=a9482d81bf0654208860e574639f7bf0}{%
-           family={Akaike},
-           familyi={A\bibinitperiod},
-           given={Hirotugu},
-           giveni={H\bibinitperiod}}}%
+    \entry{braun1993misspecifications}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ff5b91e8be4c8fee02fec515b4ba7a4e}{%
+           family={Braun},
+           familyi={B\bibinitperiod},
+           given={Phillip\bibnamedelima A},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=56c1886856871ea9b74df241679d024d}{%
+           family={Mittnik},
+           familyi={M\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {IEEE}%
+        {Elsevier}%
       }
-      \strng{namehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{fullhash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{bibnamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authorbibnamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authornamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authorfullhash}{a9482d81bf0654208860e574639f7bf0}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \strng{namehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{fullhash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{bibnamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authorbibnamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authornamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authorfullhash}{a50745aacb6da9b3143a9f58afd4704f}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Automatic Control}
-      \field{number}{6}
-      \field{title}{A new look at the statistical model identification}
-      \field{volume}{19}
-      \field{year}{1974}
-      \field{pages}{716\bibrangedash 723}
-      \range{pages}{8}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{3}
+      \field{title}{Misspecifications in vector autoregressions and their effects on impulse responses and variance decompositions}
+      \field{volume}{59}
+      \field{year}{1993}
+      \field{pages}{319\bibrangedash 341}
+      \range{pages}{23}
     \endentry
     \entry{herbst2021bias}{article}{}
       \name{author}{2}{}{%
@@ -178,28 +183,24 @@
       \field{pages}{652\bibrangedash 660}
       \range{pages}{9}
     \endentry
-    \entry{kilian2000accurate}{article}{}
-      \name{author}{2}{}{%
+    \entry{kilian2001impulse}{article}{}
+      \name{author}{1}{}{%
         {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
            family={Kilian},
            familyi={K\bibinitperiod},
            given={Lutz},
            giveni={L\bibinitperiod}}}%
-        {{hash=d5f477708aede87e2ac5a30252851d9d}{%
-           family={Chang},
-           familyi={C\bibinitperiod},
-           given={Pao-Li},
-           giveni={P\bibinithyphendelim L\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Elsevier}%
+        {Wiley Online Library}%
       }
-      \strng{namehash}{beff4d6194852965f32150275062d6dc}
-      \strng{fullhash}{beff4d6194852965f32150275062d6dc}
-      \strng{bibnamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authorbibnamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authornamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authorfullhash}{beff4d6194852965f32150275062d6dc}
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{3}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradatescope}{labelyear}
@@ -207,13 +208,13 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Economics Letters}
+      \field{journaltitle}{Journal of Forecasting}
       \field{number}{3}
-      \field{title}{How accurate are confidence intervals for impulse responses in large VAR models?}
-      \field{volume}{69}
-      \field{year}{2000}
-      \field{pages}{299\bibrangedash 307}
-      \range{pages}{9}
+      \field{title}{Impulse response analysis in vector autoregressions with unknown lag order}
+      \field{volume}{20}
+      \field{year}{2001}
+      \field{pages}{161\bibrangedash 179}
+      \range{pages}{19}
     \endentry
     \entry{kilian2017structural}{book}{}
       \name{author}{2}{}{%
@@ -415,6 +416,80 @@
       \field{pages}{499\bibrangedash 526}
       \range{pages}{28}
     \endentry
+    \entry{marriott1954bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ac452695311f8c200b5b3a5789e4c403}{%
+           family={Marriott},
+           familyi={M\bibinitperiod},
+           given={FHC},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ddaf88d1be511700ee0b38531cd285d8}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={JA},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{fullhash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{bibnamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authorbibnamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authornamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authorfullhash}{b7ee4e747d7e57431f8bbf834643d885}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrika}
+      \field{number}{3/4}
+      \field{title}{Bias in the estimation of autocorrelations}
+      \field{volume}{41}
+      \field{year}{1954}
+      \field{pages}{390\bibrangedash 402}
+      \range{pages}{13}
+    \endentry
+    \entry{nicholls1988bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a550464d2b6ad5fa38c271522f483e24}{%
+           family={Nicholls},
+           familyi={N\bibinitperiod},
+           given={Desmond\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=0e9827c4697708f8abcb222fc5ff7ffa}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={Alun\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{fullhash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{bibnamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authorbibnamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authornamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authorfullhash}{9830ffabead92cb36d4d16c15eea823f}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Australian Journal of Statistics}
+      \field{number}{1}
+      \field{title}{Bias in the estimation of multivariate autoregressions}
+      \field{volume}{30}
+      \field{year}{1988}
+      \field{pages}{296\bibrangedash 309}
+      \range{pages}{14}
+    \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
         {{hash=98a30c83feb9d34615354c108e00c902}{%
@@ -524,6 +599,38 @@
       \field{pages}{955\bibrangedash 980}
       \range{pages}{26}
     \endentry
+    \entry{pope1990biases}{article}{}
+      \name{author}{1}{}{%
+        {{hash=88fcb7f5faf63d6c088d660a39971827}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={Alun\bibnamedelima Lloyd},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{fullhash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{bibnamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authorbibnamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authornamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authorfullhash}{88fcb7f5faf63d6c088d660a39971827}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Time Series Analysis}
+      \field{number}{3}
+      \field{title}{Biases of estimators in multivariate non-Gaussian autoregressions}
+      \field{volume}{11}
+      \field{year}{1990}
+      \field{pages}{249\bibrangedash 258}
+      \range{pages}{10}
+    \endentry
     \entry{ramey2016macroeconomic}{article}{}
       \name{author}{1}{}{%
         {{hash=034b2cb93928873885c91989e9dcfe3b}{%
@@ -555,37 +662,37 @@
       \field{pages}{71\bibrangedash 162}
       \range{pages}{92}
     \endentry
-    \entry{schwarz1978estimating}{article}{}
+    \entry{ravenna2007vector}{article}{}
       \name{author}{1}{}{%
-        {{hash=7434820123b7dda72fff7a710dc36bc0}{%
-           family={Schwarz},
-           familyi={S\bibinitperiod},
-           given={Gideon},
-           giveni={G\bibinitperiod}}}%
+        {{hash=6c31464df46fd16a913edd8a07fd353b}{%
+           family={Ravenna},
+           familyi={R\bibinitperiod},
+           given={Federico},
+           giveni={F\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Institute of Mathematical Statistics}%
+        {Elsevier}%
       }
-      \strng{namehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{fullhash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{bibnamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authorbibnamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authornamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authorfullhash}{7434820123b7dda72fff7a710dc36bc0}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \strng{namehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{fullhash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{bibnamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authorbibnamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authornamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authorfullhash}{6c31464df46fd16a913edd8a07fd353b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The Annals of Statistics}
-      \field{number}{2}
-      \field{title}{Estimating the dimension of a model}
-      \field{volume}{6}
-      \field{year}{1978}
-      \field{pages}{461\bibrangedash 464}
-      \range{pages}{4}
+      \field{journaltitle}{Journal of monetary economics}
+      \field{number}{7}
+      \field{title}{Vector autoregressions and reduced form representations of DSGE models}
+      \field{volume}{54}
+      \field{year}{2007}
+      \field{pages}{2048\bibrangedash 2064}
+      \range{pages}{17}
     \endentry
     \entry{sims1980macroeconomics}{article}{}
       \name{author}{1}{}{%
@@ -613,72 +720,45 @@
       \field{year}{1980}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
-    \endentry
-    \entry{zellner1962efficient}{article}{}
-      \name{author}{1}{}{%
-        {{hash=05c789e6d15f4a2eca585e48edd27ddb}{%
-           family={Zellner},
-           familyi={Z\bibinitperiod},
-           given={Arnold},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{fullhash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{bibnamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authorbibnamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authornamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authorfullhash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \field{sortinit}{Z}
-      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of the American Statistical Association}
-      \field{number}{298}
-      \field{title}{An efficient method of estimating seemingly unrelated regressions and tests for aggregation bias}
-      \field{volume}{57}
-      \field{year}{1962}
-      \field{pages}{348\bibrangedash 368}
-      \range{pages}{21}
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global}
-    \entry{akaike1974new}{article}{}
-      \name{author}{1}{}{%
-        {{hash=a9482d81bf0654208860e574639f7bf0}{%
-           family={Akaike},
-           familyi={A\bibinitperiod},
-           given={Hirotugu},
-           giveni={H\bibinitperiod}}}%
+    \entry{braun1993misspecifications}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ff5b91e8be4c8fee02fec515b4ba7a4e}{%
+           family={Braun},
+           familyi={B\bibinitperiod},
+           given={Phillip\bibnamedelima A},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=56c1886856871ea9b74df241679d024d}{%
+           family={Mittnik},
+           familyi={M\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {IEEE}%
+        {Elsevier}%
       }
-      \strng{namehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{fullhash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{bibnamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authorbibnamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authornamehash}{a9482d81bf0654208860e574639f7bf0}
-      \strng{authorfullhash}{a9482d81bf0654208860e574639f7bf0}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \strng{namehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{fullhash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{bibnamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authorbibnamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authornamehash}{a50745aacb6da9b3143a9f58afd4704f}
+      \strng{authorfullhash}{a50745aacb6da9b3143a9f58afd4704f}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Automatic Control}
-      \field{number}{6}
-      \field{title}{A new look at the statistical model identification}
-      \field{volume}{19}
-      \field{year}{1974}
-      \field{pages}{716\bibrangedash 723}
-      \range{pages}{8}
+      \field{journaltitle}{Journal of econometrics}
+      \field{number}{3}
+      \field{title}{Misspecifications in vector autoregressions and their effects on impulse responses and variance decompositions}
+      \field{volume}{59}
+      \field{year}{1993}
+      \field{pages}{319\bibrangedash 341}
+      \range{pages}{23}
     \endentry
     \entry{herbst2021bias}{article}{}
       \name{author}{2}{}{%
@@ -807,28 +887,24 @@
       \field{pages}{652\bibrangedash 660}
       \range{pages}{9}
     \endentry
-    \entry{kilian2000accurate}{article}{}
-      \name{author}{2}{}{%
+    \entry{kilian2001impulse}{article}{}
+      \name{author}{1}{}{%
         {{hash=9170e9b9292218b3597d8f9f52d2a454}{%
            family={Kilian},
            familyi={K\bibinitperiod},
            given={Lutz},
            giveni={L\bibinitperiod}}}%
-        {{hash=d5f477708aede87e2ac5a30252851d9d}{%
-           family={Chang},
-           familyi={C\bibinitperiod},
-           given={Pao-Li},
-           giveni={P\bibinithyphendelim L\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Elsevier}%
+        {Wiley Online Library}%
       }
-      \strng{namehash}{beff4d6194852965f32150275062d6dc}
-      \strng{fullhash}{beff4d6194852965f32150275062d6dc}
-      \strng{bibnamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authorbibnamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authornamehash}{beff4d6194852965f32150275062d6dc}
-      \strng{authorfullhash}{beff4d6194852965f32150275062d6dc}
+      \strng{namehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{fullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{bibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorbibnamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authornamehash}{9170e9b9292218b3597d8f9f52d2a454}
+      \strng{authorfullhash}{9170e9b9292218b3597d8f9f52d2a454}
+      \field{extraname}{3}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradatescope}{labelyear}
@@ -836,13 +912,13 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Economics Letters}
+      \field{journaltitle}{Journal of Forecasting}
       \field{number}{3}
-      \field{title}{How accurate are confidence intervals for impulse responses in large VAR models?}
-      \field{volume}{69}
-      \field{year}{2000}
-      \field{pages}{299\bibrangedash 307}
-      \range{pages}{9}
+      \field{title}{Impulse response analysis in vector autoregressions with unknown lag order}
+      \field{volume}{20}
+      \field{year}{2001}
+      \field{pages}{161\bibrangedash 179}
+      \range{pages}{19}
     \endentry
     \entry{kilian2017structural}{book}{}
       \name{author}{2}{}{%
@@ -1044,6 +1120,80 @@
       \field{pages}{499\bibrangedash 526}
       \range{pages}{28}
     \endentry
+    \entry{marriott1954bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ac452695311f8c200b5b3a5789e4c403}{%
+           family={Marriott},
+           familyi={M\bibinitperiod},
+           given={FHC},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ddaf88d1be511700ee0b38531cd285d8}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={JA},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{fullhash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{bibnamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authorbibnamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authornamehash}{b7ee4e747d7e57431f8bbf834643d885}
+      \strng{authorfullhash}{b7ee4e747d7e57431f8bbf834643d885}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrika}
+      \field{number}{3/4}
+      \field{title}{Bias in the estimation of autocorrelations}
+      \field{volume}{41}
+      \field{year}{1954}
+      \field{pages}{390\bibrangedash 402}
+      \range{pages}{13}
+    \endentry
+    \entry{nicholls1988bias}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a550464d2b6ad5fa38c271522f483e24}{%
+           family={Nicholls},
+           familyi={N\bibinitperiod},
+           given={Desmond\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=0e9827c4697708f8abcb222fc5ff7ffa}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={Alun\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{fullhash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{bibnamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authorbibnamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authornamehash}{9830ffabead92cb36d4d16c15eea823f}
+      \strng{authorfullhash}{9830ffabead92cb36d4d16c15eea823f}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Australian Journal of Statistics}
+      \field{number}{1}
+      \field{title}{Bias in the estimation of multivariate autoregressions}
+      \field{volume}{30}
+      \field{year}{1988}
+      \field{pages}{296\bibrangedash 309}
+      \range{pages}{14}
+    \endentry
     \entry{olea2025local}{report}{}
       \name{author}{4}{}{%
         {{hash=98a30c83feb9d34615354c108e00c902}{%
@@ -1153,6 +1303,38 @@
       \field{pages}{955\bibrangedash 980}
       \range{pages}{26}
     \endentry
+    \entry{pope1990biases}{article}{}
+      \name{author}{1}{}{%
+        {{hash=88fcb7f5faf63d6c088d660a39971827}{%
+           family={Pope},
+           familyi={P\bibinitperiod},
+           given={Alun\bibnamedelima Lloyd},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{fullhash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{bibnamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authorbibnamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authornamehash}{88fcb7f5faf63d6c088d660a39971827}
+      \strng{authorfullhash}{88fcb7f5faf63d6c088d660a39971827}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Time Series Analysis}
+      \field{number}{3}
+      \field{title}{Biases of estimators in multivariate non-Gaussian autoregressions}
+      \field{volume}{11}
+      \field{year}{1990}
+      \field{pages}{249\bibrangedash 258}
+      \range{pages}{10}
+    \endentry
     \entry{ramey2016macroeconomic}{article}{}
       \name{author}{1}{}{%
         {{hash=034b2cb93928873885c91989e9dcfe3b}{%
@@ -1184,37 +1366,37 @@
       \field{pages}{71\bibrangedash 162}
       \range{pages}{92}
     \endentry
-    \entry{schwarz1978estimating}{article}{}
+    \entry{ravenna2007vector}{article}{}
       \name{author}{1}{}{%
-        {{hash=7434820123b7dda72fff7a710dc36bc0}{%
-           family={Schwarz},
-           familyi={S\bibinitperiod},
-           given={Gideon},
-           giveni={G\bibinitperiod}}}%
+        {{hash=6c31464df46fd16a913edd8a07fd353b}{%
+           family={Ravenna},
+           familyi={R\bibinitperiod},
+           given={Federico},
+           giveni={F\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Institute of Mathematical Statistics}%
+        {Elsevier}%
       }
-      \strng{namehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{fullhash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{bibnamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authorbibnamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authornamehash}{7434820123b7dda72fff7a710dc36bc0}
-      \strng{authorfullhash}{7434820123b7dda72fff7a710dc36bc0}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \strng{namehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{fullhash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{bibnamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authorbibnamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authornamehash}{6c31464df46fd16a913edd8a07fd353b}
+      \strng{authorfullhash}{6c31464df46fd16a913edd8a07fd353b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The Annals of Statistics}
-      \field{number}{2}
-      \field{title}{Estimating the dimension of a model}
-      \field{volume}{6}
-      \field{year}{1978}
-      \field{pages}{461\bibrangedash 464}
-      \range{pages}{4}
+      \field{journaltitle}{Journal of monetary economics}
+      \field{number}{7}
+      \field{title}{Vector autoregressions and reduced form representations of DSGE models}
+      \field{volume}{54}
+      \field{year}{2007}
+      \field{pages}{2048\bibrangedash 2064}
+      \range{pages}{17}
     \endentry
     \entry{sims1980macroeconomics}{article}{}
       \name{author}{1}{}{%
@@ -1242,38 +1424,6 @@
       \field{year}{1980}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
-    \endentry
-    \entry{zellner1962efficient}{article}{}
-      \name{author}{1}{}{%
-        {{hash=05c789e6d15f4a2eca585e48edd27ddb}{%
-           family={Zellner},
-           familyi={Z\bibinitperiod},
-           given={Arnold},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{fullhash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{bibnamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authorbibnamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authornamehash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \strng{authorfullhash}{05c789e6d15f4a2eca585e48edd27ddb}
-      \field{sortinit}{Z}
-      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of the American Statistical Association}
-      \field{number}{298}
-      \field{title}{An efficient method of estimating seemingly unrelated regressions and tests for aggregation bias}
-      \field{volume}{57}
-      \field{year}{1962}
-      \field{pages}{348\bibrangedash 368}
-      \range{pages}{21}
     \endentry
   \enddatalist
 \endrefsection
