@@ -402,3 +402,151 @@ def simulate_quad_shock_var(
     if return_shocks:
         return y[burnin:], eps[burnin:]
     return y[burnin:]
+
+
+# ---------------------------------------------------------------------------
+# Stationary covariance of a (linear) VAR(p) -- used to standardise the
+# nonlinear lag term below so its scale is comparable across persistence levels.
+# ---------------------------------------------------------------------------
+
+
+def stationary_cov(A: np.ndarray, B: np.ndarray) -> np.ndarray:
+    """Unconditional covariance Gamma_0 = Var(y_t) of a stable linear VAR(p).
+
+    Solves the discrete Lyapunov equation in companion form,
+    ``Gamma = C Gamma C' + Q`` with ``Q = blockdiag(B B', 0)``, via the vec
+    identity ``vec(Gamma) = (I - C kron C)^{-1} vec(Q)`` (column-stacking vec).
+    Returns the leading ``(K, K)`` block, the stationary covariance of ``y_t``.
+    Requires ``spectral_radius(A) < 1``.
+    """
+    A = np.asarray(A, dtype=float)
+    B = np.asarray(B, dtype=float)
+    p, k, _ = A.shape
+    C = companion(A)
+    m = p * k
+    Q = np.zeros((m, m))
+    Q[:k, :k] = B @ B.T
+    # Column-stacking vec: vec(C Gamma C') = (C kron C) vec(Gamma).
+    vecGamma = np.linalg.solve(np.eye(m * m) - np.kron(C, C), Q.flatten(order="F"))
+    Gamma = vecGamma.reshape((m, m), order="F")
+    return Gamma[:k, :k]
+
+
+# ---------------------------------------------------------------------------
+# VAR(p) with a quadratic *lagged-state* term (Extension: nonlinear DGP)
+# ---------------------------------------------------------------------------
+#
+# Used by the nonlinear-DGP extension: the conditional mean itself is nonlinear
+# in the lagged state (a squared lag of the first variable), so -- unlike the
+# mean-zero shock-quadratic of QuadShockVARSpec -- this is a genuine
+# misspecification of the linear model with a non-vanishing *bias channel*. The
+# squared term is standardised by the first variable's linear stationary SD and
+# centred, so gamma=0 nests the baseline VARSpec and the term stays O(1) in
+# scale across persistence levels (the lag-quadratic is otherwise prone to the
+# explosive positive feedback noted in the thesis; routing it cross-equation and
+# standardising tames it -- empirical stability is checked in the notebook).
+
+
+@dataclass
+class QuadLagVARSpec:
+    """VAR(p) with a standardised, centred quadratic in the first variable's lag.
+
+        y_t = A_1 y_{t-1} + ... + A_p y_{t-p}
+              + gamma * (0, (y_{1,t-1}/sigma_1)^2 - 1)' + u_t,
+        u_t = B eps_t,   eps_t ~ iid N(0, I_K),
+
+    where sigma_1 = sqrt(Var(y_{1,t})) is the first variable's stationary
+    standard deviation under the *linear* (gamma=0) VAR. The squared lag enters
+    the second equation only.
+
+    Parameters
+    ----------
+    A : array (p, K, K)
+        Autoregressive matrices of the linear component (as in :class:`VARSpec`).
+    B : array (K, K)
+        Lower-triangular structural impact matrix, Sigma_u = B B'.
+    gamma : float
+        Nonlinearity strength. ``gamma = 0`` nests the baseline :class:`VARSpec`.
+
+    Notes
+    -----
+    Because the squared lag is a function of the *past* state (not the
+    contemporaneous shock), it shifts the conditional mean: the best linear
+    projection -- the estimand both linear LP and linear VAR target (Plagborg-
+    Moller & Wright, Prop. 1) -- is itself **gamma-dependent** and no longer
+    equals the baseline IRF. The estimand has no closed form here; compute it by
+    large-sample projection (see the notebook).
+    """
+
+    A: np.ndarray
+    B: np.ndarray
+    gamma: float = 0.0
+
+    def __post_init__(self):
+        self.A = np.asarray(self.A, dtype=float)
+        self.B = np.asarray(self.B, dtype=float)
+        self.gamma = float(self.gamma)
+        if self.A.ndim != 3 or self.A.shape[1] != self.A.shape[2]:
+            raise ValueError("A must have shape (p, K, K).")
+        if self.A.shape[1] < 2:
+            raise ValueError("QuadLagVARSpec needs K >= 2 (term enters eq. 2).")
+        if self.B.shape != (self.A.shape[1], self.A.shape[1]):
+            raise ValueError("B must have shape (K, K) matching A.")
+        # First variable's stationary SD under the linear part -- the standardiser.
+        self.sigma1 = float(np.sqrt(stationary_cov(self.A, self.B)[0, 0]))
+
+    @property
+    def p(self) -> int:
+        return self.A.shape[0]
+
+    @property
+    def k(self) -> int:
+        return self.A.shape[1]
+
+    def linear_spec(self) -> "VARSpec":
+        """The linear-component VAR (drop the quadratic term)."""
+        return VARSpec(A=self.A, B=self.B)
+
+
+def simulate_quad_lag_var(
+    spec: QuadLagVARSpec,
+    T: int,
+    rng: np.random.Generator,
+    burnin: int = 200,
+    return_shocks: bool = False,
+    diverge_cap: float = 1e6,
+):
+    """Simulate a length-T path from a quadratic-lag VAR, discarding burn-in.
+
+    Returns an array of shape (T, K). If ``return_shocks`` is True, returns the
+    tuple ``(y, eps)``.
+
+    The lag-quadratic can be explosive for large gamma / high persistence. A
+    diverging path can stay *finite* yet grow astronomically (e.g. 1e120), which
+    silently corrupts pooled moments, so any path whose magnitude exceeds
+    ``diverge_cap`` (or goes non-finite) is returned as all-NaN. The MC driver
+    then records that replication as an estimator failure rather than letting a
+    runaway trajectory bias the results; the caller can report the failure rate
+    (the empirical share of explosive paths) as a stationarity diagnostic.
+    """
+    A, B, gamma, sigma1 = spec.A, spec.B, spec.gamma, spec.sigma1
+    p, k = spec.p, spec.k
+    n = T + burnin
+    eps = rng.standard_normal((n, k))
+    y = np.zeros((n, k))
+    # np.errstate: macOS Accelerate BLAS spuriously raises FPE flags in matmul.
+    with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
+        u = eps @ B.T  # reduced-form innovations u_t' = eps_t' B'
+        for t in range(p, n):
+            val = u[t].copy()
+            for i in range(1, p + 1):
+                val += A[i - 1] @ y[t - i]
+            # Standardised, centred square of the first variable's first lag, into eq. 2.
+            val[1] += gamma * ((y[t - 1, 0] / sigma1) ** 2 - 1.0)
+            y[t] = val
+    out = y[burnin:]
+    if not np.isfinite(out).all() or np.max(np.abs(out)) > diverge_cap:
+        out = np.full_like(out, np.nan)  # divergent path -> uniformly a failed rep
+    if return_shocks:
+        return out, eps[burnin:]
+    return out
