@@ -4,24 +4,24 @@
 
 \subsection{Simulation Design}
 
-Extension~2 examines 
-whether the finite-sample MSE ranking between LP(4) and the complexity-adjusted 
+Extension~2 examines whether the finite-sample MSE ranking between LP(4) and the complexity-adjusted 
 VAR sweep is robust to functional misspecification of the DGP. The baseline 
-VAR(4) is augmented by a quadratic term in the first structural shock, yielding 
+VAR(4) is augmented by a mean-zero quadratic term in the first lag, yielding 
 a nonlinear DGP:
 
 \begin{equation}
-    y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} 
-    + u_t + \gamma \cdot c(\varepsilon_{1,t}), \quad u_t = B\varepsilon_t, 
+    y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4}
+    + \gamma \cdot g(y_{1,t-1}) + u_t, \quad u_t = B\varepsilon_t,
     \quad \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0, I_2)
 \end{equation}
-
-where $c(\varepsilon_{1,t}) = (0,\ \varepsilon_{1,t}^2 - 1)'$ is a 
-mean-zero quadratic term in the first structural shock entering the second 
-equation only, and $\gamma \in \{0.3, 0.6\}$ controls the degree of 
-nonlinearity. The centering $\varepsilon_{1,t}^2 - 1$ ensures that the 
-nonlinear term has mean zero, so that $\gamma = 0$ nests back to the 
-baseline VAR(4).
+where
+\begin{equation}
+    g(y_{1,t-1}) = \left(0,\ \left(\frac{y_{1,t-1}}{\sigma_1}\right)^{\!2} - 1\right)'
+\end{equation}
+is a standardised, mean-zero quadratic in the first variable's first lag, entering
+the second equation only, with $\sigma_1 = \sqrt{\operatorname{Var}(y_{1,t})}$ the
+stationary standard deviation of $y_{1,t}$ under the linear ($\gamma=0$) VAR, and
+$\gamma \in \{0, 0.3, 0.6\}$ controlling the degree of nonlinearity.
 
 This shock-quadratic specification is adopted in place of a level-quadratic 
 or lag-quadratic formulation for two reasons. First, a quadratic term in 
