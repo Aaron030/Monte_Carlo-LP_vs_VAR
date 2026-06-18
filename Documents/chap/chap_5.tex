@@ -23,57 +23,259 @@ the second equation only, with $\sigma_1 = \sqrt{\operatorname{Var}(y_{1,t})}$ t
 stationary standard deviation of $y_{1,t}$ under the linear ($\gamma=0$) VAR, and
 $\gamma \in \{0, 0.3, 0.6\}$ controlling the degree of nonlinearity.
 
-This shock-quadratic specification is adopted in place of a level-quadratic 
-or lag-quadratic formulation for two reasons. First, a quadratic term in 
-lagged levels introduces positive feedback into the system dynamics and is 
-explosive for moderate values of $\gamma$, violating the covariance 
-stationarity required for the estimand $\theta_h$ to be well-defined. 
-Second, and more importantly, a quadratic term in the structural shock 
-isolates the nonlinearity in the transmission mechanism rather than in the 
-propagation dynamics. This distinction matters for the research question: 
-since the Cholesky-identified structural shock $\varepsilon_{1,t}$ enters 
-the system linearly in the baseline VAR(4), a shock-quadratic extension 
-targets precisely the channel emphasized by \textcite{plagborg2021local} 
---- namely, that linear LP and linear VAR are both blind to nonlinearities 
-in the shock transmission in population (Proposition~1, p.~960). A 
-lag-quadratic specification would instead distort the propagation dynamics 
-and complicate the identification of the structural shock, confounding the 
-comparison with the baseline DGP. The shock-quadratic formulation thus 
-provides the cleanest test of whether the complexity-adjusted VAR sweep 
-offers any finite-sample advantage when functional misspecification is 
-present but structurally uninvertible --- that is, not approximable by 
-higher-order linear VARs regardless of lag length.
+Importantly, adding a quadratic term in lagged levels can increase the risk of 
+non-stationary or explosive simulated paths, particularly under high shock persistence.
+For this reason, this extension restricts the persistence parameters to $\rho \in \{0.5, 0.7\}$. 
+This restriction is intended to mitigate violations of covariance stationarity and to keep 
+the estimand $\theta_h$  well-defined over the simulated designs. This specification changes the nature of the misspecification relative to the baseline linear VAR(4). The nonlinear term 
+enters the propagation dynamics through a quadratic function of $y_{1,t-1}$,
+while the structural shocks continue to enter contemporaneously and linearly through 
+$u_t=B\varepsilon_t$. Thus, the exercise does not isolate nonlinear shock transmission,
+ but studies whether the finite-sample MSE ranking between LP(4) and the complexity-
+adjusted VAR sweep is robust when the true conditional mean is nonlinear in lagged 
+state variables. Because the nonlinear component is a function of lagged outcomes, 
+increasing the lag length of a linear VAR cannot in general eliminate the functional 
+misspecification and the fitted models remain linear projections of a nonlinear 
+data-generating process. 
+
 
 The key theoretical motivation for this extension follows from 
 \textcite{plagborg2021local}, who establish that linear LP and linear VAR 
 estimate the same best linear approximation to the true IRF in population, 
 regardless of whether the DGP is linear (Proposition~1, p.~960). Under 
-equal lag length, both estimators are therefore equally blind to the 
-quadratic misspecification in population, and any finite-sample divergence 
-reflects differences in the bias-variance tradeoff and the inference channel 
-rather than differential robustness to nonlinearity per se. This makes 
-Extension~2 complementary to Extension~1: whereas Extension~1 isolates the 
-bias channel under invertible dynamic misspecification, Extension~2 isolates 
-the inference channel, since the nonlinear DGP generates non-Gaussian and 
-serially dependent Wold innovations that affect the finite-sample coverage 
-of LP and VAR differently. Critically, unlike the VARMA misspecification in 
-Extension~1, the quadratic term is not approximable by higher-order linear 
-VARs, which implies that the complexity-adjusted VAR sweep has no 
-approximation advantage over VAR(4) in this setting.
+comparable lag information, both estimators thus provide an equal linear approximation 
+of the non-linear DGP, and any finite-sample divergence 
+reflects differences in the bias-variance tradeoff rather than differential 
+robustness to nonlinearity per se. 
 
-The structural estimand is the best linear approximation to the true 
-nonlinear IRF, $\theta_h^{\mathrm{lin}} = \Psi_h B e_1$, where $\Psi_h$ 
-and $B$ are defined with respect to the linear component of the DGP. Since 
-both LP and VAR target this same linear estimand in population 
-\parencite{plagborg2021local}, the comparison remains well-defined under 
-nonlinear misspecification. Persistence is varied across $\rho \in (0.5, 
-0.95)$ as in the baseline and Extension~1, and sample sizes follow the 
-baseline design $T \in \{100, 200, 240, 500\}$. The nonlinearity strength 
-$\gamma \in \{0.3, 0.6\}$ is varied jointly with persistence and sample 
-size. Both estimators are applied without modification to the 
-nonlinearity-generated data, so that the misspecification is fully absorbed 
-into the finite-sample performance of each estimator. Performance measures 
-are identical to the baseline.
+
+This makes 
+Extension~2 complementary to Extension~1, as whereas Extension~1 isolates the 
+bias channel under invertible dynamic misspecification, Extension~2 isolates 
+functional-form misspecification in the conditional mean. 
+
+The structural estimand is the best linear approximation to the impulse response generated by the nonlinear DGP, denoted
+$
+\theta_h^{\mathrm{lin}} = \Psi_h^{\mathrm{lin}} B^{\mathrm{lin}} e_1.
+$
+Here $\Psi_h^{\mathrm{lin}}$ denotes the linear projection response implied by the covariance structure of the nonlinear process, and $B^{\mathrm{lin}}$ is the corresponding impact matrix obtained from the reduced-form innovation covariance matrix using the same recursive identification scheme as in the baseline design. Since both LP and VAR target the same linear projection estimand in population under the conditions described by \textcite{plagborg2021local}, the comparison remains well-defined under nonlinear misspecification.
+
+Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chosen to reflect small sample and asymptotic behaviors using $T \in \{240,10000\}$. The nonlinearity strength $\gamma \in \{0.3,0.6\}$ is varied jointly with persistence and sample size. Both estimators are applied without modification to data generated by the nonlinear DGP, so the functional-form misspecification is fully reflected in the finite-sample performance of each estimator. Performance measures are identical to the baseline, with added small-sample and asymptotic analysis of deviation from the ground truth IRF, to investigate the claim of equivalence in population.
+
 \subsection{Simulation Results}
 
 
+% ----------------------------------- True IRF
+\begin{figure}[htbp]
+\centering
+\caption{True IRF Functions by Nonlinearity Strength}
+\label{fig:NON_LIN_IRF}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_IRF_rho=0.5.png}
+    \label{fig:NON_LIN_IRF_LO}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_IRF_rho=0.7.png}
+    \label{fig:NON_LIN_IRF_HI}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} The left column reports the best linear projection impulse response, $\theta_h$, of variable 1 to shock 1. The right column reports the autocorrelation function of the squared second-equation residual, $\hat e_{2,t}^{\,2}$, as a diagnostic for volatility clustering induced by the nonlinear lag term. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. The best linear projection response is approximately invariant across nonlinearity strengths $\gamma$.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Small Sample Deviation from Truth
+\begin{figure}[htbp]
+\centering
+\caption{Small-Sample Deviation from the True IRF}
+\label{fig:NON_LIN_SMALL_SAMPLE_DEV}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_LIMITED_DEVIATION_rho=0.5_T=240_B=5000.png}
+    \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_LIMITED_DEVIATION_rho=0.7_T=240_B=5000.png}
+    \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports finite-sample deviations from the true impulse response function for the nonlinear lag-quadratic DGP with \(T=240\) and \(B=5{,}000\) Monte Carlo replications. Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each row correspond to nonlinearity strength.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Asymptotic Deviation from Truth
+\begin{figure}[htbp]
+\centering
+\caption{Asymptotic Deviation from the True IRF}
+\label{fig:NON_LIN_ASYMPTOTIC}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_ASYMPTOTIC_DEVIATION_rho=0.5_T=10000_B=1000.png}
+    \label{fig:NON_LIN_ASYMPTOTIC_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_ASYMPTOTIC_DEVIATION_rho=0.7_T=10000_B=1000.png}
+    \label{fig:NON_LIN_ASYMPTOTIC_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports asymptotic deviations from the true impulse response function for the nonlinear lag-quadratic DGP, approximated using \(T=10{,}000\) and \(B=1{,}000\) Monte Carlo replications. Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each row correspond to nonlinearity strength.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Complexity Frontier
+\begin{figure}[htbp]
+\centering
+\caption{Complexity Frontier under Nonlinear Lag Misspecification}
+\label{fig:NON_LIN_COMPLEXITY}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.5_T=240.png}
+    \label{fig:NON_LIN_COMPLEXITY_rho05}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.7_T=240.png}
+    \label{fig:NON_LIN_COMPLEXITY_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.98\textwidth}
+\small
+\textit{Note.} Each panel reports the complexity frontier for the nonlinear lag-quadratic DGP with \(T=240\). Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each panel correspond to nonlinearity strength. The frontier summarizes the finite-sample tradeoff between model complexity and estimator performance.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Point Estimation
+\begin{figure}[htbp]
+\centering
+\caption{Point Estimates under Strong Nonlinearity}
+\label{fig:NON_LIN_POINT_EST}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.5_T=240_B=5000_gamma=0.6.png}
+    \label{fig:NON_LIN_POINT_EST_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.7_T=240_B=5000_gamma=0.6.png}
+    \label{fig:NON_LIN_POINT_EST_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=240\), \(B=5{,}000\) Monte Carlo replications, and \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- RMSE by Horizon X
+\begin{figure}[htbp]
+\centering
+\caption{RMSE by Horizon under Nonlinear Lag Misspecification}
+\label{fig:NON_LIN_RMSE}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.5_T=240.png}
+    \label{fig:NON_LIN_RMSE_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=240.png}
+    \label{fig:NON_LIN_RMSE_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports RMSE by horizon for the nonlinear lag-quadratic DGP with $T=240$. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. Columns within each panel correspond to nonlinearity strength $\gamma$. Estimator definitions and performance measures are identical to the baseline design.
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Coverage (?)
+\begin{figure}[htbp]
+\centering
+\caption{COVERAGE}
+\label{fig:NOLIN_COVERAGE}
+
+% Erste Reihe (zwei nebeneinander)
+\begin{subfigure}[t]{0.7\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.5_T=240_B=5000.png}
+    %\caption{High}
+    \label{fig:NOLIN_COVERAGE_LO}
+\end{subfigure}
+
+\vspace{0.5cm}
+
+\begin{subfigure}[t]{0.7\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.7_T=240_B=5000.png}
+    %\caption{Mid}
+    \label{fig:NOLIN_COVERAGE_HI}
+\end{subfigure}
+
+\end{figure}

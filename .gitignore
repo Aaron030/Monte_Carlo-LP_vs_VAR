@@ -38,3 +38,16 @@ Thumbs.db
 # Env files
 .env
 .env.local
+
+# LaTeX build files
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.synctex.gz
+*.lot
+*.out
+*.run.xml
