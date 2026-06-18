@@ -1,23 +1,25 @@
-[0] Config.pm:328> INFO - This is Biber 2.21
-[0] Config.pm:331> INFO - Logfile is '/Users/aaron/GitHub/MonteCarloSeminar/documents/main.blg'
-[21] biber-darwin:342> INFO - === Wed Jun 17, 2026, 21:31:59
-[26] Biber.pm:421> INFO - Reading '/Users/aaron/GitHub/MonteCarloSeminar/documents/main.bcf'
-[58] Biber.pm:1002> INFO - Found 26 citekeys in bib section 0
-[65] Biber.pm:4487> INFO - Processing section 0
-[68] Biber.pm:4678> INFO - Looking for bibtex file 'bibtex.bib' for section 0
-[68] bibtex.pm:1713> INFO - LaTeX decoding ...
-[79] bibtex.pm:1519> INFO - Found BibTeX data source 'bibtex.bib'
-[132] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[132] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[132] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[132] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[148] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[148] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[148] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[148] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[156] bbl.pm:676> INFO - Writing '/Users/aaron/GitHub/MonteCarloSeminar/documents/main.bbl' with encoding 'UTF-8'
-[162] bbl.pm:779> INFO - Output to /Users/aaron/GitHub/MonteCarloSeminar/documents/main.bbl
-[163] Biber.pm:132> WARN - Duplicate entry key: 'kilian1999finite' in file 'bibtex.bib', skipping ...
-[163] Biber.pm:132> WARN - Duplicate entry key: 'montiel2021local' in file 'bibtex.bib', skipping ...
-[163] Biber.pm:132> WARN - Duplicate entry key: 'li2024local' in file 'bibtex.bib', skipping ...
-[163] Biber.pm:134> INFO - WARNINGS: 3
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[34] biber-darwin:340> INFO - === Fri Jun 19, 2026, 00:37:48
+[44] Biber.pm:419> INFO - Reading 'main.bcf'
+[96] Biber.pm:979> INFO - Found 28 citekeys in bib section 0
+[107] Biber.pm:4419> INFO - Processing section 0
+[113] Biber.pm:4610> INFO - Looking for bibtex file 'bibtex.bib' for section 0
+[116] bibtex.pm:1713> INFO - LaTeX decoding ...
+[138] bibtex.pm:1519> INFO - Found BibTeX data source 'bibtex.bib'
+[236] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[236] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[236] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[237] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[263] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[264] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[264] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[264] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[278] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[296] bbl.pm:763> INFO - Output to main.bbl
+[296] Biber.pm:131> WARN - Duplicate entry key: 'kilian1999finite' in file 'bibtex.bib', skipping ...
+[296] Biber.pm:131> WARN - Duplicate entry key: 'montiel2021local' in file 'bibtex.bib', skipping ...
+[296] Biber.pm:131> WARN - Duplicate entry key: 'li2024local' in file 'bibtex.bib', skipping ...
+[296] Biber.pm:131> WARN - Duplicate entry key: 'stock2018identification' in file 'bibtex.bib', skipping ...
+[296] Biber.pm:131> WARN - Duplicate entry key: 'olea2025local' in file 'bibtex.bib', skipping ...
+[296] Biber.pm:133> INFO - WARNINGS: 5

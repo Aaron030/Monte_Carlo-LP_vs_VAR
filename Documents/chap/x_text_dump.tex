@@ -3,3 +3,82 @@
 \textcite{kilian1998small}
 \textcite{kilian1999finite}
 \textcite{kilian2000accurate}
+
+
+\textbf{Equivalance}
+
+The object of interest is the coefficient on the contemporaneous regressor.
+Partialling the $p$ lags out of $y_t$ leaves the one-step reduced-form
+innovation $u_t = y_t - \mathbb{E}\!\left[y_t \mid y_{t-1}, \ldots,
+y_{t-p}\right]$, so by the Frisch--Waugh--Lovell theorem $\Phi_h$ equals the population projection coefficient of $y_{t+h}$ on $u_t$. Inserting the Wold representation \eqref{eq:wold_yt}, $y_{t+h} = \sum_{\ell=0}^{\infty}
+\Psi_\ell\, u_{t+h-\ell}$, and using that $u_t$ is orthogonal to every
+$u_{t+h-\ell}$ with $\ell \neq h$, the projection isolates a single term,
+%
+\begin{equation}
+    \Phi_h = \mathbb{E}\!\left[y_{t+h}\, u_t'\right]
+             \bigl(\mathbb{E}\!\left[u_t u_t'\right]\bigr)^{-1}
+           = \Psi_h,
+    \qquad \Phi_0 = \Psi_0 = I_K.
+    \label{eq:lp_psi}
+\end{equation}
+
+
+
+Structural identification proceeds exactly as in the VAR case and is
+logically distinct from the choice of estimator
+\parencite{plagborg2021local}. Any identification scheme selects the
+structural shock as a fixed linear combination of the reduced-form
+innovations, $\varepsilon_{j,t} = \bigl(B^{-1}\bigr)_{j\cdot}\, u_t$
+\parencite[p.~967]{plagborg2021local}, so the structural response is obtained
+by post-multiplying the reduced-form responses by the impact matrix $B$,
+%
+\begin{equation}
+    \theta_h^{ij} = [\Phi_h B]_{ij} = [\Psi_h B]_{ij}
+                  = e_i'\, \Psi_h\, B\, e_j,
+    \label{eq:lp_sirf}
+\end{equation}
+%
+which is the same estimand as \eqref{eq:sirf}. Under recursive
+(Cholesky) identification $B$ is the lower-triangular factor of $\Sigma_u$,
+and \eqref{eq:lp_sirf} can equivalently be obtained in a single step by
+ordering the variables and regressing $y_{i,t+h}$ on the contemporaneous
+value of the shock-bearing variable, controlling for the variables ordered
+before it together with the lags \parencites{jorda2005estimation}{plagborg2021local}.
+ 
+The same construction accommodates the remaining standard schemes. Recursive, long-run, and sign restrictions are each implementable through the projection \eqref{eq:lp_reduced} because all of them merely fix the vector $b$ that maps the Wold innovations into the shock of interest
+\parencite[p.~967]{plagborg2021local}. When an external instrument or proxy for the shock is available, ordering the instrument first in the conditioning set---the ``internal instrument'' approach---identifies the relative structural responses even when the shock is noninvertible, whereas the external SVAR-IV/LP-IV implementation of \textcite{stock2018identification} requires invertibility \parencite[p.~973]{plagborg2021local}. Because identification operates on the population innovations rather than on the estimator, any scheme available to the VAR can be carried out with local projections and vice versa \parencite[p.~975]{plagborg2021local}.
+ 
+Each regression in \eqref{eq:lp_reduced} is estimated equation-by-equation by OLS, and the structural estimator $\hat{\theta}_h^{ij} = e_i'\, \hat{\Phi}_h\, \hat{B}\, e_j$ is, like its VAR counterpart, a smooth function of the first-stage coefficients and the residual covariance. Because the projection coefficient \emph{is} the impulse response, no companion-matrix recursion intervenes between estimation and the reported response
+\parencite[p.~65]{jorda2025local}. 
+
+
+
+The local projection slope therefore recovers exactly the reduced-form
+impulse response $\Psi_h$ of \eqref{eq:wold_yt}, but reads it off a direct
+regression rather than from the recursion $\hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)}
+\hat{A}_\ell \hat{\Psi}_{h-\ell}$.
+
+
+Structural identification proceeds exactly as in the VAR case and is
+logically distinct from the choice of estimator
+\parencite{plagborg2021local}. Any identification scheme selects the
+structural shock as a fixed linear combination of the reduced-form
+innovations, $\varepsilon_{j,t} = \bigl(B^{-1}\bigr)_{j\cdot}\, u_t$
+\parencite[p.~967]{plagborg2021local}, so the structural response is obtained
+by post-multiplying the reduced-form responses by the impact matrix $B$,
+%
+\begin{equation}
+    \theta_h^{ij} = [\Phi_h B]_{ij} = [\Psi_h B]_{ij}
+                  = e_i'\, \Psi_h\, B\, e_j,
+    \label{eq:lp_sirf}
+\end{equation}
+%
+which is the same estimand as \eqref{eq:sirf}. Under recursive
+(Cholesky) identification $B$ is the lower-triangular factor of $\Sigma_u$,
+and \eqref{eq:lp_sirf} can equivalently be obtained in a single step by
+ordering the variables and regressing $y_{i,t+h}$ on the contemporaneous
+value of the shock-bearing variable, controlling for the variables ordered
+before it together with the lags \parencites{jorda2005estimation}{plagborg2021local}.
+ 
+The same construction accommodates the remaining standard schemes. Recursive, long-run, and sign restrictions are each implementable through the projection \eqref{eq:lp_reduced} because all of them merely fix the vector $b$ that maps the Wold innovations into the shock of interest
+\parencite[p.~967]{plagborg2021local}. When an external instrument or proxy for the shock is available, ordering the instrument first in the conditioning set---the ``internal instrument'' approach---identifies the relative structural responses even when the shock is noninvertible, whereas the external SVAR-IV/LP-IV implementation of \textcite{stock2018identification} requires invertibility \parencite[p.~973]{plagborg2021local}. Because identification operates on the population innovations rather than on the estimator, any scheme available to the VAR can be carried out with local projections and vice versa \parencite[p.~975]{plagborg2021local}.

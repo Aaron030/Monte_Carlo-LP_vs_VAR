@@ -5,6 +5,7 @@ Impulse response functions can be nonparametically defined as the difference bet
 
 \begin{equation}
     \mathrm{IR}(h,\delta) \equiv \mathbb{E}\left[y_{t+h}|s_t = s_0 + \delta; \mathbf{x_t}\right] - \mathbb{E}\left[y_{t+h}|s_t = s_0; \mathbf{x_t}\right]
+    \label{eq:EF_IRF}
 \end{equation}
 
 Vector Autoregressions and Local Projections serve as two complementary  approaches to estimating impulse responses in finite samples. The former,  introduced by \textcite{sims1980macroeconomics}, parametrizes the joint  dynamics of all variables in a single autoregressive system and impulse  responses are then obtained as iterated forecasts from the estimated  companion matrix. The latter, established by \textcite{jorda2005estimation},  takes a direct forecasting approach by estimating the responses at each horizon independently via OLS, projecting the future outcome directly onto current and lagged values of the data. The two approaches compound estimation error differently across horizons and, at equal lag order, occupy opposite ends of a bias-variance spectrum in finite samples \parencites{li2024local}{olea2025local}. Local projections tend toward  higher variance, vector autoregressions toward higher bias under misspecification. 
@@ -77,51 +78,61 @@ The structural impulse response of variable $i$ to shock $j$ is thus
 %
 where $[\,\cdot\,]_{ij}$ denotes the $(i,j)$-th element of a matrix.
 
-Estimation of the structural impulse response $\hat{\theta}_h^{ij}$ 
-proceeds in two stages. In the first stage, the VAR coefficient matrices 
-$\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$ are estimated equation-by-equation 
+Estimation of the structural impulse response $\hat{\theta}_h^{ij}$
+proceeds in two stages. In the first stage, the VAR coefficient matrices
+$\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$ are estimated equation-by-equation
 via OLS, which is efficient under the stability condition and yields
 %
 \begin{equation}
-    \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr) 
+    \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr)
     \xrightarrow{d} \mathcal{N}\!\left(0,\; \Gamma^{-1} \otimes \Sigma_u\right),
 \end{equation}
 %
-where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the 
-stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$, and the 
-innovation covariance $\Sigma_u$ is replaced by its residual analogue 
-$\hat{\Sigma}_u$ \parencite{lutkepohl2005}. %Lag order selection follows standard information criteria \textcite{akaike1974new,schwarz1978estimating}.
+where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the
+stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$, and the
+innovation covariance $\Sigma_u$ is replaced by its residual analogue
+$\hat{\Sigma}_u$ \parencite{lutkepohl2005}.
 
-In the second stage, structural objects are recovered from the 
-reduced-form estimates. The impact matrix $\hat{B}$ is the Cholesky 
-factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are 
-obtained via the recursion $\hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)} 
-\hat{A}_\ell\,\hat{\Psi}_{h-\ell}$, $\hat{\Psi}_0 = I_K$. The 
-structural impulse response estimator is then a smooth nonlinear function of the first-stage estimates.
+In the second stage, structural objects are recovered from the
+reduced-form estimates. The impact matrix $\hat{B}$ is the Cholesky
+factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are
+obtained via the recursion
+%
+\begin{equation}
+    \hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)} \hat{A}_\ell\,\hat{\Psi}_{h-\ell},
+    \qquad \hat{\Psi}_0 = I_K,
+    \label{eq:var_wold_recursion}
+\end{equation}
+%
+so that the structural impulse response estimator $\hat{\theta}_h^{ij} =
+g(\hat{\alpha}, \hat{\sigma})$, with $\alpha = \mathrm{vec}(A)$ and
+$\sigma = \mathrm{vech}(\Sigma_u)$, is a smooth nonlinear function of
+the first-stage estimates,
 %
 \begin{equation}
     \hat{\theta}_h^{ij} = e_i'\,\hat{\Psi}_h\,\hat{B}\,e_j.
+    \label{eq:var_srf_estimator}
 \end{equation}
 %
-
-Since $\hat{\theta}_h^{ij} = g(\hat{\alpha},\hat{\sigma})$ is 
-differentiable, the delta method yields
+Since $g$ is differentiable in $(\hat{\alpha}, \hat{\sigma})$, the delta
+method yields
 %
 \begin{equation}
     \sqrt{T}\,\bigl(\hat{\theta}_h^{ij} - \theta_h^{ij}\bigr)
     \xrightarrow{d}
     \mathcal{N}\!\left(0,\;
-    \frac{\partial g}{\partial\alpha'}\,\Sigma_{\alpha}\,
-    \frac{\partial g'}{\partial\alpha}
-    +
-    \frac{\partial g}{\partial\sigma'}\,\Sigma_{\sigma}\,
-    \frac{\partial g'}{\partial\sigma}
+    \nabla g(\alpha,\sigma)'\,\Sigma_{\alpha,\sigma}\,\nabla g(\alpha,\sigma)
     \right),
+    \label{eq:var_delta_method}
 \end{equation}
 %
-where $\alpha = \mathrm{vec}(A)$, $\sigma = \mathrm{vech}(\Sigma_u)$, 
-and the Jacobian $\partial\,\mathrm{vec}(\Psi_h)/\partial\alpha'$ 
-admits a closed-form expression \parencite{lutkepohl1990asymptotic}. The resulting confidence intervals are valid pointwise in $h$ under stationarity, but not uniformly over the persistence of the process, motivating a direct examination of finite-sample behaviour.
+where $\Sigma_{\alpha,\sigma}$ is the joint asymptotic covariance matrix
+of $(\hat{\alpha}', \hat{\sigma}')'$ and the Jacobian
+$\nabla g(\alpha, \sigma)$ admits a closed-form expression
+\parencite{lutkepohl1990asymptotic}. The resulting confidence intervals
+are valid pointwise in $h$ under stationarity, but not uniformly over
+the persistence of the process nor over growing horizons, motivating a
+direct examination of finite-sample behaviour.
 
 The favourable asymptotic properties established above are qualified by three interrelated problems that arise in the sample sizes typical of macroeconomic applications.
 that arise in the sample sizes typical of macroeconomic applications.
@@ -164,71 +175,67 @@ Whereas the VAR recovers the impulse response by iterating a single fitted
 model forward through powers of the companion matrix, the local projection
 estimates each horizon's response directly from a separate regression
 \parencite{jorda2005estimation}. Following \textcite{jorda2005estimation} and
-\textcite{jorda2025local}, fix a horizon $h$ and project the future outcome
-$y_{t+h}$ onto the current observation $y_t$, controlling for the $p$ lags
-that span the conditioning information of the system,
+\textcite{jorda2025local}, going back to our definition of an impulse response
+in equation \eqref{eq:EF_IRF}, consider a structural shock of interest
+$\varepsilon_{j,t}$ and fix a horizon $h$. The LP estimates the response by
+projecting the future outcome $y_{t+h}$ onto the current shock $\varepsilon_{j,t}$,
+controlling for the $p$ lags $y_{t-1}, \ldots, y_{t-p}$ that span the
+conditioning information of the system,
 %
 \begin{equation}
-    y_{t+h} = \nu_h + \Phi_h\, y_t
+    y_{t+h} = \nu_h + \beta_h\, \varepsilon_{j,t}
             + \sum_{\ell=1}^{p} \Xi_{h,\ell}\, y_{t-\ell}
             + \xi_{t+h}^{(h)},
     \qquad h = 0, 1, \ldots, H,
-    \label{eq:lp_reduced}
+    \label{eq:lp_shock}
 \end{equation}
 %
-where $\nu_h$ is a $K \times 1$ vector of constants, $\Phi_h$ and
-$\Xi_{h,\ell}$ are $K \times K$ coefficient matrices, and $\xi_{t+h}^{(h)}$
-is the horizon-$h$ projection residual. The collection of $H+1$ separate
-regressions in \eqref{eq:lp_reduced} is what \textcite{jorda2005estimation} terms the local projection. Each is estimated in isolation, so the lag length $p$ need not be common across horizons and no parametric model of the propagation
-mechanism is imposed.
- 
-The object of interest is the coefficient on the contemporaneous regressor.
-Partialling the $p$ lags out of $y_t$ leaves the one-step reduced-form
-innovation $u_t = y_t - \mathbb{E}\!\left[y_t \mid y_{t-1}, \ldots,
-y_{t-p}\right]$, so by the Frisch--Waugh--Lovell theorem $\Phi_h$ equals the population projection coefficient of $y_{t+h}$ on $u_t$. Inserting the Wold representation \eqref{eq:wold_yt}, $y_{t+h} = \sum_{\ell=0}^{\infty}
-\Psi_\ell\, u_{t+h-\ell}$, and using that $u_t$ is orthogonal to every
-$u_{t+h-\ell}$ with $\ell \neq h$, the projection isolates a single term,
+where $\nu_h$ is a $K \times 1$ vector of constants, $\beta_h$ is a $K \times 1$
+vector of impulse response coefficients at horizon $h$, $\Xi_{h,\ell}$ are
+$K \times K$ coefficient matrices on the lagged controls, and $\xi_{t+h}^{(h)}$
+is the horizon-$h$ projection residual.
+Under appropriate identification of the shock, e.g. exogeineity, the impulse response to a one-unit shock to the endogeneous variable can be directly obtained by ordinary least squares estimation of Equation \ref{eq:lp_shock}. The LP thus recovers the impulse response without parametrizing the underlying propagation dynamics, in sharp contrast to the VAR's reliance on a fitted autoregressive model and forward iteration. If the exogeneity is not appropriate causal interpretation of the shock might be enabled through selection on observable covariates \parencite{olea2025local}, instrumental variable regression using a slighly adjusted exogeneity assumtion \parencite{stock2018identification, jorda2015betting} or even traditional VAR identification schemes like the aforementioned Cholesky decomposition \parencite{plagborg2021local}.
+
+Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$
+proceeds in a single stage, directly by OLS on equation \eqref{eq:lp_shock}.
+Equation \eqref{eq:lp_shock} therefore is the $h$-step predictive regression of $y_{t+h}$
+on the shock of interest, whose leading coefficient coincides with the
+horizon-$h$ impulse response \parencite{jorda2025local}. Since
+$\hat{\beta}_h$ is the OLS coefficient on a regressor orthogonal to the
+projection error $\xi_{t+h}^{(h)}$ by construction of the structural shock,
+it recovers the impulse response directly, without propagation through a
+nonlinear mapping and hence without the delta-method step that governs the
+VAR estimator in \eqref{eq:var_delta_method}.
+
+Provided $\{y_t\}$ is strictly stationary and ergodic with
+$\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$ and absolutely
+summable mixing coefficients, the least-squares estimator is
+$\sqrt{n}$-asymptotically normal,
 %
 \begin{equation}
-    \Phi_h = \mathbb{E}\!\left[y_{t+h}\, u_t'\right]
-             \bigl(\mathbb{E}\!\left[u_t u_t'\right]\bigr)^{-1}
-           = \Psi_h,
-    \qquad \Phi_0 = \Psi_0 = I_K.
-    \label{eq:lp_psi}
+    \sqrt{n}\,\bigl(\hat{\beta}_h - \beta_h\bigr)
+    \xrightarrow{d} \mathcal{N}\!\left(0,\; V_h\right),
+    \label{eq:lp_clt}
 \end{equation}
 %
-The local projection slope therefore recovers exactly the reduced-form
-impulse response $\Psi_h$ of \eqref{eq:wold_yt}, but reads it off a direct
-regression rather than from the recursion $\hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)}
-\hat{A}_\ell \hat{\Psi}_{h-\ell}$.
- 
-Structural identification proceeds exactly as in the VAR case and is
-logically distinct from the choice of estimator
-\parencite{plagborg2021local}. Any identification scheme selects the
-structural shock as a fixed linear combination of the reduced-form
-innovations, $\varepsilon_{j,t} = \bigl(B^{-1}\bigr)_{j\cdot}\, u_t$
-\parencite[p.~967]{plagborg2021local}, so the structural response is obtained
-by post-multiplying the reduced-form responses by the impact matrix $B$,
-%
-\begin{equation}
-    \theta_h^{ij} = [\Phi_h B]_{ij} = [\Psi_h B]_{ij}
-                  = e_i'\, \Psi_h\, B\, e_j,
-    \label{eq:lp_sirf}
-\end{equation}
-%
-which is the same estimand as \eqref{eq:sirf}. Under recursive
-(Cholesky) identification $B$ is the lower-triangular factor of $\Sigma_u$,
-and \eqref{eq:lp_sirf} can equivalently be obtained in a single step by
-ordering the variables and regressing $y_{i,t+h}$ on the contemporaneous
-value of the shock-bearing variable, controlling for the variables ordered
-before it together with the lags \parencites{jorda2005estimation}{plagborg2021local}.
- 
-The same construction accommodates the remaining standard schemes. Recursive, long-run, and sign restrictions are each implementable through the projection \eqref{eq:lp_reduced} because all of them merely fix the vector $b$ that maps the Wold innovations into the shock of interest
-\parencite[p.~967]{plagborg2021local}. When an external instrument or proxy for the shock is available, ordering the instrument first in the conditioning set---the ``internal instrument'' approach---identifies the relative structural responses even when the shock is noninvertible, whereas the external SVAR-IV/LP-IV implementation of \textcite{stock2018identification} requires invertibility \parencite[p.~973]{plagborg2021local}. Because identification operates on the population innovations rather than on the estimator, any scheme available to the VAR can be carried out with local projections and vice versa \parencite[p.~975]{plagborg2021local}.
- 
-Each regression in \eqref{eq:lp_reduced} is estimated equation-by-equation by OLS, and the structural estimator $\hat{\theta}_h^{ij} = e_i'\, \hat{\Phi}_h\, \hat{B}\, e_j$ is, like its VAR counterpart, a smooth function of the first-stage coefficients and the residual covariance. Because the projection coefficient \emph{is} the impulse response, no companion-matrix recursion intervenes between estimation and the reported response
-\parencite[p.~65]{jorda2025local}. Inference, however, is complicated by the overlapping-horizon structure of the residual: iterating \eqref{eq:lp_reduced} shows that $\xi_{t+h}^{(h)}$ is a moving average of the one-step forecast errors accruing between $t$ and $t+h$, and is therefore serially correlated of order $h-1$ even when the innovations are white noise \parencite[p.~163]{jorda2005estimation}. Accordingly \textcite{jorda2005estimation} recommends a
-heteroskedasticity- and autocorrelation-consistent (HAC) covariance
+with consistency $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$
+following as an immediate corollary \parencite{hansen2022econometrics}.
+Because the predictive regression aggregates the shocks accruing between
+$t$ and $t+h$ over overlapping forecast windows, the projection error
+$\xi_{t+h}^{(h)}$ follows a moving-average process of order $h-1$, thus the regression scores $\hat{\varepsilon}_{j,t}\,\xi_{t+h}^{(h)}$ are therefore serially
+correlated, and $V_h$ denotes the associated long-run variance.
+
+The long-run form of $V_h$ reflects a structural feature of direct
+projection. AS VARs confines all dynamic dependence to the one-step innovation and generates
+longer-horizon responses by iterating a single fitted model, local projections, by contrast, reads each horizon off a separate regression of which the residual absorbs shocks
+realised between the impulse date and the response date. Inserting the
+moving-average representation of $y_{t+h}$ into \eqref{eq:lp_shock} makes
+this explicit. The projection error collects the structural innovations
+dated $t+1$ through $t+h$, and is therefore a moving-average process of
+order $h-1$. 
+
+
+Inference, however, is complicated by the overlapping-horizon structure of the residual: iterating \eqref{eq:lp_reduced} shows that $\xi_{t+h}^{(h)}$ is a moving average of the one-step forecast errors accruing between $t$ and $t+h$, and is therefore serially correlated of order $h-1$ even when the innovations are white noise \parencite[p.~163]{jorda2005estimation}. Accordingly \textcite{jorda2005estimation} recommends a heteroskedasticity- and autocorrelation-consistent (HAC) covariance
 estimator, such as Newey--West \parencite[p.~75]{jorda2025local}, which
 delivers pointwise-valid, asymptotically normal inference under stationarity, but---mirroring the delta-method intervals of the VAR---neither uniformly over the persistence of the process nor at horizons that grow with the sample.
  
@@ -292,3 +299,6 @@ The authors come to the conclusion:
 Here I will discuss the theoretical results that establish the equivalence of VARs and LPs under certain conditions, as shown by Plagborg-Moller \& Wolf (2021) and Fusari et al. (2026). I will also explain how this equivalence is affected by finite sample properties and dynamic misspecification, as discussed by Li et al. (2024), Montiel Olea et al. (2025), and Ludwig (2026).
 
 The conventional finite-sample comparison between local projections and vector autoregressions is typically conducted at equal lag order, pitting LP(p) against VAR(p). Ludwig (2026) shows that this convention rests on a misleading notion of parsimony. His Theorem 1 establishes an exact finite-sample identity: the h-step prediction of an LP(p) is the forward iteration of a sequence of one-step VAR predictions whose lag order rises from p to $p + h - 1$. An equal-order VAR(p) is therefore a restricted special case of LP(p), obtained by holding the lag order fixed along the recursion rather than allowing it to increase. The familiar empirical pattern—lower approximation bias but higher sampling variance for LP relative to a same-order VAR—is, from this vantage point, largely a mechanical consequence of comparing a more general specification with its own restriction, rather than evidence of an intrinsic property of either estimator. This matters because it leaves the standard reading of the bias-variance trade-off, as articulated by Plagborg-Møller and Wolf (2021) and Montiel Olea et al. (2025), confounded: at equal lag order, the method effect (LP versus VAR) cannot be separated from the complexity effect (more versus fewer effective autoregressive parameters).
+\ \\ \ \\
+From Simulations \textcite{li2024local}:
+- suggest a stark bias-variance trade-off between LP (low bias, high variance) and moderate-Lag Var estimators (moderatre bias, low variance)
