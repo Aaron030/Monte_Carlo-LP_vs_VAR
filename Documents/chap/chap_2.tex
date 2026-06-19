@@ -246,40 +246,16 @@ Using a simplified version of the local projection estimator in
 Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1} yields
 %
 \begin{equation}
-    y_{t+h} = \beta^h y_t + \xi_{t+h}^{(h)}, \qquad \xi_{t+h}^{(h)} = \sum_{i=1}^{h} \rho^{h-i}\, u_{t+i},
+    y_{t+h} = \beta^h y_t + \xi_{t+h}^{(h)}, \qquad \xi_{t+h}^{(h)} = \sum_{j=1}^{h} \rho^{h-j}\, u_{t+j},
     \label{eq:ar1_recursive}
 \end{equation}
 %
 
-The projection error is therefore a
-moving-average process of order $h$, whose coefficients $\rho^i$ are
-the impulse responses of the DGP itself — the stronger the persistence
-$\rho$, the larger and more slowly decaying the autocovariances of
+The projection error is therefore a moving-average process of order $h$,mediated by the persistence of the underlying DGP. Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of
 $\xi_{t+h}^{(h)}$, and hence the more severe the distortion in naive
-OLS standard errors \parencite{jorda2005estimation, hansen2022econometrics}.
+OLS standard errors. Furthermore, when $rho \to 1$ naive OLS estimation will exhibit non-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the inverse unit-circle, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
 
-
-
-Inserting the moving-average
-representation of $y_{t+h}$ into \eqref{eq:lp_shock} makes this explicit:
-the projection error collects the structural innovations dated $t+1$
-through $t+h$,
-%
-\begin{equation}
-    \xi_{t+h}^{(h)} = \sum_{i=0}^{h-1} \Psi_i\, B\, \varepsilon_{t+h-i},
-    \label{eq:lp_ma_error}
-\end{equation}
-%
-and is therefore a moving-average process of order $h-1$ whose coefficients
-are the Wold coefficients $\Psi_i B$ of the system \parencite{hansen2022econometrics}.
-Its magnitude is accordingly mediated by the persistence of the underlying
-DGP, the serial dependence of the regression scores strengthening and
-decaying more slowly as the dominant root approaches unity. To restore
-valid inference in the presence of this dependence, \textcite{jorda2005estimation}
-recommends the use of Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent standard
-errors. 
- 
-\textcite{montiel2021local} show that a minimal modification removes the need for the HAC correction. Augmenting the projection with one additional lag renders the effective regressor of interest stationary even under a unit root; in the leading scalar case the lag-augmented projection
+These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. \textcite{montiel2021local} show that HAC estimation  that a minimal modification removes the need for the HAC correction. Augmenting the projection with one additional lag renders the effective regressor of interest stationary even under a unit root; in the leading scalar case the lag-augmented projection
 %
 \begin{equation}
     y_{t+h} = \beta_h\, y_t + \tilde{\beta}_h\, y_{t-1} + \xi_{t+h}^{(h)}
