@@ -169,39 +169,88 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \caption{\(\rho = 0.5\)}
+    \caption{\(\rho = 0.5\) (Sample)}
     \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.5_T=240.png}
-    \label{fig:NON_LIN_COMPLEXITY_rho05}
+    \label{fig:NON_LIN_COMPLEXITY_rho05_LIMITED}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \caption{\(\rho = 0.7\)}
+    \caption{\(\rho = 0.7\) (Sample)}
     \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.7_T=240.png}
-    \label{fig:NON_LIN_COMPLEXITY_rho07}
+    \label{fig:NON_LIN_COMPLEXITY_rho07_LIMITED}
 \end{subfigure}
 
 \vspace{0.2cm}
 
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\) (Asymptotic)}
+    \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.5_T=10000.png}
+    \label{fig:NON_LIN_COMPLEXITY_rho05_ASYMPTOTIC}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\) (Asymptotic)}
+    \includegraphics[width=\textwidth]{NON_LIN_COMPLEXITY_FRONTIER_rho=0.7_T=10000.png}
+    \label{fig:NON_LIN_COMPLEXITY_rho07_ASYMPTOTIC}
+\end{subfigure}
+
 \begin{minipage}{0.98\textwidth}
 \small
-\textit{Note.} Each panel reports the complexity frontier for the nonlinear lag-quadratic DGP with \(T=240\). Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each panel correspond to nonlinearity strength. The frontier summarizes the finite-sample tradeoff between model complexity and estimator performance.
+\textit{Note.} Each panel reports the complexity frontier for the nonlinear lag-quadratic DGP with \(T=240\) for the top row, and \(T=10,000\) for the bottom row. 
+Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each panel correspond to 
+nonlinearity strength. The top row (a), (b), show the small sample complexity frontier, while the bottom row 
+(c), (d), approximates the asymptotic frontier with $T=10,000$. The frontier summarizes the finite-sample tradeoff between model complexity and estimator 
+performance.
 \end{minipage}
 
 \end{figure}
 
 
-% ----------------------------------- Point Estimation
+% ----------------------------------- Sample Point Estimation
 \begin{figure}[htbp]
 \centering
-\caption{Point Estimates under Strong Nonlinearity}
-\label{fig:NON_LIN_POINT_EST}
+\caption{Sample Point Estimates under Strong Nonlinearity}
+\label{fig:NON_LIN_POINT_EST_SAMPLE}
 
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.5\)}
+    \caption{\(\rho = 0.5\) (Sample)}
     \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.5_T=240_B=5000_gamma=0.6.png}
-    \label{fig:NON_LIN_POINT_EST_rho05}
+    \label{fig:NON_LIN_POINT_EST_SAMPLE_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\) (Sample)}
+    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.7_T=240_B=5000_gamma=0.6.png}
+    \label{fig:NON_LIN_POINT_EST_SAMPLE_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=240\), to investigate sample behavior of the estimators. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
+\end{minipage}
+
+\end{figure}
+
+% ----------------------------------- Point Estimation Asymptotic
+\begin{figure}[htbp]
+\centering
+\caption{Asymptotic Point Estimates under Strong Nonlinearity}
+\label{fig:NON_LIN_POINT_EST_ASYMPTOTIC}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\) (Asymptotic)}
+    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.5_T=10000_B=5000_gamma=0.6.png}
+    \label{fig:NON_LIN_POINT_EST_ASYMPTOTIC_rho05}
 \end{subfigure}
 
 \vspace{0.4cm}
@@ -209,31 +258,31 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.7_T=240_B=5000_gamma=0.6.png}
-    \label{fig:NON_LIN_POINT_EST_rho07}
+    \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.7_T=10000_B=5000_gamma=0.6.png}
+    \label{fig:NON_LIN_POINT_EST_ASYMPTOTIC_rho07}
 \end{subfigure}
 
 \vspace{0.2cm}
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=240\), \(B=5{,}000\) Monte Carlo replications, and \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
+\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=10,000\), to approximate asymptotic behavior. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
 \end{minipage}
 
 \end{figure}
 
 
-% ----------------------------------- RMSE by Horizon X
+% ----------------------------------- Sample RMSE by Horizon X
 \begin{figure}[htbp]
 \centering
-\caption{RMSE by Horizon under Nonlinear Lag Misspecification}
-\label{fig:NON_LIN_RMSE}
+\caption{Sample RMSE by Horizon under Nonlinear Lag Misspecification}
+\label{fig:NON_LIN_SAMPLE_RMSE}
 
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.5_T=240.png}
-    \label{fig:NON_LIN_RMSE_rho05}
+    \label{fig:NON_LIN_SAMPLE_RMSE_rho05}
 \end{subfigure}
 
 \vspace{0.4cm}
@@ -242,7 +291,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \centering
     \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=240.png}
-    \label{fig:NON_LIN_RMSE_rho07}
+    \label{fig:NON_LIN_SAMPLE_RMSE_rho07}
 \end{subfigure}
 
 \vspace{0.2cm}
@@ -254,6 +303,36 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 
 \end{figure}
 
+ % ----------------------------------- Asymptotic RMSE by Horizon X
+\begin{figure}[htbp]
+\centering
+\caption{Asymptotic RMSE by Horizon under Nonlinear Lag Misspecification}
+\label{fig:NON_LIN_ASYMPTOTIC_RMSE}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.5_T=10000.png}
+    \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho05}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=10000.png}
+    \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho07}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports RMSE by horizon for the nonlinear lag-quadratic DGP with $T=10,000$ to approximate asymptotic behavior. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. Columns within each panel correspond to nonlinearity strength $\gamma$. Estimator definitions and performance measures are identical to the baseline design.
+\end{minipage}
+
+\end{figure}
 
 % ----------------------------------- Coverage (?)
 \begin{figure}[htbp]
@@ -264,7 +343,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 % Erste Reihe (zwei nebeneinander)
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.5_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.5_T=10000_B=5000.png}
     %\caption{High}
     \label{fig:NOLIN_COVERAGE_LO}
 \end{subfigure}
@@ -273,7 +352,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.7_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.7_T=10000_B=5000.png}
     %\caption{Mid}
     \label{fig:NOLIN_COVERAGE_HI}
 \end{subfigure}

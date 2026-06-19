@@ -54,3 +54,5 @@ Thumbs.db
 *.toc
 *.blg
 *.bbl
+
+IRF_Cases/*
