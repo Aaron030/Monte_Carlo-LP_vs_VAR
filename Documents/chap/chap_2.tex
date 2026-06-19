@@ -175,9 +175,9 @@ Whereas the VAR recovers the impulse response by iterating a single fitted
 model forward through powers of the companion matrix, the local projection
 estimates each horizon's response directly from a separate regression
 \parencite{jorda2005estimation}. Following \textcite{jorda2005estimation} and
-\textcite{jorda2025local}, going back to our definition of an impulse response
+\textcite{jorda2025local} and reminding oneself of our definition of an impulse response
 in equation \eqref{eq:EF_IRF}, consider a structural shock of interest
-$\varepsilon_{j,t}$ and fix a horizon $h$. The LP estimates the response by
+$\varepsilon_{j,t}$ and fix the horizon $h$. The LP estimates the response by
 projecting the future outcome $y_{t+h}$ onto the current shock $\varepsilon_{j,t}$,
 controlling for the $p$ lags $y_{t-1}, \ldots, y_{t-p}$ that span the
 conditioning information of the system,
@@ -194,18 +194,18 @@ where $\nu_h$ is a $K \times 1$ vector of constants, $\beta_h$ is a $K \times 1$
 vector of impulse response coefficients at horizon $h$, $\Xi_{h,\ell}$ are
 $K \times K$ coefficient matrices on the lagged controls, and $\xi_{t+h}^{(h)}$
 is the horizon-$h$ projection residual.
-Under appropriate identification of the shock, e.g. exogeineity, the impulse response to a one-unit shock to the endogeneous variable can be directly obtained by ordinary least squares estimation of Equation \ref{eq:lp_shock}. The LP thus recovers the impulse response without parametrizing the underlying propagation dynamics, in sharp contrast to the VAR's reliance on a fitted autoregressive model and forward iteration. If the exogeneity is not appropriate causal interpretation of the shock might be enabled through selection on observable covariates \parencite{olea2025local}, instrumental variable regression using a slighly adjusted exogeneity assumtion \parencite{stock2018identification, jorda2015betting} or even traditional VAR identification schemes like the aforementioned Cholesky decomposition \parencite{plagborg2021local}.
+Under appropriate identification of the shock, e.g. exogeineity, the impulse response to a one-unit shock to the endogeneous variable can be directly obtained by ordinary least squares estimation of Equation \ref{eq:lp_shock}. The LP thus recovers the impulse response without parametrizing the underlying propagation dynamics, in sharp contrast to the VAR's reliance on a fitted autoregressive model and forward iteration. If exogeneity is not appropriate, causal interpretation of the shock might be enabled through selection on observable covariates \parencite{olea2025local}, instrumental variable regression using a slighly adjusted exogeneity assumtion \parencite{stock2018identification, jorda2015betting} or even traditional VAR identification schemes like the aforementioned Cholesky decomposition \parencite{plagborg2021local}.
 
 Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$
 proceeds in a single stage, directly by OLS on equation \eqref{eq:lp_shock}.
-Equation \eqref{eq:lp_shock} therefore is the $h$-step predictive regression of $y_{t+h}$
+Equation \eqref{eq:lp_shock} therefore yields the $h$-step predictive regression of $y_{t+h}$
 on the shock of interest, whose leading coefficient coincides with the
 horizon-$h$ impulse response \parencite{jorda2025local}. Since
 $\hat{\beta}_h$ is the OLS coefficient on a regressor orthogonal to the
 projection error $\xi_{t+h}^{(h)}$ by construction of the structural shock,
 it recovers the impulse response directly, without propagation through a
 nonlinear mapping and hence without the delta-method step that governs the
-VAR estimator in \eqref{eq:var_delta_method}.
+VAR estimator in Equation \eqref{eq:var_delta_method}.
 
 Provided $\{y_t\}$ is strictly stationary and ergodic with
 $\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$ and absolutely
@@ -226,18 +226,58 @@ $\xi_{t+h}^{(h)}$ follows a moving-average process of order $h-1$, thus the regr
 correlated, and $V_h$ denotes the associated long-run variance.
 
 The long-run form of $V_h$ reflects a structural feature of direct
-projection. AS VARs confines all dynamic dependence to the one-step innovation and generates
-longer-horizon responses by iterating a single fitted model, local projections, by contrast, reads each horizon off a separate regression of which the residual absorbs shocks
-realised between the impulse date and the response date. Inserting the
-moving-average representation of $y_{t+h}$ into \eqref{eq:lp_shock} makes
-this explicit. The projection error collects the structural innovations
-dated $t+1$ through $t+h$, and is therefore a moving-average process of
-order $h-1$. 
+projection. Whereas the VAR confines all dynamic dependence to the one-step
+innovation and generates longer-horizon responses by iterating a single
+fitted model, the local projection reads each horizon off a separate
+regression whose residual must absorb the shocks realised between the
+impulse date and the response date. Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}]$ almost surely \parencite{jorda2025local} 
+\begin{equation}
+y_t = \rho y_{t-1} + u_t.
+\end{equation}
+
+Using a simplified version of the local projection estimator in
+\eqref{eq:lp_shock}, the $h$-step regression takes the form
+%
+\begin{equation}
+    y_{t+h} = \beta_h\, y_t + \xi_{t+h}^{(h)},
+    \label{eq:lp_ar1}
+\end{equation}
+%
+Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1} yields
+%
+\begin{equation}
+    y_{t+h} = \beta^h y_t + \xi_{t+h}^{(h)}, \qquad \xi_{t+h}^{(h)} = \sum_{i=1}^{h} \rho^{h-i}\, u_{t+i},
+    \label{eq:ar1_recursive}
+\end{equation}
+%
+
+The projection error is therefore a
+moving-average process of order $h$, whose coefficients $\rho^i$ are
+the impulse responses of the DGP itself — the stronger the persistence
+$\rho$, the larger and more slowly decaying the autocovariances of
+$\xi_{t+h}^{(h)}$, and hence the more severe the distortion in naive
+OLS standard errors \parencite{jorda2005estimation, hansen2022econometrics}.
 
 
-Inference, however, is complicated by the overlapping-horizon structure of the residual: iterating \eqref{eq:lp_reduced} shows that $\xi_{t+h}^{(h)}$ is a moving average of the one-step forecast errors accruing between $t$ and $t+h$, and is therefore serially correlated of order $h-1$ even when the innovations are white noise \parencite[p.~163]{jorda2005estimation}. Accordingly \textcite{jorda2005estimation} recommends a heteroskedasticity- and autocorrelation-consistent (HAC) covariance
-estimator, such as Newey--West \parencite[p.~75]{jorda2025local}, which
-delivers pointwise-valid, asymptotically normal inference under stationarity, but---mirroring the delta-method intervals of the VAR---neither uniformly over the persistence of the process nor at horizons that grow with the sample.
+
+Inserting the moving-average
+representation of $y_{t+h}$ into \eqref{eq:lp_shock} makes this explicit:
+the projection error collects the structural innovations dated $t+1$
+through $t+h$,
+%
+\begin{equation}
+    \xi_{t+h}^{(h)} = \sum_{i=0}^{h-1} \Psi_i\, B\, \varepsilon_{t+h-i},
+    \label{eq:lp_ma_error}
+\end{equation}
+%
+and is therefore a moving-average process of order $h-1$ whose coefficients
+are the Wold coefficients $\Psi_i B$ of the system \parencite{hansen2022econometrics}.
+Its magnitude is accordingly mediated by the persistence of the underlying
+DGP, the serial dependence of the regression scores strengthening and
+decaying more slowly as the dominant root approaches unity. To restore
+valid inference in the presence of this dependence, \textcite{jorda2005estimation}
+recommends the use of Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent standard
+errors. 
  
 \textcite{montiel2021local} show that a minimal modification removes the need for the HAC correction. Augmenting the projection with one additional lag renders the effective regressor of interest stationary even under a unit root; in the leading scalar case the lag-augmented projection
 %
