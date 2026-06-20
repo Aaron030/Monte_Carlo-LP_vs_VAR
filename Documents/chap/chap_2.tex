@@ -168,6 +168,8 @@ Crucially, both channels are population-level phenomena:
 coefficients and the resulting contamination of the structural rotation 
 matrix persist even as $T \to \infty$.
 
+\textbf{misspecification}
+schorfheide 2005
 
 \subsection{Introduction to Local Projections (1.5 -2 pages)}
 
@@ -253,60 +255,44 @@ Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1} yields
 
 The projection error is therefore a moving-average process of order $h$,mediated by the persistence of the underlying DGP. Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of
 $\xi_{t+h}^{(h)}$, and hence the more severe the distortion in naive
-OLS standard errors. Furthermore, when $rho \to 1$ naive OLS estimation will exhibit non-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the inverse unit-circle, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
+OLS standard errors. Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the inverse unit-circle, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
 
-These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. \textcite{montiel2021local} show that HAC estimation  that a minimal modification removes the need for the HAC correction. Augmenting the projection with one additional lag renders the effective regressor of interest stationary even under a unit root; in the leading scalar case the lag-augmented projection
-%
-\begin{equation}
-    y_{t+h} = \beta_h\, y_t + \tilde{\beta}_h\, y_{t-1} + \xi_{t+h}^{(h)}
-    \label{eq:lp_aug}
-\end{equation}
-%
-has a coefficient on $y_t$ that equals the coefficient on the residualized
-innovation $u_t$ in a regression on $(u_t, y_{t-1})$. The regression score
-$\xi_{t+h}^{(h)} u_t$ is then serially uncorrelated---because $u_t$ is
-uncorrelated with its own leads and lags---so that, contrary to conventional
-wisdom, the ordinary heteroskedasticity-robust Eicker--Huber--White standard
-error is sufficient despite the serially correlated residual
-\parencite[pp.~1794--1795]{montiel2021local}. The resulting $t$-statistic is
-asymptotically standard normal \emph{uniformly} over $\rho \in [-1,1]$ and
-over horizons satisfying $h/T \to 0$, dispensing with the bandwidth and kernel
-choices of HAC inference and restoring exactly the robustness to persistence
-and long horizons that VAR inference lacks
-\parencite[p.~1809]{montiel2021local}; \parencite[p.~76]{jorda2025local}.
- 
+These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. In practice, however, HAC inference requires the specification choice of tuning parameters with complex interpretation \parencite{lazarus2018har} and introduce another source of bias themself. More specifically, \textcite{herbst2024bias} show that while HAC estimator are asymptotically valid, estimates of long-run variance are typically downward biased leading to an understatement of the surrounding uncertainty of the point estimate. 
 
-The favourable and robust properties just described are, as for the VAR,
-qualified in the sample sizes typical of macroeconomic applications, and the qualifications run largely opposite to those of the autoregression.
- 
-First, the price of estimating each horizon by an unrestricted regression is variance. The local projection discards the cross-equation and cross-horizon restrictions that the VAR exploits through its recursion, an efficiency loss that is increasing in the horizon \parencite{li2024local}. Since the two estimators target the same response in population \parencite[p.~975]{plagborg2021local},
-no method dominates in mean squared error across data-generating processes; in
-finite samples the comparison reduces to a bias--variance trade-off in which
-the VAR is typically more precise at short horizons and the local projection
-less biased at long ones \parencites{li2024local}{montiel2021local}.
- 
-Second, the local projection is not unbiased in finite samples.
-\textcite{herbst2024bias} show that when the data are persistent---the case of
-interest for impulse-response analysis---LP point estimates can be severely
-biased at the sample lengths common in the literature, that the bias links the
-horizons to one another, and that it admits a simple analytical approximation
-and bias correction. The near-unit-root downward bias familiar from
-autoregressive estimation thus re-emerges directly in the projection
-coefficient \parencite[p.~75]{jorda2025local}.
- 
-Third, and offsetting these costs, the single-equation structure confers a
-robustness the VAR lacks. Because the response is estimated directly rather
-than by iterating a fitted model, specification errors do not compound across
-horizons: \textcite{jorda2024long} show that in infinite-order
-processes the local projection has lower bias than the VAR at horizons beyond the truncation lag, precisely because the coefficient is estimated without propagating coefficient error through powers of the companion matrix, which also makes the projection more forgiving of lag-length misspecification \parencite[p.~65]{jorda2025local}. This robustness is not unqualified on the inference side, however: \textcite{herbst2024bias} caution that in the same small, persistent samples the autocorrelation-robust standard errors of the classical approach can substantially understate sampling uncertainty---a further argument for the lag-augmented, heteroskedasticity-robust inference of \textcite{montiel2021local}.
+To tackle this and allow for valid inference even under near unity settings,
+\textcite{montiel2021local} show that augmenting the local projection with one
+additional lag renders the regression score $\xi^{(h)}_{t+h} \tilde{u}_t$
+serially uncorrelated under the weak assumption that the shock $u_t$ is
+unpredictable from its own past and future values, so that conventional
+Eicker–Huber–White (EHW) heteroskedasticity-robust standard errors suffice
+despite the serially correlated residual. The resulting $t$-statistic is
+asymptotically standard normal uniformly over $\rho \in [-1,1]$ and horizons
+$h/T \to 0$.
+
+A long-standing piece of conventional wisdom holds that local projections are
+more robust to model misspecification than VARs, originating with \textcite[162]{jorda2005estimation} and echoed across subsequent surveys \parencite{ramey2016macroeconomic,li2024local}.
+\textcite{plagborg2021local} document this view while noting that it had long
+lacked formal foundation; in their finite-order treatment, LPs are indeed
+generally more robust to misspecification than equal-order VARs, a property they
+establish without invoking the population equivalence of the two estimands. \textcite{olea2024double} show that, because the LP reads each horizon off a separate regression rather than iterating a single fitted model forward, a misspecification of the short-run dynamics does not compound through the powers of the companion matrix as it does for the VAR, whose bias arises precisely from extrapolating the response through the iterated mapping $\hat A^{h}$ that the misspecified model no longer satisfies.
+
+
+However, similar to VAR models, \textcite{herbst2024bias} show that LP 
+point estimates are biased downward in finite samples for two reasons. First and distinct from VARs, the finite-sample estimation of the regression intercept introduces a non-zero distortion of the sample covariance between shock and outcome even when both are uncorrelated in population. 
+Second and in analogy to VARs, the estimation of the lagged-variable coefficients inherits the classical downward bias of least-squares autoregressive estimators \parencite{pope1990biases} and is amplified the more persistent the controls are. 
+Both channels cause the bias to depend on the true impulse responses at neighbouring horizons and to worsen with the degree of persistence  and the horizon, as the bias accumulates over an expanding sum of  contributing terms as $h$ increases.
+Although \textcite{herbst2024bias} propose a bias corrected estimator, \textcite{li2024local} find that it reduces bias only partially and at the cost of increased variance. 
 
 
 \subsection{On the Equivalence of VARs and Local Projections (2-2.5 pages)}
 
-As Local Projection inference gained in popularity over the last couple of years, more and more scholars have started comparing the asymptotical and finite sample trade-offs of both methods. Prior research has established the notion that SVARs are computational more efficient while LPs inherit favorable robustness to misspecification (see e.g.\cites{ramey2016macroeconomic}{jorda2005estimation}). The notion applies in analogy to the comparison of iterated vs. direct forcasting as established by \textcite{marcellino2006comparison}.
+As Local Projection inference gained in popularity over the last couple of years, more and more scholars have started comparing the asymptotical and finite sample trade-offs of both methods, such as \textcite{kilian2011reliable},  \textcite{bruns2022comparison}, \textcite{li2024local}, \textcite{olea2025local} among others. Their comparison have yielded these and that results. 
 
-\textcite{plagborg2021local} were the first to actually show that under weak stationarity and unrestriced lag structure both methods estimate the identical impulse response function in population. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and any VAR impulse response through a LP with appropriate control variables. 
-- they do not impose restrictions of the underlying DGP
+
+\textcite{plagborg2021local} were the first to show analytically, that both methods share the same population impulse response function under weak stationarity and unrestriced lag structure. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
+\textbf{maybe here the equation proof}
+Furthermore, as both methods are best linear predictors of the underlying DGP, the authors state that both methods are symetrically robust to non-linear misspecification
+
 The logic applies that any VAR model with sufficiently large lag lengths is able to capture the whole covariance properties of the data such that VAR($\infty$) forecasts coincide with direct LP forecasts. 
 The authors come to the conclusion: 
 - finite lag length, impulse response approximately agree if the same lag length is used for both but differ for $h \ge p$. 
