@@ -46,11 +46,7 @@ regardless of whether the DGP is linear (Proposition~1, p.~960). Under
 comparable lag information, both estimators thus provide an equal linear approximation 
 of the non-linear DGP, and any finite-sample divergence 
 reflects differences in the bias-variance tradeoff rather than differential 
-robustness to nonlinearity per se. 
-
-
-This makes 
-Extension~2 complementary to Extension~1, as whereas Extension~1 isolates the 
+robustness to nonlinearity per se. This makes Extension~2 complementary to Extension~1, as whereas Extension~1 isolates the 
 bias channel under invertible dynamic misspecification, Extension~2 isolates 
 functional-form misspecification in the conditional mean. 
 
@@ -78,8 +74,6 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_IRF_LO}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
@@ -87,14 +81,14 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_IRF_HI}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{minipage}{0.9\textwidth}
 \small
 \textit{Note.} The left column reports the best linear projection impulse response, $\theta_h$, of variable 1 to shock 1. The right column reports the autocorrelation function of the squared second-equation residual, $\hat e_{2,t}^{\,2}$, as a diagnostic for volatility clustering induced by the nonlinear lag term. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. The best linear projection response is approximately invariant across nonlinearity strengths $\gamma$.
 \end{minipage}
 
 \end{figure}
+
+\ref{fig:NON_LIN_IRF} shows the true IRF form 
 
 
 % ----------------------------------- Small Sample Deviation from Truth
@@ -110,8 +104,6 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho05}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
@@ -119,11 +111,9 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho07}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports finite-sample deviations from the true impulse response function for the nonlinear lag-quadratic DGP with \(T=240\) and \(B=5{,}000\) Monte Carlo replications. Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each row correspond to nonlinearity strength.
+\textit{Note.} Deviation from truth, \(\hat\theta_h - \theta_h\), at \(T=240\) over \(B=5{,}000\) replications for the nonlinear lag-quadratic DGP, for VAR(4) (black) and LP(4) (crimson). Solid line is the mean deviation (finite-sample bias); shaded area is the central \(90\%\) Monte Carlo band (empirical 5th--95th percentile), not an SE band. Rows correspond to persistence \(\rho \in \{0.5,0.7\}\); columns to nonlinearity \(\gamma \in \{0,0.3,0.6\}\). The band widens with \(\gamma\) while the mean stays \(\gamma\)-stable.
 \end{minipage}
 
 \end{figure}
@@ -142,8 +132,6 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_ASYMPTOTIC_rho05}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
@@ -151,11 +139,9 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_ASYMPTOTIC_rho07}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports asymptotic deviations from the true impulse response function for the nonlinear lag-quadratic DGP, approximated using \(T=10{,}000\) and \(B=1{,}000\) Monte Carlo replications. Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each row correspond to nonlinearity strength.
+\textit{Note.} As above, at \(T=10{,}000\) over \(B=1{,}000\) replications. Both VAR(4) (black) and LP(4) (crimson) collapse to \(\approx 0\) at every horizon and \(\gamma\) --- consistent for the linear projection with no asymptotic bias floor --- so the residual misspecification is purely inferential. Solid line is the mean deviation; shaded area is the central \(90\%\) Monte Carlo band. The lag-quadratic is metastable, so divergent paths are dropped and the retained fraction is shown per panel. Rows correspond to \(\rho \in \{0.5,0.7\}\); columns to \(\gamma \in \{0,0.3,0.6\}\).
 \end{minipage}
 
 \end{figure}
@@ -181,8 +167,6 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
     \label{fig:NON_LIN_COMPLEXITY_rho07_LIMITED}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \caption{\(\rho = 0.5\) (Asymptotic)}
@@ -203,7 +187,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each panel correspond to 
 nonlinearity strength. The top row (a), (b), show the small sample complexity frontier, while the bottom row 
 (c), (d), approximates the asymptotic frontier with $T=10,000$. The frontier summarizes the finite-sample tradeoff between model complexity and estimator 
-performance.
+performance. Horizontal line represents horizon averaged RMSE for LP(4).
 \end{minipage}
 
 \end{figure}
@@ -217,25 +201,21 @@ performance.
 
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.5\) (Sample)}
+    \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.5_T=240_B=5000_gamma=0.6.png}
     \label{fig:NON_LIN_POINT_EST_SAMPLE_rho05}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.7\) (Sample)}
+    \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.7_T=240_B=5000_gamma=0.6.png}
     \label{fig:NON_LIN_POINT_EST_SAMPLE_rho07}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=240\), to investigate sample behavior of the estimators. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
+\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=240\), to investigate sample behavior of the estimators. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design. Shaded area in bias represents 95\% band from Monte Carlo standard errors.
 \end{minipage}
 
 \end{figure}
@@ -248,12 +228,10 @@ performance.
 
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.5\) (Asymptotic)}
+    \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{NON_LIN_POINT_ESTIMATION_rho=0.5_T=10000_B=5000_gamma=0.6.png}
     \label{fig:NON_LIN_POINT_EST_ASYMPTOTIC_rho05}
 \end{subfigure}
-
-\vspace{0.4cm}
 
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
@@ -262,11 +240,9 @@ performance.
     \label{fig:NON_LIN_POINT_EST_ASYMPTOTIC_rho07}
 \end{subfigure}
 
-\vspace{0.2cm}
-
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=10,000\), to approximate asymptotic behavior. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design.
+\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=10,000\), to approximate asymptotic behavior. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design. Shaded area in bias represents 95\% band from Monte Carlo standard errors.
 \end{minipage}
 
 \end{figure}
@@ -285,16 +261,12 @@ performance.
     \label{fig:NON_LIN_SAMPLE_RMSE_rho05}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=240.png}
     \label{fig:NON_LIN_SAMPLE_RMSE_rho07}
 \end{subfigure}
-
-\vspace{0.2cm}
 
 \begin{minipage}{0.9\textwidth}
 \small
@@ -316,16 +288,12 @@ performance.
     \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho05}
 \end{subfigure}
 
-\vspace{0.4cm}
-
 \begin{subfigure}[t]{0.9\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=10000.png}
     \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho07}
 \end{subfigure}
-
-\vspace{0.2cm}
 
 \begin{minipage}{0.9\textwidth}
 \small
@@ -337,29 +305,31 @@ performance.
 % ----------------------------------- Coverage (?)
 \begin{figure}[htbp]
 \centering
-\caption{COVERAGE}
+\caption{Confidence-Interval Coverage under Nonlinear Lag Misspecification}
 \label{fig:NOLIN_COVERAGE}
 
-% Erste Reihe (zwei nebeneinander)
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
+    \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.5_T=10000_B=5000.png}
-    %\caption{High}
     \label{fig:NOLIN_COVERAGE_LO}
 \end{subfigure}
 
-\vspace{0.5cm}
-
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
+    \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.7_T=10000_B=5000.png}
-    %\caption{Mid}
     \label{fig:NOLIN_COVERAGE_HI}
 \end{subfigure}
 
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals by horizon for the nonlinear lag-quadratic DGP, at \(T=10{,}000\) over \(B=5{,}000\) Monte Carlo replications with \(\gamma=0.6\). VAR\((q)\) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). VAR's homoskedastic intervals under-cover as nonlinearity strengthens, while LP's robust intervals hold near nominal.
+\end{minipage}
+
 \end{figure}
 
-
+\FloatBarrier
 \subsection{Discussion of Results}
 
 \FloatBarrier

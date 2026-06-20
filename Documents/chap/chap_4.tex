@@ -56,7 +56,214 @@ to the baseline.
 \subsection{Simulation Results}
 
 
+% ----------------------------------- True IRF
+\begin{figure}[htbp]
+\centering
+\caption{True IRF Functions by MA Misspecification Strength}
+\label{fig:DYN_MISSPEC_IRF}
 
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.5.png}
+    \label{fig:DYN_MISSPEC_IRF_rho05}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.7.png}
+    \label{fig:DYN_MISSPEC_IRF_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.95.png}
+    \label{fig:DYN_MISSPEC_IRF_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} True structural IRF \(\theta_h\) by horizon, one line per MA misspecification strength \(\theta \in \{0,0.1,0.3,0.6\}\) (\(\theta=0\) nests the baseline VAR(4)). Panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\).
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Small Sample Deviation from Truth
+\begin{figure}[htbp]
+\centering
+\caption{Small-Sample Deviation from the True IRF}
+\label{fig:DYN_MISSPEC_SMALL_SAMPLE_DEV}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_LIMITED_DEVIATION_rho=0.5_T=240_B=5000.png}
+    \label{fig:DYN_MISSPEC_SMALL_SAMPLE_DEV_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_LIMITED_DEVIATION_rho=0.7_T=240_B=5000.png}
+    \label{fig:DYN_MISSPEC_SMALL_SAMPLE_DEV_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_LIMITED_DEVIATION_rho=0.95_T=240_B=5000.png}
+    \label{fig:DYN_MISSPEC_SMALL_SAMPLE_DEV_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Deviation from truth, \(\hat\theta_h - \theta_h\), at \(T=240\) over \(B=5{,}000\) replications, for VAR(4) (black) and LP(4) (crimson). Solid line is the mean deviation (finite-sample bias); shaded area is the central \(90\%\) Monte Carlo band (empirical 5th--95th percentile), not an SE band. Within each panel, sub-axes correspond to \(\theta \in \{0,0.1,0.3,0.6\}\); panels to persistence \(\rho \in \{0.5,0.7,0.95\}\).
+\end{minipage}
+
+\end{figure}
+
+
+% ----------------------------------- Asymptotic Deviation from Truth
+\begin{figure}[htbp]
+\centering
+\caption{Asymptotic Deviation from the True IRF}
+\label{fig:DYN_MISSPEC_ASYMPTOTIC}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_ASYMPTOTIC_DEVIATION_rho=0.5_T=10000_B=1000.png}
+    \label{fig:DYN_MISSPEC_ASYMPTOTIC_rho05}
+\end{subfigure}
+
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_ASYMPTOTIC_DEVIATION_rho=0.7_T=10000_B=1000.png}
+    \label{fig:DYN_MISSPEC_ASYMPTOTIC_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_ASYMPTOTIC_DEVIATION_rho=0.95_T=10000_B=1000.png}
+    \label{fig:DYN_MISSPEC_ASYMPTOTIC_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} As above, at \(T=10{,}000\) over \(B=1{,}000\) replications. LP(4) (crimson) lies on the zero line at all horizons, whereas VAR(4) (black) retains a small, non-vanishing short-horizon bias. Solid line is the mean deviation; shaded area is the central \(90\%\) Monte Carlo band. Sub-axes within each panel correspond to \(\theta \in \{0,0.1,0.3,0.6\}\); panels to \(\rho \in \{0.5,0.7,0.95\}\).
+\end{minipage}
+
+\end{figure}
+
+% ----------------------------------- Point Estimates
+\begin{figure}[htbp]
+\centering
+\caption{Point-Estimation Performance Across Persistence Regimes}
+\label{fig:DYN_MISSPEC_POINT_ESTIMATION}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_POINT_ESTIMATION_rho=0.5_T=240_B=5000_theta=0.6.png}
+    \label{fig:DYN_MISSPEC_POINT_ESTIMATION_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_POINT_ESTIMATION_rho=0.7_T=240_B=5000_theta=0.6.png}
+    \label{fig:DYN_MISSPEC_POINT_ESTIMATION_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_POINT_ESTIMATION_rho=0.95_T=240_B=5000_theta=0.6.png}
+    \label{fig:DYN_MISSPEC_POINT_ESTIMATION_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 240\). The fixed LP(4) reference line is compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). Misspecification level $\theta$ of 0.6. Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\end{minipage}
+
+\end{figure}
+
+% ----------------------------------- Coverage
+\begin{figure}[htbp]
+\centering
+\caption{Confidence-Interval Coverage under Dynamic Misspecification}
+\label{fig:DYN_MISSPEC_COVERAGE}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_COVERAGE_rho=0.5_T240_B=5000.png}
+    \label{fig:DYN_MISSPEC_COVERAGE_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_COVERAGE_rho=0.7_T240_B=5000.png}
+    \label{fig:DYN_MISSPEC_COVERAGE_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_COVERAGE_rho=0.95_T240_B=5000.png}
+    \label{fig:DYN_MISSPEC_COVERAGE_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Empirical coverage of nominal \(95\%\) confidence intervals by horizon for VAR(4) and LP(4) at \(T=240\) over \(B=5{,}000\) Monte Carlo replications, with one curve per MA misspecification strength \(\theta \in \{0,0.1,0.3,0.6\}\). VAR(4) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. The rightmost panel validates that the VAR(4) delta-method standard error continues to track the empirical sampling dispersion at \(\theta=0.6\). Panels correspond to persistence values \(\rho \in \{0.5,0.7,0.95\}\).
+\end{minipage}
+
+\end{figure}
+
+% ----------------------------------- Sample RMSE by Horizon X
+\begin{figure}[htbp]
+\centering
+\caption{Sample RMSE by Horizon for Dynamic Misspecification}
+\label{fig:DYN_MISSPEC_SAMPLE_RMSE}
+
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_RMSE_BY_HORIZON_rho=0.5_T=240.png}
+    \label{fig:DYN_MISSPEC_SAMPLE_RMSE_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_RMSE_BY_HORIZON_rho=0.7_T=240.png}
+    \label{fig:DYN_MISSPEC_SAMPLE_RMSE_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_RMSE_BY_HORIZON_rho=0.95_T=240.png}
+    \label{fig:DYN_MISSPEC_SAMPLE_RMSE_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports RMSE by horizon for the dynamically misspecified DGP with varying $T$. Sub-graphs correspond to persistence values $\rho \in \{0.5,0.7,0.95\}$.
+\end{minipage}
+
+\end{figure}
+
+\FloatBarrier
 \subsection{Discussion of Results}
 
 \FloatBarrier
