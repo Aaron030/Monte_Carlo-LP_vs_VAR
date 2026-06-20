@@ -54,6 +54,8 @@ Thumbs.db
 *.toc
 *.blg
 *.bbl
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR
 
 CH5_Findings.md
 IRF_Cases/*

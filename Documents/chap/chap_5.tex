@@ -61,7 +61,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 \subsection{Simulation Results}
 
 
-% ----------------------------------- True IRF
+% ----------------------------------- True IRF (KEEP)
 \begin{figure}[htbp]
 \centering
 \caption{True IRF Functions by Nonlinearity Strength}
@@ -83,71 +83,21 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} The left column reports the best linear projection impulse response, $\theta_h$, of variable 1 to shock 1. The right column reports the autocorrelation function of the squared second-equation residual, $\hat e_{2,t}^{\,2}$, as a diagnostic for volatility clustering induced by the nonlinear lag term. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. The best linear projection response is approximately invariant across nonlinearity strengths $\gamma$.
+\textit{Note.} Left: the best linear projection impulse response $\theta_h$ of variable 1 to shock 1, approximately invariant across nonlinearity strengths $\gamma$. Middle and right: the ACF of the squared and the level second-equation residual ($\hat e_{2,t}^{\,2}$ and $\hat e_{2,t}$), with the $\pm 1.96/\sqrt{N}$ white-noise band. The squared-residual ACF lifts above the band as $\gamma$ grows (volatility clustering, i.e.\ conditional heteroskedasticity), while the level residual stays white. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$.
 \end{minipage}
 
 \end{figure}
 
-\ref{fig:NON_LIN_IRF} shows the true IRF form 
+Figure \ref{fig:NON_LIN_IRF} shows the true IRF together with the autocorrelation of the squared and level 
+second-equation residuals of a VAR(4). As $\gamma$ and $\rho$ increase, the squared residuals develop significant 
+autocorrelation at lag 1, while the level residuals stay within the white-noise band. The nonlinear term 
+is thus approximately orthogonal to the linear lag space and leaves the best linear projection essentially 
+unchanged. The misspecification only surfaces as conditional heteroskedasticity in the residuals. Furthermore, because 
+the delta-method standard errors assume homoskedasticity, they are invalid under this residual heteroskedasticity. 
+This leads to VAR(4)'s confidence intervals under-covering, whereas LP's heteroskedasticity-robust intervals remain valid.
 
 
-% ----------------------------------- Small Sample Deviation from Truth
-\begin{figure}[htbp]
-\centering
-\caption{Small-Sample Deviation from the True IRF}
-\label{fig:NON_LIN_SMALL_SAMPLE_DEV}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{NON_LIN_LIMITED_DEVIATION_rho=0.5_T=240_B=5000.png}
-    \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho05}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_LIMITED_DEVIATION_rho=0.7_T=240_B=5000.png}
-    \label{fig:NON_LIN_SMALL_SAMPLE_DEV_rho07}
-\end{subfigure}
-
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Deviation from truth, \(\hat\theta_h - \theta_h\), at \(T=240\) over \(B=5{,}000\) replications for the nonlinear lag-quadratic DGP, for VAR(4) (black) and LP(4) (crimson). Solid line is the mean deviation (finite-sample bias); shaded area is the central \(90\%\) Monte Carlo band (empirical 5th--95th percentile), not an SE band. Rows correspond to persistence \(\rho \in \{0.5,0.7\}\); columns to nonlinearity \(\gamma \in \{0,0.3,0.6\}\). The band widens with \(\gamma\) while the mean stays \(\gamma\)-stable.
-\end{minipage}
-
-\end{figure}
-
-
-% ----------------------------------- Asymptotic Deviation from Truth
-\begin{figure}[htbp]
-\centering
-\caption{Asymptotic Deviation from the True IRF}
-\label{fig:NON_LIN_ASYMPTOTIC}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{NON_LIN_ASYMPTOTIC_DEVIATION_rho=0.5_T=10000_B=1000.png}
-    \label{fig:NON_LIN_ASYMPTOTIC_rho05}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_ASYMPTOTIC_DEVIATION_rho=0.7_T=10000_B=1000.png}
-    \label{fig:NON_LIN_ASYMPTOTIC_rho07}
-\end{subfigure}
-
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} As above, at \(T=10{,}000\) over \(B=1{,}000\) replications. Both VAR(4) (black) and LP(4) (crimson) collapse to \(\approx 0\) at every horizon and \(\gamma\) --- consistent for the linear projection with no asymptotic bias floor --- so the residual misspecification is purely inferential. Solid line is the mean deviation; shaded area is the central \(90\%\) Monte Carlo band. The lag-quadratic is metastable, so divergent paths are dropped and the retained fraction is shown per panel. Rows correspond to \(\rho \in \{0.5,0.7\}\); columns to \(\gamma \in \{0,0.3,0.6\}\).
-\end{minipage}
-
-\end{figure}
-
-
-% ----------------------------------- Complexity Frontier
+% ----------------------------------- Complexity Frontier (Keep)
 \begin{figure}[htbp]
 \centering
 \caption{Complexity Frontier under Nonlinear Lag Misspecification}
@@ -192,8 +142,22 @@ performance. Horizontal line represents horizon averaged RMSE for LP(4).
 
 \end{figure}
 
+As seen in Figure \ref{fig:NON_LIN_COMPLEXITY}, LP(4)'s RMSE matches that of a VAR of order 
+$\approx 18$–$19$ in both the low ($\rho=0.5$) and mid ($\rho=0.7$) persistence scenarios in small samples. 
+Notably, the parsimonious VAR(1) and VAR(2) are among the lowest-RMSE specifications, as their low variance masks an 
+underlying bias from insufficient lags. There is no visible difference in performance between nonlinearity 
+strengths at low persistence levels, irrespective of sample size, as the misspecification requires sufficient 
+persistence to bite. When moving to medium persistence, RSME rises with $\gamma$ across all VAR(p) and LP(4) models.
 
-% ----------------------------------- Sample Point Estimation
+Next, the asymptotic approximation removes the variance that masked the bias of the parsimonious VAR(1) and 
+VAR(2) models. Both reveal the wrong-estimand effect by blowing up and significantly underperform LP(4), while 
+VAR(3)/(4) become the lowest-RMSE specification. The VAR sweep also converges to LP(4) performance in higher 
+lags, irrespective of persistence. Lastly, the RMSE gap between high and low $\gamma$ shrinks with sample size, 
+consistent with the nonlinearity acting through inflated and asymptotically vanishing variance rather than bias.
+
+
+\FloatBarrier
+% ----------------------------------- Sample Point Estimation (Keep)
 \begin{figure}[htbp]
 \centering
 \caption{Sample Point Estimates under Strong Nonlinearity}
@@ -220,7 +184,7 @@ performance. Horizontal line represents horizon averaged RMSE for LP(4).
 
 \end{figure}
 
-% ----------------------------------- Point Estimation Asymptotic
+% ----------------------------------- Point Estimation Asymptotic (Keep)
 \begin{figure}[htbp]
 \centering
 \caption{Asymptotic Point Estimates under Strong Nonlinearity}
@@ -247,62 +211,63 @@ performance. Horizontal line represents horizon averaged RMSE for LP(4).
 
 \end{figure}
 
+\FloatBarrier
+Moving to point prediction in figures \ref{fig:NON_LIN_POINT_EST_SAMPLE} and \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}, the asymptotic traits of equivalence under a non-linear DGP become even more noticable. 
+In the small sample (figure \ref{fig:NON_LIN_POINT_EST_SAMPLE}), bias in low and medium persistence scenarios exhibits a lot of noise, manifesting in oscilating lines.
+Importantly, VAR bias does seem to follow LP bias for a horizon count correlating with VAR complexity, before converging to zero.
+VAR(2) seems to violate this pattern, as its bias strongly oscilates, peaks at horizon 3, and then converges to zero.
+Convergence to zero is expected in all VAR models, and in all persistence/sample size scenarios, as their predicted shock effect 
+has no mechanism to percolate through higher horizons once their lag length is exhausted. The LP model exhibits a slightly oscilating 
+but relatively constant negative bias in small samples.
 
-% ----------------------------------- Sample RMSE by Horizon X
-\begin{figure}[htbp]
-\centering
-\caption{Sample RMSE by Horizon under Nonlinear Lag Misspecification}
-\label{fig:NON_LIN_SAMPLE_RMSE}
+The most important insight from the bias panels becomes visible when moving to the asymptotic approximation (figure \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}), as here all models, except VAR(2), 
+drop to the zero-line, irrespective of persistence. VAR(2) shows extreme oscilation, peaking at an absolute bias value of ca. 0.01 and 0.025, 
+depending on persistence, before dropping to zero.
 
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.5_T=240.png}
-    \label{fig:NON_LIN_SAMPLE_RMSE_rho05}
-\end{subfigure}
+Comparing variance levels between persistence scenarios, we notice even more strongly that lower lag VAR models follow LP variance, 
+before decreasing about one horizon before their max lag length, and then dropping to zero. Again, the drop is an expected effect of the prediction horizon exheeding model max lags.
+Additionally, larger lag VAR model variance seems to exceed LP variance in early horizons. LP variance again oscilates softly while staying generally constant.
+This pattern is consistent between persistence levels, with higher persistence leading to more rounded, less horizontal LP and higher order VAR paths, signaling heteroskedasticity.
+When moving to the asymptotic approximation, the pattern is amplified significantly. All models now exactly trace LP variance, before decreasing slightly approximately one horizon before their max lags and converging to zero.
 
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=240.png}
-    \label{fig:NON_LIN_SAMPLE_RMSE_rho07}
-\end{subfigure}
+Lastly, RMSE and MSE show the exact same pattern as variance, with one exception. VAR(2) blows up in lower horizons, and exceeds all other model performances by several orders of magnitude.
 
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Each panel reports RMSE by horizon for the nonlinear lag-quadratic DGP with $T=240$. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. Columns within each panel correspond to nonlinearity strength $\gamma$. Estimator definitions and performance measures are identical to the baseline design.
-\end{minipage}
+As VAR(2) only blows up in RMSE, MSE and bias, and stays constant in variance, the evidence again strongly points towards a wrong estimator effect caused by insufficient lag length.
 
-\end{figure}
 
- % ----------------------------------- Asymptotic RMSE by Horizon X
-\begin{figure}[htbp]
-\centering
-\caption{Asymptotic RMSE by Horizon under Nonlinear Lag Misspecification}
-\label{fig:NON_LIN_ASYMPTOTIC_RMSE}
 
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.5_T=10000.png}
-    \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho05}
-\end{subfigure}
 
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_RMSE_BY_HORIZON_rho=0.7_T=10000.png}
-    \label{fig:NON_LIN_ASYMPTOTIC_RMSE_rho07}
-\end{subfigure}
+Moving to point prediction (Figures \ref{fig:NON_LIN_POINT_EST_SAMPLE} and \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}), 
+the equivalence under a nonlinear DGP becomes even clearer. In the small sample, bias in the low and mid persistence 
+scenarios is noisy, manifesting as oscillating lines. VAR bias tracks LP bias up to a horizon within the VAR's 
+lag order before converging to zero. VAR(2) violates this and oscillates strongly, peaking around horizon 3, then converging to zero. LP exhibits a slightly oscillating but roughly constant negative bias.
 
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Each panel reports RMSE by horizon for the nonlinear lag-quadratic DGP with $T=10,000$ to approximate asymptotic behavior. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$. Columns within each panel correspond to nonlinearity strength $\gamma$. Estimator definitions and performance measures are identical to the baseline design.
-\end{minipage}
+The key insight appears asymptotically, as every model except VAR(2) collapses onto the zero line, irrespective of 
+persistence. VAR(2) shows large oscillation, peaking at an absolute bias of $\approx 0.01$ and $\approx 0.025$ 
+(low and mid persistence respectively) before decaying to zero. Its insufficient lag specification targets a 
+different linear projection, which manifests itself in bias when compared to the linear representation utilized by LP(4) and higher order VARs.
 
-\end{figure}
+In variance, the lower-order VARs trace LP closely, then peak and fall toward zero roughly one horizon before their 
+lag order $q$, while VAR(23) ($q>20$) never turns within the $h \le 20$ window. Larger-order VARs exceed LP variance 
+at early horizons, whereas LP variance oscillates softly around a constant level. Higher persistence keeps the IRF, 
+and hence the variance, elevated for longer, giving the more rounded, less horizontal profiles. Asymptotically the 
+pattern sharpens, as all models trace LP variance almost exactly, dipping about one horizon before their lag order, then 
+converging to zero.
 
-% ----------------------------------- Coverage (?)
+RMSE and MSE mirror the variance pattern almost exactly, with the exception of VAR(2) which blows up at short horizons, exceeding the other specifications by a wide margin. Since VAR(2) blows up in bias, MSE and RMSE yet shows no anomaly in variance, the evidence again points to a wrong-estimand effect from insufficient lag length, as with MSE $=$ bias$^2$ $+$ variance, a bias-only blow up cannot surface in the variance panel.
+
+Both the bias and the variance of a VAR(q) turn down at horizons tied to its lag order, because its impulse response 
+is built by iterating the estimated coefficient matrix. While $h \le q$, the horizon-$h$ response $\Psi_h = 
+\sum_{j=1}^{q} \hat A_j \Psi_{h-j}$ still draws directly on the estimated lag matrices, so both its bias and its sampling 
+variance stay elevated. Once $h > q$ the response is pure iteration of the estimated companion, which is stationary, so 
+each further step multiplies the estimate by a contraction and both bias and variance damp geometrically from 
+$h \approx q$ onward. Higher-order VARs therefore turn down later, and VAR(23), with $q > 20$, never drops within the 
+$h \le 20$ window. LP, by contrast, estimates each horizon by a separate direct regression and never iterates, 
+so its bias and variance stay roughly flat across all horizons. The staggered turning points are thus a consequence of 
+iteration, not of the estimand decaying or of VAR performance improving at higher horizons.
+
+
+% ----------------------------------- Coverage (Keep)
 \begin{figure}[htbp]
 \centering
 \caption{Confidence-Interval Coverage under Nonlinear Lag Misspecification}
@@ -330,6 +295,51 @@ performance. Horizontal line represents horizon averaged RMSE for LP(4).
 \end{figure}
 
 \FloatBarrier
-\subsection{Discussion of Results}
+
+Lastly, the coverage analysis (Figure \ref{fig:NOLIN_COVERAGE}) shows clear evidence of differing robustness to 
+heteroskedasticity between the two estimators. At low persistence, LP(4) coverage sits near the nominal $95\%$ level 
+for both variables, with only slight deviation at low horizons, while VAR(4) coverage develops a mild negative slope after 
+about horizon~7. The $\gamma$ levels barely differ at later horizons and show only some reduced coverage at low horizons. 
+At mid persistence, LP(4) is almost unaffected for variable~1 (a slightly larger deviation at low horizons), and for 
+variable~2 it dips at low horizons before recovering to near nominal at longer horizons. VAR(4) behaves differently: for 
+low and medium $\gamma$ it attains \emph{higher} coverage than under low persistence in variable~1, whereas high $\gamma$ 
+now produces reduced coverage, with the negative slope beginning at earlier horizons across both variables. Variable~2 
+VAR(4) exhibits a stronger fanning of the $\gamma$ levels, so the three curves no longer overlay.
+
+As LP defaults to heteroskedasticity-robust (HC) standard errors while the VAR(4) intervals are built from the 
+homoskedastic delta method, we expect VAR(4) to under-cover under the heteroskedasticity induced by the nonlinear DGP. 
+We observe exactly that, with one apparent exception: VAR(4) coverage \emph{improves} with persistence at low $\gamma$. 
+This reflects two opposing persistence effects. First, the VAR(4) interval under-covers at long horizons even at 
+$\gamma = 0$, where no heteroskedasticity is present (visible already at $\gamma=0$, where variable-1 coverage rises from 
+$\approx 0.89$ to $\approx 0.94$ between the two persistence levels): once the impulse response has decayed toward zero, 
+the delta-method standard error becomes too small relative to the true sampling spread and the interval is too 
+narrow---the negative slope after horizon~7. Because higher persistence keeps the response large for longer, this 
+long-horizon collapse is pushed out of the window, \emph{raising} average coverage. Second, the genuine 
+heteroskedasticity channel \emph{lowers} coverage and \emph{strengthens} with persistence, as a more variable state 
+amplifies the $y_{1,t-1}^2$ variance term. At low and medium $\gamma$ the first effect dominates and coverage rises 
+with persistence; at $\gamma = 0.6$ the heteroskedasticity channel overwhelms it and coverage falls below the 
+low-persistence level, most severely for variable~2, which loads directly on the heteroskedastic innovation.
+
+
+\subsection{Discussion of Results \& Conclusion}
+
+The results confirm that the population equivalence of \textcite{plagborg2021local} survives non-linear functional misspecification. Because the centred lag-quadratic is approximately orthogonal to the linear lag space, it leaves the best linear projection essentially unchanged. This results in the estimands being nearly $\gamma$-invariant, and both LP(4) and VAR(4) recoverering it asymptotically with no bias floor. The only systematic departures come from the under-lagged VAR(1) and VAR(2), which target a different linear projection and retain a non-vanishing bias. This is not a violation of the equivalence but its precondition, as the result is defined to hold at sufficient lag length.
+
+This split between population and finite-sample behaviour is not a contradiction but a direct consequence of what the equivalence asserts. \textcite{plagborg2021local} equate the two estimands, so the probability limits both procedures converge to, rather than the estimates themselves. Both are functions of the same population second moments, and at those true moments the direct projection of LP and the iterated coefficients of the VAR are merely two algebraic routes to the same impulse response. In a finite sample, however, those moments are replaced by noisy estimates, and the two routes propagate that noise differently. VARs compound it through the iterated companion, while LP estimates each horizon by a separate regression. Thus, since the impulse response is a nonlinear function of the coefficients, each route also carries its own finite-sample bias. The estimators therefore share a target but not a sampling distribution, and they coincide only in the limit. Thus, the two estimators divergence along two dimensions when appliede to sample data, namely point estimation and inference.
+
+In point estimation, VAR(4) retains the MSE advantage. Since both estimators carry the same small bias, their difference appears in their variance. Small sample volatility leads to LP's direct per-horizon regressions to include more noise than the VAR's iterated estimates. 
+
+In inference, the ranking reverses, as the lagged-state nonlinearity injects conditional 
+heteroskedasticity into the projection residuals, which the homoskedastic delta-method interval of the VAR cannot 
+accommodate. VAR(4) thus under-covers increasingly with $\gamma$ and persistence, while LP(4)'s heteroskedasticity-
+robust interval holds near the nominal level.
+
+These coverage differences concern inference rather than the point estimand, and therefore do not contradict the 
+equivalence. LP(4) and VAR(4) still target the same impulse response, and the same linear representation of the non-linear DGP. The broader lesson is that estimand equivalence does not imply inferential equivalence, as two estimators of the same object can posess differing interval validity once their standard-error assumptions are violated. 
+
+Thus, in a misspecification based on a non-linear DGP, LP's robustness yields a genuine advantage, but it is an advantage in inference under default standard errors, not in point estimation. When the misspecification leaves the required lag order unchanged, the choice between the two estimators is therefore objective-dependent. VAR for the efficiency of the point estimate, LP for valid inference under heteroskedasticity. Lastly, VAR models can also be augmented to leverage
+robust standard errors, which would reduce the found supremacy of LPs regarding SE coverage.
+
+In summary, Extension~2 shows that the population equivalence of LP and VAR is robust to functional misspecification through a non-linear DGP, provided the fitted lag order remains sufficient. The nonlinearity leaves the shared estimand almost untouched and is felt only in the second moment of the residuals, which produces a clean division of labour between the two estimators. VARs archieve lower variance point estimation, while the LP delivers the only valid inference once heteroskedasticity is present. This is the first design in which Local Projections' robustness translates into a tangible advantage. Still, this advantage is only confined, as it is restricted to inference and can be partly recovered by equipping the VARs with robust standard errors.
 
 \FloatBarrier
