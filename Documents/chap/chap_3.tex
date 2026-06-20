@@ -201,109 +201,150 @@ $\theta_h$:
 \subsection{Simulation Results}
 
 
+% ----------------------------------- True IRF
 \begin{figure}[htbp]
 \centering
-\caption{TRUE MC Simulated DGPS}
+\caption{True Impulse Response Functions Across Persistence Regimes}
 \label{fig:BL_TRUE_IRF}
 
-% Erste Reihe (zwei nebeneinander)
+
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
-    %\caption{High}
-    \label{fig:BL_TRUE_IRF_HIGH}
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.5.png}
+    \label{fig:BL_TRUE_IRF_LOW}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
+    \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{BASE_IRF_rho=0.7.png}
-    %\caption{Mid}
     \label{fig:BL_TRUE_IRF_MID}
 \end{subfigure}
 
-\vspace{0.5cm}
-
-% Zweite Reihe (eine zentriert, gleiche Größe)
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.5.png}
-    %\caption{Low}
-    \label{fig:BL_TRUE_IRF_LOW}
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
+    \label{fig:BL_TRUE_IRF_HIGH}
 \end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of variable 1 to a one-standard-deviation shock in the first structural innovation, traced over horizons \(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
+\end{minipage}
 
 \end{figure}
 
 \clearpage
 
+% ----------------------------------- Point Estimates
 \begin{figure}[htbp]
 \centering
-\caption{POINT ESTIMATES ACROSS DGPs}
+\caption{Point-Estimation Performance Across Persistence Regimes}
 \label{fig:BL_PE}
 
-% Erste Reihe (zwei nebeneinander)
-\begin{subfigure}[t]{0.65\textwidth}
+\begin{subfigure}[t]{0.6\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.95_T=240_B=5000.png}
-    %\caption{High}
-    \label{fig:BL_HIGH_PE}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.65\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.7_T=240_B=5000.png}
-    %\caption{Mid}
-    \label{fig:BL_MID_PE}
-\end{subfigure}
-
-\vspace{0.5cm}
-
-% Zweite Reihe (eine zentriert, gleiche Größe)
-\begin{subfigure}[t]{0.65\textwidth}
-    \centering
+    \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.5_T=240_B=5000.png}
-    %\caption{Low}
     \label{fig:BL_LOW_PE}
 \end{subfigure}
 
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.7_T=240_B=5000.png}
+    \label{fig:BL_MID_PE}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.6\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.95_T=240_B=5000.png}
+    \label{fig:BL_HIGH_PE}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 240\). The fixed LP(4) reference line is compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\end{minipage}
+
 \end{figure}
 
 \clearpage
 
+% ----------------------------------- Coverage
 \begin{figure}[htbp]
 \centering
-\caption{COVERAGE ACROSS DGPs}
+\caption{Confidence-Interval Coverage Across Persistence Regimes}
 \label{fig:BL_COV}
 
-% Erste Reihe (zwei nebeneinander)
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.95_T=240_B=5000.png}
-    %\caption{High}
-    \label{fig:BL_HIGH_CI}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.7\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.7_T=240_B=5000.png}
-    %\caption{Mid}
-    \label{fig:BL_MID_CI}
-\end{subfigure}
-
-\vspace{0.5cm}
-
-% Zweite Reihe (eine zentriert, gleiche Größe)
-\begin{subfigure}[t]{0.7\textwidth}
-    \centering
+    \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.5_T=240_B=5000.png}
-    %\caption{Low}
     \label{fig:BL_LOW_CI}
 \end{subfigure}
 
+\begin{subfigure}[t]{0.7\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.7_T=240_B=5000.png}
+    \label{fig:BL_MID_CI}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.7\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.95_T=240_B=5000.png}
+    \label{fig:BL_HIGH_CI}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals, defined as the fraction of replications in which the interval contains the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 240\) and \(B = 5{,}000\). VAR\((q)\) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
+\end{minipage}
+
 \end{figure}
 
 \clearpage
 
+% ----------------------------------- Sample RMSE by Horizon
+\begin{figure}[htbp]
+\centering
+\caption{Sample RMSE by Horizon}
+\label{fig:BL_SAMPLE_RMSE}
 
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.5.png}
+    \label{fig:BL_SAMPLE_RMSE_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.7.png}
+    \label{fig:BL_SAMPLE_RMSE_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.95.png}
+    \label{fig:BL_SAMPLE_RMSE_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports RMSE by horizon for the base DGP with varying $T$. Sub-graphs correspond to persistence values $\rho \in \{0.5,0.7,0.95\}$.
+\end{minipage}
+
+\end{figure}
+
+\FloatBarrier
 \subsection{Discussion of Results}
 
 \FloatBarrier
