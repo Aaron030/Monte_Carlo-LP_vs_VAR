@@ -83,8 +83,26 @@ before it together with the lags \parencites{jorda2005estimation}{plagborg2021lo
 The same construction accommodates the remaining standard schemes. Recursive, long-run, and sign restrictions are each implementable through the projection \eqref{eq:lp_reduced} because all of them merely fix the vector $b$ that maps the Wold innovations into the shock of interest
 \parencite[p.~967]{plagborg2021local}. When an external instrument or proxy for the shock is available, ordering the instrument first in the conditioning set---the ``internal instrument'' approach---identifies the relative structural responses even when the shock is noninvertible, whereas the external SVAR-IV/LP-IV implementation of \textcite{stock2018identification} requires invertibility \parencite[p.~973]{plagborg2021local}. Because identification operates on the population innovations rather than on the estimator, any scheme available to the VAR can be carried out with local projections and vice versa \parencite[p.~975]{plagborg2021local}.
 
+\textbf{PMW Equivalence}
 
-"pointwise inference has been discussed by Jorda 2005, Kilian and Lütkepohl 2017, Stock and Watson 2018
-
-Kilian and Kim 2011 and Brugnolini 2018 presented simulation studies comparing AR inference and LP inference 
+Some dumb shit on equiv of both
+To see this, recall that under the recursive identification of 
+Section~\ref{sec:var} the local projection in Equation~\eqref{eq:lp_shock} regresses 
+$y_{t+h}$ on the structural shock $\varepsilon_{1,t}$, which has unit variance and is 
+orthogonal to the lagged controls. The lagged controls therefore drop out of the 
+projection coefficient, leaving
+\begin{equation}
+\beta_h = \operatorname{Cov}\!\big(y_{t+h},\, \varepsilon_{1,t}\big).
+\end{equation}
+From the structural moving-average representation 
+$y_t = \sum_{\ell \geq 0}\Theta_\ell\,\varepsilon_{t-\ell}$ with 
+$\Theta_\ell = \Psi_\ell B$, the outcome at $t+h$ loads on the time-$t$ shock only 
+through the horizon-$h$ coefficient, so that
+\begin{equation}
+\beta_h = \operatorname{Cov}\!\big(y_{t+h},\, \varepsilon_{1,t}\big) 
+        = \Theta_h e_1 = \Psi_h B e_1 = \theta_h,
+\end{equation}
+which is exactly the structural impulse response of Equation~(7). The 
+local-projection and vector-autoregressive estimands therefore coincide in 
+population.
 \FloatBarrier

@@ -78,6 +78,19 @@ The structural impulse response of variable $i$ to shock $j$ is thus
 %
 where $[\,\cdot\,]_{ij}$ denotes the $(i,j)$-th element of a matrix.
 
+%Satz hier noch etwas entwicklen, etwas verloren (below)
+From the structural moving-average representation, the structural impulse 
+response is the dynamic causal effect of a one-time, unit-variance shock:
+\begin{equation}
+\theta_h^{ij} 
+= \frac{\partial\, \mathbb{E}\!\left[y_{i,t+h} \mid \varepsilon_{j,t}\right]}
+       {\partial\, \varepsilon_{j,t}}
+= [\Theta_h]_{ij} = [\Psi_h B]_{ij} = e_i'\,\Psi_h B\, e_j,
+\end{equation}
+which is exactly the population object $\mathrm{IR}(h,\delta)$ of Equation \ref{eq:EF_IRF}, 
+specialised to a structural innovation of unit size in shock $j$.
+%oberen Satz noch etwas entwicklen 
+
 Estimation of the structural impulse response $\hat{\theta}_h^{ij}$
 proceeds in two stages. In the first stage, the VAR coefficient matrices
 $\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$ are estimated equation-by-equation
@@ -286,22 +299,45 @@ Although \textcite{herbst2024bias} propose a bias corrected estimator, \textcite
 
 \subsection{On the Equivalence of VARs and Local Projections (2-2.5 pages)}
 
-As Local Projection inference gained in popularity over the last couple of years, more and more scholars have started comparing the asymptotical and finite sample trade-offs of both methods, such as \textcite{kilian2011reliable},  \textcite{bruns2022comparison}, \textcite{li2024local}, \textcite{olea2025local} among others. Their comparison have yielded these and that results. 
+As local projection inference gained popularity over the last decade, a growing 
+body of simulation evidence has compared the finite-sample performance of LP and 
+VAR estimators across data-generating processes of differing richness. Two findings recur across the literature. 
+When the DGP admits an exact finite-order VAR representation, the VAR estimator is correctly specified at the true lag order and dominates LP on mean-squared-error criteria at intermediate and long horizons and thus is always the preferable choice in terms of point estimation \parencite{olea2024double,li2024local}. Furthermore in terms of coverage, \textcite{kilian2011reliable} and \textcite{brugnolini2018local} show that LP intervals are less accurate than an equivalent VAR benchmark. Even thought their stark findings largely rely on the underlying standard error estimation for local projections, \textcite{olea2024double} do not observe an LP advantage when switching from HAC to EHW standard error estimation.
+Therefore the additional flexibility of least-squares LP yields little bias reduction relative to the already well-specified VAR, while carrying substantially higher variance. 
 
+When, however, the DGP departs from any finite-order VAR, as in the 
+empirically calibrated DFM of \textcite{li2024local} or via extionsion to VARMA processes, the underlying data does not admit an exact finite-order VAR representation and a genuine bias--variance trade-off emerges.
+In these settings the least-squares LP exhibits lower bias than the VAR estimator, but at the cost of substantially higher variance at intermediate 
+and long horizons, so that VAR methods remain preferable under MSE unless  
+researchers set an higher weigths on bias reduction \textcite{li2024local}.
+Furthermore, \textcite{olea2024double} show that LPs using EHW inference yields correctly centered coverage intervals whereas VARs severly undercover while bias leads to incorrect centering. 
+Also in cases of lag truncation, \textcite{brugnolini2018local} shows by varying the common lag length of LPs and VARs against a true VAR(12) process that LPs are able to increase their converage levels relative to VARs as the distance to the true lag length increases.
+ 
+All of the aforementioned simulation studies compare LPs and VARs at a single common lag length p. This common-lag design, however, presupposes that the two methods estimate the 
+same object. \textcite{plagborg2021local} establish that under weak 
+stationarity, unrestricted lag structure and a common 
+identification scheme, LP and VAR estimate the identical structural impulse 
+response function in population. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
+Furthermore, as both methods are best linear predictors of the underlying DGP, the authors state that both methods are symetrically robust to non-linear misspecification in population.
 
-\textcite{plagborg2021local} were the first to show analytically, that both methods share the same population impulse response function under weak stationarity and unrestriced lag structure. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
-\textbf{maybe here the equation proof}
-Furthermore, as both methods are best linear predictors of the underlying DGP, the authors state that both methods are symetrically robust to non-linear misspecification
-
-The logic applies that any VAR model with sufficiently large lag lengths is able to capture the whole covariance properties of the data such that VAR($\infty$) forecasts coincide with direct LP forecasts. 
-The authors come to the conclusion: 
-- finite lag length, impulse response approximately agree if the same lag length is used for both but differ for $h \ge p$. 
-- in population, linear local projections are exactly as robust to non-linearities in the DGP as linear VARs 
-
-Here I will discuss the theoretical results that establish the equivalence of VARs and LPs under certain conditions, as shown by Plagborg-Moller \& Wolf (2021) and Fusari et al. (2026). I will also explain how this equivalence is affected by finite sample properties and dynamic misspecification, as discussed by Li et al. (2024), Montiel Olea et al. (2025), and Ludwig (2026).
-
-The conventional finite-sample comparison between local projections and vector autoregressions is typically conducted at equal lag order, pitting LP(p) against VAR(p). Ludwig (2026) shows that this convention rests on a misleading notion of parsimony. His Theorem 1 establishes an exact finite-sample identity: the h-step prediction of an LP(p) is the forward iteration of a sequence of one-step VAR predictions whose lag order rises from p to $p + h - 1$. An equal-order VAR(p) is therefore a restricted special case of LP(p), obtained by holding the lag order fixed along the recursion rather than allowing it to increase. The familiar empirical pattern—lower approximation bias but higher sampling variance for LP relative to a same-order VAR—is, from this vantage point, largely a mechanical consequence of comparing a more general specification with its own restriction, rather than evidence of an intrinsic property of either estimator. This matters because it leaves the standard reading of the bias-variance trade-off, as articulated by Plagborg-Møller and Wolf (2021) and Montiel Olea et al. (2025), confounded: at equal lag order, the method effect (LP versus VAR) cannot be separated from the complexity effect (more versus fewer effective autoregressive parameters).
+Crucially for the equal-lag designs above, \textcite{plagborg2021local}  further show that when both specifications are restricted to a fixed order $p$, their estimands continue to agree out to horizon $h \leq p$ but generally diverge for $h > p$. 
+This localizes the divergence to horizons beyond the estimation lag length, precisely the intermediate and long horizons at which the simulation evidence finds the trade-off to bite.
+Thus the choice between LP and VAR is therefore not a choice between different 
+estimands, but between two finite-sample estimators of the same one. What 
+distinguishes them is solely their bias and variance in finite samples.
 \ \\ \ \\
-From Simulations \textcite{li2024local}:
-- suggest a stark bias-variance trade-off between LP (low bias, high variance) and moderate-Lag Var estimators (moderatre bias, low variance)
+While \textcite{plagborg2021local} locate the divergence at horizons $h > p$, they do not characterize what the local projection estimates there. \textcite{ludwig2026local} closes this gap with an exact least-squares identity that holds not only in population but in any finite sample. More specifically, the $h$-step impulse response of an LP($p$) is the forward iteration of $h$ one-step predictions from a sequence of VARs of increasing 
+order,
+\[
+  \mathrm{IRF}^{\mathrm{LP}(p)}_h(d) = 
+  \begin{bmatrix} I_N & 0 \end{bmatrix}\,
+  \Pi(p+h-1)\cdots\Pi(p+1)\,\Pi(p)\,
+  \begin{bmatrix} d \\ 0 \end{bmatrix},
+\]
+where $\Pi(q)$ denotes the companion matrix of a VAR($q$). 
+At $h=1$ the two methods coincide, at $h=2$ the LP($p$) is no longer the two-step iterate of VAR($p$) but  advances the one-step forecast with a VAR($p+1$), and each further horizon adds one lag. This also means that equal-order LPs and VARs are therefore not equally parsimonious. Written in the 
+same recursive language, a LP($p$) at horizon $h$ is built from VARs of orders 
+$p, p+1, \dots, p+h-1$, whereas a VAR($p$) holds the order fixed at every step. The fixed-order VAR($p$) is thus a restricted special case of the equal-order LP($p$), which is in turn a restricted special case of VAR($p+h-1$). 
+The familiar empirical pattern—lower approximation bias but higher sampling variance for LP relative to a same-order VAR is therefore from this perspective largely a mechanical consequence of comparing a more general specification with its own restriction, rather than evidence of an intrinsic property of either estimator. This matters because it leaves the standard reading of the bias-variance trade-off as described above confounded such that at equal lag order, the methodological effect (LP vs. VAR) cannot be separated from the complexity effect (more vs. fewer lags).
+
 \FloatBarrier
