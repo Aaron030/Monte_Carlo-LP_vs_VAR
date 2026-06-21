@@ -3,7 +3,19 @@
 \section{Baseline Simulation (4-5 pages)}
 
 
-This confounding motivates the first part of our study. Because Ludwig's contribution is analytical and deliberately abstains from a simulation-based horse race, the question of whether the conventional finite-sample conclusions survive once the equal-lag restriction is relaxed remains open. We therefore operationalize Ludwig's central implication through a complexity-adjusted benchmarking exercise that holds parsimony more nearly fixed, comparing a fixed LP(4) estimator against progressively higher-order VAR specifications that proxy its increasing effective dynamic flexibility. Crucially, because the identity in Theorem 1 maps LP(p) to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is the appropriate counterpart; instead, LP(4) is read as a reference line against the full VAR order frontier, against which its bias, variance, and coverage can be located. We frame the exercise as a test of robustness rather than as a foregone conclusion: the aim is to assess whether the conventional bias-variance verdict persists, dissolves, or reverses once the comparison is placed on more comparable terms, and to identify the features of the data-generating process under which each procedure is favored.
+This confounding motivates the first part of our study. Because Ludwig's 
+contribution is analytical and deliberately abstains from a simulation-based horse race, 
+the question of whether the conventional finite-sample conclusions survive once the 
+equal-lag restriction is relaxed remains open. We therefore operationalize Ludwig's central 
+implication through a complexity-adjusted benchmarking exercise that holds parsimony more 
+nearly fixed, comparing a fixed LP(4) estimator against progressively higher-order VAR specifications 
+that proxy its increasing effective dynamic flexibility. Crucially, because the identity in Theorem 
+1 maps LP(p) to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is 
+the appropriate counterpart; instead, LP(4) is read as a reference line against the full VAR order frontier, 
+against which its bias, variance, and coverage can be located. We frame the exercise as a test of robustness 
+rather than as a foregone conclusion: the aim is to assess whether the conventional bias-variance 
+verdict persists, dissolves, or reverses once the comparison is placed on more comparable terms, and 
+to identify the features of the data-generating process under which each procedure is favored.
 
 \subsection{Simulation Design}
 \textbf{AIM:} This simulation study examines whether conventional finite-sample 
@@ -231,10 +243,77 @@ $\theta_h$:
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of variable 1 to a one-standard-deviation shock in the first structural innovation, traced over horizons \(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
+\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of 
+variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
+\(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the 
+companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
 \end{minipage}
 
 \end{figure}
+
+Figure \ref{fig:BL_TRUE_IRF} reports the true structural impulse responses that both estimators target, traced over 
+horizons $h = 1, \ldots, 20$ for the three persistence regimes. The responses are convex and monotonically decreasing, showing
+a strong impact at $h = 1$ which is followed by progressively smaller adjustments as the shock dissipates. Persistence controls 
+the speed of this decay, moving from the response returning to near zero within a handful of horizons at $\rho = 0.5$, to being 
+elevated across the entire window and taking an almost L-shaped profile at $\rho = 0.95$. This shape is standard 
+for a stable VAR and involves no misspecification. Its role here is to fix the estimand and the persistence regimes 
+against which the point-estimation and coverage results are read.
+
+\clearpage
+
+% ----------------------------------- Complexity Frontier
+\begin{figure}[htbp]
+\centering
+\caption{Complexity Frontier Across Persistence Regimes}
+\label{fig:BL_COMPLEXITY}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
+    \label{fig:BL_COMPLEXITY_LOW}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
+    \label{fig:BL_COMPLEXITY_MID}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
+    \label{fig:BL_COMPLEXITY_HIGH}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate as a function of VAR order 
+\(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
+line of the same colour (dashed), for each sample size \(T \in \{100, 200, 240, 500\}\). The vertical 
+dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
+\(\rho \in \{0.5, 0.7, 0.95\}\). As \(T\) grows, both estimators' RMSE shrinks and the VAR frontier 
+flattens, with LP(4) approaching the VAR curve --- the finite-sample reflection of the population equivalence.
+\end{minipage}
+
+\end{figure}
+
+
+Figure \ref{fig:BL_COMPLEXITY} locates the fixed LP(4) estimator on the VAR-order frontier under correct specification. 
+Across all three persistence regimes and all sample sizes, the equal-lag VAR(4) attains a substantially lower 
+horizon-averaged RMSE than LP(4). In the absence of misspecification, VAR(4) is therefore the more efficient point 
+estimator, and LP(4) sits at the level of a far higher-order VAR on the frontier. This reflects the variance cost of 
+LP's direct, horizon-by-horizon construction.
+
+The frontier is minimised at a low order and rises again at higher orders, as over-parameterisation 
+inflates variance. The RMSE-minimising lag length increases with persistence, moving from VAR(1) and VAR(2) at $\rho = 0.5$ to 
+VAR(3) and VAR(4) at $\rho = 0.95$. This happens because faster-decaying responses require fewer lags, so the small bias 
+of an under-lagged VAR is outweighed by its variance saving. At high lags, the frontier rises to meet the LP(4) 
+line, so LP(4)'s performance is matched by a VAR of sufficiently high order. This is the frontier counterpart of 
+\textcite{ludwig2026local}'s argument, under which LP(4) at a given horizon corresponds to a VAR whose order grows with 
+that horizon, which is clearest atc larger sample sizes where the frontier flattens and noise is reduced.
 
 \clearpage
 
@@ -267,12 +346,42 @@ $\theta_h$:
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 240\). The fixed LP(4) reference line is compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses 
+\(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), 
+computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 240\). The fixed LP(4) reference line is 
+compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes 
+\(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors.
 \end{minipage}
 
 \end{figure}
 
 \clearpage
+
+Figure \ref{fig:BL_PE} reports bias, variance, MSE and RMSE at $T = 240$ for LP(4) and a representative set of 
+VAR orders. Across all three persistence regimes the under-lagged VAR(2) shows the widest bias range and is the 
+only specification that visibly departs from the others. Still, at low and mid persistence this departure is 
+mild because a fast-decaying response leaves little information in the omitted higher lags. The remaining VARs share 
+LP(4)'s small bias at short horizons and each falls toward zero around its own lag order, while LP(4) keeps a roughly 
+constant small negative bias. 
+
+Near the unit root at high persistence, the panel changes character, as all estimators show a characteristic small-sample downward bias of 
+least squares. VAR(2) is by far the most affected, swinging from a positive bias at short horizons to a strongly 
+negative one at long horizons. Its range dominates the panel, while the remaining curves, which share the milder 
+common bias, appear compressed beneath it.
+
+Because the data-generating process is correctly specified, bias is negligible for the well-specified estimators, so MSE 
+coincides with the variance and the RMSE panel is just its square root, leaving the three panels with the same shape 
+and the same ordering of the estimators. The RMSE is smallest at a low order and rises as added lags inflate variance, 
+so the parsimonious VAR(4) and VAR(8) sit well below LP(4), while the heavily parameterised VAR(23) exceeds it and 
+carries the largest dispersion of all.
+
+VAR(16) sits just under LP(4), which therefore is similar in performance to a VAR of order roughly eighteen to twenty, 
+exactly as the complexity frontier indicated earlier. The single departure from this pattern is VAR(2) at high 
+persistence, whose large bias from the missing lags dominates its MSE and RMSE through the squared-bias term (MSE 
+equals squared bias plus variance). Every other specification carries enough lags to keep its bias negligible, so 
+its MSE simply tracks its variance. High persistence amplifies the effect and, through the slow decay of the response, 
+keeps variance elevated across the entire window, producing the rounded, almost C-shaped profiles.
+
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -303,46 +412,42 @@ $\theta_h$:
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals, defined as the fraction of replications in which the interval contains the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 240\) and \(B = 5{,}000\). VAR\((q)\) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
+\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals, 
+defined as the fraction of replications in which the interval contains the true estimand \(\theta_h\), 
+horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 240\) and \(B = 5{,}000\). VAR\((q)\) intervals 
+are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. 
+Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
 \end{minipage}
 
 \end{figure}
 
 \clearpage
 
-% ----------------------------------- Sample RMSE by Horizon
-\begin{figure}[htbp]
-\centering
-\caption{Sample RMSE by Horizon}
-\label{fig:BL_SAMPLE_RMSE}
+Figure \ref{fig:BL_COV} shows the empirical coverage of $95\%$ confidence intervals alongside a 
+validation of the VAR(4) standard error. The left column shows that LP(4) holds its nominal level closely 
+at low and mid persistence and only drifts downward at high persistence, remaining the most reliable of the 
+three throughout. VAR(4) behaves very differently across regimes. At low persistence it bends upward and 
+reaches full coverage by about horizon seven. Instead of signaling outstanding performance, this effect is mechanical in nature, 
+as the response has decayed to near zero by then and the interval almost always brackets the near-zero truth. 
+At mid persistence VAR(4) falls just below LP(4) with a slight downward slope, while at high persistence it 
+declines steeply and under-covers across the whole window. The over-parameterised VAR(23) lies above LP(4) 
+at every persistence level, since its many estimated lags inflate the interval width and leave it conservative.
 
-\begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.5.png}
-    \label{fig:BL_SAMPLE_RMSE_rho05}
-\end{subfigure}
+The right column explains the VAR(4) pattern by plotting the delta-method standard error against the empirical 
+sampling dispersion of the estimator. At low and mid persistence the two lie almost on top of one another, 
+which indicates that the delta-method interval is correctly sized and that the coverage distortions reflect the 
+shape of the response rather than a faulty standard error. At high persistence the picture breaks, and the 
+empirical dispersion shifts above the delta-method standard error. The two paths still exhibit the same shape, 
+so the interval is systematically too narrow and VAR(4) under-covers. 
 
-\begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.7.png}
-    \label{fig:BL_SAMPLE_RMSE_rho07}
-\end{subfigure}
+As the persistence of the process rises toward the unit root, the coefficient estimates become increasingly biased 
+and skewed. As the delta-method process assumes well-centered estimates \parencite{kilian1998small}, the skewness 
+leaves the standard error it returns understating the estimator's true variability. The right column shows exactly 
+this process, as the resulting narrow interval and downward bias cause under-coverage.
+The distortion is therefore a property of the delta-method standard 
+error rather than of the VAR(4) estimator itself, which remains efficient even where its analytical interval is 
+unreliable.
 
-\begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{BASE_RMSE_BY_HORIZON_rho=0.95.png}
-    \label{fig:BL_SAMPLE_RMSE_rho095}
-\end{subfigure}
-
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Each panel reports RMSE by horizon for the base DGP with varying $T$. Sub-graphs correspond to persistence values $\rho \in \{0.5,0.7,0.95\}$.
-\end{minipage}
-
-\end{figure}
 
 \FloatBarrier
 
