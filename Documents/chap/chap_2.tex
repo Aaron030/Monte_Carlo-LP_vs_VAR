@@ -1,22 +1,12 @@
 % !TEX root = ../main.tex
 
 \section{Theoretical Background}
-Impulse response functions can be defined nonparametrically as the
-difference between two conditional forecasts of the outcome variable
-$y_{t+h}$ \parencite{koop1996impulse}. Both forecasts condition on the same
-vector of controls $\mathbf{x}_t$ and differ only in the time-$t$ realization
-of the variable of interest $s_t$: one sets $s_t = s_0 + \delta$, perturbing
-the baseline value $s_0$ by a shock of size $\delta$, while the other leaves
-it at $s_0$. The conditioning vector $\mathbf{x}_t$ collects the information
-used to identify the response, the lags of the system and depending on the
-identification scheme, contemporaneous controls. Following \textcite{ramey2016macroeconomic},
-a shock here denotes an exogenous, unanticipated movement that is uncorrelated
-with the controls in $\mathbf{x}_t$ and with all other structural shocks. The
-difference in the projected paths at horizon $h$ then identifies the causal
+Impulse response functions can be defined nonparametrically as the difference between two conditional forecasts of the outcome variable $y_{t+h}$ \parencite{koop1996impulse}. Both forecasts condition on the same vector of controls $\mathbf{x}_t$ and differ only in the time-$t$ realization of the variable of interest $s_t$: one sets $s_t = s_0 + \delta$, perturbing the baseline value $s_0$ by a shock of size $\delta$, while the other leaves it at $s_0$. The conditioning vector $\mathbf{x}_t$ collects the information used to identify the response, the lags of the system and depending on the identification scheme, contemporaneous controls. 
+Following \textcite{ramey2016macroeconomic}, a shock here denotes an exogenous, unanticipated movement that is uncorrelated with the controls in $\mathbf{x}_t$ and with all other structural shocks. The difference in the projected paths at horizon $h$ then identifies the causal
 effect of the shock in population,
 %
 \begin{equation}
-    \mathcal{R}_{s\to y}(h,\delta) \equiv 
+    \mathcal{IR}(h,\delta) \equiv 
     \mathbb{E}\!\left[\,y_{t+h} \mid s_t = s_0 + \delta;\, \mathbf{x}_t\right]
     - \mathbb{E}\!\left[\,y_{t+h} \mid s_t = s_0;\, \mathbf{x}_t\right].
     \label{eq:EF_IRF}
@@ -98,50 +88,41 @@ response is the dynamic causal effect of a one-time, unit-variance shock:
 \theta_h^{ij} 
 = \frac{\partial\, \mathbb{E}\!\left[y_{i,t+h} \mid \varepsilon_{j,t}\right]}
        {\partial\, \varepsilon_{j,t}}
-= [\Theta_h]_{ij} = [\Psi_h B]_{ij} = e_i'\,\Psi_h B\, e_j,
+= [\Theta_h]_{ij} = [\Psi_h B]_{ij} 
 \end{equation}
 which is exactly the population object $\mathrm{IR}(h,\delta)$ of Equation \ref{eq:EF_IRF}, 
 specialised to a structural innovation of unit size in shock $j$.
 %oberen Satz noch etwas entwicklen 
 
-Estimation of the structural impulse response $\hat{\theta}_h^{ij}$
-proceeds in two stages. In the first stage, the VAR coefficient matrices
-$\hat{A} = (\hat{A}_1, \ldots, \hat{A}_p)$ are estimated equation-by-equation
-via OLS, which is efficient under the stability condition and yields
+Estimation of the structural impulse response $\hat{\theta}_h^{ij}$ proceeds in two stages. 
+In the first stage, the stacked VAR coefficient matrix $A := [A_1, \ldots, A_p]$ of dimension $K \times Kp$ is
+estimated equation-by-equation via OLS, which is efficient under the stability condition and yields
 %
 \begin{equation}
     \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr)
     \xrightarrow{d} \mathcal{N}\!\left(0,\; \Gamma^{-1} \otimes \Sigma_u\right),
 \end{equation}
 %
-where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the
-stacked regressors $Z_t = (1, y_{t-1}', \ldots, y_{t-p}')'$, and the
-innovation covariance $\Sigma_u$ is replaced by its residual analogue
-$\hat{\Sigma}_u$ \parencite{lutkepohl2005}.
+where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the stacked regressors $Z_t = (y_{t-1}', \ldots, y_{t-p}')'$, and the innovation covariance $\Sigma_u$ is replaced by its residual analogue $\hat{\Sigma}_u$ \parencite{lutkepohl2005}.
 
 In the second stage, structural objects are recovered from the
-reduced-form estimates. The impact matrix $\hat{B}$ is the Cholesky
-factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are
-obtained via the recursion
+reduced-form estimates. 
+The impact matrix $\hat{B}$ is the Cholesky factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are obtained via the recursion
 %
 \begin{equation}
     \hat{\Psi}_h = \sum_{\ell=1}^{\min(h,p)} \hat{A}_\ell\,\hat{\Psi}_{h-\ell},
-    \qquad \hat{\Psi}_0 = I_K,
+    \qquad \hat{\Psi}_0 = I_K.
     \label{eq:var_wold_recursion}
 \end{equation}
 %
-so that the structural impulse response estimator $\hat{\theta}_h^{ij} =
-g(\hat{\alpha}, \hat{\sigma})$, with $\alpha = \mathrm{vec}(A)$ and
-$\sigma = \mathrm{vech}(\Sigma_u)$, is a smooth nonlinear function of
-the first-stage estimates,
+so that the structural impulse response estimator $\hat{\theta}_h^{ij} = g(\hat{\alpha}, \hat{\sigma})$, with $\alpha = \mathrm{vec}(A)$ and $\sigma = \mathrm{vech}(\Sigma_u)$, is a smooth nonlinear function of the first-stage estimates,
 %
 \begin{equation}
-    \hat{\theta}_h^{ij} = e_i'\,\hat{\Psi}_h\,\hat{B}\,e_j.
+    \hat{\theta}_h^{ij} = \bigl[\hat{\Psi}_h\,\hat{B}\bigr]_{ij}.
     \label{eq:var_srf_estimator}
 \end{equation}
 %
-Since $g$ is differentiable in $(\hat{\alpha}, \hat{\sigma})$, the delta
-method yields
+Since $g$ is differentiable in $(\hat{\alpha}, \hat{\sigma})$, the delta method yields
 %
 \begin{equation}
     \sqrt{T}\,\bigl(\hat{\theta}_h^{ij} - \theta_h^{ij}\bigr)
@@ -152,30 +133,16 @@ method yields
     \label{eq:var_delta_method}
 \end{equation}
 %
-where $\Sigma_{\alpha,\sigma}$ is the joint asymptotic covariance matrix
-of $(\hat{\alpha}', \hat{\sigma}')'$ and the Jacobian
-$\nabla g(\alpha, \sigma)$ admits a closed-form expression
-\parencite{lutkepohl1990asymptotic}. The resulting confidence intervals
-are valid pointwise in $h$ under stationarity, but not uniformly over
-the persistence of the process nor over growing horizons, motivating a
-direct examination of finite-sample behaviour.
+where $\Sigma_{\alpha,\sigma}$ is the joint asymptotic covariance matrix of $(\hat{\alpha}', \hat{\sigma}')'$ and the Jacobian $\nabla g(\alpha, \sigma)$ admits a closed-form expression \parencite{lutkepohl1990asymptotic}. 
+The resulting confidence intervals are valid pointwise in $h$ under stationarity, but not uniformly over the persistence of the process nor over growing horizons, motivating a direct examination of finite-sample behaviour.
 
-The favourable asymptotic properties established above are qualified by three interrelated problems that arise in the sample sizes typical of macroeconomic applications.
-that arise in the sample sizes typical of macroeconomic applications.
-First, estimation error propagates through iteration. Because 
-$\hat{\Psi}_h$ is the upper-left block of $\hat{\mathbf{A}}^h$, error in 
-$\hat{A}$ enters the impulse response through powers of the companion 
-matrix and is compounded multiplicatively as the horizon grows. Even small 
-coefficient biases therefore translate into substantial distortions of the 
-estimated responses at longer horizons \parencite{kilian1998small}. In the 
-limiting case of unit or near-unit roots, \textcite{phillips1998impulse} 
-shows that long-horizon impulse responses from unrestricted VARs are not 
-even consistently estimated, converging instead to random variables rather 
-than the true responses.
-Second, the autoregressive coefficients themselves are biased downward in 
-short samples. It is a long-established result that least squares 
-underestimates the persistence of an autoregressive process 
-\parencites{marriott1954bias}{nicholls1988bias}{pope1990biases}, and because $\hat{\Psi}_h$ inherits this bias through the recursion, the estimated impulse responses decay too quickly and understate the true persistence of the system. The distortion is most severe precisely when persistence is high and the sample is short. 
+The favourable asymptotic properties established above are qualified by three interrelated problems that arise in the sample sizes typical of macroeconomic applications. that arise in the sample sizes typical of macroeconomic applications.
+First, estimation error propagates through iteration. 
+Because  $\hat{\Psi}_h$ is the upper-left block of $\hat{\mathbf{A}}^h$, error in  $\hat{A}$ enters the impulse response through powers of the companion matrix and is compounded multiplicatively as the horizon grows. 
+Even small coefficient biases therefore translate into substantial distortions of the estimated responses at longer horizons \parencite{kilian1998small}. 
+In the limiting case of unit or near-unit roots, \textcite{phillips1998impulse} shows that long-horizon impulse responses from unrestricted VARs are not even consistently estimated, converging instead to random variables rather than the true responses.
+Second, the autoregressive coefficients themselves are biased downward in short samples. 
+It is a long-established result that least squares underestimates the persistence of an autoregressive process \parencites{marriott1954bias}{nicholls1988bias}{pope1990biases}, and because $\hat{\Psi}_h$ inherits this bias through the recursion, the estimated impulse responses decay too quickly and understate the true persistence of the system. The distortion is most severe precisely when persistence is high and the sample is short. 
 Third, these distortions undermine delta-method inference. When the largest roots approach the unit circle, the asymptotic normal approximation deteriorates and the resulting confidence intervals undercover, increasingly so at longer horizons \parencites{kilian1998small}{kilian1999finite}. 
 
 Furthermore, a distinct class of distortions arises when the 
@@ -244,9 +211,7 @@ nonlinear mapping and hence without the delta-method step that governs the
 VAR estimator in Equation \eqref{eq:var_delta_method}.
 
 Provided $\{y_t\}$ is strictly stationary and ergodic with
-$\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$ and absolutely
-summable mixing coefficients, the least-squares estimator is
-$\sqrt{n}$-asymptotically normal,
+$\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$ and absolutely summable mixing coefficients, the least-squares estimator is $\sqrt{T-h}$-asymptotically normal. 
 %
 \begin{equation}
     \sqrt{n}\,\bigl(\hat{\beta}_h - \beta_h\bigr)
@@ -254,23 +219,18 @@ $\sqrt{n}$-asymptotically normal,
     \label{eq:lp_clt}
 \end{equation}
 %
-with consistency $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$
-following as an immediate corollary \parencite{hansen2022econometrics}.
-Because the predictive regression aggregates the shocks accruing between
-$t$ and $t+h$ over overlapping forecast windows, the projection error
-$\xi_{t+h}^{(h)}$ follows a moving-average process of order $h-1$, thus the regression scores $\hat{\varepsilon}_{j,t}\,\xi_{t+h}^{(h)}$ are therefore serially
-correlated, and $V_h$ denotes the associated long-run variance.
+with consistency $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$ following as an immediate corollary \parencite{hansen2022econometrics}. 
+Here $n = T - h$ denotes the effective sample size available at horizon $h$, reflecting the loss of $h$ observations at the end of the sample and $V_h$ denotes the associated long-run variance.
 
-The long-run form of $V_h$ reflects a structural feature of direct
-projection. Whereas the VAR confines all dynamic dependence to the one-step
-innovation and generates longer-horizon responses by iterating a single
-fitted model, the local projection reads each horizon off a separate
-regression whose residual must absorb the shocks realised between the
-impulse date and the response date. Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}] = 0$ almost surely \parencite{jorda2025local} 
+
+The long-run form of $V_h$ reflects a structural feature of direct projection. 
+Because the predictive regression aggregates the shocks accruing between $t$ and $t+h$ over overlapping forecast windows, the projection error $\xi_{t+h}^{(h)}$ follows a moving-average process of order $h-1$, thus the regression scores $\hat{\varepsilon}_{j,t}\,\xi_{t+h}^{(h)}$ are therefore serially correlated. 
+Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}] = 0$ almost surely \parencite{jorda2025local} 
+%
 \begin{equation}
 y_t = \rho y_{t-1} + u_t.
 \end{equation}
-
+%
 Using a simplified version of the local projection estimator in
 \eqref{eq:lp_shock}, the $h$-step regression takes the form
 %
@@ -286,29 +246,20 @@ Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1}, using 
     \label{eq:ar1_recursive}
 \end{equation}
 %
-
-The projection error is therefore a moving-average process of order $h-1$, mediated by the persistence of the underlying DGP. Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of
-$\xi(\rho, h)$, and hence the more severe the distortion in naive
-OLS standard errors. Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-standard near-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the unit-circle $|\rho| < 1$, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
+The projection error is therefore a moving-average process of order $h-1$, mediated by the persistence of the underlying DGP. 
+Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of $\xi(\rho, h)$, and hence the more severe the distortion in naive OLS standard errors. 
+Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-standard near-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$.
+However, if $\rho$ lies safely inside the unit-circle $|\rho| < 1$, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
 
 These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. In practice, however, HAC inference requires the specification choice of tuning parameters with complex interpretation \parencite{lazarus2018har} and introduce another source of bias themself. More specifically, \textcite{herbst2024bias} show that while HAC estimator are asymptotically valid, estimates of long-run variance are typically downward biased leading to an understatement of the surrounding uncertainty of the point estimate. 
 
-To tackle this and allow for valid inference even under near unity settings,
-\textcite{montiel2021local} show that augmenting the local projection with one
-additional lag renders the regression score $\xi^{(h)}_{t+h} \tilde{u}_t$
-serially uncorrelated under the weak assumption that the shock $u_t$ is
-unpredictable from its own past and future values, so that conventional
-Eicker–Huber–White (EHW) heteroskedasticity-robust standard errors suffice
-despite the serially correlated residual. The resulting $t$-statistic is
-asymptotically standard normal uniformly over $\rho \in [-1,1]$ and horizons
-$h/T \to 0$.
+To tackle this and allow for valid inference even under near unity settings, \textcite{montiel2021local} augment the local projection with one additional lag. 
+Under the weak assumption that the shock is unpredictable from its own past and future values, this renders the regression score that is the product of the projection residual $\xi^{(h)}_{t+h}$ and the regressor of interest after partialling out the controls, serially uncorrelated, such that conventional Eicker--Huber--White (EHW) heteroskedasticity-robust standard errors suffice despite the serially correlated residual. 
+The resulting $t$-statistic is asymptotically standard normal uniformly over $\rho \in [-1,1]$ and horizons $h/T \to 0$.
 
-A long-standing piece of conventional wisdom holds that local projections are
-more robust to model misspecification than VARs, originating with \textcite[162]{jorda2005estimation} and echoed across subsequent surveys \parencite{ramey2016macroeconomic,li2024local}.
-\textcite{plagborg2021local} document this view while noting that it had long
-lacked formal foundation; in their finite-order treatment, LPs are indeed
-generally more robust to misspecification than equal-order VARs, a property they
-establish without invoking the population equivalence of the two estimands. \textcite{olea2024double} show that, because the LP reads each horizon off a separate regression rather than iterating a single fitted model forward, a misspecification of the short-run dynamics does not compound through the powers of the companion matrix as it does for the VAR, whose bias arises precisely from extrapolating the response through the iterated mapping $\hat A^{h}$ that the misspecified model no longer satisfies.
+A long-standing piece of conventional wisdom holds that local projections are more robust to model misspecification than VARs, originating with \textcite[162]{jorda2005estimation} and echoed across subsequent surveys \parencite{ramey2016macroeconomic,li2024local}.
+\textcite{plagborg2021local} document this view while noting that it had long lacked formal foundation; in their finite-order treatment, LPs are indeed
+generally more robust to misspecification than equal-order VARs, a property theyestablish without invoking the population equivalence of the two estimands. \textcite{olea2024double} show that, because the LP reads each horizon off a separate regression rather than iterating a single fitted model forward, a misspecification of the short-run dynamics does not compound through the powers of the companion matrix as it does for the VAR, whose bias arises precisely from extrapolating the response through the iterated mapping $\hat A^{h}$ that the misspecified model no longer satisfies.
 
 
 However, similar to VAR models, \textcite{herbst2024bias} show that LP 
