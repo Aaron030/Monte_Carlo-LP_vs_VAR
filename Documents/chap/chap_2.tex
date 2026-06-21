@@ -1,15 +1,28 @@
 % !TEX root = ../main.tex
 
-\section{Theoretical Background (total: 5-6.5 pages)}
-Impulse response functions can be nonparametically defined as the difference between two conditional forecasts of the outcome variable (e.g. Koop (1996)). Both forecasts are conditioned on the same history up to period $t-1$, but differ in the realization at time $t$. While one conditions on a shock of size $\delta$ to the variable of interest, the other one does not. Following \textcite{ramey2016macroeconomic} shocks hereby refers to a significant exogenous force representing unanticipated movements in exogeneous variables, that is uncorrelated with other current and lagged control variables and other exogeneous shocks. The observed difference in the projected paths at horizon $h$ then identifies the causal effect of the shock in population:
-
+\section{Theoretical Background}
+Impulse response functions can be defined nonparametrically as the
+difference between two conditional forecasts of the outcome variable
+$y_{t+h}$ \parencite{koop1996impulse}. Both forecasts condition on the same
+vector of controls $\mathbf{x}_t$ and differ only in the time-$t$ realization
+of the variable of interest $s_t$: one sets $s_t = s_0 + \delta$, perturbing
+the baseline value $s_0$ by a shock of size $\delta$, while the other leaves
+it at $s_0$. The conditioning vector $\mathbf{x}_t$ collects the information
+used to identify the response, the lags of the system and depending on the
+identification scheme, contemporaneous controls. Following \textcite{ramey2016macroeconomic},
+a shock here denotes an exogenous, unanticipated movement that is uncorrelated
+with the controls in $\mathbf{x}_t$ and with all other structural shocks. The
+difference in the projected paths at horizon $h$ then identifies the causal
+effect of the shock in population,
+%
 \begin{equation}
-    \mathrm{IR}(h,\delta) \equiv \mathbb{E}\left[y_{t+h}|s_t = s_0 + \delta; \mathbf{x_t}\right] - \mathbb{E}\left[y_{t+h}|s_t = s_0; \mathbf{x_t}\right]
+    \mathcal{R}_{s\to y}(h,\delta) \equiv 
+    \mathbb{E}\!\left[\,y_{t+h} \mid s_t = s_0 + \delta;\, \mathbf{x}_t\right]
+    - \mathbb{E}\!\left[\,y_{t+h} \mid s_t = s_0;\, \mathbf{x}_t\right].
     \label{eq:EF_IRF}
 \end{equation}
-
+%
 Vector Autoregressions and Local Projections serve as two complementary  approaches to estimating impulse responses in finite samples. The former,  introduced by \textcite{sims1980macroeconomics}, parametrizes the joint  dynamics of all variables in a single autoregressive system and impulse  responses are then obtained as iterated forecasts from the estimated  companion matrix. The latter, established by \textcite{jorda2005estimation},  takes a direct forecasting approach by estimating the responses at each horizon independently via OLS, projecting the future outcome directly onto current and lagged values of the data. The two approaches compound estimation error differently across horizons and, at equal lag order, occupy opposite ends of a bias-variance spectrum in finite samples \parencites{li2024local}{olea2025local}. Local projections tend toward  higher variance, vector autoregressions toward higher bias under misspecification. 
-% For unrestricted lag lengths, \textcite{plagborg2021local} establish that both methods recover the exact same impulse response function in population. 
 More recently, however, \textcite{ludwig2026local} shows that the equal-order comparison is itself misleading. At a given lag order $p$, LP$(p)$ is strictly more general than VAR$(p)$, so the conventional bias-variance trade-off conflates the choice of estimator with the choice of model complexity.
 
 
@@ -189,30 +202,38 @@ schorfheide 2005
 Whereas the VAR recovers the impulse response by iterating a single fitted
 model forward through powers of the companion matrix, the local projection
 estimates each horizon's response directly from a separate regression
-\parencite{jorda2005estimation}. Following \textcite{jorda2005estimation} and
-\textcite{jorda2025local} and reminding oneself of our definition of an impulse response
-in equation \eqref{eq:EF_IRF}, consider a structural shock of interest
-$\varepsilon_{j,t}$ and fix the horizon $h$. The LP estimates the response by
-projecting the future outcome $y_{t+h}$ onto the current shock $\varepsilon_{j,t}$,
-controlling for the $p$ lags $y_{t-1}, \ldots, y_{t-p}$ that span the
-conditioning information of the system,
+\parencite{jorda2005estimation}. Following \textcite{jorda2025local}, the LP estimates the horizon-$h$
+response of the outcome $y$ to the shock $s_t$ directly, by projecting the
+future outcome $y_{t+h}$ onto the current shock $s_t$ while controlling for
+the conditioning set $\mathbf{x}_t$ that spans the information of the system,
 %
 \begin{equation}
-    y_{t+h} = \nu_h + \beta_h\, \varepsilon_{j,t}
-            + \sum_{\ell=1}^{p} \Xi_{h,\ell}\, y_{t-\ell}
+    y_{t+h} = \alpha_h + \beta_h\, s_t
+            + \boldsymbol{\gamma}_h'\, \mathbf{x}_t
             + \xi_{t+h}^{(h)},
     \qquad h = 0, 1, \ldots, H,
     \label{eq:lp_shock}
 \end{equation}
 %
-where $\nu_h$ is a $K \times 1$ vector of constants, $\beta_h$ is a $K \times 1$
-vector of impulse response coefficients at horizon $h$, $\Xi_{h,\ell}$ are
-$K \times K$ coefficient matrices on the lagged controls, and $\xi_{t+h}^{(h)}$
-is the horizon-$h$ projection residual.
-Under appropriate identification of the shock, e.g. exogeineity, the impulse response to a one-unit shock to the endogeneous variable can be directly obtained by ordinary least squares estimation of Equation \ref{eq:lp_shock}. The LP thus recovers the impulse response without parametrizing the underlying propagation dynamics, in sharp contrast to the VAR's reliance on a fitted autoregressive model and forward iteration. If exogeneity is not appropriate, causal interpretation of the shock might be enabled through selection on observable covariates \parencite{olea2025local}, instrumental variable regression using a slighly adjusted exogeneity assumtion \parencite{stock2018identification, jorda2015betting} or even traditional VAR identification schemes like the aforementioned Cholesky decomposition \parencite{plagborg2021local}.
+where $y_{t+h}$ is the scalar response variable, and $s_t$ the scalar shock of interest, which in the case of an
+observed structural innovation coincides with $s_t = \varepsilon_{j,t}$. The
+control vector $\mathbf{x}_t = (y_{t-1}', \ldots, y_{t-p}')'$ collects the
+$p$ lags that span the conditioning information and under non-recursive
+identification may additionally absorb contemporaneous controls. Here
+$\alpha_h$ is a constant which can be ommitted without loss of generality, $\boldsymbol{\gamma}_h$ a $(Kp \times 1)$ vector of coefficients on the controls, and $\xi_{t+h}^{(h)}$ the horizon-$h$
+projection residual. The leading coefficient is the impulse response itself,
+$\beta_h$, which, when $y$ is variable $i$ and
+$s_t = \varepsilon_{j,t}$, coincides with the structural response
+$\theta_h^{ij}$ of Equation \eqref{eq:sirf} and with the population object
+$\mathrm{IR}(h,\delta = 1)$ of Equation \eqref{eq:EF_IRF}.
 
-Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$
-proceeds in a single stage, directly by OLS on equation \eqref{eq:lp_shock}.
+Under appropriate identification, in the simplest case as exogeneity of $s_t$ conditional on $\mathbf{x}_t$, the impulse response is obtained directly as the OLS coefficient $\hat{\beta}_h$ on $s_t$ in \eqref{eq:lp_shock}. If $s_t = \varepsilon_{j,t}$ is a unit-variance structural shock, $\hat{\beta}_h$ measures the response to a one-standard-deviation innovation. 
+The LP thus recovers the impulse response without parametrizing the underlying propagation dynamics, in sharp contrast to the VAR's reliance on a fitted autoregressive model and forward iteration. 
+When conditional exogeneity does not hold, causal interpretation can instead be enabled by enriching $\mathbf{x}_t$ to achieve selection on observables \parencite{olea2025local}, by instrumenting $s_t$ with an external proxy under a relevance and lead-lag exogeneity condition \parencite{stock2018identification,jorda2015betting} or
+by importing a conventional VAR identification scheme such as the recursive Cholesky ordering \parencite{plagborg2021local}. 
+The instrumental-variable route is moreover robust to non-invertibility, recovering the response even when the structural shock is not spanned by current and past observables and the recursive scheme consequently fails.
+
+Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$ proceeds in a single stage, directly by OLS on equation \eqref{eq:lp_shock}.
 Equation \eqref{eq:lp_shock} therefore yields the $h$-step predictive regression of $y_{t+h}$
 on the shock of interest, whose leading coefficient coincides with the
 horizon-$h$ impulse response \parencite{jorda2025local}. Since
@@ -245,7 +266,7 @@ projection. Whereas the VAR confines all dynamic dependence to the one-step
 innovation and generates longer-horizon responses by iterating a single
 fitted model, the local projection reads each horizon off a separate
 regression whose residual must absorb the shocks realised between the
-impulse date and the response date. Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}]$ almost surely \parencite{jorda2025local} 
+impulse date and the response date. Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}] = 0$ almost surely \parencite{jorda2025local} 
 \begin{equation}
 y_t = \rho y_{t-1} + u_t.
 \end{equation}
@@ -258,17 +279,17 @@ Using a simplified version of the local projection estimator in
     \label{eq:lp_ar1}
 \end{equation}
 %
-Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1} yields
+Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1}, using $\beta(\rho, h)$ to denote the LP IRF estimator for $\rho ^h$ and $\xi(\rho, h)$ the corresponding regression residual, yields
 %
 \begin{equation}
-    y_{t+h} = \beta^h y_t + \xi_{t+h}^{(h)}, \qquad \xi_{t+h}^{(h)} = \sum_{j=1}^{h} \rho^{h-j}\, u_{t+j},
+    y_{t+h} = \beta(\rho, h) y_t + \xi(\rho, h) , \qquad \xi(\rho, h) = \sum_{j=1}^{h} \rho^{h-j}\, u_{t+j}.
     \label{eq:ar1_recursive}
 \end{equation}
 %
 
-The projection error is therefore a moving-average process of order $h$,mediated by the persistence of the underlying DGP. Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of
-$\xi_{t+h}^{(h)}$, and hence the more severe the distortion in naive
-OLS standard errors. Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the inverse unit-circle, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
+The projection error is therefore a moving-average process of order $h-1$, mediated by the persistence of the underlying DGP. Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of
+$\xi(\rho, h)$, and hence the more severe the distortion in naive
+OLS standard errors. Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-standard near-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$. However, if $\rho$ lies safely inside the unit-circle $|\rho| < 1$, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
 
 These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. In practice, however, HAC inference requires the specification choice of tuning parameters with complex interpretation \parencite{lazarus2018har} and introduce another source of bias themself. More specifically, \textcite{herbst2024bias} show that while HAC estimator are asymptotically valid, estimates of long-run variance are typically downward biased leading to an understatement of the surrounding uncertainty of the point estimate. 
 
@@ -316,8 +337,7 @@ Also in cases of lag truncation, \textcite{brugnolini2018local} shows by varying
 All of the aforementioned simulation studies compare LPs and VARs at a single common lag length p. This common-lag design, however, presupposes that the two methods estimate the 
 same object. \textcite{plagborg2021local} establish that under weak 
 stationarity, unrestricted lag structure and a common 
-identification scheme, LP and VAR estimate the identical structural impulse 
-response function in population. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
+identification scheme, LP and VAR estimate the identical structural impulse response function in population up to constant of proportionality. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
 Furthermore, as both methods are best linear predictors of the underlying DGP, the authors state that both methods are symetrically robust to non-linear misspecification in population.
 
 Crucially for the equal-lag designs above, \textcite{plagborg2021local}  further show that when both specifications are restricted to a fixed order $p$, their estimands continue to agree out to horizon $h \leq p$ but generally diverge for $h > p$. 
