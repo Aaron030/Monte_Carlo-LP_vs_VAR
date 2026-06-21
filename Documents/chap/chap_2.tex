@@ -162,7 +162,7 @@ matrix persist even as $T \to \infty$.
 \textbf{misspecification}
 schorfheide 2005
 
-\subsection{Introduction to Local Projections (1.5 -2 pages)}
+\subsection{Introduction to Local Projections}
 
 Whereas the VAR recovers the impulse response by iterating a single fitted
 model forward through powers of the companion matrix, the local projection
@@ -265,7 +265,7 @@ Both channels cause the bias to depend on the true impulse responses at neighbou
 Although \textcite{herbst2024bias} propose a bias corrected estimator, \textcite{li2024local} find that it reduces bias only partially and at the cost of increased variance. 
 
 
-\subsection{On the Equivalence of VARs and Local Projections (2-2.5 pages)}
+\subsection{On the Equivalence of VARs and Local Projections}
 
 As local projection inference gained popularity over the last decade, a growing 
 body of simulation evidence has compared the finite-sample performance of LP and 
@@ -300,5 +300,7 @@ where $\Pi(q)$ denotes the estimated companion matrix of a VAR($q$), $I_K$ is th
 At $h=1$, the two methods coincide identically. However, at $h=2$, the LP($p$) is no longer the simple two-step iterate of a VAR($p$). Instead, it advances the one-step forecast using a VAR($p+1$) and each further horizon effectively adds one lag to the implicit VAR representation. This identity inherits a profound implications for model comparison. At equal-order LPs and VARs are not equally parsimonious or expressed in the same recursive language, an LP($p$) at horizon $h$ is constructed from VARs of orders $p, p+1, \dots, p+h-1$, whereas a standard VAR($p$) holds the order rigorously fixed at every step. 
 
 The fixed-order VAR($p$) is therefore a heavily restricted special case of the equal-order LP($p$), which in turn is a restricted special case of a highly parameterized VAR($p+h-1$). From this perspective, the familiar empirical pattern of lower approximation bias but higher sampling variance for LPs relative to a same-order VAR is largely a mechanical consequence of comparing a more flexible, over-parameterized specification with its own restriction, rather than an intrinsic property of the projection method itself. This fundamentally confounds the standard reading of the bias-variance trade-off as at equal lag orders, the methodological effect (LP vs. VAR) cannot be cleanly separated from the complexity effect (more vs.\ fewer effective lags).
+
+
 
 \FloatBarrier

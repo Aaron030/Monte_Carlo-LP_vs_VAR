@@ -108,7 +108,7 @@ population.
 
 
 %________________________________
-% Aus Baseline Estimation
+% Aus Baseline Estimation: Performance
 %________________________________
 
 
@@ -121,4 +121,154 @@ population.
     \left(\hat{\theta}_h^{(b)} - \theta_h\right)^2 \\
     \widehat{\mathrm{RMSE}}_h &= \sqrt{\widehat{\mathrm{MSE}}_h}
 \end{align}
+
+
+%________________________________
+% Aus Baseline Estimation: Methods old
+%________________________________
+\textbf{METHODS:} We compare two classes of estimators. The first is a fixed 
+LP(4) estimator, which serves as the reference point. At each horizon 
+$h = 1, \ldots, H$, the LP(4) estimator is obtained from the OLS regression
+
+\begin{equation}
+    y_{1,t+h} = \mu_h + \beta_h x_t + \sum_{\ell=1}^{4} \delta_{h,\ell}' 
+    y_{t-\ell} + \xi_{h,t}, \quad h = 1, \ldots, H
+\end{equation}
+
+where $x_t = e_1'(\hat{B}^{(4)})^{-1}\hat{u}_t^{(4)}$ is the estimated 
+structural shock recovered from the first-stage VAR(4). The structural 
+impulse response estimate at horizon $h$ is $\hat{\theta}_h^{\mathrm{LP}} 
+= \hat{\beta}_h$.
+
+The second class consists of a sweep of VAR estimators of increasing order, 
+$\mathrm{VAR}(q)$ for $q = 1, \ldots, p + H - 1$, where $p = 4$ and $H = 20$. 
+For each order $q$, the VAR is estimated equation-by-equation via OLS, the 
+reduced-form covariance matrix $\hat{\Sigma}_u^{(q)}$ is Cholesky-decomposed 
+to recover the structural impact matrix $\hat{B}^{(q)}$, and the $h$-step 
+ahead structural IRF is computed as
+
+\begin{equation}
+    \hat{\theta}_h^{\mathrm{VAR}(q)} = \hat{\Psi}_h^{(q)} \hat{B}^{(q)} e_1
+\end{equation}
+
+where $\hat{\Psi}_h^{(q)}$ denotes the $h$-step ahead moving-average matrix 
+of the estimated $\mathrm{VAR}(q)$. This sweep constitutes the 
+complexity-adjusted benchmark motivated by \textcite{ludwig2026local}: by 
+Theorem~1 of that paper, LP(4) at horizon $h$ is algebraically equivalent to 
+a sequence of VAR predictions stepping through orders $4, 5, \ldots, 4 + h - 1$. 
+The fair comparison is therefore not LP(4) against VAR(4) alone, but against 
+the full range of VAR specifications up to order $p + H - 1$. Note that this 
+equivalence holds exactly for the sequence of VARs of increasing order; 
+comparing LP(4) to any single VAR$(q^*)$ is an approximation, with the 
+complexity-adjusted single-order approximation given by $q^* = p + 
+\frac{h-1}{2}$ \parencite{ludwig2026local}. The equal-lag VAR(4) is nested 
+in the sweep as a special case and is retained as an additional reference 
+point to connect to the conventional benchmark in the literature.
+
+Identification of the structural shock is implemented as follows. For each 
+$\mathrm{VAR}(q)$ in the sweep, the structural impact matrix $\hat{B}^{(q)}$ 
+is obtained via Cholesky decomposition of the order-specific residual 
+covariance matrix $\hat{\Sigma}_u^{(q)}$. For the LP(4), which does not 
+estimate a complete system, identification is achieved through a first-stage 
+VAR(4): the structural shock is constructed as $\hat{\varepsilon}_{1t} = 
+e_1'(\hat{B}^{(4)})^{-1}\hat{u}_t^{(4)}$, consistent with the LP lag order 
+$p = 4$. Since \textcite{plagborg2021local} establish that LP and VAR share 
+the same implicit shock in population under recursive identification, this 
+ensures that any divergence in estimated IRFs reflects differences in 
+propagation rather than identification. No data-dependent lag selection is 
+performed within the sweep; all VAR orders $q = 1, \ldots, p + H - 1$ are 
+estimated on each simulated sample, ensuring that the comparison is across 
+fixed specifications rather than across selection procedures.
+
+%________________________________
+% Aus Baseline Estimation: Performance old
+%________________________________
+
+
+\textbf{PERFORMANCE:} Performance is assessed along two dimensions, reported 
+horizon-by-horizon for $h = 1, \ldots, 20$. For point estimation, we report 
+bias, variance, MSE, and RMSE of the IRF estimates $\hat{\theta}_h$ relative 
+to the true estimand $\theta_h$, computed across $B = 5{,}000$ Monte Carlo 
+replications in line with the number of replications used by 
+\textcite{li2024local}.
+
+Monte Carlo standard errors are reported alongside all point-estimator 
+performance measures to quantify simulation uncertainty, with 
+$\mathrm{MCSE}(\widehat{\mathrm{Bias}}_h) = \sqrt{\widehat{\mathrm{Var}}_h 
+/ B}$.
+
+For inference, we assess coverage of nominal $95\%$ confidence intervals. 
+For the VAR$(q)$ sweep, confidence intervals are constructed via the delta 
+method, propagating estimation uncertainty in the reduced-form coefficients 
+$(\hat{A}_1, \ldots, \hat{A}_q)$ through the nonlinear mapping to structural 
+IRFs $\hat{\theta}_h^{\mathrm{VAR}(q)} = \hat{\Psi}_h^{(q)} \hat{B}^{(q)} 
+e_1$ \parencite{kilian2017structural}. For LP(4), confidence intervals are 
+based on heteroskedasticity-robust standard errors, which suffice under the 
+martingale difference assumption on the structural shock 
+\parencite{plagborg2021local}. Coverage is defined as the fraction of 
+replications in which the nominal $95\%$ interval contains the true estimand 
+$\theta_h$:
+
+\begin{equation}
+    \widehat{\mathrm{Coverage}}_h = \frac{1}{B} \sum_{b=1}^{B} 
+    \mathbf{1}\left[\theta_h \in \hat{CI}_h^{(b)}\right]
+\end{equation}
+
+
+
+%________________________________
+TRUE IRF OLD NOTES
+%________________________________
+\begin{figure}[htbp]
+\centering
+\caption{True Impulse Response Functions Across Persistence Regimes}
+\label{fig:BL_TRUE_IRF}
+
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.5.png}
+    \label{fig:BL_TRUE_IRF_LOW}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.7.png}
+    \label{fig:BL_TRUE_IRF_MID}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
+    \label{fig:BL_TRUE_IRF_HIGH}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of 
+variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
+\(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the 
+companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
+\end{minipage}
+
+\end{figure}
+
+TEXTDUMP:\newline
+\textit{from aim:}
+Because the data-generating process admits an exact finite-order VAR 
+representation, the equal-lag VAR(4) is correctly specified, and the exercise 
+characterizes where LP(4) sits relative to the complexity-adjusted VAR 
+benchmark in the \emph{absence} of misspecification --- isolating the variance 
+cost of direct estimation from the approximation-bias channels introduced 
+later.
+\newline
+\textit{from dgp:}
+To achieve the desired persistence exactly while preserving the qualitative shape of the impulse responses induced by higher-order lags, the coefficient matrices are scaled geometrically. Letting $c = \rho_{\text{target}} / \rho(\mathcal{A})$, the exact scaling is applied across all lags:
+\begin{equation}
+    A_i \leftarrow c^i A_i \qquad \text{for } i = 1, \dots, 4
+\end{equation}
+
 \FloatBarrier
