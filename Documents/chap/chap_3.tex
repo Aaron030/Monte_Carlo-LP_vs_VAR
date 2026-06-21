@@ -3,42 +3,26 @@
 \section{Baseline Simulation (4-5 pages)}
 
 
-This confounding motivates the first part of our study. Because Ludwig's 
-contribution is analytical and deliberately abstains from a simulation-based horse race, 
-the question of whether the conventional finite-sample conclusions survive once the 
-equal-lag restriction is relaxed remains open. We therefore operationalize Ludwig's central 
-implication through a complexity-adjusted benchmarking exercise that holds parsimony more 
-nearly fixed, comparing a fixed LP(4) estimator against progressively higher-order VAR specifications 
-that proxy its increasing effective dynamic flexibility. Crucially, because the identity in Theorem 
-1 maps LP(p) to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is 
-the appropriate counterpart; instead, LP(4) is read as a reference line against the full VAR order frontier, 
-against which its bias, variance, and coverage can be located. We frame the exercise as a test of robustness 
-rather than as a foregone conclusion: the aim is to assess whether the conventional bias-variance 
-verdict persists, dissolves, or reverses once the comparison is placed on more comparable terms, and 
-to identify the features of the data-generating process under which each procedure is favored.
+This confounding motivates the first part of our study. Because \textcite{ludwig2026local}'s contribution is analytical and deliberately abstains from a simulation-based horse race, the question of whether the conventional finite-sample conclusions survive once the equal-lag restriction is relaxed remains open. 
+We therefore operationalize Ludwig's central implication through a complexity-adjusted benchmarking exercise that holds effective model complexity constant, comparing a fixed $\text{LP}(4)$ estimator against progressively higher-order VAR specifications that proxy its increasing dynamic flexibility. 
+Crucially, because the identity in Theorem 1 maps $\text{LP}(p)$ to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is the perfect counterpart. 
+Instead, $\text{LP}(4)$ is read as a reference line against the full VAR-order frontier, against which its bias, variance, and coverage can be accurately located. 
 
 \subsection{Simulation Design}
-\textbf{AIM:} This simulation study examines whether conventional finite-sample 
-conclusions about the bias-variance tradeoff between Local Projections and Vector 
-Autoregressions are robust to relaxing the equal-lag restriction. Specifically, 
-we compare a fixed LP(4) estimator against a sweep of VAR specifications of 
-increasing order, ranging from VAR(1) to VAR(p+H-1), thereby constructing a 
-complexity-adjusted benchmark in the spirit of \textcite{ludwig2026local}. The 
-central question is whether LP(4) retains its finite-sample MSE advantage over 
-the equal-lag VAR(4) once the VAR is allowed to exploit its natural complexity 
-advantage at longer horizons.
+The baseline study serves two purposes. First, it operationalizes the 
+complexity argument of \textcite{ludwig2026local} in a controlled, correctly 
+specified setting. Rather than comparing LP(4) to a single equal-lag VAR(4), 
+we locate the fixed LP(4) estimator on the full VAR-order frontier, ranging 
+from VAR(1) to VAR(p+H-1), thereby rendering the implicit complexity of the 
+direct projection visible as a position on that frontier. Second, it 
+establishes the correctly specified reference design against which later 
+extensions measure the effect of dynamic and functional misspecification. 
 
-\textbf{DGP:} The baseline DGP is a stable bivariate zero-mean VAR(4) with 
-recursive Cholesky identification. Recursive identification refers to the 
-lower-triangular structure of the impact matrix $B$, obtained via Cholesky 
-decomposition of the reduced-form error covariance matrix $\Sigma_u = BB'$. 
-This imposes a contemporaneous zero restriction: the first variable does not 
-respond on impact to shocks in the second variable, while the second variable 
-may respond to both structural shocks simultaneously.
+The underlying DGP is a stable bivariate zero-mean $\text{VAR}(4)$ with recursive Cholesky identification. Consistent with the theoretical setup, this imposes a contemporaneous zero restriction where the first variable does not respond on impact to shocks in the second variable, while the second variable may respond to both structural shocks simultaneously.
 
 \begin{equation}
     y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} + u_t, 
-    \quad u_t \sim (0, \Sigma_u), \quad y_t \in \mathbb{R}^2
+    \quad y_t \in \mathbb{R}^2
 \end{equation}
 
 \begin{equation}
@@ -51,69 +35,68 @@ may respond to both structural shocks simultaneously.
     \rho(\mathcal{A}) < 1, \qquad 
     \mathcal{A} = \begin{pmatrix} 
         A_1 & A_2 & A_3 & A_4 \\ 
-        I_2 & 0   & 0   & 0   \\ 
-        0   & I_2 & 0   & 0   \\ 
-        0   & 0   & I_2 & 0   
+        I_2 & \mathbf{0}   & \mathbf{0}   & \mathbf{0}   \\ 
+        \mathbf{0}   & I_2 & \mathbf{0}   & \mathbf{0}   \\ 
+        \mathbf{0}   & \mathbf{0}   & I_2 & \mathbf{0}   
     \end{pmatrix} \in \mathbb{R}^{8 \times 8}
 \end{equation}
 
-Persistence is calibrated via the spectral radius of the companion matrix 
-across the empirically relevant range $\rho \in (0.5, 0.95)$. The lower 
-bound reflects the observation that, for weakly persistent processes, impulse 
-responses decay rapidly toward zero at longer horizons, rendering the 
-bias-variance comparison between LP and VAR uninformative. The upper bound 
-approaches the unit-root boundary while maintaining covariance stationarity, 
-covering the high-persistence region where finite-sample differences between 
-estimators are most pronounced.
+Persistence is calibrated via the spectral radius of the companion matrix $\mathcal{A}$ across the empirically relevant range $\rho \in \{0.5, 0.7, 0.95\}$ (Figure \ref{fig:BL_TRUE_IRF}). The lower bound reflects weakly persistent processes where impulse responses decay rapidly, rendering bias-variance comparisons at longer horizons uninformative. The upper bound approaches the unit-root boundary while maintaining covariance stationarity, covering the high-persistence region where finite-sample differences between estimators are most pronounced. 
+
+Sample sizes are set to $T \in \{100, 250, 500\}$ observations, generated after a burn-in period of 200 periods to eliminate initialization effects. The choice of $T=100$ aligns precisely with the median sample size documented by \textcite{herbst2024bias} in the applied structural VAR literature. At the same time, this value serves as the effective lower bound for our specific simulation design. Because our complexity-adjusted benchmarking requires estimating highly parameterized models up to $\text{VAR}(p+H-1)$, pushing the sample size below this median would rapidly exhaust degrees of freedom and yield computationally unstable estimates. The intermediate value $T=250$ is therefore included to represent a comfortably large empirical dataset, corresponding to twenty years of monthly or sixty years of quarterly observations. This ensures reliable estimation across the entire VAR-order frontier. Finally, the value $T=500$ serves as a large-sample reference point to assess convergence toward the population equivalence established by \textcite{plagborg2021local}.
+
+The structural estimand is $\theta_h = \Psi_h B e_1$, where $\Psi_h$ denotes the $h$-step ahead moving-average matrix of the reduced-form VAR, generated via the recursion $\Psi_h = \sum_{j=1}^{\min(h,4)} A_j \Psi_{h-j}$ with $\Psi_0 = I_2$, and $e_1 = (1,0)'$ as the selection vector. The primitive shock is normalized as a unit shock. We trace the dynamic response of the system to a one-standard-deviation increase in the first structural innovation $\varepsilon_{1,t}$. 
 
 \begin{equation}
-    A_1 \leftarrow \frac{\rho}{\rho(\mathcal{A})} \cdot A_1, 
-    \quad \rho \in (0.5,\, 0.95)
+    u_t = B\varepsilon_t, \qquad \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2)
 \end{equation}
 
-Sample sizes are set to $T \in \{100, 200, 240, 500\}$, covering the range 
-of quarterly macroeconomic samples typically encountered in applied work. 
-The choice follows \textcite{herbst2024bias}, who document that the modal sample 
-size in the structural VAR literature lies between 100 and 240 quarterly 
-observations. The value $T = 500$ serves as a large-sample reference point 
-to assess convergence toward the population equivalence result of 
-\textcite{plagborg2021local}.
-
-The structural estimand is $\theta_h = \Psi_h B e_1$, where $\Psi_h$ denotes 
-the $h$-step ahead moving-average matrix of the reduced-form VAR, defined via 
-$y_{t+h} = \sum_{j=0}^{\infty} \Psi_j u_{t+h-j}$ with $\Psi_0 = I_2$, $B$ 
-is the Cholesky impact matrix, and $e_1 = (1,0)'$ is a selection vector. The 
-primitive shock is normalized as a unit shock: we trace the dynamic response 
-of the system to a one-standard-deviation increase in the first structural 
-innovation $\varepsilon_{1t}$. Since $B$ is normalized such that 
-$\mathrm{Var}(\varepsilon_t) = I_2$, no further rescaling is required.
-
-\begin{equation}
-    u_t = B\varepsilon_t, \qquad \varepsilon_t \overset{\text{iid}}{\sim} 
-    \mathcal{N}(0, I_2)
-\end{equation}
-
-The innovation term is specified as Gaussian white noise. The reasoning behind 
-Gaussianity is two-fold. First, our primary performance measures are bias, 
-variance, and RMSE of the IRF estimates, which in population depend exclusively 
-on the second moments of the underlying process, i.e.\ the VAR coefficients 
-and the covariance matrix $\Sigma_u$. The distribution of the innovation term 
-is therefore irrelevant for the point estimator comparison. Second, we follow 
-\textcite{plagborg2021local}, who introduce Gaussianity explicitly as an 
-expositional device that allows conditional expectations to be written in place 
-of linear projections. As all results hold under covariance stationarity alone, 
-the distributional assumption leaves the analysis qualitatively unchanged. 
-Importantly, this choice is orthogonal to the misspecification parameters 
-introduced in the extensions: varying the MA parameter $\theta$ in Extension~1 
-or the nonlinearity parameter $\gamma$ in Extension~2 alters the structure of 
-the DGP while leaving the innovation distribution fixed, ensuring that 
-differences in estimator performance across designs are attributable solely to 
-the respective misspecification channel.
+The innovations are specified as Gaussian white noise. This standard assumption acts primarily as an expositional device, allowing conditional expectations to replace linear projections \parencite{plagborg2021local}. Because our performance metrics (bias and variance) depend strictly on the second moments of the data, the exact distribution of the innovations is irrelevant for the baseline estimator comparison. Furthermore, holding the Gaussian innovation structure fixed isolates the effects of the structural misspecifications introduced later in the study ensuring differences in performance are driven solely by the specified channel.
 
 \textbf{ESTIMAND:}
+The structural target of interest is the impulse response function, which tracks the dynamic causal effect of a structural innovation on the variables of the system over time. Formally, the population estimand at horizon $h$ is defined as the vector of responses to a one-standard-deviation shock in the first structural innovation $\varepsilon_{1,t}$. This object is constructed analytically from the data-generating process parameters as
 \begin{equation}
     \theta_h = \Psi_h B e_1, \qquad e_1 = (1, 0)', \qquad h = 1, \ldots, 20
 \end{equation}
+where $\Psi_h$ represents the reduced-form moving-average coefficient matrix obtained from the companion recursion, $B$ is the lower-triangular Cholesky factor of the innovation variance matrix, and $e_1$ serves as the selection vector. The multiplication by $e_1$ isolates the first column of the structural impact matrix, which restricts the analysis to the propagation of the first shock while discarding contemporaneous variations from the second structural innovation. Because the baseline data-generating process is linear and covariance stationary, this population estimand represents the true conditional expectation of the system given the structural shock. It constitutes the invariant benchmark that both the iterated $\text{VAR}(q)$ specifications and the direct $\text{LP}(4)$ regressions attempt to recover in finite samples.
+
+% ----------------------------------- True IRF
+\begin{figure}[htbp]
+\centering
+\caption{True Impulse Response Functions Across Persistence Regimes}
+\label{fig:BL_TRUE_IRF}
+
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.5.png}
+    \label{fig:BL_TRUE_IRF_LOW}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.7.png}
+    \label{fig:BL_TRUE_IRF_MID}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
+    \label{fig:BL_TRUE_IRF_HIGH}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of 
+variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
+\(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the 
+companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
+\end{minipage}
+
+\end{figure}
 
 \textbf{METHODS:} We compare two classes of estimators. The first is a fixed 
 LP(4) estimator, which serves as the reference point. At each horizon 
@@ -173,19 +156,8 @@ fixed specifications rather than across selection procedures.
 horizon-by-horizon for $h = 1, \ldots, 20$. For point estimation, we report 
 bias, variance, MSE, and RMSE of the IRF estimates $\hat{\theta}_h$ relative 
 to the true estimand $\theta_h$, computed across $B = 5{,}000$ Monte Carlo 
-replications. The number of replications exceeds the $B = 1{,}000$ used by 
-\textcite{li2024local} and \textcite{olea2025local}, ensuring tighter 
-Monte Carlo standard errors at the cost of additional computation. Formally:
-
-\begin{align}
-    \widehat{\mathrm{Bias}}_h &= \frac{1}{B} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \theta_h\right) \\
-    \widehat{\mathrm{Var}}_h &= \frac{1}{B-1} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \bar{\hat{\theta}}_h\right)^2 \\
-    \widehat{\mathrm{MSE}}_h &= \frac{1}{B} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \theta_h\right)^2 \\
-    \widehat{\mathrm{RMSE}}_h &= \sqrt{\widehat{\mathrm{MSE}}_h}
-\end{align}
+replications in line with the number of replications used by 
+\textcite{li2024local}.
 
 Monte Carlo standard errors are reported alongside all point-estimator 
 performance measures to quantify simulation uncertainty, with 
@@ -208,58 +180,29 @@ $\theta_h$:
     \widehat{\mathrm{Coverage}}_h = \frac{1}{B} \sum_{b=1}^{B} 
     \mathbf{1}\left[\theta_h \in \hat{CI}_h^{(b)}\right]
 \end{equation}
+\ \\ \ \\
+TEXTDUMP:\newline
+\textit{from aim:}
+Because the data-generating process admits an exact finite-order VAR 
+representation, the equal-lag VAR(4) is correctly specified, and the exercise 
+characterizes where LP(4) sits relative to the complexity-adjusted VAR 
+benchmark in the \emph{absence} of misspecification --- isolating the variance 
+cost of direct estimation from the approximation-bias channels introduced 
+later.
+\newline
+\textit{from dgp:}
+To achieve the desired persistence exactly while preserving the qualitative shape of the impulse responses induced by higher-order lags, the coefficient matrices are scaled geometrically. Letting $c = \rho_{\text{target}} / \rho(\mathcal{A})$, the exact scaling is applied across all lags:
+\begin{equation}
+    A_i \leftarrow c^i A_i \qquad \text{for } i = 1, \dots, 4
+\end{equation}
 
 \newpage
 \subsection{Simulation Results}
 
 
-% ----------------------------------- True IRF
-\begin{figure}[htbp]
-\centering
-\caption{True Impulse Response Functions Across Persistence Regimes}
-\label{fig:BL_TRUE_IRF}
 
 
-\begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.5.png}
-    \label{fig:BL_TRUE_IRF_LOW}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.7.png}
-    \label{fig:BL_TRUE_IRF_MID}
-\end{subfigure}
 
-\begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
-    \label{fig:BL_TRUE_IRF_HIGH}
-\end{subfigure}
-
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of 
-variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
-\(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the 
-companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
-\end{minipage}
-
-\end{figure}
-
-Figure \ref{fig:BL_TRUE_IRF} reports the true structural impulse responses that both estimators target, traced over 
-horizons $h = 1, \ldots, 20$ for the three persistence regimes. The responses are convex and monotonically decreasing, showing
-a strong impact at $h = 1$ which is followed by progressively smaller adjustments as the shock dissipates. Persistence controls 
-the speed of this decay, moving from the response returning to near zero within a handful of horizons at $\rho = 0.5$, to being 
-elevated across the entire window and taking an almost L-shaped profile at $\rho = 0.95$. This shape is standard 
-for a stable VAR and involves no misspecification. Its role here is to fix the estimand and the persistence regimes 
-against which the point-estimation and coverage results are read.
-
-\clearpage
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -451,6 +394,19 @@ unreliable.
 
 \FloatBarrier
 
+%____________ TEXTDUMP:
+\textit{from Results - true IRF}
+Figure \ref{fig:BL_TRUE_IRF} reports the true structural impulse responses that both estimators target, traced over 
+horizons $h = 1, \ldots, 20$ for the three persistence regimes. The responses are convex and monotonically decreasing, showing
+a strong impact at $h = 1$ which is followed by progressively smaller adjustments as the shock dissipates. Persistence controls 
+the speed of this decay, moving from the response returning to near zero within a handful of horizons at $\rho = 0.5$, to being 
+elevated across the entire window and taking an almost L-shaped profile at $\rho = 0.95$. This shape is standard 
+for a stable VAR and involves no misspecification. Its role here is to fix the estimand and the persistence regimes 
+against which the point-estimation and coverage results are read.
+
+
 \subsection{Discussion of Results}
+
+Limitation, T not lower than 100. 
 
 \FloatBarrier
