@@ -87,6 +87,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 \end{minipage}
 
 \end{figure}
+\clearpage
 
 Figure \ref{fig:NON_LIN_IRF} shows the true IRF together with the autocorrelation of the squared and level 
 second-equation residuals of a VAR(4). As $\gamma$ and $\rho$ increase, the squared residuals develop significant 
@@ -95,7 +96,6 @@ is thus approximately orthogonal to the linear lag space and leaves the best lin
 unchanged. The misspecification only surfaces as conditional heteroskedasticity in the residuals. Furthermore, because 
 the delta-method standard errors assume homoskedasticity, they are invalid under this residual heteroskedasticity. 
 This leads to VAR(4)'s confidence intervals under-covering, whereas LP's heteroskedasticity-robust intervals remain valid.
-
 
 % ----------------------------------- Complexity Frontier (Keep)
 \begin{figure}[htbp]
@@ -141,6 +141,7 @@ performance. Horizontal line represents horizon averaged RMSE for LP(4).
 \end{minipage}
 
 \end{figure}
+\clearpage
 
 As seen in Figure \ref{fig:NON_LIN_COMPLEXITY}, LP(4)'s RMSE matches that of a VAR of order 
 $\approx 18$–$19$ in both the low ($\rho=0.5$) and mid ($\rho=0.7$) persistence scenarios in small samples. 
@@ -183,6 +184,7 @@ consistent with the nonlinearity acting through inflated and asymptotically vani
 \end{minipage}
 
 \end{figure}
+\clearpage
 
 % ----------------------------------- Point Estimation Asymptotic (Keep)
 \begin{figure}[htbp]
@@ -212,30 +214,6 @@ consistent with the nonlinearity acting through inflated and asymptotically vani
 \end{figure}
 
 \FloatBarrier
-Moving to point prediction in figures \ref{fig:NON_LIN_POINT_EST_SAMPLE} and \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}, the asymptotic traits of equivalence under a non-linear DGP become even more noticable. 
-In the small sample (figure \ref{fig:NON_LIN_POINT_EST_SAMPLE}), bias in low and medium persistence scenarios exhibits a lot of noise, manifesting in oscilating lines.
-Importantly, VAR bias does seem to follow LP bias for a horizon count correlating with VAR complexity, before converging to zero.
-VAR(2) seems to violate this pattern, as its bias strongly oscilates, peaks at horizon 3, and then converges to zero.
-Convergence to zero is expected in all VAR models, and in all persistence/sample size scenarios, as their predicted shock effect 
-has no mechanism to percolate through higher horizons once their lag length is exhausted. The LP model exhibits a slightly oscilating 
-but relatively constant negative bias in small samples.
-
-The most important insight from the bias panels becomes visible when moving to the asymptotic approximation (figure \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}), as here all models, except VAR(2), 
-drop to the zero-line, irrespective of persistence. VAR(2) shows extreme oscilation, peaking at an absolute bias value of ca. 0.01 and 0.025, 
-depending on persistence, before dropping to zero.
-
-Comparing variance levels between persistence scenarios, we notice even more strongly that lower lag VAR models follow LP variance, 
-before decreasing about one horizon before their max lag length, and then dropping to zero. Again, the drop is an expected effect of the prediction horizon exheeding model max lags.
-Additionally, larger lag VAR model variance seems to exceed LP variance in early horizons. LP variance again oscilates softly while staying generally constant.
-This pattern is consistent between persistence levels, with higher persistence leading to more rounded, less horizontal LP and higher order VAR paths, signaling heteroskedasticity.
-When moving to the asymptotic approximation, the pattern is amplified significantly. All models now exactly trace LP variance, before decreasing slightly approximately one horizon before their max lags and converging to zero.
-
-Lastly, RMSE and MSE show the exact same pattern as variance, with one exception. VAR(2) blows up in lower horizons, and exceeds all other model performances by several orders of magnitude.
-
-As VAR(2) only blows up in RMSE, MSE and bias, and stays constant in variance, the evidence again strongly points towards a wrong estimator effect caused by insufficient lag length.
-
-
-
 
 Moving to point prediction (Figures \ref{fig:NON_LIN_POINT_EST_SAMPLE} and \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}), 
 the equivalence under a nonlinear DGP becomes even clearer. In the small sample, bias in the low and mid persistence 
