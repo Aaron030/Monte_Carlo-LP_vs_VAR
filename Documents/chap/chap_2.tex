@@ -52,7 +52,7 @@ Restricting attention to the top $K$ rows of the Wold MA representation yields t
     \label{eq:wold_yt}
 \end{equation}
 %
-where $\Psi_h$ is the reduced-form impulse response function at horizon $h$, measuring the response of $y_t$ to a unit reduced-form innovation $u_{t-h}$. It corresponds to the upper-left $K \times K$ block of $\mathbf{A}^h$, which follows directly from the fact that $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$ has nonzero entries only in its first $K$ positions. Since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural identification is achieved by imposing restrictions on  the impact matrix $B$ in $u_t = B\varepsilon_t$, where $\varepsilon_t \sim (0, I_K)$ are mutually uncorrelated structural shocks, so that $\Sigma_u = BB'$.
+where $\Psi_h$ is the reduced-form impulse response function at horizon $h$, measuring the response of $y_t$ to a reduced-form innovation $u_{t-h}$. It corresponds to the upper-left $K \times K$ block of $\mathbf{A}^h$, which follows directly from the fact that $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$ has nonzero entries only in its first $K$ positions. Since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural identification is achieved by imposing restrictions on  the impact matrix $B$ in $u_t = B\varepsilon_t$, where $\varepsilon_t \sim (0, I_K)$ are mutually uncorrelated structural shocks, so that $\Sigma_u = BB'$.
 
 
 The most common approach is recursive Cholesky identification \parencite{ramey2016macroeconomic}, which restricts $B$ to be lower triangular with positive diagonal entries, uniquely recovering $B$ as the Cholesky factor of $\Sigma_u$. The recursive ordering imposes a causal structure: the variable ordered first responds contemporaneously to all shocks, while the variable ordered last is insulated from all  contemporaneous feedback. The diagonal entries $b_{ii}$, $i = 1, \ldots, K$, measure the direct impact of structural shock $i$ on variable $i$, while the off-diagonal entries $b_{ij}$, $1 \leq j < i \leq K$, capture the contemporaneous spillover from structural shock $j$ to variable $i$.
@@ -95,18 +95,16 @@ specialised to a structural innovation of unit size in shock $j$.
 %oberen Satz noch etwas entwicklen 
 
 Estimation of the structural impulse response $\hat{\theta}_h^{ij}$ proceeds in two stages. 
-In the first stage, the stacked VAR coefficient matrix $A := [A_1, \ldots, A_p]$ of dimension $K \times Kp$ is
-estimated equation-by-equation via OLS, which is efficient under the stability condition and yields
+In the first stage, the stacked VAR coefficient matrix $A := [A_1, \ldots, A_p]$ of dimension $K \times Kp$ is estimated equation-by-equation via OLS. Assuming that the underlying process satisfies the stability condition and that the innovations $u_t$ form a strictly stationary martingale difference sequence with a positive definite covariance matrix and finite fourth moments, this estimator is asymptotically normal \parencite{hansen2022econometrics}. Specifically, it yields
 %
 \begin{equation}
-    \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr)
-    \xrightarrow{d} \mathcal{N}\!\left(0,\; \Gamma^{-1} \otimes \Sigma_u\right),
+    \sqrt{T}\,\bigl(\mathrm{vec}(\hat{A}) - \mathrm{vec}(A)\bigr) 
+    \xrightarrow{d} \mathcal{N}\!\left(0,\; V_{\alpha}\right),
 \end{equation}
 %
-where $\Gamma = \mathbb{E}(Z_t Z_t')$ is the second-moment matrix of the stacked regressors $Z_t = (y_{t-1}', \ldots, y_{t-p}')'$, and the innovation covariance $\Sigma_u$ is replaced by its residual analogue $\hat{\Sigma}_u$ \parencite{lutkepohl2005}.
+where the general asymptotic covariance matrix takes the robust sandwich form $V_{\alpha} = \overline{\Gamma}^{-1} \Omega \overline{\Gamma}^{-1}$. Here, $\overline{\Gamma} = I_K \otimes \Gamma$, with $\Gamma = \mathbb{E}(Z_t Z_t')$ being the second-moment matrix of the stacked regressors $Z_t = (y_{t-1}', \ldots, y_{t-p}')'$, and $\Omega = \mathbb{E}(u_t u_t' \otimes Z_t Z_t')$. If the innovations are conditionally homoskedastic, $\Omega$ simplifies to $\Sigma_u \otimes \Gamma$, which reduces the asymptotic variance to the standard form $\Gamma^{-1} \otimes \Sigma_u$ \parencite{lutkepohl2005}. Under these standard conditions, the equation-by-equation OLS estimator is asymptotically efficient. However, the generalized covariance structure $V_{\alpha}$ remains crucial to ensure valid inference when the data-generating process exhibits conditional heteroskedasticity.
 
-In the second stage, structural objects are recovered from the
-reduced-form estimates. 
+In the second stage, structural objects are recovered from the reduced-form estimates. 
 The impact matrix $\hat{B}$ is the Cholesky factor of $\hat{\Sigma}_u$, and reduced-form impulse responses are obtained via the recursion
 %
 \begin{equation}
@@ -200,58 +198,57 @@ When conditional exogeneity does not hold, causal interpretation can instead be 
 by importing a conventional VAR identification scheme such as the recursive Cholesky ordering \parencite{plagborg2021local}. 
 The instrumental-variable route is moreover robust to non-invertibility, recovering the response even when the structural shock is not spanned by current and past observables and the recursive scheme consequently fails.
 
-Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$ proceeds in a single stage, directly by OLS on equation \eqref{eq:lp_shock}.
-Equation \eqref{eq:lp_shock} therefore yields the $h$-step predictive regression of $y_{t+h}$
-on the shock of interest, whose leading coefficient coincides with the
-horizon-$h$ impulse response \parencite{jorda2025local}. Since
-$\hat{\beta}_h$ is the OLS coefficient on a regressor orthogonal to the
-projection error $\xi_{t+h}^{(h)}$ by construction of the structural shock,
-it recovers the impulse response directly, without propagation through a
-nonlinear mapping and hence without the delta-method step that governs the
-VAR estimator in Equation \eqref{eq:var_delta_method}.
+Unlike the VAR, estimation of the structural impulse response $\hat{\beta}_h$ proceeds in a single stage, directly by OLS on Equation \eqref{eq:lp_shock}. 
+This yields the $h$-step predictive regression of $y_{t+h}$ on the shock of interest, whose leading coefficient coincides with the horizon-$h$ impulse response \parencite{jorda2025local}. 
+Since $\hat{\beta}_h$ is the OLS coefficient on a regressor orthogonal to the projection error $\xi_{t+h}^{(h)}$ by construction of the structural shock, it recovers the impulse response directly, without propagation through a nonlinear mapping and hence without the delta-method step that governs the VAR estimator in Equation \eqref{eq:var_delta_method}.
 
-Provided $\{y_t\}$ is strictly stationary and ergodic with
-$\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$ and absolutely summable mixing coefficients, the least-squares estimator is $\sqrt{T-h}$-asymptotically normal. 
+Provided that the process $\{y_t\}$ is strictly stationary and ergodic, with a positive definite covariance matrix, bounded moments $\mathbb{E}\lVert y_t \rVert^{r} < \infty$ for some $r > 4$, and mixing coefficients satisfying $\sum_{\ell=1}^{\infty} \alpha(\ell)^{1-4/r} < \infty$, the least-squares estimator is asymptotically normal \parencite{hansen2022econometrics}. 
+Letting $n = T - h$ denote the effective sample size available at horizon $h$ and $\mathbf{w}_t = (s_t, \mathbf{x}_t')'$ the stacked vector of all regressors, we have
 %
 \begin{equation}
-    \sqrt{n}\,\bigl(\hat{\beta}_h - \beta_h\bigr)
-    \xrightarrow{d} \mathcal{N}\!\left(0,\; V_h\right),
+    \sqrt{n}\,\bigl(\hat{\mathbf{b}}_h - \mathbf{b}_h\bigr)
+    \xrightarrow{d} \mathcal{N}\!\left(\mathbf{0},\; V_h\right),
     \label{eq:lp_clt}
 \end{equation}
 %
-with consistency $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$ following as an immediate corollary \parencite{hansen2022econometrics}. 
-Here $n = T - h$ denotes the effective sample size available at horizon $h$, reflecting the loss of $h$ observations at the end of the sample and $V_h$ denotes the associated long-run variance.
-
-
-The long-run form of $V_h$ reflects a structural feature of direct projection. 
-Because the predictive regression aggregates the shocks accruing between $t$ and $t+h$ over overlapping forecast windows, the projection error $\xi_{t+h}^{(h)}$ follows a moving-average process of order $h-1$, thus the regression scores $\hat{\varepsilon}_{j,t}\,\xi_{t+h}^{(h)}$ are therefore serially correlated. 
-Take for instance a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, $y_0 = 0$ and a strictly stationary error term $u_t$ which satisfies $\mathbb{E}[u_t|\{u_s\}_{s\neq t}] = 0$ almost surely \parencite{jorda2025local} 
+where $\mathbf{b}_h = (\beta_h, \boldsymbol{\gamma}_h')'$ is the vector of all projection coefficients and $\hat{\mathbf{b}}_h$ its OLS estimate. The asymptotic covariance matrix takes the robust sandwich form
 %
 \begin{equation}
-y_t = \rho y_{t-1} + u_t.
+    V_h = Q^{-1} \Omega_h Q^{-1},
 \end{equation}
 %
-Using a simplified version of the local projection estimator in
-\eqref{eq:lp_shock}, the $h$-step regression takes the form
+where $Q = \mathbb{E}(\mathbf{w}_t \mathbf{w}_t')$ is the second-moment matrix of the regressors, and $\Omega_h$ is the long-run variance matrix of the projection scores, defined as
 %
 \begin{equation}
-    y_{t+h} = \beta_h\, y_t + \xi_{t+h}^{(h)},
+    \Omega_h = \sum_{\ell=-\infty}^{\infty} \mathbb{E}\Bigl[\bigl(\xi_{t+h-\ell}^{(h)} \mathbf{w}_{t-\ell}\bigr) \bigl(\xi_{t+h}^{(h)} \mathbf{w}_t\bigr)'\Bigr].
+\end{equation}
+%The asymptotic variance of the impulse response estimator $\hat{\beta}_h$ is then given by the upper-left diagonal element of $V_h$ corresponding to the shock $s_t$. Consistency, $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$, follows as an immediate corollary. 
+
+The long-run form of this covariance matrix reflects a fundamental structural feature of direct projection. Because the predictive regression aggregates shocks accruing between $t$ and $t+h$ over overlapping forecast windows, the projection error $\xi_{t+h}^{(h)}$ inherently follows a moving-average process of order $h-1$. Consequently, the regression scores $\hat{\varepsilon}_{j,t}\,\xi_{t+h}^{(h)}$ are serially correlated, meaning the autocovariances in $\Omega_h$ do not vanish for $\ell \neq 0$.
+
+To illustrate this mechanism, consider a stylized AR(1) model as the underlying DGP, with a persistence parameter $\rho$, initial condition $y_0 = 0$, and a strictly stationary error term $u_t$ satisfying $\mathbb{E}[u_t|\{u_s\}_{s\neq t}] = 0$ almost surely \parencite{jorda2025local}:
+%
+\begin{equation}
+    y_t = \rho y_{t-1} + u_t.
+\end{equation}
+%
+Using a simplified version of the local projection estimator in \eqref{eq:lp_shock}, the $h$-step regression takes the form
+%
+\begin{equation}
+    y_{t+h} = \beta_h\, y_t + \xi_{t+h}^{(h)}.
     \label{eq:lp_ar1}
 \end{equation}
 %
-Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1}, using $\beta(\rho, h)$ to denote the LP IRF estimator for $\rho ^h$ and $\xi(\rho, h)$ the corresponding regression residual, yields
+Recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1}, using $\beta(\rho, h)$ to denote the LP IRF estimator for $\rho^h$ and $\xi(\rho, h)$ the corresponding regression residual, yields
 %
 \begin{equation}
     y_{t+h} = \beta(\rho, h) y_t + \xi(\rho, h) , \qquad \xi(\rho, h) = \sum_{j=1}^{h} \rho^{h-j}\, u_{t+j}.
     \label{eq:ar1_recursive}
 \end{equation}
 %
-The projection error is therefore a moving-average process of order $h-1$, mediated by the persistence of the underlying DGP. 
-Thus the stronger the persistence, the larger and more slowly decaying the autocovariances of $\xi(\rho, h)$, and hence the more severe the distortion in naive OLS standard errors. 
-Furthermore, when $\rho \to 1$ naive OLS estimation will exhibit non-standard near-unit root behavior such that inference based on normal critical values will not be valid across all values of $\rho \in [-1, 1]$.
-However, if $\rho$ lies safely inside the unit-circle $|\rho| < 1$, LP regression is asymptotically normal, but requires the correction of the serially correlated regression residual \parencite{montiel2021local,jorda2025local}.
+The stronger the persistence through $\rho$, the larger and more slowly decaying the autocovariances of $\xi(\rho, h)$, which exacerbates the distortion in naive OLS standard errors. Furthermore, as $\rho \to 1$, naive OLS estimation exhibits non-standard near-unit root behavior, invalidating inference based on standard normal critical values. However, as long as $\rho$ lies safely inside the unit circle ($|\rho| < 1$), the LP estimator is not only consistent, yielding $\hat{\beta}_h \xrightarrow{p} \beta_h = \theta_h^{ij}$, but also remains asymptotically normal, provided the serially correlated regression residuals are appropriately corrected \parencite{montiel2021local,jorda2025local}.
 
-These findings have led \textcite{jorda2005estimation} to propose the use of  Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. In practice, however, HAC inference requires the specification choice of tuning parameters with complex interpretation \parencite{lazarus2018har} and introduce another source of bias themself. More specifically, \textcite{herbst2024bias} show that while HAC estimator are asymptotically valid, estimates of long-run variance are typically downward biased leading to an understatement of the surrounding uncertainty of the point estimate. 
+To address this serial correlation, \textcite{jorda2005estimation} originally proposed the use of Newey-West type \parencite{newey1987simple} heteroskedasticity- and autocorrelation-consistent (HAC) standard errors. In practice, however, HAC inference introduces its own complications. It requires the choice of tuning parameters with complex interpretations \parencite{lazarus2018har} and can serve as an additional source of finite-sample bias. Specifically, \textcite{herbst2024bias} show that while HAC estimators are asymptotically valid, estimates of the long-run variance are typically downward-biased in short samples, leading to a systematic understatement of the uncertainty surrounding the point estimate.
 
 To tackle this and allow for valid inference even under near unity settings, \textcite{montiel2021local} augment the local projection with one additional lag. 
 Under the weak assumption that the shock is unpredictable from its own past and future values, this renders the regression score that is the product of the projection residual $\xi^{(h)}_{t+h}$ and the regressor of interest after partialling out the controls, serially uncorrelated, such that conventional Eicker--Huber--White (EHW) heteroskedasticity-robust standard errors suffice despite the serially correlated residual. 
@@ -260,7 +257,6 @@ The resulting $t$-statistic is asymptotically standard normal uniformly over $\r
 A long-standing piece of conventional wisdom holds that local projections are more robust to model misspecification than VARs, originating with \textcite[162]{jorda2005estimation} and echoed across subsequent surveys \parencite{ramey2016macroeconomic,li2024local}.
 \textcite{plagborg2021local} document this view while noting that it had long lacked formal foundation; in their finite-order treatment, LPs are indeed
 generally more robust to misspecification than equal-order VARs, a property theyestablish without invoking the population equivalence of the two estimands. \textcite{olea2024double} show that, because the LP reads each horizon off a separate regression rather than iterating a single fitted model forward, a misspecification of the short-run dynamics does not compound through the powers of the companion matrix as it does for the VAR, whose bias arises precisely from extrapolating the response through the iterated mapping $\hat A^{h}$ that the misspecified model no longer satisfies.
-
 
 However, similar to VAR models, \textcite{herbst2024bias} show that LP 
 point estimates are biased downward in finite samples for two reasons. First and distinct from VARs, the finite-sample estimation of the regression intercept introduces a non-zero distortion of the sample covariance between shock and outcome even when both are uncorrelated in population. 
@@ -285,30 +281,24 @@ researchers set an higher weigths on bias reduction \textcite{li2024local}.
 Furthermore, \textcite{olea2024double} show that LPs using EHW inference yields correctly centered coverage intervals whereas VARs severly undercover while bias leads to incorrect centering. 
 Also in cases of lag truncation, \textcite{brugnolini2018local} shows by varying the common lag length of LPs and VARs against a true VAR(12) process that LPs are able to increase their converage levels relative to VARs as the distance to the true lag length increases.
  
-All of the aforementioned simulation studies compare LPs and VARs at a single common lag length p. This common-lag design, however, presupposes that the two methods estimate the 
-same object. \textcite{plagborg2021local} establish that under weak 
-stationarity, unrestricted lag structure and a common 
-identification scheme, LP and VAR estimate the identical structural impulse response function in population up to constant of proportionality. Therefore any conventional LP impulse response can be obtrained through an appropriately ordered recursive VAR and vice versa. 
-Furthermore, as both methods are best linear predictors of the underlying DGP, the authors state that both methods are symetrically robust to non-linear misspecification in population.
+All of the aforementioned simulation studies compare LPs and VARs at a single common lag length $p$. This common-lag design, however, presupposes that the two methods estimate the same underlying object. \textcite{plagborg2021local} establish that under weak stationarity, an unrestricted lag structure, and a common identification scheme, the LP and VAR estimators converge to the identical structural impulse response function in population, up to a constant of proportionality. Therefore, any conventional LP impulse response can be obtained through an appropriately ordered recursive VAR, and vice versa. Furthermore, because both methods act as best linear predictors of the underlying data-generating process, the authors show that they are symmetrically robust to non-linear misspecification in population.
 
-Crucially for the equal-lag designs above, \textcite{plagborg2021local}  further show that when both specifications are restricted to a fixed order $p$, their estimands continue to agree out to horizon $h \leq p$ but generally diverge for $h > p$. 
-This localizes the divergence to horizons beyond the estimation lag length, precisely the intermediate and long horizons at which the simulation evidence finds the trade-off to bite.
-Thus the choice between LP and VAR is therefore not a choice between different 
-estimands, but between two finite-sample estimators of the same one. What 
-distinguishes them is solely their bias and variance in finite samples.
-\ \\ \ \\
-While \textcite{plagborg2021local} locate the divergence at horizons $h > p$, they do not characterize what the local projection estimates there. \textcite{ludwig2026local} closes this gap with an exact least-squares identity that holds not only in population but in any finite sample. More specifically, the $h$-step impulse response of an LP($p$) is the forward iteration of $h$ one-step predictions from a sequence of VARs of increasing 
-order,
-\[
+Crucially for the equal-lag designs discussed above, \textcite{plagborg2021local} further demonstrate that when both specifications are restricted to a fixed order $p$, their population estimands continue to agree exactly up to horizon $h \le p$, but generally diverge for $h > p$. This theoretically localizes the divergence to horizons beyond the estimation lag length, thus precisely the intermediate and long horizons where the simulation literature typically finds the bias-variance trade-off to be most pronounced. Consequently, the choice between LP and VAR in practice is not a choice between fundamentally different population objects, but rather between two finite-sample estimators of the same structural response. What distinguishes them is primarily their bias and variance in finite samples.
+
+While \textcite{plagborg2021local} locate the theoretical divergence at horizons $h > p$, they do not analytically characterize the exact implicit extrapolation the local projection performs in finite samples. \textcite{ludwig2026local} closes this gap by establishing an exact least-squares identity that holds not just in population, but in any given finite sample. Specifically, the $h$-step impulse response of an LP($p$) is algebraically equivalent to the forward iteration of $h$ one-step predictions from a sequence of VARs of increasing order:
+%
+\begin{equation}
   \mathrm{IRF}^{\mathrm{LP}(p)}_h(d) = 
-  \begin{bmatrix} I_N & 0 \end{bmatrix}\,
+  \begin{bmatrix} I_K & \mathbf{0} \end{bmatrix}\,
   \Pi(p+h-1)\cdots\Pi(p+1)\,\Pi(p)\,
-  \begin{bmatrix} d \\ 0 \end{bmatrix},
-\]
-where $\Pi(q)$ denotes the companion matrix of a VAR($q$). 
-At $h=1$ the two methods coincide, at $h=2$ the LP($p$) is no longer the two-step iterate of VAR($p$) but  advances the one-step forecast with a VAR($p+1$), and each further horizon adds one lag. This also means that equal-order LPs and VARs are therefore not equally parsimonious. Written in the 
-same recursive language, a LP($p$) at horizon $h$ is built from VARs of orders 
-$p, p+1, \dots, p+h-1$, whereas a VAR($p$) holds the order fixed at every step. The fixed-order VAR($p$) is thus a restricted special case of the equal-order LP($p$), which is in turn a restricted special case of VAR($p+h-1$). 
-The familiar empirical pattern—lower approximation bias but higher sampling variance for LP relative to a same-order VAR is therefore from this perspective largely a mechanical consequence of comparing a more general specification with its own restriction, rather than evidence of an intrinsic property of either estimator. This matters because it leaves the standard reading of the bias-variance trade-off as described above confounded such that at equal lag order, the methodological effect (LP vs. VAR) cannot be separated from the complexity effect (more vs. fewer lags).
+  \begin{bmatrix} d \\ \mathbf{0} \end{bmatrix},
+  \label{eq:ludwig_identity}
+\end{equation}
+%
+where $\Pi(q)$ denotes the estimated companion matrix of a VAR($q$), $I_K$ is the identity matrix matching the dimension of the system, and $d$ represents the initial structural shock vector. 
+
+At $h=1$, the two methods coincide identically. However, at $h=2$, the LP($p$) is no longer the simple two-step iterate of a VAR($p$). Instead, it advances the one-step forecast using a VAR($p+1$) and each further horizon effectively adds one lag to the implicit VAR representation. This identity inherits a profound implications for model comparison. At equal-order LPs and VARs are not equally parsimonious or expressed in the same recursive language, an LP($p$) at horizon $h$ is constructed from VARs of orders $p, p+1, \dots, p+h-1$, whereas a standard VAR($p$) holds the order rigorously fixed at every step. 
+
+The fixed-order VAR($p$) is therefore a heavily restricted special case of the equal-order LP($p$), which in turn is a restricted special case of a highly parameterized VAR($p+h-1$). From this perspective, the familiar empirical pattern of lower approximation bias but higher sampling variance for LPs relative to a same-order VAR is largely a mechanical consequence of comparing a more flexible, over-parameterized specification with its own restriction, rather than an intrinsic property of the projection method itself. This fundamentally confounds the standard reading of the bias-variance trade-off as at equal lag orders, the methodological effect (LP vs. VAR) cannot be cleanly separated from the complexity effect (more vs.\ fewer effective lags).
 
 \FloatBarrier
