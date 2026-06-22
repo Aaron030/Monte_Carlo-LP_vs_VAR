@@ -83,7 +83,7 @@ Persistence is varied across $\rho \in \{0.5,0.7\}$, while sample sizes are chos
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Left: the best linear projection impulse response $\theta_h$ of variable 1 to shock 1, approximately invariant across nonlinearity strengths $\gamma$. Middle and right: the ACF of the squared and the level second-equation residual ($\hat e_{2,t}^{\,2}$ and $\hat e_{2,t}$), with the $\pm 1.96/\sqrt{N}$ white-noise band. The squared-residual ACF lifts above the band as $\gamma$ grows (volatility clustering, i.e.\ conditional heteroskedasticity), while the level residual stays white. Rows correspond to persistence values $\rho \in \{0.5,0.7\}$.
+\textit{Note.} Each subfigure (\(\rho \in \{0.5,0.7\}\)) has three panels. \emph{Left:} the best linear-projection IRF \(\theta_h\) of variable~1 to shock~1, approximately invariant across nonlinearity strength \(\gamma\). \emph{Middle, right:} the ACF of the squared and level second-equation residual (\(\hat e_{2,t}^{\,2}\), \(\hat e_{2,t}\)). The squared-residual ACF lifts above the band as \(\gamma\) grows (conditional heteroskedasticity), while the level residual stays white. Lines: purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), yellow \(\gamma=0.6\); the grey area is the \(\pm 1.96/\sqrt{N}\) \(95\%\) white-noise band.
 \end{minipage}
 
 \end{figure}
@@ -133,11 +133,7 @@ This leads to VAR(4)'s confidence intervals under-covering, whereas LP's heteros
 
 \begin{minipage}{0.98\textwidth}
 \small
-\textit{Note.} Each panel reports the complexity frontier for the nonlinear lag-quadratic DGP with \(T=250\) for the top row, and \(T=10,000\) for the bottom row. 
-Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). Columns within each panel correspond to 
-nonlinearity strength. The top row (a), (b), show the small sample complexity frontier, while the bottom row 
-(c), (d), approximates the asymptotic frontier with $T=10,000$. The frontier summarizes the finite-sample tradeoff between model complexity and estimator 
-performance. Horizontal line represents horizon averaged RMSE for LP(4).
+\textit{Note.} Horizon-averaged RMSE of the structural IRF against VAR order \(q=1,\ldots,23\) (solid), with LP(4) a same-colour horizontal dashed reference and the vertical dotted line marking the equal-lag VAR(4). One colour per nonlinearity strength: purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), yellow \(\gamma=0.6\). Top row (a, b) is the small-sample frontier \(T=250\), bottom row (c, d) the asymptotic frontier \(T=10{,}000\); within each row \(\rho \in \{0.5,0.7\}\).
 \end{minipage}
 
 \end{figure}
@@ -180,7 +176,7 @@ consistent with the nonlinearity acting through inflated and asymptotically vani
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=250\), to investigate sample behavior of the estimators. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design. Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\textit{Note.} Bias, variance, MSE, and RMSE of \(\hat\theta_h\) relative to the true (linear-projection) estimand \(\theta_h\) for the nonlinear lag-quadratic DGP, at \(T=250\), \(B=5{,}000\), \(\gamma=0.6\). LP(4) (red) is compared against a representative VAR\((q)\) set: VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, VAR(23) purple. Rows: \(\rho \in \{0.5,0.7\}\); the shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
 \end{minipage}
 
 \end{figure}
@@ -208,7 +204,7 @@ consistent with the nonlinearity acting through inflated and asymptotically vani
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports point estimates for the nonlinear lag-quadratic DGP with \(T=10,000\), to approximate asymptotic behavior. \(B=5{,}000\) Monte Carlo replications are performed with \(\gamma=0.6\). Rows correspond to persistence values \(\rho \in \{0.5,0.7\}\). Estimator definitions are identical to the baseline design. Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\textit{Note.} As in the sample point-estimation figure but at \(T=10{,}000\) (approximating the asymptotic limit), \(B=5{,}000\), \(\gamma=0.6\). Estimators: LP(4) red, VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, VAR(23) purple. Rows: \(\rho \in \{0.5,0.7\}\); the shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
 \end{minipage}
 
 \end{figure}
@@ -267,12 +263,13 @@ iteration, not of the estimand decaying or of VAR performance improving at highe
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals by horizon for the nonlinear lag-quadratic DGP, at \(T=10{,}000\) over \(B=5{,}000\) Monte Carlo replications with \(\gamma=0.6\). VAR\((q)\) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. Panels correspond to persistence values \(\rho \in \{0.5,0.7\}\). VAR's homoskedastic intervals under-cover as nonlinearity strengthens, while LP's robust intervals hold near nominal.
+\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) for the nonlinear lag-quadratic DGP at \(T=10{,}000\), \(B=5{,}000\). \emph{Left:} response of variable~1 to shock~1; \emph{right:} variable~2 to shock~1. Within each panel VAR(4) is solid (square markers) and LP(4) dashed (circle markers), one colour per nonlinearity strength: purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), yellow \(\gamma=0.6\); the dotted line marks the \(95\%\) reference. VAR\((q)\) intervals use the delta method, LP(4) heteroskedasticity-robust SEs. Rows: \(\rho \in \{0.5,0.7\}\). VAR under-covers as \(\gamma\) grows while LP holds near nominal.
 \end{minipage}
 
 \end{figure}
 
 \FloatBarrier
+
 
 Lastly, the coverage analysis (Figure \ref{fig:NOLIN_COVERAGE}) shows clear evidence of differing robustness to 
 heteroskedasticity between the two estimators. At low persistence, LP(4) coverage sits near the nominal $95\%$ level 

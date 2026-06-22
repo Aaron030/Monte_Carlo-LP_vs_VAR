@@ -89,7 +89,7 @@ where $\Psi_h$ represents the reduced-form moving-average coefficient matrix obt
 \begin{minipage}{0.9\textwidth}
 \small
 \textit{Note.} Each panel reports the true structural impulse response function of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
-\(h = 1, \ldots, 20\). Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
+\(h = 1, \ldots, 20\). Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). Blue line represents $y_1 \leftarrow \epsilon_1 ($\textit{estimand} $ \theta_h)$, while grey line shows $y_2 \leftarrow \epsilon_1$.
 \end{minipage}
 
 \end{figure}
@@ -156,7 +156,7 @@ Furthermore, across all persistence regimes, the shape of the VAR curves changes
 \(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
 line of the same colour (dashed), for each sample size \(T \in \{100, 250, 500\}\). The vertical
 dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
-\(\rho \in \{0.5, 0.7, 0.95\}\). 
+\(\rho \in \{0.5, 0.7, 0.95\}\). Colors blue, red, yellow represent sample sizes 100, 250, 500, respectively.
 \end{minipage}
 
 \end{figure}
@@ -182,21 +182,21 @@ However, across all persistence regimes the specific horizon at which the varian
 \caption{Point-Estimation Performance Across Persistence Regimes}
 \label{fig:BL_PE}
 
-\begin{subfigure}[t]{0.6\textwidth}
+\begin{subfigure}[t]{0.55\textwidth}
     \centering
     \caption{\(\rho = 0.5\)}
     \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.5_T=250_B=5000.png}
     \label{fig:BL_LOW_PE}
 \end{subfigure}
 
-\begin{subfigure}[t]{0.6\textwidth}
+\begin{subfigure}[t]{0.55\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
     \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.7_T=250_B=5000.png}
     \label{fig:BL_MID_PE}
 \end{subfigure}
 
-\begin{subfigure}[t]{0.6\textwidth}
+\begin{subfigure}[t]{0.55\textwidth}
     \centering
     \caption{\(\rho = 0.95\)}
     \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.95_T=250_B=5000.png}
@@ -209,7 +209,8 @@ However, across all persistence regimes the specific horizon at which the varian
 \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), 
 computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 250\). The fixed LP(4) reference line is 
 compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes 
-\(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors.
+\(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors. Line color represents model architecture, 
+with blue, black, light green, dark green, lilac, red, representing VAR(2), VAR(4), VAR(8), VAR(16), VAR(23), and LP(4), respectively.
 \end{minipage}
 
 \end{figure}
@@ -253,11 +254,7 @@ Approaching the unit root boundary at $\rho=0.95$, the coverage behavior changes
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals, 
-defined as the fraction of replications in which the interval contains the true estimand \(\theta_h\), 
-horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 250\) and \(B = 5{,}000\). VAR\((q)\) intervals 
-are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. 
-Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
+\textit{Note.} Each subfigure corresponds to a persistence regime \(\rho \in \{0.5, 0.7, 0.95\}\) and contains two panels. The \emph{left panel} reports the empirical coverage of nominal \(95\%\) confidence intervals --- the fraction of replications in which the interval contains the true estimand \(\theta_h\) --- horizon-by-horizon for \(h = 1, \ldots, 20\), with \(T = 250\) and \(B = 5{,}000\). Coverage is shown for VAR(4) (black), VAR(23) (green), and LP(4) (red), with the dotted horizontal line marking the nominal \(95\%\) level. VAR\((q)\) intervals are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. The \emph{right panel} validates the VAR(4) delta-method standard error against the empirical Monte Carlo sampling standard deviation of \(\hat\theta_h\): the empirical SD is shown in blue and the mean delta-method SE in orange, so that close agreement indicates an accurate analytical SE while a gap signals that it mis-states the true sampling dispersion.
 \end{minipage}
 
 \end{figure}
