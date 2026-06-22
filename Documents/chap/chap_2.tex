@@ -1,7 +1,7 @@
 % !TEX root = ../main.tex
 
 \section{Theoretical Background}
-Impulse response functions can be defined nonparametrically as the difference between two conditional forecasts of the outcome variable $y_{t+h}$ \parencite{koop1996impulse}. Both forecasts condition on the same vector of controls $\mathbf{x}_t$ and differ only in the time-$t$ realization of the variable of interest $s_t$: one sets $s_t = s_0 + \delta$, perturbing the baseline value $s_0$ by a shock of size $\delta$, while the other leaves it at $s_0$. The conditioning vector $\mathbf{x}_t$ collects the information used to identify the response, the lags of the system and depending on the identification scheme, contemporaneous controls. 
+Impulse response functions can be defined nonparametrically as the difference between two conditional forecasts of the outcome variable $y_{t+h}$ \parencite{koop1996impulse}. Both forecasts condition on the same vector of controls $\mathbf{x}_t$ and differ only in the time-$t$ realization of the variable of interest $s_t$. One sets $s_t = s_0 + \delta$, perturbing the baseline value $s_0$ by a shock of size $\delta$, while the other leaves it at $s_0$. The conditioning vector $\mathbf{x}_t$ collects the information used to identify the response, the lags of the system and depending on the identification scheme, contemporaneous controls. 
 Following \textcite{ramey2016macroeconomic}, a shock here denotes an exogenous, unanticipated movement that is uncorrelated with the controls in $\mathbf{x}_t$ and with all other structural shocks. The difference in the projected paths at horizon $h$ then identifies the causal
 effect of the shock in population,
 %
@@ -16,38 +16,39 @@ Vector Autoregressions and Local Projections serve as two complementary  approac
 More recently, however, \textcite{ludwig2026local} shows that the equal-order comparison is itself misleading. At a given lag order $p$, LP$(p)$ is strictly more general than VAR$(p)$, so the conventional bias-variance trade-off conflates the choice of estimator with the choice of model complexity.
 
 
-\subsection{Introduction to VARS (1.5 - 2 pages)}
+\subsection{Introduction to VARS}
 
-Following \textcite{lutkepohl2005}, we start by defining a zero mean VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model the model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
+Following \textcite{lutkepohl2005}, we start by defining a VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model the model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
 %
 \begin{equation}
-    Y_t = \mathbf{A} Y_{t-1} + U_t
+    Y_t =\mathbf{\nu} + \mathbf{A} Y_{t-1} + U_t
 \end{equation}
 %
 where
 %
 \begin{equation*}
-Y_t := \begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix} _{Kp\times 1}, 
-\mathbf{A} := \begin{bmatrix} 
+\mathbf{\nu} := \underset{Kp\times 1}{\begin{bmatrix} \nu \\ 0 \\ \vdots \\ 0 \end{bmatrix}}, \quad
+Y_t := \underset{Kp\times 1}{\begin{bmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{bmatrix}}, \quad
+\mathbf{A} := \underset{Kp\times Kp}{\begin{bmatrix} 
 A_1 & A_2 & \cdots & A_{p-1} & A_p \\ 
 I_K & 0   & \cdots & 0       & 0   \\
 0   & I_K &        & 0       & 0   \\
 \vdots & & \ddots & & \vdots \\
 0   & 0   & \cdots & I_K     & 0
-\end{bmatrix} _{Kp\times Kp},
-U_t := \begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix} _{Kp\times 1}.
+\end{bmatrix}}, \quad
+U_t := \underset{Kp\times 1}{\begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatrix}}.
 \end{equation*}
 %
-Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average representation:
+Assuming $Y_t$ satisfies the stability condition such that all roots, $z$, of the characteristic equation lie strictly outside the complex unit circle, the process is covariance stationary and admits a Wold moving-average (MA) representation
 %
 \begin{equation}
-det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \sum_{l=0}^{\infty}\mathbf{A}^{l}U_{t-l}.
+det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \mathbf{\mu} + \sum_{l=0}^{\infty}\mathbf{A}^{l}U_{t-l}, \qquad \text{where }\mathbf{\mu} := \mathbb{E}(Y_t)
 \end{equation}
 %
-Restricting attention to the top $K$ rows of the Wold MA representation yields the moving-average representation for $y_t$:
+Restricting attention to the top $K$ rows of the Wold MA representation yields the moving-average representation for $y_t$
 %
 \begin{equation}
-    y_t = \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell}, 
+    y_t = \mu + \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell}, 
 \qquad \Psi_\ell := [\mathbf{A}^\ell]_{1:K,\,1:K}
     \label{eq:wold_yt}
 \end{equation}
@@ -55,7 +56,7 @@ Restricting attention to the top $K$ rows of the Wold MA representation yields t
 where $\Psi_h$ is the reduced-form impulse response function at horizon $h$, measuring the response of $y_t$ to a reduced-form innovation $u_{t-h}$. It corresponds to the upper-left $K \times K$ block of $\mathbf{A}^h$, which follows directly from the fact that $U_{t-i} = (u_{t-i}, 0, \ldots, 0)'$ has nonzero entries only in its first $K$ positions. Since the components of $u_t$ are generally contemporaneously correlated, $\Sigma_u = \mathbb{E}(u_t u_t') \neq I_K$, a unit shock to one component of $u_t$ will in general be accompanied by simultaneous movements in the other components. Consequently, the reduced-form impulse responses $\Psi_h$ do not admit a structural interpretation. Structural identification is achieved by imposing restrictions on  the impact matrix $B$ in $u_t = B\varepsilon_t$, where $\varepsilon_t \sim (0, I_K)$ are mutually uncorrelated structural shocks, so that $\Sigma_u = BB'$.
 
 
-The most common approach is recursive Cholesky identification \parencite{ramey2016macroeconomic}, which restricts $B$ to be lower triangular with positive diagonal entries, uniquely recovering $B$ as the Cholesky factor of $\Sigma_u$. The recursive ordering imposes a causal structure: the variable ordered first responds contemporaneously to all shocks, while the variable ordered last is insulated from all  contemporaneous feedback. The diagonal entries $b_{ii}$, $i = 1, \ldots, K$, measure the direct impact of structural shock $i$ on variable $i$, while the off-diagonal entries $b_{ij}$, $1 \leq j < i \leq K$, capture the contemporaneous spillover from structural shock $j$ to variable $i$.
+The most common approach is recursive Cholesky identification \parencite{ramey2016macroeconomic}, which restricts $B$ to be lower triangular with positive diagonal entries, uniquely recovering $B$ as the Cholesky factor of $\Sigma_u$. This recursive ordering imposes a causal structure as the variable ordered first responds contemporaneously to all shocks, while the variable ordered last is insulated from all contemporaneous feedback. The diagonal entries $b_{ii}$, $i = 1, \ldots, K$, measure the direct impact of structural shock $i$ on variable $i$, while the off-diagonal entries $b_{ij}$, $1 \leq j < i \leq K$, capture the contemporaneous spillover from structural shock $j$ to variable $i$.
 Substituting $u_t = B\varepsilon_t$ into \eqref{eq:wold_yt} yields the structural moving-average representation
 %
 \begin{equation}
