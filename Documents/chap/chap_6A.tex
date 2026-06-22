@@ -1,7 +1,26 @@
-Limitation: 
+\section{Conclusion}
 
-- sample size under 100 not possible as it would lead to blown up simulation results as VAR(24) would have too little degrees of freedom in paramter estimation 
+In this paper, we operationalized the complexity-adjusted benchmarking framework proposed by \textcite{ludwig2026local} to re-evaluate the finite-sample performance of Vector Autoregressions and Local Projections. By moving away from conventional equal-lag comparisons, which conflate estimation mechanics with effective model complexity, our baseline simulation demonstrated that a fixed LP(4) estimator operates at a complexity level equivalent to a highly parameterized VAR(q) with $q \approx 15$. This shifting perspective reveals that the standard point-estimation advantage of low-order VARs under correct specification is primarily an artifact of parsimony rather than an intrinsic architectural superiority of the iterated method. 
 
-- However this also speaks for the use Local Projections in small sample settings 
 
-- LP coverage advantage, might be artifact of VAR delta method, therefore a notable extension would be to switch from delta method to more sophisticated inference procedures
+
+
+
+
+
+
+
+
+Despite the robust insights gained, our simulation study is subject to several notable methodological limitations that clear the path for future research. 
+
+First, our complexity-adjusted benchmarking design imposes strict constraints on the available sample size space. Because evaluating the full VAR frontier requires estimating highly parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the empirical median of $T = 100$ (or $T = 240$ in the non-linear extension) is computationally unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order companion matrices rank-deficient and the resulting OLS estimates numerically unstable. Consequently, we are structurally unable to explore small macro-samples, precisely the territory where the finite-sample bias-variance trade-off is most aggressive and where the localized robustness of LPs against dynamic or functional distortions might yield a tangible MSE advantage over tightly restricted VARs.
+
+Second, something with MA component??
+
+
+
+
+Third, our analysis exposes a structural caveat regarding the found supremacy of local projections in inference. The failure of the VAR intervals is not an unfixable flaw of the iterated architecture itself, but rather a limitation of the default homoskedastic delta-method specification used in standard applied workflows. If the VAR sweep were to be systematically equipped with robust or wild bootstrap standard errors capable of accommodating residual conditional heteroskedasticity, the inferential gap between the two estimators would likely diminish. 
+
+Future research should therefore aim to something something
+Additionally, formalizing a complexity adjustment for bootstrap-based inference procedures would provide a cleaner horse race, isolating whether the local projection's robust coverage is an intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of heteroskedasticity-robust variance estimators.
