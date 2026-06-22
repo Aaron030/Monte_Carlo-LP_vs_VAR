@@ -292,7 +292,7 @@ against which the point-estimation and coverage results are read.
 \small
 \textit{Note.} Horizon-averaged RMSE of the structural IRF estimate as a function of VAR order 
 \(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
-line of the same colour (dashed), for each sample size \(T \in \{100, 200, 240, 500\}\). The vertical 
+line of the same colour (dashed), for each sample size \(T \in \{100, 250, 500\}\). The vertical
 dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
 \(\rho \in \{0.5, 0.7, 0.95\}\). As \(T\) grows, both estimators' RMSE shrinks and the VAR frontier 
 flattens, with LP(4) approaching the VAR curve --- the finite-sample reflection of the population equivalence.
@@ -326,21 +326,21 @@ that horizon, which is clearest atc larger sample sizes where the frontier flatt
 \begin{subfigure}[t]{0.6\textwidth}
     \centering
     \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.5_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.5_T=250_B=5000.png}
     \label{fig:BL_LOW_PE}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.6\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.7_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.7_T=250_B=5000.png}
     \label{fig:BL_MID_PE}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.6\textwidth}
     \centering
     \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.95_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_POINT_ESTIMATION_rho=0.95_T=250_B=5000.png}
     \label{fig:BL_HIGH_PE}
 \end{subfigure}
 
@@ -348,7 +348,7 @@ that horizon, which is clearest atc larger sample sizes where the frontier flatt
 \small
 \textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses 
 \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), 
-computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 240\). The fixed LP(4) reference line is 
+computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 250\). The fixed LP(4) reference line is 
 compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes 
 \(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard errors.
 \end{minipage}
@@ -392,21 +392,21 @@ keeps variance elevated across the entire window, producing the rounded, almost 
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
     \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.5_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.5_T=250_B=5000.png}
     \label{fig:BL_LOW_CI}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.7_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.7_T=250_B=5000.png}
     \label{fig:BL_MID_CI}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
     \centering
     \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.95_T=240_B=5000.png}
+    \includegraphics[width=\textwidth]{BASE_COVERAGE_rho=0.95_T=250_B=5000.png}
     \label{fig:BL_HIGH_CI}
 \end{subfigure}
 
@@ -414,7 +414,7 @@ keeps variance elevated across the entire window, producing the rounded, almost 
 \small
 \textit{Note.} Each panel reports the empirical coverage of nominal \(95\%\) confidence intervals, 
 defined as the fraction of replications in which the interval contains the true estimand \(\theta_h\), 
-horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 240\) and \(B = 5{,}000\). VAR\((q)\) intervals 
+horizon-by-horizon for \(h = 1, \ldots, 20\) with \(T = 250\) and \(B = 5{,}000\). VAR\((q)\) intervals 
 are constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. 
 Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
 \end{minipage}
