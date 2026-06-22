@@ -1,6 +1,6 @@
 % !TEX root = ../main.tex
 
-\section{Baseline Simulation (4-5 pages)}
+\section{Baseline Simulation}
 
 
 This confounding motivates the first part of our study. Because \textcite{ludwig2026local}'s contribution is analytical and deliberately abstains from a simulation-based horse race, the question of whether the conventional finite-sample conclusions survive once the equal-lag restriction is relaxed remains open. 
@@ -27,7 +27,7 @@ The underlying DGP is a stable bivariate zero-mean $\text{VAR}(4)$ with recursiv
 
 \begin{equation}
     \Sigma_u = BB', \qquad 
-    B = \begin{pmatrix} b_{11} & 0 \\ b_{21} & b_{22} \end{pmatrix}, 
+    B = \begin{pmatrix} 1 & 0 \\ 0.1 & 0.5 \end{pmatrix}, 
     \quad b_{11}, b_{22} > 0
 \end{equation}
 
@@ -266,10 +266,14 @@ Approaching the unit root boundary at $\rho=0.95$, the coverage behavior changes
 \FloatBarrier
 
 \subsection{Discussion of Results}
-The complexity frontier operationalizes the central implication of \textcite{ludwig2026local} as LP($p$) at horizon $h$ embeds a sequence of VAR predictions of orders $p$ through $p+h-1$, the natural benchmark for LP(4) is not a single equal-order VAR but the entire VAR sweep.
 
+The complexity frontier operationalizes the central implication of \textcite{ludwig2026local}. Because an $\text{LP}(p)$ estimation algebraically embeds a sequence of VAR predictions from orders $p$ through $p+h-1$, the mathematically coherent benchmark for a local projection is not a single equal-order VAR but the entire VAR-order sweep. The observed baseline efficiency advantage of the equal-lag $\text{VAR}(4)$ strictly replicates the standard consensus in the literature \parencite{li2024local, olea2025local}. However, locating the local projection on the frontier reveals the profound asymmetry of this conventional comparison. The local projection does not sit near the parsimonious VAR specification. Instead, it inherently operates at the complexity level of a highly parameterized system, intersecting the sweep at orders higher than $q \approx 15$. This confirms empirically that a sufficiently augmented VAR behaves identically to a local projection. The standard finite-sample superiority of the VAR therefore reflects a disparity in effective model complexity rather than an intrinsic deficiency of the direct projection method.
 
-Limitation, T not lower than 100. 
-We do not see how bias and variance behave over sample sizes, only RSME
+Beyond model complexity, the underlying bias-variance tradeoff is heavily dictated by the persistence of the data-generating process. The monotonic frontier under low persistence illustrates that the variance penalty for over-parameterization heavily outweighs any reduction in bias when the true impulse response decays rapidly. Conversely, the pronounced U-shape approaching the unit root boundary highlights the severe cost of lag truncation. Under near-integrated dynamics, the downward bias affecting autoregressive coefficients dominates the error budget \parencite{kilian1998small}. Crucially, the local projection loses its theoretical robustness advantage here. Because it provides no relief from this persistence-driven bias while simultaneously incurring the inherently higher variance of its direct horizon-by-horizon regressions, the local projection is strictly dominated by the equal-lag VAR. The parametric estimator wins near the non-stationary boundary simply by virtue of its smaller variance footprint. This demonstrates that while the finite-sample superiority of the VAR survives the complexity adjustment, its magnitude is strictly an artifact of the data-generating process.
+
+Evaluating performance solely through root mean squared error obscures a critical theoretical divergence between point estimation and inference. The coverage results expose that the parametric efficiency of the VAR comes at the cost of inferential fragility. The delta-method confidence intervals of the $\text{VAR}(4)$ model fail for structural reasons across the persistence spectrum. At weak persistence, the intervals artificially over-cover because the underlying response converges to zero, causing the interval to mechanically capture the unconditional mean rather than indicating high statistical precision. At high persistence, the first-order Taylor approximation underlying the delta method breaks down. It severely understates the true empirical dispersion of the skewed finite-sample distribution \parencite{kilian1999finite}, leading to steep under-coverage. In contrast, the $\text{LP}(4)$ estimator maintains near-nominal coverage across all regimes. This empirically validates the double robustness of local projections \parencite{montiel2021local}, showing that heteroskedasticity-robust standard errors remain valid even when the dynamic process approaches non-stationarity. A superior estimand efficiency therefore does not guarantee valid inference.
+
+Our baseline findings are subject to two notable methodological limitations. First, the complexity-adjusted logic strictly requires estimating highly parameterized models up to $\text{VAR}(23)$. Pushing the sample size below the applied median of $T=100$ renders these high-order systems rank-deficient and computationally unstable. Consequently, we are unable to explore the simulation space where the finite-sample bias-variance tradeoff is most aggressive and where the robustness arguments for local projections might be most practically relevant. Second, the complexity frontier collapses bias and variance into a single root mean squared error metric aggregated over the forecast horizon. While this efficiently visualizes the consistency effect as the sample size grows, it obscures the exact mechanism driving the improvement. Because the explicit decomposition into bias and variance is restricted to a fixed sample size, the question of whether the shift in the frontier across sample sizes is predominantly bias-driven or variance-driven remains partially unresolved.
+
 
 \FloatBarrier
