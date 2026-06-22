@@ -6,68 +6,27 @@ Ultimately, the baseline design establishes a clear reference under correct spec
 
 \subsection{Simulation Design}
 
-Extension~1 examines whether the finite-sample MSE ranking between LP(4) and 
-the complexity-adjusted VAR sweep is robust to dynamic misspecification of the 
-Wold representation. The estimators, the structural estimand, the recursive 
-Cholesky identification, and all performance measures are inherited unchanged 
-from the baseline. Only the data-generating 
-process is modified. Specifically, the baseline VAR(4) is augmented by a 
-first-order moving-average component, yielding a VARMA(4,1) DGP:
+Extension 1 examines whether the finite-sample MSE ranking between $\text{LP}(4)$ and the complexity-adjusted VAR sweep is robust to dynamic misspecification of the Wold representation. The estimators, the structural estimand, the recursive Cholesky identification, and all performance measures are inherited unchanged from the baseline. Only the data-generating process is modified. Specifically, the baseline $\text{VAR}(4)$ is augmented by a first-order moving-average component, yielding a $\text{VARMA}(4,1)$ DGP:
 
 \begin{equation}
     y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} 
     + u_t + \Theta u_{t-1}, \quad u_t = B\varepsilon_t, \quad 
-    \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0, I_2)
+    \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2)
 \end{equation}
 
-where $\Theta = \theta I_2$ is a scalar-scaled MA impact matrix acting on the 
-lagged reduced-form innovation $u_{t-1}$, with misspecification strength 
-$\theta \in \{0.1, 0.3, 0.6\}$. The case $\theta = 0$ nests back to the 
-baseline VAR(4), ensuring continuity across designs. The autoregressive 
-matrices $A_1, \ldots, A_4$ and the impact matrix $B$ are inherited from the 
-baseline DGP, so that all variation across Extension~1 scenarios is 
-attributable exclusively to the MA component.
+where $\Theta = \theta I_2$ is a scalar-scaled MA impact matrix acting on the lagged reduced-form innovation $u_{t-1}$, with misspecification strength $\theta \in \{0.1, 0.3, 0.6\}$. The case $\theta = 0$ nests back to the baseline $\text{VAR}(4)$, ensuring continuity across designs. The autoregressive matrices $A_1, \ldots, A_4$ and the impact matrix $B$ are inherited from the baseline DGP, so that all variation across the Extension 1 scenarios is attributable exclusively to the MA component.
 
-The VARMA(4,1) DGP is invertible for all $\theta \in \{0.1, 0.3, 0.6\}$, i.e.\ 
-the roots of $\det(I_2 + \Theta z)$ lie outside the unit circle, so the process 
-admits an infinite-order VAR representation. This is precisely what preserves 
-the theoretical motivation of the complexity-adjusted VAR sweep: higher-order 
-VAR$(q)$ specifications progressively approximate the true dynamics as 
-$q \to \infty$, though at the cost of increasing parameter proliferation in 
-finite samples. The central question is therefore whether LP(4) --- which 
-remains consistent under this approximable dynamic misspecification by virtue 
-of its zero asymptotic bias \parencite{olea2025local} --- retains its MSE 
-advantage over the equal-lag VAR(4), and where on the complexity-adjusted VAR 
-frontier it sits relative to the baseline.
+The $\text{VARMA}(4,1)$ DGP is invertible for all $\theta \in \{0.1, 0.3, 0.6\}$, meaning the roots of $\det(I_2 + \Theta z)$ lie outside the unit circle. The process therefore admits an infinite-order VAR representation. This preserves the theoretical motivation of the complexity-adjusted VAR sweep. Higher-order $\text{VAR}(q)$ specifications progressively approximate the true dynamics as $q \to \infty$, though at the cost of increasing parameter proliferation in finite samples. The central question is therefore whether $\text{LP}(4)$, which remains consistent under this approximable dynamic misspecification by virtue of its zero asymptotic bias \parencite{olea2025local}, retains its MSE advantage over the equal-lag $\text{VAR}(4)$, and where on the complexity-adjusted VAR frontier it sits relative to the baseline.
 
-The design dimensions follow the baseline. Persistence is varied across 
-$\rho \in \{0.5, 0.7, 0.95\}$ via the spectral radius of the companion matrix, 
-and sample sizes across $T \in \{100, 250, 500\}$ % TODO: confirm T-grid (Extension draft had {100,200,240,500})
-generated after a 200-period burn-in. The choice of $\rho$ is not innocuous 
-here: the degree to which the MA component distorts the finite-sample VAR 
-approximation depends directly on the persistence of the underlying process, 
-since at high $\rho$ shocks decay slowly and the MA term remains influential 
-at longer horizons, amplifying the VAR's approximation bias. The 
-misspecification strength $\theta$ is thus varied jointly with persistence and 
-sample size, yielding a three-way design that isolates the marginal 
-contribution of MA misspecification from the persistence and finite-sample 
-channels already documented in the baseline.
+The design dimensions partially follow the baseline. Persistence is varied across $\rho \in \{0.5, 0.7, 0.95\}$ via the spectral radius of the companion matrix. The choice of $\rho$ is critical here. The degree to which the MA component distorts the finite-sample VAR approximation depends directly on the persistence of the underlying process. At high $\rho$, shocks decay slowly and the MA term remains influential at longer horizons, amplifying the VAR approximation bias. To isolate the marginal contribution of MA misspecification from the finite-sample channels already documented in the baseline, the sample size is fixed at $T = 250$ observations, generated after a 200-period burn-in. The misspecification strength $\theta$ is thus varied jointly with persistence, yielding a two-way design.
 
-The structural estimand retains the baseline form $\theta_h = \Psi_h B e_1$, 
-but is now defined with respect to the true VARMA Wold matrices 
-$\Psi_h^{\mathrm{VARMA}}$, which solve $A(L)\Psi(L) = I_2 + \Theta L$ and are 
-computed analytically prior to each simulation run via
+The structural estimand retains the baseline form $\theta_h = \Psi_h B e_1$, but is now defined with respect to the true VARMA Wold matrices $\Psi_h^{\mathrm{VARMA}}$. These solve $A(L)\Psi(L) = I_2 + \Theta L$ and are computed analytically prior to each simulation run via
 \begin{equation}
     \Psi_0 = I_2, \qquad 
-    \Psi_h = \sum_{i=1}^{\min(h,p)} A_i \Psi_{h-i} + \Theta_h, 
-    \qquad \Theta_h = \begin{cases} \Theta & 1 \le h \le q \\ \mathbf{0} & h > q \end{cases}
+    \Psi_h = \sum_{i=1}^{\min(h,4)} A_i \Psi_{h-i} + \Theta_h, 
+    \qquad \Theta_h = \begin{cases} \Theta & h = 1 \\ \mathbf{0} & h > 1 \end{cases}
 \end{equation}
-with $p = 4$ and $q = 1$, so that the additive MA term $\Theta_h$ contributes 
-only at horizon $h = 1$. Both estimators --- LP(4) and the VAR$(q)$ sweep --- 
-are applied without modification to the VARMA-generated data, so that the 
-misspecification is fully absorbed into the finite-sample performance of each 
-estimator rather than accommodated by the estimation procedure. All performance 
-measures and the $B = 5{,}000$ replication count are identical to the baseline.
+so that the additive MA term $\Theta_h$ contributes only at horizon $h = 1$. Both estimators, $\text{LP}(4)$ and the $\text{VAR}(q)$ sweep, are applied without modification to the VARMA-generated data, meaning the misspecification is fully absorbed into the finite-sample performance of each estimator rather than accommodated by the estimation procedure. All performance measures and the $B = 5{,}000$ replication count are identical to the baseline.
 
 % ----------------------------------- True IRF
 \begin{figure}[htbp]
@@ -79,20 +38,22 @@ measures and the $B = 5{,}000$ replication count are identical to the baseline.
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.5.png}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.5_crop.png}
+    \label{fig:DYN_TRUE_IRF_LOW}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.7.png}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.7_crop.png}
+    \label{fig:DYN_TRUE_IRF_MID}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{BASE_IRF_rho=0.95.png}
-    \label{fig:BL_TRUE_IRF_HIGH}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.95_crop.png}
+    \label{fig:DYN_TRUE_IRF_HIGH}
 \end{subfigure}
 
 \begin{minipage}{0.9\textwidth}
@@ -100,73 +61,16 @@ measures and the $B = 5{,}000$ replication count are identical to the baseline.
 \textit{Note.} Each panel reports the true structural impulse response function of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
 \(h = 1, \ldots, 20\). Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). Blue line represents $y_1 \leftarrow \epsilon_1 ($\textit{estimand} $ \theta_h)$, while grey line shows $y_2 \leftarrow \epsilon_1$.
 \end{minipage}
+\end{figure}
+
+\FloatBarrier
 
 \subsection{Simulation Results}
 
 
-% ----------------------------------- True IRF
-\begin{figure}[htbp]
-\centering
-\caption{True IRF Functions by MA Misspecification Strength}
-\label{fig:DYN_MISSPEC_IRF}
+Figure \ref{fig:DYN_MISSPEC_COMPLEXITY} places the fixed $\text{LP}(4)$ estimator on the VAR-order frontier. Each panel plots the horizon-averaged root mean squared error of the structural impulse response as a function of the VAR order $q$, with one solid curve for each misspecification strength $\theta$ and the matching $\text{LP}(4)$ value drawn as a horizontal dashed line in the corresponding color. As $\theta$ increases, the entire frontier shifts upward, and the $\text{LP}(4)$ reference line rises accordingly. The minimum of the frontier consistently occurs at a low lag order, typically between $\text{VAR}(1)$ and $\text{VAR}(3)$.
 
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.5.png}
-    \label{fig:DYN_MISSPEC_IRF_rho05}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.7.png}
-    \label{fig:DYN_MISSPEC_IRF_rho07}
-\end{subfigure}
-
-\begin{subfigure}[t]{0.9\textwidth}
-    \centering
-    \caption{\(\rho = 0.95\)}
-    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.95.png}
-    \label{fig:DYN_MISSPEC_IRF_rho095}
-\end{subfigure}
-
-\begin{minipage}{0.9\textwidth}
-\small
-\textit{Note.} Each subfigure (\(\rho \in \{0.5,0.7,0.95\}\)) has three panels: \emph{(left)} the true structural IRF \(\theta_h\); \emph{(middle, right)} the autocorrelation of the squared and level residuals of a VAR(4) fit to the VARMA data. The squared-residual ACF stays inside the band (conditionally homoskedastic), while the level-residual ACF breaks out as \(\theta\) grows --- the MA serial correlation the equal-lag VAR(4) cannot absorb. Lines: purple \(\theta=0\) (baseline), blue \(\theta=0.1\), green \(\theta=0.3\), yellow \(\theta=0.6\); the grey area is the \(95\%\) white-noise band.
-\end{minipage}
-
-\end{figure}
-
-Figure~\ref{fig:DYN_MISSPEC_IRF} characterises the true structural impulse response together 
-with the residual structure that the moving-average component induces. The left panel of 
-each subfigure plots the true estimand $\theta_h$ across misspecification strengths. 
-The responses retain the decaying profile of the baseline and become more sharply L-shaped 
-as persistence rises. Because the moving-average term carries the lagged innovation 
-$\Theta u_{t-1}$ into the current observation, shocks raise the response for an extra period 
-beyond the autoregressive propagation. As $\theta$ grows the impulse response turns increasingly 
-hump-shaped, and at high persistence with strong misspecification it is no longer monotone 
-and peaks at (h = 1) before decaying. Because the estimand is genuinely $\theta$-dependent, 
-the moving-average component is a persistent feature of the response.
-
-The middle and right panels diagnose the residual structure that the moving-average term leaves 
-behind. They plot the autocorrelation of the squared and level residuals of a VAR(4) fitted to 
-the VARMA data against the $\pm 1.96/\sqrt{N}$ white-noise band. The squared-residual 
-autocorrelations stay inside the band at every $\theta$ and $\rho$, so the shock variance is 
-well behaved and shows no clustering. The level residuals tell a different story, as they are white 
-at $\theta = 0$, but as $\theta$ grows, a negative spike at lag four and a positive spike at lag 
-five appear. This is the alternating echo that an invertible MA(1) leaves in a four-lag fit, 
-since its autoregressive representation has geometrically decaying, sign-alternating weights 
-that the limited lags of VAR cannot reproduce. 
-
-The strength of this echo depends on persistence, as at $\rho = 0.5$ and $\rho = 0.7$ both spikes 
-clear the band, whereas at $\rho = 0.95$ the lag-five spike falls back inside the band. 
-Higher persistence scales up the autoregressive 
-coefficients and makes the four included lags jointly more informative about the current value, 
-so the more distant part of the echo is increasingly absorbed by the fit and only the lag-four 
-spike remains significant.
-
-
+Across all persistence regimes, the equal-lag $\text{VAR}(4)$ and the frontier minimum lie strictly below the $\text{LP}(4)$ reference line for every value of $\theta$. The $\text{LP}(4)$ line intersects the rising VAR curves only at higher orders, with the intersection points generally located between $q = 16$ and $q = 18$. Furthermore, the performance of the lowest-order models deteriorates noticeably as $\theta$ and $\rho$ increase. At $\rho = 0.95$ with $\theta = 0.6$, the curves for $\text{VAR}(1)$ and $\text{VAR}(2)$ sit substantially higher than the heavily parameterized $\text{VAR}(23)$ specification, producing a jagged shape at the low-order end of the frontier where $\text{VAR}(2)$ yields the highest average error.
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
 \centering
@@ -201,27 +105,13 @@ spike remains significant.
 
 \end{figure}
 
-Figure~\ref{fig:DYN_MISSPEC_COMPLEXITY} places the fixed LP(4) estimator on the VAR-order frontier. 
-Each panel plots the horizon-averaged RMSE of the structural 
-impulse response as a function of the VAR order $q$, with one solid curve for each misspecification 
-strength $\theta$ and the matching LP(4) value drawn as a horizontal dashed line in the same 
-colour. As $\theta$ grows, the whole frontier 
-shifts upward and the LP(4) reference rises with it, since the moving-average term adds error that 
-every estimator must absorb. The minimum of the frontier stays at a low order, around VAR(1) to 
-VAR(3), as at $T = 250$ the variance cost of adding lags outweighs the reduction in 
-approximation error that the extra lags would provide.
+Figure \ref{fig:DYN_MISSPEC_POINT_ESTIMATION} decomposes the finite-sample error at the strongest misspecification level $\theta = 0.6$ and $T = 250$ by reporting the bias, variance, mean squared error, and root mean squared error of the estimated impulse response $\hat\theta_h$ across horizons. The $\text{LP}(4)$ estimator is compared against a representative set of VAR orders.
 
-Two features hold across persistence regimes. First, the equal-lag VAR(4) and the 
-frontier minimum lie below the LP(4) line at every $\theta$, so on horizon-averaged RMSE 
-the VAR keeps an advantage even under misspecification. The LP(4) line is reached only 
-by high-order VAR specifications, with the curves joining around $q = 16$ to $18$, which 
-is the lag-augmentation result that a sufficiently long VAR behaves like LP. Second, the 
-very low orders are unstable. The under-lagged VAR(1) and VAR(2) deteriorate as 
-$\theta$ and $\rho$ rise, and at $\rho = 0.95$ with $\theta = 0.6$ they sit well above even 
-the heavily parameterised VAR(23), producing the jagged low-order shape in the high-persistence 
-panel where VAR(2) is the worst performer.
+The bias panel separates the estimators into distinct trajectories. The $\text{LP}(4)$ estimator exhibits a roughly constant negative bias that deepens as persistence rises. The well-lagged VAR specifications from $\text{VAR}(4)$ upward closely track this path. They oscillate over the first few horizons before approaching zero, placing the equal-lag $\text{VAR}(4)$ and $\text{LP}(4)$ in close proximity. The $\text{VAR}(2)$ specification deviates from this pattern, displaying a substantially larger bias that grows further as the persistence parameter increases.
 
+In the variance panel, the estimators are ordered systematically by lag length, with variance increasing alongside the VAR order. The $\text{LP}(4)$ estimator aligns with the higher-variance VAR models. The parsimonious $\text{VAR}(2)$ specification exhibits one of the lowest variance profiles across all horizons.
 
+The mean squared error and root mean squared error panels combine these two components. The $\text{VAR}(2)$ specification shifts to the top of the panels, exceeding all other estimators by a wide margin. The longer-lagged VAR specifications, particularly $\text{VAR}(4)$ and $\text{VAR}(8)$, maintain a lower error level than $\text{LP}(4)$ across the entire horizon window. The $\text{VAR}(4)$ model therefore maintains a root mean squared error advantage over $\text{LP}(4)$ across all persistence levels. The overall curvature of these error profiles becomes more pronounced as persistence increases.
 
 % ----------------------------------- Point Estimates
 \begin{figure}[htbp]
@@ -257,44 +147,15 @@ panel where VAR(2) is the worst performer.
 
 \end{figure}
 
-Figure~\ref{fig:DYN_MISSPEC_POINT_ESTIMATION} decomposes finite-sample accuracy at the strongest 
-misspecification $\theta = 0.6$ and $T = 250$, reporting the bias, variance, MSE, and RMSE of the 
-estimated impulse response $\hat\theta_h$ by horizon for LP(4) and a representative set of 
-VAR orders. The four panels separate the two ingredients of mean squared error and show how 
-each estimator trades them off once the moving-average distortion is present.
+\newpage
 
-The bias panel sorts the estimators into two groups. LP(4) carries a small and roughly 
-constant negative bias that deepens as persistence rises, with the well-lagged VAR specifications, 
-from VAR(4) upward, tracking it closely. They oscillate over the first few horizons before dropping
-close to zero, implying that, at this sample size, the equal-lag VAR(4) and LP(4) are almost 
-indistinguishable in bias. The exception is the under-lagged VAR(2), whose bias is large 
-and grows further as persistence increases. With only two lags, it cannot properly integrate the 
-autoregressive dynamics caused by the moving-average term, so it targets a different 
-linear estimator than the longer specifications do.
+Figure \ref{fig:DYN_MISSPEC_COVERAGE} visualizes the empirical coverage of nominal 95 percent confidence intervals over horizons $h = 1$ to 20 at $T = 250$. The left and middle panels display the coverage for the $\text{VAR}(4)$ and $\text{LP}(4)$ models, featuring one curve per misspecification strength $\theta$. The right panel plots the $\text{VAR}(4)$ delta-method standard error alongside the empirical sampling standard deviation. Within each panel, the four $\theta$ curves are tightly clustered and lie almost perfectly on top of one another. The level and shape of these curves shift noticeably across the three persistence regimes.
 
-The variance panel reverses the picture, as the estimators line up by lag-length, 
-with variance rising with VAR order. LP(4) sits among the higher-variance VAR
-models, since its direct horizon-by-horizon regressions are less efficient 
-than the iterated VAR estimates. Crucially, VAR(2) is not an outlier in this panel, as its 
-parsimony makes it one of the lowest-variance estimators.
+For the $\text{VAR}(4)$ model, the intervals at $\rho = 0.5$ reach full coverage at longer horizons. At $\rho = 0.7$, the coverage drops slightly below the nominal target, and at $\rho = 0.95$, it deteriorates further, declining steadily as the horizon increases. The $\text{LP}(4)$ coverage remains relatively steady and near the 0.95 mark at low and intermediate persistence levels. At $\rho = 0.95$, the $\text{LP}(4)$ coverage slips to approximately 0.89, maintaining a higher level than the $\text{VAR}(4)$ specification but exhibiting a similar downward slope over longer horizons.
 
-The MSE and RMSE panels combine these two channels through $\mathrm{MSE} = \mathrm{Bias}^2 + 
-\mathrm{Var}$, which visualizes the cost of too low lag counts. VAR(2) jumps back to the top, 
-far above every other estimator, as its squared bias dominates its low variance. 
-The longer-lagged VARs behave in the opposite way, as they keep the small bias of LP(4) 
-while paying less variance. Thus, VAR(4) and VAR(8) sit below LP(4) across 
-the whole horizon window. 
+Varying the moving-average parameter $\theta$ produces only minor shifts within the panels. At $\rho = 0.5$, the $\text{VAR}(4)$ coverage drifts downward slightly as $\theta$ increases. At $\rho = 0.7$, the coverage improves marginally from roughly 0.89 at $\theta = 0$ to about 0.93 at $\theta = 0.6$. At $\rho = 0.95$, the coverage curves are virtually indistinguishable across all values of $\theta$.
 
-On root mean squared error the equal-lag VAR therefore retains an efficiency advantage over 
-LP(4) even under dynamic misspecification. This advantage grows with persistence, as the 
-curvature of every profile increases. The contrasting results demosntrate how VAR(2) is an 
-outlier in bias, MSE, and RMSE but not in variance, 
-
-This finds its failure to originate from the wrong-estimand effect, caused by under-lagging. The 
-same logic explains why the relevant comparison is not LP(4) against any single VAR, but LP(4) 
-against the whole order sweep. A badly chosen low order can dominate the error budget 
-through bias alone, while a well-chosen one keeps both ingredients small.
-
+In the right panel, the delta-method standard error and the empirical standard deviation show almost no deviation at $\rho = 0.5$ and $\rho = 0.7$. At $\rho = 0.95$, a vertical gap emerges, with the empirical dispersion sitting visibly above the analytical standard error over the short and intermediate horizons.
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -335,67 +196,6 @@ intervals, LP(4) heteroskedasticity-robust SEs. \emph{Right:} the VAR(4) delta-m
 \end{minipage}
 
 \end{figure}
-
-Figure~\ref{fig:DYN_MISSPEC_COVERAGE} turns to inference by visualizing the coverage of 
-nominal $95\%$ confidence intervals over horizons $h = 1$ to $20$ at $T = 250$. Each subfigure 
-contains three panels. The left and middle panels show the coverage of the VAR(4) and LP(4) 
-intervals with one curve per misspecification strength $\theta$, and the right panel checks the 
-VAR(4) delta-method standard error against the empirical sampling standard deviation of 
-$\hat\theta_h$. The striking feature is that coverage is governed by persistence rather than by 
-the misspecification, as the four $\theta$ curves lie almost on top of one another within each panel, 
-while their level of coverage shifts substantially as $\rho$ moves across the three regimes.
-
-For VAR(4), whose intervals are calculated using the delta method, the persistence pattern mirrors the 
-baseline findings. At $\rho = 0.5$ the intervals over-cover, rising toward full coverage at longer 
-horizons. At $\rho = 0.7$ they sit a little below 
-nominal, and at $\rho = 0.95$ they under-cover and declinine with increasing horizons.
-LP(4), which uses heteroskedasticity-robust standard errors, is far steadier and holds near $0.95$ at low and intermediate persistence.
-It slips only to about $0.89$ at $\rho = 0.95$, so it stays closer to the nominal target than VAR(4) throughout.
-Still, as we move closer to the unit root it shows similiar erosion of performance with increasing horizons.
-
-The effect of the moving-average term itself is second order, as $\rho = 0.5$ shows VAR(4) coverage 
-drifting down only slightly as $\theta$ grows. At $\rho = 0.7$ it moves the other way and improves from about $0.89$ at $\theta = 0$ to 
-about $0.93$ at $\theta = 0.6$. Paradoxically, this means that the correctly specified case is the worst rather than the 
-best. At $\rho = 0.95$ the curves are essentially flat across $\theta$, which rules out any 
-simple story in which stronger misspecification steadily erodes coverage. The intermediate-
-persistence improvement is best read as a coincidental interaction between the lifted short-
-horizon response and the delta-method standard error rather than as a genuine benefit of 
-misspecification. We can thus conservatively estimate that the moving-average term leaves coverage largely 
-unchanged at this sample size.
-
-The right panel explains the persistence patterns, as there is almost no deviation between SE's and SD's in $\rho = 0.5$ and $\rho = 0.7$.
-Thus, the analytical formula is accurate and the coverage behaviour is not an artefact of a broken standard 
-error. At $\rho = 0.95$ a gap opens, with the empirical dispersion sitting above the delta-method 
-standard error over short and intermediate horizons. The first-order delta-method approximation 
-understates the true sampling variability of the response near the unit root, which causes the intervals to 
-be too narrow, leading to under-coverage in VAR(4). A similiar behavior was described in the base-line case, 
-confirming that persistence and not the moving-average misspecification drive the coverage results.
-
-
-
-Taken together, our simulation did not result in evidence that introducing a moving-average 
-component would overturn the findings established in the baseline. At sample sizes typical of 
-applied work, around $T = 250$, the equal-lag VAR(4) 
-stays the more efficient point estimator while LP(4) offers no clear inferential advantage in 
-return. The moving-average term lifts the true response at short horizons but leaves its overall 
-decaying shape intact. In a fitted VAR(4) it shows up as serial correlation in the residuals 
-and not as changing variance, so it distorts the dynamics of the process rather than the 
-size of its shocks.
-
-On point estimation the equal-lag VAR(4) 
-shares the small bias of LP(4) at $T = 250$ and pays less variance, so it keeps a root mean 
-squared error advantage across all three persistence regimes. The only estimator that 
-fails is the under-lagged VAR(2), whose error is dominated by bias rather than noise. On inference 
-the picture is driven by persistence rather than by the misspecification, since the four $\theta$ 
-curves nearly coincide while coverage moves from over-covering at $\rho = 0.5$ to marked 
-under-covering at $\rho = 0.95$, where the delta-method standard error understates the true 
-dispersion. LP(4) stays closer to nominal throughout, but erodes near the unit root as well, so 
-its robustness is only partial. The moving-average distortion is therefore real and visible in 
-the residuals, yet at $T = 250$ it remains too small relative to estimation variance to change the 
-baseline verdict that VAR is the more efficient estimator, while neither estimator delivers 
-reliable inference at high persistence.
-
-
 
 
 

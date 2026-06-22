@@ -12,4 +12,39 @@
 
 \newpage
 
+
+% ----------------------------------- True IRF
+\begin{figure}[htbp]
+\centering
+\caption{True IRF Functions by MA Misspecification Strength}
+\label{fig:DYN_MISSPEC_IRF}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.5\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.5.png}
+    \label{fig:DYN_MISSPEC_IRF_rho05}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.7.png}
+    \label{fig:DYN_MISSPEC_IRF_rho07}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.95\)}
+    \includegraphics[width=\textwidth]{DYN_MISSPEC_IRF_rho=0.95.png}
+    \label{fig:DYN_MISSPEC_IRF_rho095}
+\end{subfigure}
+
+\begin{minipage}{0.9\textwidth}
+\small
+\textit{Note.} Each subfigure (\(\rho \in \{0.5,0.7,0.95\}\)) has three panels: \emph{(left)} the true structural IRF \(\theta_h\); \emph{(middle, right)} the autocorrelation of the squared and level residuals of a VAR(4) fit to the VARMA data. The squared-residual ACF stays inside the band (conditionally homoskedastic), while the level-residual ACF breaks out as \(\theta\) grows --- the MA serial correlation the equal-lag VAR(4) cannot absorb. Lines: purple \(\theta=0\) (baseline), blue \(\theta=0.1\), green \(\theta=0.3\), yellow \(\theta=0.6\); the grey area is the \(95\%\) white-noise band.
+\end{minipage}
+
+\end{figure}
+\newpage
 \FloatBarrier
