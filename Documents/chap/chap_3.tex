@@ -216,8 +216,13 @@ compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to 
 
 \clearpage
 
+Figure \ref{fig:BL_COV} displays the empirical coverage of nominal 95 percent confidence intervals in the left column and compares the VAR(4) delta-method standard error against the empirical sampling standard deviation in the right column. The results are plotted horizon by horizon across the three persistence regimes for a sample size of $T=250$.
 
+Under the low persistence calibration of $\rho=0.5$, all models achieve roughly the same coverage level up to the third horizon. A visible divergence begins at the fourth horizon. The coverage of the VAR(4) specification increases rapidly and reaches full coverage by the seventh horizon. The over-parameterized VAR(23) model slowly converges toward a coverage of 1.0 by the end of the forecast window. Meanwhile, the LP(4) estimator remains highly consistent, fluctuating tightly around the 0.95 level throughout the entire horizon. In the right panel, the delta-method standard error closely tracks the empirical standard deviation, showing only a marginal deviation around the initial peak.
 
+At the intermediate persistence level of $\rho=0.7$, the coverage paths of all estimators remain tightly aligned until the sixth horizon. Beyond this point, the VAR(4) coverage steadily deteriorates toward the end of the observed window. The VAR(23) specification exhibits a slight upward drift in coverage, whereas the LP(4) estimator maintains a stable trajectory near the nominal target. The corresponding standard error validation in the right column shows that the analytical standard error and the empirical standard deviation lie almost perfectly on top of each other.
+
+Approaching the unit root boundary at $\rho=0.95$, the coverage behavior changes substantially. The models track each other only until the second horizon, after which none of the estimators reach the nominal 95 percent coverage target. The VAR(4) specification experiences a severe deterioration, with its coverage dropping below the 0.8 mark at longer horizons. The VAR(23) model performs slightly better and closely tracks the local projection, yielding a coverage level of roughly 0.9 across the remainder of the horizon. In the right column, a distinct vertical gap emerges. The empirical sampling dispersion shifts visibly above the analytical delta-method standard error at short and intermediate horizons, before the two curves gradually converge toward the end of the forecast window.
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -259,44 +264,9 @@ Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
 
 \clearpage
 
-Figure \ref{fig:BL_COV} shows the empirical coverage of $95\%$ confidence intervals alongside a 
-validation of the VAR(4) standard error. The left column shows that LP(4) holds its nominal level closely 
-at low and mid persistence and only drifts downward at high persistence, remaining the most reliable of the 
-three throughout. VAR(4) behaves very differently across regimes. At low persistence it bends upward and 
-reaches full coverage by about horizon seven. Instead of signaling outstanding performance, this effect is mechanical in nature, 
-as the response has decayed to near zero by then and the interval almost always brackets the near-zero truth. 
-At mid persistence VAR(4) falls just below LP(4) with a slight downward slope, while at high persistence it 
-declines steeply and under-covers across the whole window. The over-parameterised VAR(23) lies above LP(4) 
-at every persistence level, since its many estimated lags inflate the interval width and leave it conservative.
-
-The right column explains the VAR(4) pattern by plotting the delta-method standard error against the empirical 
-sampling dispersion of the estimator. At low and mid persistence the two lie almost on top of one another, 
-which indicates that the delta-method interval is correctly sized and that the coverage distortions reflect the 
-shape of the response rather than a faulty standard error. At high persistence the picture breaks, and the 
-empirical dispersion shifts above the delta-method standard error. The two paths still exhibit the same shape, 
-so the interval is systematically too narrow and VAR(4) under-covers. 
-
-As the persistence of the process rises toward the unit root, the coefficient estimates become increasingly biased 
-and skewed. As the delta-method process assumes well-centered estimates \parencite{kilian1998small}, the skewness 
-leaves the standard error it returns understating the estimator's true variability. The right column shows exactly 
-this process, as the resulting narrow interval and downward bias cause under-coverage.
-The distortion is therefore a property of the delta-method standard 
-error rather than of the VAR(4) estimator itself, which remains efficient even where its analytical interval is 
-unreliable.
 
 
 \FloatBarrier
-
-%____________ TEXTDUMP:
-\textit{from Results - true IRF}
-Figure \ref{fig:BL_TRUE_IRF} reports the true structural impulse responses that both estimators target, traced over 
-horizons $h = 1, \ldots, 20$ for the three persistence regimes. The responses are convex and monotonically decreasing, showing
-a strong impact at $h = 1$ which is followed by progressively smaller adjustments as the shock dissipates. Persistence controls 
-the speed of this decay, moving from the response returning to near zero within a handful of horizons at $\rho = 0.5$, to being 
-elevated across the entire window and taking an almost L-shaped profile at $\rho = 0.95$. This shape is standard 
-for a stable VAR and involves no misspecification. Its role here is to fix the estimand and the persistence regimes 
-against which the point-estimation and coverage results are read.
-
 
 \subsection{Discussion of Results}
 The complexity frontier operationalizes the central implication of \textcite{ludwig2026local} as LP($p$) at horizon $h$ embeds a sequence of VAR predictions of orders $p$ through $p+h-1$, the natural benchmark for LP(4) is not a single equal-order VAR but the entire VAR sweep.
