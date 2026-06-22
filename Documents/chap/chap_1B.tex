@@ -54,9 +54,11 @@ finite-sample tradeoff in point estimation, while coverage assesses whether the
 corresponding inference procedures remain reliable under increasing functional 
 misspecification.
 
-Our findings suggest \ldots
+Our findings suggest that under correct specification, the conventional point-estimation advantage of equal-lag Vector Autoregressions (VARs) persists, but this superiority is largely an artifact of mismatched model complexities. By locating a fixed $LP(4)$ estimator on the complexity-adjusted VAR frontier, we reveal that it operates inherently at the level of a highly parameterized system, intersecting the VAR sweep at orders higher than $q \approx 15$. However, evaluating performance solely through point estimation obscures a critical divergence in inference: local projections (LPs) maintain robust, near-nominal coverage across all persistence regimes, whereas the parametric efficiency of VARs comes at the cost of severe inferential fragility, leading to dramatic under-coverage near the unit root boundary. 
 
-The remainder of the paper is structured as follows.
+When controlled functional misspecification is introduced via a nonlinear data-generating process featuring a quadratic lag term, a genuine LP advantage emerges exclusively in terms of inferential stability rather than point estimation. Because both estimators target the same best linear approximation in population, their finite-sample divergence in point estimation is driven purely by variance. Consequently, the equal-lag $VAR(4)$ continues to strictly dominate the $LP(4)$ reference line in finite-sample mean squared error. However, the nonlinear term induces conditional heteroskedasticity in the projection residuals. The true merit of the direct projection method under functional misspecification thus lies in its robust inference. $LP(4)$ preserves near-nominal confidence interval coverage using heteroskedasticity-robust standard errors, while the coverage of homoskedastic VAR delta-method intervals substantially deteriorates and undercovers.
+
+The remainder of the paper is structured as follows. Section 2 provides a theoretical overview of vector autoregressions and local projections. It also reviews the empirical literature regarding their bias-variance trade-off at equal lag lengths and discusses their asymptotic and finite-sample equivalence. Section 3 presents our baseline simulation study under correct specification. Section 4 extends this framework by introducing dynamic misspecification. Section 5 concludes.
 
 
 This is some dummy lipsum for graph positionion and will be filled with info later. \lipsum[1]
