@@ -115,10 +115,13 @@ For inference, we assess the empirical coverage of nominal $95\%$ confidence int
 
 \subsection{Simulation Results}
 
+Figure \ref{fig:BL_COMPLEXITY} introduces the complexity frontier, defined here as the horizon-averaged root mean squared error of the recursively identified VAR impulse response estimator plotted as a function of the estimation lag order $q$. The frontier is traced across the full sweep from $q=1$ to $q=23$ for the three persistence regimes $\rho \in \{0.5, 0.7, 0.95\}$ and the sample sizes $T \in \{100, 250, 500\}$. The fixed $\text{LP}(4)$ estimator serves as a horizontal reference line for each respective sample size.
 
+Two overarching patterns govern the general level of the root mean squared error across the panels. First, an increase in the sample size yields a strict monotonic decline in the error metric. Within every persistence regime, the curve and the corresponding $\text{LP}(4)$ reference line for $T=500$ lie completely below those for $T=250$, which in turn lie strictly below the values for $T=100$. Second, an increase in the persistence parameter $\rho$ systematically elevates the overall level of the errors. Comparing the panels from left to right reveals that the entire complexity frontier, along with the horizontal reference lines, shifts strictly upward as the system becomes more persistent.
 
+Focusing on the conventional equal-lag comparison at $q=4$, the solid VAR curves lie strictly below the dashed $\text{LP}(4)$ lines of the corresponding color in all panels and for all sample sizes. When relaxing the equal-lag restriction and tracing the full frontier, the shape of the VAR curves varies noticeably across the persistence regimes. At $\rho=0.5$, the curves appear smooth and, after passing a shallow minimum near $q=2$, increase monotonically. At $\rho=0.7$, a mild kink emerges in the early portion of the curve, located before the four-lag mark. At the high persistence level of $\rho=0.95$, this initial feature becomes highly pronounced, with the curves dropping steeply to a distinct minimum around $q=2$ to $q=3$ before rising again to form a clear U-shape.
 
-
+Furthermore, across all persistence regimes, the shape of the VAR curves changes systematically with the sample size. As $T$ increases, the curves become noticeably flatter and their minimum shifts to the right. This indicates that in larger samples, the lowest error is achieved at a higher lag order, and the curves rise much more gradually thereafter. Because of this flattening effect, the point where the rising VAR frontier eventually intersects the horizontal $\text{LP}(4)$ benchmark also moves further to the right as $T$ grows. This intersection is most distinctly observable in the smallest sample size $T=100$, where the curves are steepest. At $\rho=0.5$ and $\rho=0.7$, the $\text{LP}(4)$ line intersects the $T=100$ frontier roughly in the neighborhood of $q \approx 15$. Under the high persistence regime of $\rho=0.95$, this intersection point shifts leftward to a slightly lower VAR order.
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -151,28 +154,13 @@ For inference, we assess the empirical coverage of nominal $95\%$ confidence int
 \small
 \textit{Note.} Horizon-averaged RMSE of the structural IRF estimate as a function of VAR order 
 \(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
-line of the same colour (dashed), for each sample size \(T \in \{100, 200, 240, 500\}\). The vertical 
-dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
-\(\rho \in \{0.5, 0.7, 0.95\}\). As \(T\) grows, both estimators' RMSE shrinks and the VAR frontier 
-flattens, with LP(4) approaching the VAR curve --- the finite-sample reflection of the population equivalence.
+line of the same colour (dashed), for each sample size \(T \in \{100, 200, 240, 500\}\). 
 \end{minipage}
 
 \end{figure}
 
 
-Figure \ref{fig:BL_COMPLEXITY} locates the fixed LP(4) estimator on the VAR-order frontier under correct specification. 
-Across all three persistence regimes and all sample sizes, the equal-lag VAR(4) attains a substantially lower 
-horizon-averaged RMSE than LP(4). In the absence of misspecification, VAR(4) is therefore the more efficient point 
-estimator, and LP(4) sits at the level of a far higher-order VAR on the frontier. This reflects the variance cost of 
-LP's direct, horizon-by-horizon construction.
 
-The frontier is minimised at a low order and rises again at higher orders, as over-parameterisation 
-inflates variance. The RMSE-minimising lag length increases with persistence, moving from VAR(1) and VAR(2) at $\rho = 0.5$ to 
-VAR(3) and VAR(4) at $\rho = 0.95$. This happens because faster-decaying responses require fewer lags, so the small bias 
-of an under-lagged VAR is outweighed by its variance saving. At high lags, the frontier rises to meet the LP(4) 
-line, so LP(4)'s performance is matched by a VAR of sufficiently high order. This is the frontier counterpart of 
-\textcite{ludwig2026local}'s argument, under which LP(4) at a given horizon corresponds to a VAR whose order grows with 
-that horizon, which is clearest atc larger sample sizes where the frontier flattens and noise is reduced.
 
 \clearpage
 
@@ -322,6 +310,8 @@ against which the point-estimation and coverage results are read.
 
 
 \subsection{Discussion of Results}
+The complexity frontier operationalizes the central implication of \textcite{ludwig2026local} as LP($p$) at horizon $h$ embeds a sequence of VAR predictions of orders $p$ through $p+h-1$, the natural benchmark for LP(4) is not a single equal-order VAR but the entire VAR sweep.
+
 
 Limitation, T not lower than 100. 
 

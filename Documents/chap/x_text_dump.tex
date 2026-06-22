@@ -271,4 +271,21 @@ To achieve the desired persistence exactly while preserving the qualitative shap
     A_i \leftarrow c^i A_i \qquad \text{for } i = 1, \dots, 4
 \end{equation}
 
+%________________________________
+BL Results complexity frontier ols
+%________________________________
+
+Figure \ref{fig:BL_COMPLEXITY} locates the fixed LP(4) estimator on the VAR-order frontier under correct specification. 
+Across all three persistence regimes and all sample sizes, the equal-lag VAR(4) attains a substantially lower 
+horizon-averaged RMSE than LP(4). In the absence of misspecification, VAR(4) is therefore the more efficient point 
+estimator, and LP(4) sits at the level of a far higher-order VAR on the frontier. This reflects the variance cost of 
+LP's direct, horizon-by-horizon construction.
+
+The frontier is minimised at a low order and rises again at higher orders, as over-parameterisation 
+inflates variance. The RMSE-minimising lag length increases with persistence, moving from VAR(1) and VAR(2) at $\rho = 0.5$ to 
+VAR(3) and VAR(4) at $\rho = 0.95$. This happens because faster-decaying responses require fewer lags, so the small bias 
+of an under-lagged VAR is outweighed by its variance saving. At high lags, the frontier rises to meet the LP(4) 
+line, so LP(4)'s performance is matched by a VAR of sufficiently high order. This is the frontier counterpart of 
+\textcite{ludwig2026local}'s argument, under which LP(4) at a given horizon corresponds to a VAR whose order grows with 
+that horizon, which is clearest atc larger sample sizes where the frontier flattens and noise is reduced.
 \FloatBarrier
