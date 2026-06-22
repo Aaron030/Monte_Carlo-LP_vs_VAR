@@ -247,23 +247,37 @@ iteration, not of the estimand decaying or of VAR performance improving at highe
 \caption{Confidence-Interval Coverage under Nonlinear Lag Misspecification}
 \label{fig:NOLIN_COVERAGE}
 
-\begin{subfigure}[t]{0.7\textwidth}
+\begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.5\)}
-    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.5_T=10000_B=5000.png}
-    \label{fig:NOLIN_COVERAGE_LO}
+    \caption{\(\rho = 0.5\), variable~1 \(\leftarrow\) shock~1}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_var1_rho=0.5_T=10000_B=5000.png}
+    \label{fig:NOLIN_COVERAGE_LO_V1}
 \end{subfigure}
 
-\begin{subfigure}[t]{0.7\textwidth}
+\begin{subfigure}[t]{0.9\textwidth}
     \centering
-    \caption{\(\rho = 0.7\)}
-    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_rho=0.7_T=10000_B=5000.png}
-    \label{fig:NOLIN_COVERAGE_HI}
+    \caption{\(\rho = 0.5\), variable~2 \(\leftarrow\) shock~1}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_var2_rho=0.5_T=10000_B=5000.png}
+    \label{fig:NOLIN_COVERAGE_LO_V2}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\), variable~1 \(\leftarrow\) shock~1}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_var1_rho=0.7_T=10000_B=5000.png}
+    \label{fig:NOLIN_COVERAGE_HI_V1}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \caption{\(\rho = 0.7\), variable~2 \(\leftarrow\) shock~1}
+    \includegraphics[width=\textwidth]{NON_LIN_COVERAGE_var2_rho=0.7_T=10000_B=5000.png}
+    \label{fig:NOLIN_COVERAGE_HI_V2}
 \end{subfigure}
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) for the nonlinear lag-quadratic DGP at \(T=10{,}000\), \(B=5{,}000\). \emph{Left:} response of variable~1 to shock~1; \emph{right:} variable~2 to shock~1. Within each panel VAR(4) is solid (square markers) and LP(4) dashed (circle markers), one colour per nonlinearity strength: purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), yellow \(\gamma=0.6\); the dotted line marks the \(95\%\) reference. VAR\((q)\) intervals use the delta method, LP(4) heteroskedasticity-robust SEs. Rows: \(\rho \in \{0.5,0.7\}\). VAR under-covers as \(\gamma\) grows while LP holds near nominal.
+\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) for the nonlinear lag-quadratic DGP at the strongest nonlinearity \(\gamma=0.6\), \(T=10{,}000\), \(B=5{,}000\), shown separately for each response. In each subfigure the \emph{left} panel reports coverage of VAR(4) (black), VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line at the nominal \(95\%\) level; the \emph{right} panel validates the VAR(4) delta-method SE against the empirical Monte Carlo sampling SD of \(\hat\theta_h\). VAR\((q)\) intervals use the delta method, LP(4) heteroskedasticity-robust SEs. Rows: \(\rho \in \{0.5,0.7\}\) \(\times\) variable \(\in \{1,2\}\). VAR under-covers --- most severely for variable~2, which loads on the heteroskedastic innovation --- while LP holds near nominal.
 \end{minipage}
 
 \end{figure}
@@ -271,7 +285,11 @@ iteration, not of the estimand decaying or of VAR performance improving at highe
 \FloatBarrier
 
 
-Lastly, the coverage analysis (Figure \ref{fig:NOLIN_COVERAGE}) shows clear evidence of differing robustness to 
+% TODO(coverage rewrite): the two paragraphs below were written for the old figure that varied
+% $\gamma$ (one curve per nonlinearity strength, VAR(4) vs LP(4) only). The figure now fixes
+% $\gamma=0.6$ and adds VAR(23) plus the delta-SE-vs-empirical-SD validation panel, one figure
+% per response. Re-run the notebooks and revise these against the regenerated figures.
+Lastly, the coverage analysis (Figure \ref{fig:NOLIN_COVERAGE}) shows clear evidence of differing robustness to
 heteroskedasticity between the two estimators. At low persistence, LP(4) coverage sits near the nominal $95\%$ level 
 for both variables, with only slight deviation at low horizons, while VAR(4) coverage develops a mild negative slope after 
 about horizon~7. The $\gamma$ levels barely differ at later horizons and show only some reduced coverage at low horizons. 
