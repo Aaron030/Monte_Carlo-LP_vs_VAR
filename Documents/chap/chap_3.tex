@@ -3,42 +3,26 @@
 \section{Baseline Simulation (4-5 pages)}
 
 
-This confounding motivates the first part of our study. Because Ludwig's 
-contribution is analytical and deliberately abstains from a simulation-based horse race, 
-the question of whether the conventional finite-sample conclusions survive once the 
-equal-lag restriction is relaxed remains open. We therefore operationalize Ludwig's central 
-implication through a complexity-adjusted benchmarking exercise that holds parsimony more 
-nearly fixed, comparing a fixed LP(4) estimator against progressively higher-order VAR specifications 
-that proxy its increasing effective dynamic flexibility. Crucially, because the identity in Theorem 
-1 maps LP(p) to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is 
-the appropriate counterpart; instead, LP(4) is read as a reference line against the full VAR order frontier, 
-against which its bias, variance, and coverage can be located. We frame the exercise as a test of robustness 
-rather than as a foregone conclusion: the aim is to assess whether the conventional bias-variance 
-verdict persists, dissolves, or reverses once the comparison is placed on more comparable terms, and 
-to identify the features of the data-generating process under which each procedure is favored.
+This confounding motivates the first part of our study. Because \textcite{ludwig2026local}'s contribution is analytical and deliberately abstains from a simulation-based horse race, the question of whether the conventional finite-sample conclusions survive once the equal-lag restriction is relaxed remains open. 
+We therefore operationalize Ludwig's central implication through a complexity-adjusted benchmarking exercise that holds effective model complexity constant, comparing a fixed $\text{LP}(4)$ estimator against progressively higher-order VAR specifications that proxy its increasing dynamic flexibility. 
+Crucially, because the identity in Theorem 1 maps $\text{LP}(p)$ to a sequence of VARs rather than to any single higher-order VAR, no individual VAR is the perfect counterpart. 
+Instead, $\text{LP}(4)$ is read as a reference line against the full VAR-order frontier, against which its bias, variance, and coverage can be accurately located. 
 
 \subsection{Simulation Design}
-\textbf{AIM:} This simulation study examines whether conventional finite-sample 
-conclusions about the bias-variance tradeoff between Local Projections and Vector 
-Autoregressions are robust to relaxing the equal-lag restriction. Specifically, 
-we compare a fixed LP(4) estimator against a sweep of VAR specifications of 
-increasing order, ranging from VAR(1) to VAR(p+H-1), thereby constructing a 
-complexity-adjusted benchmark in the spirit of \textcite{ludwig2026local}. The 
-central question is whether LP(4) retains its finite-sample MSE advantage over 
-the equal-lag VAR(4) once the VAR is allowed to exploit its natural complexity 
-advantage at longer horizons.
+The baseline study serves two purposes. First, it operationalizes the 
+complexity argument of \textcite{ludwig2026local} in a controlled, correctly 
+specified setting. Rather than comparing LP(4) to a single equal-lag VAR(4), 
+we locate the fixed LP(4) estimator on the full VAR-order frontier, ranging 
+from VAR(1) to VAR(p+H-1), thereby rendering the implicit complexity of the 
+direct projection visible as a position on that frontier. Second, it 
+establishes the correctly specified reference design against which later 
+extensions measure the effect of dynamic and functional misspecification. 
 
-\textbf{DGP:} The baseline DGP is a stable bivariate zero-mean VAR(4) with 
-recursive Cholesky identification. Recursive identification refers to the 
-lower-triangular structure of the impact matrix $B$, obtained via Cholesky 
-decomposition of the reduced-form error covariance matrix $\Sigma_u = BB'$. 
-This imposes a contemporaneous zero restriction: the first variable does not 
-respond on impact to shocks in the second variable, while the second variable 
-may respond to both structural shocks simultaneously.
+The underlying DGP is a stable bivariate zero-mean $\text{VAR}(4)$ with recursive Cholesky identification. Consistent with the theoretical setup, this imposes a contemporaneous zero restriction where the first variable does not respond on impact to shocks in the second variable, while the second variable may respond to both structural shocks simultaneously.
 
 \begin{equation}
     y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} + u_t, 
-    \quad u_t \sim (0, \Sigma_u), \quad y_t \in \mathbb{R}^2
+    \quad y_t \in \mathbb{R}^2
 \end{equation}
 
 \begin{equation}
@@ -51,168 +35,29 @@ may respond to both structural shocks simultaneously.
     \rho(\mathcal{A}) < 1, \qquad 
     \mathcal{A} = \begin{pmatrix} 
         A_1 & A_2 & A_3 & A_4 \\ 
-        I_2 & 0   & 0   & 0   \\ 
-        0   & I_2 & 0   & 0   \\ 
-        0   & 0   & I_2 & 0   
+        I_2 & \mathbf{0}   & \mathbf{0}   & \mathbf{0}   \\ 
+        \mathbf{0}   & I_2 & \mathbf{0}   & \mathbf{0}   \\ 
+        \mathbf{0}   & \mathbf{0}   & I_2 & \mathbf{0}   
     \end{pmatrix} \in \mathbb{R}^{8 \times 8}
 \end{equation}
 
-Persistence is calibrated via the spectral radius of the companion matrix 
-across the empirically relevant range $\rho \in (0.5, 0.95)$. The lower 
-bound reflects the observation that, for weakly persistent processes, impulse 
-responses decay rapidly toward zero at longer horizons, rendering the 
-bias-variance comparison between LP and VAR uninformative. The upper bound 
-approaches the unit-root boundary while maintaining covariance stationarity, 
-covering the high-persistence region where finite-sample differences between 
-estimators are most pronounced.
+Persistence is calibrated via the spectral radius of the companion matrix $\mathcal{A}$ across the empirically relevant range $\rho \in \{0.5, 0.7, 0.95\}$ (Figure \ref{fig:BL_TRUE_IRF}). The lower bound reflects weakly persistent processes where impulse responses decay rapidly, rendering bias-variance comparisons at longer horizons uninformative. The upper bound approaches the unit-root boundary while maintaining covariance stationarity, covering the high-persistence region where finite-sample differences between estimators are most pronounced. 
+
+Sample sizes are set to $T \in \{100, 250, 500\}$ observations, generated after a burn-in period of 200 periods to eliminate initialization effects. The choice of $T=100$ aligns precisely with the median sample size documented by \textcite{herbst2024bias} in the applied structural VAR literature. At the same time, this value serves as the effective lower bound for our specific simulation design. Because our complexity-adjusted benchmarking requires estimating highly parameterized models up to $\text{VAR}(p+H-1)$, pushing the sample size below this median would rapidly exhaust degrees of freedom and yield computationally unstable estimates. The intermediate value $T=250$ is therefore included to represent a comfortably large empirical dataset, corresponding to twenty years of monthly or sixty years of quarterly observations. This ensures reliable estimation across the entire VAR-order frontier. Finally, the value $T=500$ serves as a large-sample reference point to assess convergence toward the population equivalence established by \textcite{plagborg2021local}.
+
+The structural estimand is $\theta_h = \Psi_h B e_1$, where $\Psi_h$ denotes the $h$-step ahead moving-average matrix of the reduced-form VAR, generated via the recursion $\Psi_h = \sum_{j=1}^{\min(h,4)} A_j \Psi_{h-j}$ with $\Psi_0 = I_2$, and $e_1 = (1,0)'$ as the selection vector. The primitive shock is normalized as a unit shock. We trace the dynamic response of the system to a one-standard-deviation increase in the first structural innovation $\varepsilon_{1,t}$. 
 
 \begin{equation}
-    A_1 \leftarrow \frac{\rho}{\rho(\mathcal{A})} \cdot A_1, 
-    \quad \rho \in (0.5,\, 0.95)
+    u_t = B\varepsilon_t, \qquad \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2)
 \end{equation}
 
-Sample sizes are set to $T \in \{100, 200, 240, 500\}$, covering the range 
-of quarterly macroeconomic samples typically encountered in applied work. 
-The choice follows \textcite{herbst2024bias}, who document that the modal sample 
-size in the structural VAR literature lies between 100 and 240 quarterly 
-observations. The value $T = 500$ serves as a large-sample reference point 
-to assess convergence toward the population equivalence result of 
-\textcite{plagborg2021local}.
+The innovations are specified as Gaussian white noise. This standard assumption acts primarily as an expositional device, allowing conditional expectations to replace linear projections \parencite{plagborg2021local}. Because our performance metrics (bias and variance) depend strictly on the second moments of the data, the exact distribution of the innovations is irrelevant for the baseline estimator comparison. Furthermore, holding the Gaussian innovation structure fixed isolates the effects of the structural misspecifications introduced later in the study ensuring differences in performance are driven solely by the specified channel.
 
-The structural estimand is $\theta_h = \Psi_h B e_1$, where $\Psi_h$ denotes 
-the $h$-step ahead moving-average matrix of the reduced-form VAR, defined via 
-$y_{t+h} = \sum_{j=0}^{\infty} \Psi_j u_{t+h-j}$ with $\Psi_0 = I_2$, $B$ 
-is the Cholesky impact matrix, and $e_1 = (1,0)'$ is a selection vector. The 
-primitive shock is normalized as a unit shock: we trace the dynamic response 
-of the system to a one-standard-deviation increase in the first structural 
-innovation $\varepsilon_{1t}$. Since $B$ is normalized such that 
-$\mathrm{Var}(\varepsilon_t) = I_2$, no further rescaling is required.
-
-\begin{equation}
-    u_t = B\varepsilon_t, \qquad \varepsilon_t \overset{\text{iid}}{\sim} 
-    \mathcal{N}(0, I_2)
-\end{equation}
-
-The innovation term is specified as Gaussian white noise. The reasoning behind 
-Gaussianity is two-fold. First, our primary performance measures are bias, 
-variance, and RMSE of the IRF estimates, which in population depend exclusively 
-on the second moments of the underlying process, i.e.\ the VAR coefficients 
-and the covariance matrix $\Sigma_u$. The distribution of the innovation term 
-is therefore irrelevant for the point estimator comparison. Second, we follow 
-\textcite{plagborg2021local}, who introduce Gaussianity explicitly as an 
-expositional device that allows conditional expectations to be written in place 
-of linear projections. As all results hold under covariance stationarity alone, 
-the distributional assumption leaves the analysis qualitatively unchanged. 
-Importantly, this choice is orthogonal to the misspecification parameters 
-introduced in the extensions: varying the MA parameter $\theta$ in Extension~1 
-or the nonlinearity parameter $\gamma$ in Extension~2 alters the structure of 
-the DGP while leaving the innovation distribution fixed, ensuring that 
-differences in estimator performance across designs are attributable solely to 
-the respective misspecification channel.
-
-\textbf{ESTIMAND:}
+The structural target of interest is the impulse response function, which tracks the dynamic causal effect of a structural innovation on the variables of the system over time. Formally, the population estimand at horizon $h$ is defined as the vector of responses to a one-standard-deviation shock in the first structural innovation $\varepsilon_{1,t}$. This object is constructed analytically from the data-generating process parameters as
 \begin{equation}
     \theta_h = \Psi_h B e_1, \qquad e_1 = (1, 0)', \qquad h = 1, \ldots, 20
 \end{equation}
-
-\textbf{METHODS:} We compare two classes of estimators. The first is a fixed 
-LP(4) estimator, which serves as the reference point. At each horizon 
-$h = 1, \ldots, H$, the LP(4) estimator is obtained from the OLS regression
-
-\begin{equation}
-    y_{1,t+h} = \mu_h + \beta_h x_t + \sum_{\ell=1}^{4} \delta_{h,\ell}' 
-    y_{t-\ell} + \xi_{h,t}, \quad h = 1, \ldots, H
-\end{equation}
-
-where $x_t = e_1'(\hat{B}^{(4)})^{-1}\hat{u}_t^{(4)}$ is the estimated 
-structural shock recovered from the first-stage VAR(4). The structural 
-impulse response estimate at horizon $h$ is $\hat{\theta}_h^{\mathrm{LP}} 
-= \hat{\beta}_h$.
-
-The second class consists of a sweep of VAR estimators of increasing order, 
-$\mathrm{VAR}(q)$ for $q = 1, \ldots, p + H - 1$, where $p = 4$ and $H = 20$. 
-For each order $q$, the VAR is estimated equation-by-equation via OLS, the 
-reduced-form covariance matrix $\hat{\Sigma}_u^{(q)}$ is Cholesky-decomposed 
-to recover the structural impact matrix $\hat{B}^{(q)}$, and the $h$-step 
-ahead structural IRF is computed as
-
-\begin{equation}
-    \hat{\theta}_h^{\mathrm{VAR}(q)} = \hat{\Psi}_h^{(q)} \hat{B}^{(q)} e_1
-\end{equation}
-
-where $\hat{\Psi}_h^{(q)}$ denotes the $h$-step ahead moving-average matrix 
-of the estimated $\mathrm{VAR}(q)$. This sweep constitutes the 
-complexity-adjusted benchmark motivated by \textcite{ludwig2026local}: by 
-Theorem~1 of that paper, LP(4) at horizon $h$ is algebraically equivalent to 
-a sequence of VAR predictions stepping through orders $4, 5, \ldots, 4 + h - 1$. 
-The fair comparison is therefore not LP(4) against VAR(4) alone, but against 
-the full range of VAR specifications up to order $p + H - 1$. Note that this 
-equivalence holds exactly for the sequence of VARs of increasing order; 
-comparing LP(4) to any single VAR$(q^*)$ is an approximation, with the 
-complexity-adjusted single-order approximation given by $q^* = p + 
-\frac{h-1}{2}$ \parencite{ludwig2026local}. The equal-lag VAR(4) is nested 
-in the sweep as a special case and is retained as an additional reference 
-point to connect to the conventional benchmark in the literature.
-
-Identification of the structural shock is implemented as follows. For each 
-$\mathrm{VAR}(q)$ in the sweep, the structural impact matrix $\hat{B}^{(q)}$ 
-is obtained via Cholesky decomposition of the order-specific residual 
-covariance matrix $\hat{\Sigma}_u^{(q)}$. For the LP(4), which does not 
-estimate a complete system, identification is achieved through a first-stage 
-VAR(4): the structural shock is constructed as $\hat{\varepsilon}_{1t} = 
-e_1'(\hat{B}^{(4)})^{-1}\hat{u}_t^{(4)}$, consistent with the LP lag order 
-$p = 4$. Since \textcite{plagborg2021local} establish that LP and VAR share 
-the same implicit shock in population under recursive identification, this 
-ensures that any divergence in estimated IRFs reflects differences in 
-propagation rather than identification. No data-dependent lag selection is 
-performed within the sweep; all VAR orders $q = 1, \ldots, p + H - 1$ are 
-estimated on each simulated sample, ensuring that the comparison is across 
-fixed specifications rather than across selection procedures.
-
-\textbf{PERFORMANCE:} Performance is assessed along two dimensions, reported 
-horizon-by-horizon for $h = 1, \ldots, 20$. For point estimation, we report 
-bias, variance, MSE, and RMSE of the IRF estimates $\hat{\theta}_h$ relative 
-to the true estimand $\theta_h$, computed across $B = 5{,}000$ Monte Carlo 
-replications. The number of replications exceeds the $B = 1{,}000$ used by 
-\textcite{li2024local} and \textcite{olea2025local}, ensuring tighter 
-Monte Carlo standard errors at the cost of additional computation. Formally:
-
-\begin{align}
-    \widehat{\mathrm{Bias}}_h &= \frac{1}{B} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \theta_h\right) \\
-    \widehat{\mathrm{Var}}_h &= \frac{1}{B-1} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \bar{\hat{\theta}}_h\right)^2 \\
-    \widehat{\mathrm{MSE}}_h &= \frac{1}{B} \sum_{b=1}^{B} 
-    \left(\hat{\theta}_h^{(b)} - \theta_h\right)^2 \\
-    \widehat{\mathrm{RMSE}}_h &= \sqrt{\widehat{\mathrm{MSE}}_h}
-\end{align}
-
-Monte Carlo standard errors are reported alongside all point-estimator 
-performance measures to quantify simulation uncertainty, with 
-$\mathrm{MCSE}(\widehat{\mathrm{Bias}}_h) = \sqrt{\widehat{\mathrm{Var}}_h 
-/ B}$.
-
-For inference, we assess coverage of nominal $95\%$ confidence intervals. 
-For the VAR$(q)$ sweep, confidence intervals are constructed via the delta 
-method, propagating estimation uncertainty in the reduced-form coefficients 
-$(\hat{A}_1, \ldots, \hat{A}_q)$ through the nonlinear mapping to structural 
-IRFs $\hat{\theta}_h^{\mathrm{VAR}(q)} = \hat{\Psi}_h^{(q)} \hat{B}^{(q)} 
-e_1$ \parencite{kilian2017structural}. For LP(4), confidence intervals are 
-based on heteroskedasticity-robust standard errors, which suffice under the 
-martingale difference assumption on the structural shock 
-\parencite{plagborg2021local}. Coverage is defined as the fraction of 
-replications in which the nominal $95\%$ interval contains the true estimand 
-$\theta_h$:
-
-\begin{equation}
-    \widehat{\mathrm{Coverage}}_h = \frac{1}{B} \sum_{b=1}^{B} 
-    \mathbf{1}\left[\theta_h \in \hat{CI}_h^{(b)}\right]
-\end{equation}
-
-\newpage
-\subsection{Simulation Results}
-
-
+where $\Psi_h$ represents the reduced-form moving-average coefficient matrix obtained from the companion recursion, $B$ is the lower-triangular Cholesky factor of the innovation variance matrix, and $e_1$ serves as the selection vector. The multiplication by $e_1$ isolates the first column of the structural impact matrix, which restricts the analysis to the propagation of the first shock while discarding contemporaneous variations from the second structural innovation. Because the baseline data-generating process is linear and covariance stationary, this population estimand represents the true conditional expectation of the system given the structural shock. It constitutes the invariant benchmark that both the iterated $\text{VAR}(q)$ specifications and the direct $\text{LP}(4)$ regressions attempt to recover in finite samples.
 % ----------------------------------- True IRF
 \begin{figure}[htbp]
 \centering
@@ -243,23 +88,40 @@ $\theta_h$:
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the true structural impulse response function, \(\theta_h = \Psi_h B e_1\), of 
-variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
-\(h = 1, \ldots, 20\). Panels correspond to persistence regimes calibrated via the spectral radius of the 
-companion matrix, \(\rho \in \{0.5, 0.7, 0.95\}\). Higher persistence yields slower decay of the response toward zero.
+\textit{Note.} Each panel reports the true structural impulse response function of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons 
+\(h = 1, \ldots, 20\). Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
 \end{minipage}
 
 \end{figure}
 
-Figure \ref{fig:BL_TRUE_IRF} reports the true structural impulse responses that both estimators target, traced over 
-horizons $h = 1, \ldots, 20$ for the three persistence regimes. The responses are convex and monotonically decreasing, showing
-a strong impact at $h = 1$ which is followed by progressively smaller adjustments as the shock dissipates. Persistence controls 
-the speed of this decay, moving from the response returning to near zero within a handful of horizons at $\rho = 0.5$, to being 
-elevated across the entire window and taking an almost L-shaped profile at $\rho = 0.95$. This shape is standard 
-for a stable VAR and involves no misspecification. Its role here is to fix the estimand and the persistence regimes 
-against which the point-estimation and coverage results are read.
+We compare two classes of models. The first is a fixed $\text{LP}(4)$ estimator, which serves as the reference point. At each horizon $h = 1, \ldots, H$, the $\text{LP}(4)$ estimator is obtained from the OLS regression
+\begin{equation}
+    y_{1,t+h} = \mu_h + \beta_h \hat{\varepsilon}_{1,t} + \sum_{\ell=1}^{4} \delta_{h,\ell}' y_{t-\ell} + \xi_{h,t}, \quad h = 1, \ldots, 20
+\end{equation}
+where $\hat{\varepsilon}_{1,t} = e_1'(\hat{B}^{(4)})^{-1}\hat{u}_t^{(4)}$ is the estimated structural shock recovered from a first-stage $\text{VAR}(4)$. While the true structural shock is perfectly observable by construction in our data-generating process, directly projecting on this true innovation would artificially advantage the local projection by bypassing identification uncertainty. To maintain a rigorously fair comparison, we intentionally restrict the $\text{LP}(4)$ to use the empirically estimated shock. This guarantees that both estimators face the exact same identification problem. Consequently, any divergence in finite-sample performance is driven strictly by differences in dynamic propagation rather than discrepancies in shock recovery. The structural impulse response estimate at horizon $h$ is then simply the slope coefficient $\hat{\theta}_h^{\mathrm{LP}} = \hat{\beta}_h$.
 
-\clearpage
+The second class consists of a sweep of VAR estimators of increasing order, $\text{VAR}(q)$ for $q = 1, \ldots, p + H - 1$, where $p = 4$ and $H = 20$. For each order $q$, the VAR is estimated equation-by-equation via OLS. The reduced-form covariance matrix $\hat{\Sigma}_u^{(q)}$ is Cholesky-decomposed to recover the structural impact matrix $\hat{B}^{(q)}$, and the $h$-step ahead structural IRF is computed as
+\begin{equation}
+    \hat{\theta}_h^{\mathrm{VAR}(q)} = \hat{\Psi}_h^{(q)} \hat{B}^{(q)} e_1
+\end{equation}
+where $\hat{\Psi}_h^{(q)}$ denotes the $h$-step ahead moving-average matrix of the estimated $\text{VAR}(q)$. 
+
+This sweep operationalizes the complexity-adjusted benchmark. By Theorem 1 of \textcite{ludwig2026local}, $\text{LP}(4)$ at horizon $h$ is algebraically equivalent to a sequence of VAR predictions stepping through orders $4, 5, \ldots, 4 + h - 1$. The rigorous comparison is therefore not $\text{LP}(4)$ against $\text{VAR}(4)$ alone, but against the full range of VAR specifications up to order $p + H - 1$. Finally, no data-dependent lag selection is performed within the sweep. All VAR orders $q = 1, \ldots, p + H - 1$ are systematically estimated on each simulated sample to guarantee that the comparison evaluates fixed specifications rather than selection procedures.
+
+Performance is assessed along two dimensions and reported horizon-by-horizon for $h = 1, \ldots, 20$. For point estimation, we evaluate the bias, variance, mean squared error, and root mean squared error of the impulse response estimates relative to the true population estimand. These metrics are computed across $B = 5{,}000$ Monte Carlo replications, ensuring tight simulation bounds in line with recent literature \parencite{li2024local}. To explicitly quantify this simulation uncertainty, Monte Carlo standard errors are calculated and reported alongside all point-estimator performance measures. Formal mathematical definitions of these sample estimators are deferred to the Appendix.
+
+For inference, we assess the empirical coverage of nominal $95\%$ confidence intervals, defined strictly as the fraction of replications in which the estimated interval successfully brackets the true structural estimand. For the $\text{VAR}(q)$ sweep, confidence intervals are constructed via the delta method, which analytically propagates the estimation uncertainty of the reduced-form coefficients through the nonlinear mapping to the structural impulse responses \parencite{kilian2017structural}. For the fixed $\text{LP}(4)$ estimator, confidence intervals are based on heteroskedasticity-robust standard errors. This approach is asymptotically valid and sufficient given the martingale difference assumption on the structural shock under recursive identification \parencite{plagborg2021local}.
+
+
+\subsection{Simulation Results}
+
+Figure \ref{fig:BL_COMPLEXITY} introduces the complexity frontier, defined here as the horizon-averaged root mean squared error of the recursively identified VAR impulse response estimator plotted as a function of the estimation lag order $q$. The frontier is traced across the full sweep from $q=1$ to $q=23$ for the three persistence regimes $\rho \in \{0.5, 0.7, 0.95\}$ and the sample sizes $T \in \{100, 250, 500\}$. The fixed $\text{LP}(4)$ estimator serves as a horizontal reference line for each respective sample size.
+
+Two overarching patterns govern the general level of the root mean squared error across the panels. First, an increase in the sample size yields a strict monotonic decline in the error metric. Within every persistence regime, the curve and the corresponding $\text{LP}(4)$ reference line for $T=500$ lie completely below those for $T=250$, which in turn lie strictly below the values for $T=100$. Second, an increase in the persistence parameter $\rho$ systematically elevates the overall level of the errors. Comparing the panels from left to right reveals that the entire complexity frontier, along with the horizontal reference lines, shifts strictly upward as the system becomes more persistent.
+
+Focusing on the conventional equal-lag comparison at $q=4$, the solid VAR curves lie strictly below the dashed $\text{LP}(4)$ lines of the corresponding color in all panels and for all sample sizes. When relaxing the equal-lag restriction and tracing the full frontier, the shape of the VAR curves varies noticeably across the persistence regimes. At $\rho=0.5$, the curves appear smooth and, after passing a shallow minimum near $q=2$, increase monotonically. At $\rho=0.7$, a mild kink emerges in the early portion of the curve, located before the four-lag mark. At the high persistence level of $\rho=0.95$, this initial feature becomes highly pronounced, with the curves dropping steeply to a distinct minimum around $q=2$ to $q=3$ before rising again to form a clear U-shape.
+
+Furthermore, across all persistence regimes, the shape of the VAR curves changes systematically with the sample size. As $T$ increases, the curves become noticeably flatter and their minimum shifts to the right. This indicates that in larger samples, the lowest error is achieved at a higher lag order, and the curves rise much more gradually thereafter. Because of this flattening effect, the point where the rising VAR frontier eventually intersects the horizontal $\text{LP}(4)$ benchmark also moves further to the right as $T$ grows. This intersection is most distinctly observable in the smallest sample size $T=100$, where the curves are steepest. At $\rho=0.5$ and $\rho=0.7$, the $\text{LP}(4)$ line intersects the $T=100$ frontier roughly in the neighborhood of $q \approx 15$. Under the high persistence regime of $\rho=0.95$, this intersection point shifts leftward to a slightly lower VAR order.
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -294,28 +156,25 @@ against which the point-estimation and coverage results are read.
 \(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
 line of the same colour (dashed), for each sample size \(T \in \{100, 250, 500\}\). The vertical
 dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
-\(\rho \in \{0.5, 0.7, 0.95\}\). As \(T\) grows, both estimators' RMSE shrinks and the VAR frontier 
-flattens, with LP(4) approaching the VAR curve --- the finite-sample reflection of the population equivalence.
+\(\rho \in \{0.5, 0.7, 0.95\}\). 
 \end{minipage}
 
 \end{figure}
 
 
-Figure \ref{fig:BL_COMPLEXITY} locates the fixed LP(4) estimator on the VAR-order frontier under correct specification. 
-Across all three persistence regimes and all sample sizes, the equal-lag VAR(4) attains a substantially lower 
-horizon-averaged RMSE than LP(4). In the absence of misspecification, VAR(4) is therefore the more efficient point 
-estimator, and LP(4) sits at the level of a far higher-order VAR on the frontier. This reflects the variance cost of 
-LP's direct, horizon-by-horizon construction.
 
-The frontier is minimised at a low order and rises again at higher orders, as over-parameterisation 
-inflates variance. The RMSE-minimising lag length increases with persistence, moving from VAR(1) and VAR(2) at $\rho = 0.5$ to 
-VAR(3) and VAR(4) at $\rho = 0.95$. This happens because faster-decaying responses require fewer lags, so the small bias 
-of an under-lagged VAR is outweighed by its variance saving. At high lags, the frontier rises to meet the LP(4) 
-line, so LP(4)'s performance is matched by a VAR of sufficiently high order. This is the frontier counterpart of 
-\textcite{ludwig2026local}'s argument, under which LP(4) at a given horizon corresponds to a VAR whose order grows with 
-that horizon, which is clearest atc larger sample sizes where the frontier flattens and noise is reduced.
 
 \clearpage
+
+Figure \ref{fig:BL_PE} plots the point estimation performance in terms of bias, variance, and root mean squared error for a fixed sample size of $T=250$. The results are reported horizon by horizon and grouped by the three persistence regimes. The fixed $\text{LP}(4)$ estimator is compared against a representative selection of VAR specifications of varying lag orders.
+
+Under the low persistence calibration ($\rho=0.5$), the absolute bias across all classes grows until the second to third horizon before splitting into distinct paths. The under-parameterized $\text{VAR}(2)$ specification appears erratic at short horizons but, together with $\text{VAR}(4)$, returns to unbiasedness the fastest around horizon eight. Increasing the VAR order causes the bias paths to initially track the $\text{LP}(4)$ reference line before eventually shrinking toward zero at intermediate horizons, whereas the $\text{VAR}(23)$ and the $\text{LP}(4)$ coincide completely. The variance, and consequently the root mean squared error, paints a similar picture. The parsimonious models $\text{VAR}(2)$ through $\text{VAR}(8)$ track the $\text{LP}(4)$ curve until horizon two before falling back toward zero, with $\text{VAR}(2)$ declining the fastest. The heavily parameterized $\text{VAR}(16)$ and $\text{VAR}(23)$ models overshoot the local projection variance at first but decline significantly at intermediate and long horizons. Meanwhile, the variance of the $\text{LP}(4)$ estimator remains comparatively stable across the entire horizon.
+
+At the intermediate persistence level ($\rho=0.7$), the bias exhibits a similar structural pattern but increases noticeably in absolute terms. The $\text{VAR}(2)$ specification now overshoots completely, leaving the correctly specified $\text{VAR}(4)$ as the most accurate model. The intermediate $\text{VAR}(8)$ and $\text{VAR}(16)$ models track the $\text{LP}(4)$ trajectory for a substantially longer period before their bias dissipates, and $\text{VAR}(23)$ again closely mirrors the local projection across the full horizon. The variance experiences only a minuscule increase compared to the low persistence regime. The main difference is that the decline from the early peak is now stretched over a longer horizon. Because the bias remains relatively small for most specifications, the root mean squared error closely resembles the variance pattern.
+
+Near the unit root boundary ($\rho=0.95$), the point estimation landscape changes considerably. Absolute bias is highly elevated across all specifications, with $\text{VAR}(2)$ behaving in a highly erratic manner. The remaining VAR specifications and the local projection share a similar downward trajectory and roughly track each other across the full horizon. Variance is similarly elevated across the board. The $\text{VAR}(4)$ model achieves the lowest variance, followed closely by $\text{VAR}(2)$. Unlike in the less persistent regimes, none of the specifications regain efficiency at longer horizons, leaving the dispersion elevated and producing a distinctly arched profile for the root mean squared error.
+
+However, across all persistence regimes the specific horizon at which the variance paths of the different estimators begin to diverge from one another remains largely consistent.
 
 % ----------------------------------- Point Estimates
 \begin{figure}[htbp]
@@ -357,31 +216,13 @@ compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to 
 
 \clearpage
 
-Figure \ref{fig:BL_PE} reports bias, variance, MSE and RMSE at $T = 240$ for LP(4) and a representative set of 
-VAR orders. Across all three persistence regimes the under-lagged VAR(2) shows the widest bias range and is the 
-only specification that visibly departs from the others. Still, at low and mid persistence this departure is 
-mild because a fast-decaying response leaves little information in the omitted higher lags. The remaining VARs share 
-LP(4)'s small bias at short horizons and each falls toward zero around its own lag order, while LP(4) keeps a roughly 
-constant small negative bias. 
+Figure \ref{fig:BL_COV} displays the empirical coverage of nominal 95 percent confidence intervals in the left column and compares the VAR(4) delta-method standard error against the empirical sampling standard deviation in the right column. The results are plotted horizon by horizon across the three persistence regimes for a sample size of $T=250$.
 
-Near the unit root at high persistence, the panel changes character, as all estimators show a characteristic small-sample downward bias of 
-least squares. VAR(2) is by far the most affected, swinging from a positive bias at short horizons to a strongly 
-negative one at long horizons. Its range dominates the panel, while the remaining curves, which share the milder 
-common bias, appear compressed beneath it.
+Under the low persistence calibration of $\rho=0.5$, all models achieve roughly the same coverage level up to the third horizon. A visible divergence begins at the fourth horizon. The coverage of the VAR(4) specification increases rapidly and reaches full coverage by the seventh horizon. The over-parameterized VAR(23) model slowly converges toward a coverage of 1.0 by the end of the forecast window. Meanwhile, the LP(4) estimator remains highly consistent, fluctuating tightly around the 0.95 level throughout the entire horizon. In the right panel, the delta-method standard error closely tracks the empirical standard deviation, showing only a marginal deviation around the initial peak.
 
-Because the data-generating process is correctly specified, bias is negligible for the well-specified estimators, so MSE 
-coincides with the variance and the RMSE panel is just its square root, leaving the three panels with the same shape 
-and the same ordering of the estimators. The RMSE is smallest at a low order and rises as added lags inflate variance, 
-so the parsimonious VAR(4) and VAR(8) sit well below LP(4), while the heavily parameterised VAR(23) exceeds it and 
-carries the largest dispersion of all.
+At the intermediate persistence level of $\rho=0.7$, the coverage paths of all estimators remain tightly aligned until the sixth horizon. Beyond this point, the VAR(4) coverage steadily deteriorates toward the end of the observed window. The VAR(23) specification exhibits a slight upward drift in coverage, whereas the LP(4) estimator maintains a stable trajectory near the nominal target. The corresponding standard error validation in the right column shows that the analytical standard error and the empirical standard deviation lie almost perfectly on top of each other.
 
-VAR(16) sits just under LP(4), which therefore is similar in performance to a VAR of order roughly eighteen to twenty, 
-exactly as the complexity frontier indicated earlier. The single departure from this pattern is VAR(2) at high 
-persistence, whose large bias from the missing lags dominates its MSE and RMSE through the squared-bias term (MSE 
-equals squared bias plus variance). Every other specification carries enough lags to keep its bias negligible, so 
-its MSE simply tracks its variance. High persistence amplifies the effect and, through the slow decay of the response, 
-keeps variance elevated across the entire window, producing the rounded, almost C-shaped profiles.
-
+Approaching the unit root boundary at $\rho=0.95$, the coverage behavior changes substantially. The models track each other only until the second horizon, after which none of the estimators reach the nominal 95 percent coverage target. The VAR(4) specification experiences a severe deterioration, with its coverage dropping below the 0.8 mark at longer horizons. The VAR(23) model performs slightly better and closely tracks the local projection, yielding a coverage level of roughly 0.9 across the remainder of the horizon. In the right column, a distinct vertical gap emerges. The empirical sampling dispersion shifts visibly above the analytical delta-method standard error at short and intermediate horizons, before the two curves gradually converge toward the end of the forecast window.
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -423,34 +264,15 @@ Panels correspond to persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\).
 
 \clearpage
 
-Figure \ref{fig:BL_COV} shows the empirical coverage of $95\%$ confidence intervals alongside a 
-validation of the VAR(4) standard error. The left column shows that LP(4) holds its nominal level closely 
-at low and mid persistence and only drifts downward at high persistence, remaining the most reliable of the 
-three throughout. VAR(4) behaves very differently across regimes. At low persistence it bends upward and 
-reaches full coverage by about horizon seven. Instead of signaling outstanding performance, this effect is mechanical in nature, 
-as the response has decayed to near zero by then and the interval almost always brackets the near-zero truth. 
-At mid persistence VAR(4) falls just below LP(4) with a slight downward slope, while at high persistence it 
-declines steeply and under-covers across the whole window. The over-parameterised VAR(23) lies above LP(4) 
-at every persistence level, since its many estimated lags inflate the interval width and leave it conservative.
-
-The right column explains the VAR(4) pattern by plotting the delta-method standard error against the empirical 
-sampling dispersion of the estimator. At low and mid persistence the two lie almost on top of one another, 
-which indicates that the delta-method interval is correctly sized and that the coverage distortions reflect the 
-shape of the response rather than a faulty standard error. At high persistence the picture breaks, and the 
-empirical dispersion shifts above the delta-method standard error. The two paths still exhibit the same shape, 
-so the interval is systematically too narrow and VAR(4) under-covers. 
-
-As the persistence of the process rises toward the unit root, the coefficient estimates become increasingly biased 
-and skewed. As the delta-method process assumes well-centered estimates \parencite{kilian1998small}, the skewness 
-leaves the standard error it returns understating the estimator's true variability. The right column shows exactly 
-this process, as the resulting narrow interval and downward bias cause under-coverage.
-The distortion is therefore a property of the delta-method standard 
-error rather than of the VAR(4) estimator itself, which remains efficient even where its analytical interval is 
-unreliable.
 
 
 \FloatBarrier
 
 \subsection{Discussion of Results}
+The complexity frontier operationalizes the central implication of \textcite{ludwig2026local} as LP($p$) at horizon $h$ embeds a sequence of VAR predictions of orders $p$ through $p+h-1$, the natural benchmark for LP(4) is not a single equal-order VAR but the entire VAR sweep.
+
+
+Limitation, T not lower than 100. 
+We do not see how bias and variance behave over sample sizes, only RSME
 
 \FloatBarrier
