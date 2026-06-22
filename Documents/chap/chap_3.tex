@@ -166,7 +166,7 @@ dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels cor
 
 \clearpage
 
-Figure \ref{fig:BL_PE} plots the point estimation performance in terms of bias, variance, and root mean squared error for a fixed sample size of $T=250$. The results are reported horizon by horizon and grouped by the three persistence regimes. The fixed $\text{LP}(4)$ estimator is compared against a representative selection of VAR specifications of varying lag orders.
+Figure \ref{fig:BL_PE} plots the point estimation performance in terms of bias, variance, and root mean squared error for a fixed sample size of $T=250$. The results are reported horizon by horizon and grouped by the three persistence regimes. The fixed $\text{LP}(4)$ estimator is compared against a representative selection of VAR specifications of varying lag orders. Across all persistence regimes the specific horizon at which the variance paths of the different estimators begin to diverge from one another remains largely consistent, increasing slightly with persistence.
 
 Under the low persistence calibration ($\rho=0.5$), the absolute bias across all classes grows until the second to third horizon before splitting into distinct paths. The under-parameterized $\text{VAR}(2)$ specification appears erratic at short horizons but, together with $\text{VAR}(4)$, returns to unbiasedness the fastest around horizon eight. Increasing the VAR order causes the bias paths to initially track the $\text{LP}(4)$ reference line before eventually shrinking toward zero at intermediate horizons, whereas the $\text{VAR}(23)$ and the $\text{LP}(4)$ coincide completely. The variance, and consequently the root mean squared error, paints a similar picture. The parsimonious models $\text{VAR}(2)$ through $\text{VAR}(8)$ track the $\text{LP}(4)$ curve until horizon two before falling back toward zero, with $\text{VAR}(2)$ declining the fastest. The heavily parameterized $\text{VAR}(16)$ and $\text{VAR}(23)$ models overshoot the local projection variance at first but decline significantly at intermediate and long horizons. Meanwhile, the variance of the $\text{LP}(4)$ estimator remains comparatively stable across the entire horizon.
 
@@ -174,7 +174,6 @@ At the intermediate persistence level ($\rho=0.7$), the bias exhibits a similar 
 
 Near the unit root boundary ($\rho=0.95$), the point estimation landscape changes considerably. Absolute bias is highly elevated across all specifications, with $\text{VAR}(2)$ behaving in a highly erratic manner. The remaining VAR specifications and the local projection share a similar downward trajectory and roughly track each other across the full horizon. Variance is similarly elevated across the board. The $\text{VAR}(4)$ model achieves the lowest variance, followed closely by $\text{VAR}(2)$. Unlike in the less persistent regimes, none of the specifications regain efficiency at longer horizons, leaving the dispersion elevated and producing a distinctly arched profile for the root mean squared error.
 
-However, across all persistence regimes the specific horizon at which the variance paths of the different estimators begin to diverge from one another remains largely consistent.
 
 % ----------------------------------- Point Estimates
 \begin{figure}[htbp]
