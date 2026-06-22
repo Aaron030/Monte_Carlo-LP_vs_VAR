@@ -288,4 +288,34 @@ of an under-lagged VAR is outweighed by its variance saving. At high lags, the f
 line, so LP(4)'s performance is matched by a VAR of sufficiently high order. This is the frontier counterpart of 
 \textcite{ludwig2026local}'s argument, under which LP(4) at a given horizon corresponds to a VAR whose order grows with 
 that horizon, which is clearest atc larger sample sizes where the frontier flattens and noise is reduced.
+
+%________________________________
+BL Results point estimate old
+%________________________________
+
+
+Figure \ref{fig:BL_PE} reports bias, variance, MSE and RMSE at $T = 240$ for LP(4) and a representative set of 
+VAR orders. Across all three persistence regimes the under-lagged VAR(2) shows the widest bias range and is the 
+only specification that visibly departs from the others. Still, at low and mid persistence this departure is 
+mild because a fast-decaying response leaves little information in the omitted higher lags. The remaining VARs share 
+LP(4)'s small bias at short horizons and each falls toward zero around its own lag order, while LP(4) keeps a roughly 
+constant small negative bias. 
+
+Near the unit root at high persistence, the panel changes character, as all estimators show a characteristic small-sample downward bias of 
+least squares. VAR(2) is by far the most affected, swinging from a positive bias at short horizons to a strongly 
+negative one at long horizons. Its range dominates the panel, while the remaining curves, which share the milder 
+common bias, appear compressed beneath it.
+
+Because the data-generating process is correctly specified, bias is negligible for the well-specified estimators, so MSE 
+coincides with the variance and the RMSE panel is just its square root, leaving the three panels with the same shape 
+and the same ordering of the estimators. The RMSE is smallest at a low order and rises as added lags inflate variance, 
+so the parsimonious VAR(4) and VAR(8) sit well below LP(4), while the heavily parameterised VAR(23) exceeds it and 
+carries the largest dispersion of all.
+
+VAR(16) sits just under LP(4), which therefore is similar in performance to a VAR of order roughly eighteen to twenty, 
+exactly as the complexity frontier indicated earlier. The single departure from this pattern is VAR(2) at high 
+persistence, whose large bias from the missing lags dominates its MSE and RMSE through the squared-bias term (MSE 
+equals squared bias plus variance). Every other specification carries enough lags to keep its bias negligible, so 
+its MSE simply tracks its variance. High persistence amplifies the effect and, through the slow decay of the response, 
+keeps variance elevated across the entire window, producing the rounded, almost C-shaped profiles.
 \FloatBarrier
