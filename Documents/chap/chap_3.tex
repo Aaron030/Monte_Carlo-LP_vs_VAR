@@ -19,12 +19,12 @@ establishes the correctly specified reference design against which later
 extensions measure the effect of dynamic and functional misspecification. 
 
 The underlying DGP is a stable bivariate zero-mean $\text{VAR}(4)$ with recursive Cholesky identification. Consistent with the theoretical setup, this imposes a contemporaneous zero restriction where the first variable does not respond on impact to shocks in the second variable, while the second variable may respond to both structural shocks simultaneously.
-
+%
 \begin{equation}
     y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} + u_t, 
     \quad y_t \in \mathbb{R}^2
 \end{equation}
-
+%
 \begin{equation}
     \Sigma_u = BB', \qquad 
     B = \begin{pmatrix} 1 & 0 \\ 0.1 & 0.5 \end{pmatrix}, 
@@ -40,17 +40,17 @@ The underlying DGP is a stable bivariate zero-mean $\text{VAR}(4)$ with recursiv
         \mathbf{0}   & \mathbf{0}   & I_2 & \mathbf{0}   
     \end{pmatrix} \in \mathbb{R}^{8 \times 8}
 \end{equation}
-
+%
 Persistence is calibrated via the spectral radius of the companion matrix $\mathcal{A}$ across the empirically relevant range $\rho \in \{0.5, 0.7, 0.95\}$ (Figure \ref{fig:BL_TRUE_IRF}). The lower bound reflects weakly persistent processes where impulse responses decay rapidly, rendering bias-variance comparisons at longer horizons uninformative. The upper bound approaches the unit-root boundary while maintaining covariance stationarity, covering the high-persistence region where finite-sample differences between estimators are most pronounced. 
 
 Sample sizes are set to $T \in \{100, 250, 500\}$ observations, generated after a burn-in period of 200 periods to eliminate initialization effects. The choice of $T=100$ aligns precisely with the median sample size documented by \textcite{herbst2024bias} in the applied structural VAR literature. At the same time, this value serves as the effective lower bound for our specific simulation design. Because our complexity-adjusted benchmarking requires estimating highly parameterized models up to $\text{VAR}(p+H-1)$, pushing the sample size below this median would rapidly exhaust degrees of freedom and yield computationally unstable estimates. The intermediate value $T=250$ is therefore included to represent a comfortably large empirical dataset, corresponding to twenty years of monthly or sixty years of quarterly observations. This ensures reliable estimation across the entire VAR-order frontier. Finally, the value $T=500$ serves as a large-sample reference point to assess convergence toward the population equivalence established by \textcite{plagborg2021local}.
 
 The structural estimand is $\theta_h = \Psi_h B e_1$, where $\Psi_h$ denotes the $h$-step ahead moving-average matrix of the reduced-form VAR, generated via the recursion $\Psi_h = \sum_{j=1}^{\min(h,4)} A_j \Psi_{h-j}$ with $\Psi_0 = I_2$, and $e_1 = (1,0)'$ as the selection vector. The primitive shock is normalized as a unit shock. We trace the dynamic response of the system to a one-standard-deviation increase in the first structural innovation $\varepsilon_{1,t}$. 
-
+%
 \begin{equation}
     u_t = B\varepsilon_t, \qquad \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2)
 \end{equation}
-
+%
 The innovations are specified as Gaussian white noise. This standard assumption acts primarily as an expositional device, allowing conditional expectations to replace linear projections \parencite{plagborg2021local}. Because our performance metrics (bias and variance) depend strictly on the second moments of the data, the exact distribution of the innovations is irrelevant for the baseline estimator comparison. Furthermore, holding the Gaussian innovation structure fixed isolates the effects of the structural misspecifications introduced later in the study ensuring differences in performance are driven solely by the specified channel.
 
 The structural target of interest is the impulse response function, which tracks the dynamic causal effect of a structural innovation on the variables of the system over time. Formally, the population estimand at horizon $h$ is defined as the vector of responses to a one-standard-deviation shock in the first structural innovation $\varepsilon_{1,t}$. This object is constructed analytically from the data-generating process parameters as
