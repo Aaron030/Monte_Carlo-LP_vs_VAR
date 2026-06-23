@@ -15,11 +15,14 @@ error dominance, since the direct horizon-by-horizon regressions of the local pr
 larger variance.
 
 The advantage that is absolute is inferential. The unmodeled quadratic injects conditional
-heteroskedasticity into the residuals, which the homoskedastic delta-method intervals of the VAR
-cannot capture, so they understate the sampling dispersion and under-cover ever more severely as
-persistence and nonlinearity rise, while the heteroskedasticity-robust intervals of $LP(4)$ stay
-near nominal. This is the first of our designs in which the robustness of local projections becomes
-a tangible advantage, though it is confined to inference. The broader lesson is that estimand
+heteroskedasticity into the residuals, which the homoskedastic delta-method intervals cannot
+capture, so they understate the sampling dispersion and under-cover ever more severely as
+persistence and nonlinearity rise. The failure is sharpest for the equal-lag $VAR(4)$ and eases
+along the complexity frontier, since the richer parameterization of higher-order VARs absorbs more
+of the dynamics and pulls their coverage back toward the near-nominal level that the
+heteroskedasticity-robust intervals of $LP(4)$ hold throughout. This is the first of our designs in
+which the robustness of local projections becomes a tangible advantage, though it is confined to
+inference and narrows against sufficiently high-order VARs. The broader lesson is that estimand
 equivalence in population does not imply inferential equivalence in finite samples, and the choice
 between the two methods is objective-dependent, weighing the efficiency of the VAR point estimate
 against the interval validity of the direct projection.
