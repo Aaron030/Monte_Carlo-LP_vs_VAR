@@ -1,14 +1,12 @@
-"""Coverage analysis functions for the Monte Carlo study.
+"""Standard errors and confidence-interval inputs for the impulse-response study.
 
-Holds the *true* models used to simulate time series — ARMA / VAR /
-extensions — and the closed-form impulse responses of those true
-models, against which estimators are scored.
+This module turns one simulated data set into a point estimate of the impulse
+response together with a standard error, for two methods. For a VAR it uses the
+delta method, and for a Local Projection it uses a heteroskedasticity-robust
+standard error. The notebooks call these functions many thousands of times to
+measure how often each method's 95 percent confidence interval actually
+contains the true response.
 """
-
-from __future__ import annotations
-
-from dataclasses import dataclass
-from typing import Sequence
 
 import numpy as np
 
@@ -17,58 +15,63 @@ from mcsim.estimators import fit_var_ols
 
 
 def var_theta_se(y, q, horizon, shock=0, response=0):
-    """Structural IRF point estimate AND delta-method standard error for a VAR(q).
+    """Impulse response and its delta-method standard error for a VAR of order q.
 
-    Returns (theta_hat, se) each length horizon+1, for the response of variable
-    `response` to structural shock `shock`.  The SE propagates the sampling
-    uncertainty of the reduced-form OLS coefficients A through the nonlinear map
-        theta_h = e_response' . Psi_h(A) . B . e_shock ,
-    holding the impact matrix B = chol(Sigma_u) FIXED (Ch. 3's choice: only the
-    reduced-form coefficients are propagated).
+    From one simulated sample this returns two arrays of length horizon+1. The
+    first is the estimated impulse response of variable `response` to structural
+    shock `shock`. The second is its standard error.
+
+    The standard error comes from the delta method. The impulse response is a
+    smooth nonlinear function of the estimated VAR coefficients A,
+        theta_h = e_response' Psi_h(A) B e_shock,
+    so we take the known sampling variability of A and carry it through that
+    function. Following Chapter 3, the impact matrix B = chol(Sigma_u) is held
+    fixed and only the coefficient uncertainty is propagated.
     """
-    # --- 1. Reduced-form OLS fit -------------------------------------------------
-    # A_hat: (q, k, k) lag matrices;  Sig: (k, k) residual covariance.
+    # Step 1. Fit the reduced-form VAR by OLS.
+    # A holds the q lag matrices, each k by k. Sig is the k by k residual covariance.
     A, Sig, _resid = fit_var_ols(y, q)
     k = A.shape[1]
 
-    # --- 2. Structural objects (B held fixed for the delta method) ---------------
-    Bm = np.linalg.cholesky(Sig)            # recursive impact matrix  B = chol(Sigma_u)
-    c = Bm[:, shock]                        # column = impact vector of the chosen shock, B e_shock
-    er = np.zeros(k); er[response] = 1.0    # selector e_response (picks the response variable)
+    # Step 2. Build the structural objects, with B held fixed for the delta method.
+    Bm = np.linalg.cholesky(Sig)            # recursive impact matrix B = chol(Sigma_u)
+    c = Bm[:, shock]                        # impact vector of the chosen shock, B e_shock
+    er = np.zeros(k); er[response] = 1.0    # selector that picks out the response variable
 
-    # Reduced-form MA matrices Psi_0..Psi_H and the point IRF theta_h = er' Psi_h c.
-    Psi = var_ma_matrices(A, horizon)       # (H+1, k, k)
+    # Reduced-form moving-average matrices Psi_0..Psi_H, then the point impulse
+    # response theta_h = er' Psi_h c.
+    Psi = var_ma_matrices(A, horizon)       # shape (H+1, k, k)
     theta = np.array([er @ Psi[h] @ c for h in range(horizon + 1)])
 
-    # --- 3. OLS coefficient covariance  Cov(vec C) = Sigma_u (x) (X'X)^{-1} -------
+    # Step 3. Covariance of the OLS coefficients, Cov(vec C) = Sigma_u kron (X'X)^{-1}.
     # Rebuild the regressor matrix X_t = [1, y_{t-1}, ..., y_{t-q}] (same as fit_var_ols).
     T = y.shape[0]; rows = T - q
     X = np.ones((rows, 1 + q * k))
     for i in range(1, q + 1):
         X[:, 1 + (i - 1) * k: 1 + i * k] = y[q - i: T - i]
-    XtXi = np.linalg.inv(X.T @ X)           # (1+qk, 1+qk)
+    XtXi = np.linalg.inv(X.T @ X)           # shape (1+qk, 1+qk)
 
-    # Parameters we propagate: every entry A_i[a, b].  Index convention matches
-    # fit_var_ols, where A_i[a, b] = coef[row, a] with row = 1 + i*k + b
-    # (i is 0-based lag, a = equation/response row, b = which variable's lag).
+    # The parameters we propagate are all entries A_i[a, b]. The index convention
+    # matches fit_var_ols, where A_i[a, b] = coef[row, a] with row = 1 + i*k + b.
+    # Here i is the 0-based lag, a is the equation row, and b is the lagged variable.
     params = [(i, a, b) for i in range(q) for a in range(k) for b in range(k)]
 
-    # Sigma_alpha[p, p'] = Cov(A_i[a,b], A_{i'}[a',b']) = Sigma_u[a,a'] * (X'X)^{-1}[row, row'].
-    # (From Cov(vec C) = Sigma_u (x) (X'X)^{-1}: equations couple via Sigma_u,
-    #  regressors via (X'X)^{-1}.)
+    # Sig_a[p, p'] = Cov(A_i[a,b], A_{i'}[a',b']) = Sigma_u[a,a'] * (X'X)^{-1}[row, row'].
+    # This follows from Cov(vec C) = Sigma_u kron (X'X)^{-1}, where equations couple
+    # through Sigma_u and regressors through (X'X)^{-1}.
     Sig_a = np.array([[Sig[a, a2] * XtXi[1 + i * k + b, 1 + i2 * k + b2]
                        for (i2, a2, b2) in params] for (i, a, b) in params])
 
-    # --- 4. Gradient d_h = d theta_h / d alpha via the differentiated MA recursion
-    # Psi_h = sum_{j=1}^{min(h,q)} A_j Psi_{h-j}.  Differentiating w.r.t. the single
-    # entry A_{i+1}[a,b] gives, with E_{ab} the unit matrix (1 at (a,b)):
-    #   dPsi_h = sum_j A_j dPsi_{h-j}  +  E_{ab} Psi_{h-i-1}   (the +E term only when j=i+1)
+    # Step 4. Gradient d_h = d theta_h / d alpha from the differentiated MA recursion.
+    # Since Psi_h = sum_{j=1}^{min(h,q)} A_j Psi_{h-j}, differentiating with respect to
+    # the single entry A_{i+1}[a,b], with E_{ab} the unit matrix (1 at (a,b)), gives
+    #   dPsi_h = sum_j A_j dPsi_{h-j} + E_{ab} Psi_{h-i-1}, the E term only when j=i+1.
     Em = {}
     for a in range(k):
         for b in range(k):
             mat = np.zeros((k, k)); mat[a, b] = 1.0; Em[(a, b)] = mat
 
-    dPsi = [{p: np.zeros((k, k)) for p in params}]     # dPsi at h=0 is all zeros
+    dPsi = [{p: np.zeros((k, k)) for p in params}]     # the derivative at h=0 is all zeros
     for h in range(1, horizon + 1):
         cur = {}
         for p in params:
@@ -76,37 +79,42 @@ def var_theta_se(y, q, horizon, shock=0, response=0):
             acc = np.zeros((k, k))
             for j in range(1, min(h, q) + 1):
                 acc = acc + A[j - 1] @ dPsi[h - j][p]       # chain-rule term
-                if j - 1 == i:                              # direct term: this lag IS the parameter
+                if j - 1 == i:                              # direct term, this lag is the parameter
                     acc = acc + Em[(a, b)] @ Psi[h - j]
             cur[p] = acc
         dPsi.append(cur)
 
-    # --- 5. Var(theta_h) = d_h' Sigma_alpha d_h, with d_h[p] = er' dPsi_h[p] c ----
+    # Step 5. Variance Var(theta_h) = d_h' Sig_a d_h, with d_h[p] = er' dPsi_h[p] c.
     se = np.zeros(horizon + 1)
     for h in range(horizon + 1):
         d = np.array([er @ dPsi[h][p] @ c for p in params])
-        se[h] = np.sqrt(max(d @ Sig_a @ d, 0.0))           # clip tiny negatives from roundoff
+        se[h] = np.sqrt(max(d @ Sig_a @ d, 0.0))           # clip tiny negatives from rounding
     return theta, se
 
 
 def lp_theta_se(y, p, horizon, shock=0, response=0):
-    """LP(p) point IRF AND heteroskedasticity-robust (HC1) standard error per horizon.
+    """Local Projection impulse response and its robust standard error per horizon.
 
-    The shock is recovered from a first-stage VAR(p) (same as estimate_lp_irf);
-    at each horizon h the IRF is the OLS slope on the shock x_t in
+    From one simulated sample this returns two arrays of length horizon+1, the
+    estimated impulse response and its standard error. The shock is recovered
+    from a first-stage VAR of order p, exactly as in estimate_lp_irf. At each
+    horizon h the impulse response is the OLS slope on the shock x_t in the
+    regression
         y_{response, t+h} = mu + beta_h x_t + sum_l delta_l' y_{t-l} + xi,
-    and its SE is the White/HC1 robust SE of that slope.  HC (not HAC) is used
-    because the structural shock is a martingale difference (Plagborg-Moller & Wolf);
-    note LP residuals are serially correlated for h>0, so this can mildly under-state
-    uncertainty at long horizons.
+    and the standard error is the heteroskedasticity-robust (White, HC1) standard
+    error of that slope. A robust standard error suffices here, rather than a HAC
+    one, because the structural shock is a martingale difference (Plagborg-Moller
+    and Wolf). Note that the projection residuals are serially correlated for
+    h>0, so this can mildly understate the uncertainty at long horizons.
     """
     y = np.asarray(y, dtype=float)
     T, k = y.shape
 
-    # First-stage VAR(p): residuals -> structural shock  x_t = e_shock' B^{-1} u_t.
-    A, Sig, resid = fit_var_ols(y, p)
+    # First-stage VAR of order p. Turn its residuals into the structural shock
+    # x_t = e_shock' B^{-1} u_t.
+    _A, Sig, resid = fit_var_ols(y, p)
     Bm = np.linalg.cholesky(Sig)
-    eps = np.linalg.solve(Bm, resid.T).T          # structural innovations (rows aligned t=p..T-1)
+    eps = np.linalg.solve(Bm, resid.T).T          # structural innovations, rows aligned t=p..T-1
     x = eps[:, shock]
 
     rows = T - p
@@ -125,11 +133,9 @@ def lp_theta_se(y, p, horizon, shock=0, response=0):
         beta, *_ = np.linalg.lstsq(Xr, dep, rcond=None)
         e = dep - Xr @ beta                       # residuals
         XtXi = np.linalg.inv(Xr.T @ Xr)
-        # HC1 robust covariance:  (X'X)^{-1} (X' diag(e^2) X) (X'X)^{-1} * m/(m-kreg)
+        # HC1 robust covariance, (X'X)^{-1} (X' diag(e^2) X) (X'X)^{-1} * m/(m-kreg)
         meat = Xr.T @ (Xr * (e ** 2)[:, None])
         V = XtXi @ meat @ XtXi * (m / (m - Xr.shape[1]))
-        theta[h] = beta[1]                        # slope on the shock (col index 1)
+        theta[h] = beta[1]                        # slope on the shock (column index 1)
         se[h] = np.sqrt(V[1, 1])
     return theta, se
-
-
