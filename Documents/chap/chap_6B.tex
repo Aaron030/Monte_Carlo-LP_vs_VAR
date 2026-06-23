@@ -27,19 +27,6 @@ equivalence in population does not imply inferential equivalence in finite sampl
 between the two methods is objective-dependent, weighing the efficiency of the VAR point estimate
 against the interval validity of the direct projection.
 
-Three limitations bound these conclusions. First, the full VAR sweep up to $VAR(23)$ makes smaller 
-samples infeasible, since the high-order systems turn rank-deficient and unstable,
-leaving the small-sample region, where the bias-variance trade-off is sharpest and an LP advantage
-most plausible, unexplored. Second, the nonlinear lag-quadratic destabilizes the simulated paths at
-high persistence, so we restricted persistence to $\rho \in \{0.5, 0.7\}$ and left the
-near-unit-root region unexamined, precisely where the interaction of high persistence and
-functional misspecification would most strain inference. Third, the VAR coverage failure reflects
-the default homoskedastic delta-method standard error rather than the iterated architecture itself,
-and equipping the VAR sweep with robust or wild-bootstrap standard errors would likely narrow the
-inferential gap.
+Three limitations bound these conclusions. First, the full VAR sweep up to $\text{VAR}(23)$ makes smaller samples infeasible, since the high-order systems turn rank-deficient and unstable, leaving the small-sample region, where the bias--variance trade-off is sharpest and an LP advantage most plausible, unexplored. Second, the $\text{VARMA}(4,1)$ design is invertible throughout, meaning it probes only approximable dynamic misspecification. This leaves non-invertible settings such as news or anticipation shocks unexamined, precisely where instrument-augmented local projections might gain a genuine point-estimation edge. Third, the VAR coverage failure reflects the default delta-method standard error rather than the iterated architecture itself, and equipping the VAR sweep with robust or wild-bootstrap standard errors would likely narrow the inferential gap.
 
-Future work should extend the complexity-adjusted frontier to nonlinear settings that permit high
-persistence without explosive paths, so the near-unit-root region can be revisited, and should
-formalize a complexity adjustment for bootstrap-based inference. The latter would deliver a cleaner
-horse race, isolating whether the robust coverage of local projections is an intrinsic virtue of
-direct multi-step forecasting or merely a mechanical benefit of robust variance estimation.
+Future work should extend the complexity-adjusted frontier to non-invertible settings, perhaps by folding instrumental-variable identification into the sweep, and should formalize a complexity adjustment for bootstrap-based inference. The latter would deliver a cleaner horse race, isolating whether the robust coverage of local projections is an intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of robust variance estimation.
