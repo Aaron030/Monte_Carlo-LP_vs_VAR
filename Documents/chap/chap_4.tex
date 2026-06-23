@@ -154,18 +154,15 @@ Near the unit root boundary ($\rho = 0.95$), the point estimation landscape clos
 
 \newpage
 
-Figure \ref{fig:DYN_MISSPEC_COVERAGE} visualizes the empirical coverage of nominal 95 percent confidence intervals over horizons $h = 1$ to 20 at the strongest misspecification $\tau = 0.6$, in the same format as the baseline. The left panel displays the coverage of the equal-lag $\text{VAR}(4)$, the high-order $\text{VAR}(23)$, and the $\text{LP}(4)$ estimators. The right panel plots the $\text{VAR}(4)$ delta-method standard error alongside the empirical sampling standard deviation. The level and shape of these curves shift noticeably across the three persistence regimes.
+Figure \ref{fig:DYN_MISSPEC_COVERAGE} reports the empirical coverage of nominal 95 percent confidence intervals over horizons $h = 1$ to $20$ at the strongest misspecification $\tau = 0.6$, in the same format as the baseline. The left column displays the coverage of the equal-lag $\text{VAR}(4)$, the high-order $\text{VAR}(23)$, and the $\text{LP}(4)$ estimators; the right column plots the $\text{VAR}(4)$ delta-method standard error against the empirical sampling standard deviation. The results are shown horizon by horizon across the three persistence regimes for a sample size of $T = 250$, as in the baseline.
 
-% TODO(coverage rewrite): the interpretation below was written for the old per-$\tau$ figure
-% (one curve per misspecification strength). Re-run the notebooks and revise against the new
-% VAR(4)/VAR(23)/LP(4) figure at fixed $\tau=0.6$. The per-$\tau$ paragraph is commented out.
+Under the low persistence calibration of $\rho = 0.5$, the three estimators remain close to the nominal target at the shortest horizons, with the $\text{VAR}(4)$ coverage fluctuating noticeably at this stage. As the horizon grows, the $\text{VAR}(4)$ coverage climbs and reaches full coverage from roughly the tenth horizon onward. The over-parameterized $\text{VAR}(23)$ model drifts steadily upward and approaches a coverage of about $0.98$ by the end of the window. The $\text{LP}(4)$ estimator remains the most stable, fluctuating tightly around the $0.95$ level throughout. In the right panel, the delta-method standard error and the empirical standard deviation are nearly indistinguishable, deviating only marginally around the initial peak.
 
-For the $\text{VAR}(4)$ model, the intervals at $\rho = 0.5$ reach full coverage at longer horizons. At $\rho = 0.7$, the coverage drops slightly below the nominal target, and at $\rho = 0.95$, it deteriorates further, declining steadily as the horizon increases. The $\text{LP}(4)$ coverage remains relatively steady and near the 0.95 mark at low and intermediate persistence levels. At $\rho = 0.95$, the $\text{LP}(4)$ coverage slips to approximately 0.89, maintaining a higher level than the $\text{VAR}(4)$ specification but exhibiting a similar downward slope over longer horizons.
+At the intermediate persistence level of $\rho = 0.7$, the coverage paths are more volatile. The $\text{VAR}(4)$ coverage hovers near the nominal target at short horizons, dips below $0.92$ at the intermediate horizons around $h = 8$ to $10$, and recovers toward roughly $0.96$ at longer horizons. The $\text{VAR}(23)$ specification again drifts upward, ending near $0.97$, while the $\text{LP}(4)$ estimator holds a stable trajectory marginally below the target, around $0.93$ to $0.94$. The corresponding standard error validation in the right column shows the analytical standard error and the empirical standard deviation lying almost perfectly on top of each other across the entire horizon.
 
-% TODO(coverage rewrite): obsolete under the fixed-$\tau$ figure — the strength is no longer varied.
-% Varying the moving-average parameter $\tau$ produces only minor shifts within the panels. At $\rho = 0.5$, the $\text{VAR}(4)$ coverage drifts downward slightly as $\tau$ increases. At $\rho = 0.7$, the coverage improves marginally from roughly 0.89 at $\tau = 0$ to about 0.93 at $\tau = 0.6$. At $\rho = 0.95$, the coverage curves are virtually indistinguishable across all values of $\tau$.
+Approaching the unit root boundary at $\rho = 0.95$, the coverage behavior deteriorates for all estimators, and none sustain the nominal $95$ percent target beyond the earliest horizons. The $\text{VAR}(4)$ specification peaks near the nominal level around the third horizon and then declines monotonically, falling to approximately $0.74$ at the end of the window, the most severe deterioration of the three. The $\text{VAR}(23)$ model degrades far more gently, settling at roughly $0.90$, and the $\text{LP}(4)$ estimator tracks just below it at around $0.88$, both remaining well above the $\text{VAR}(4)$ path. In the right column, a distinct vertical gap emerges: the empirical sampling dispersion sits visibly above the analytical delta-method standard error across the short and intermediate horizons, and, unlike the baseline, the gap does not close toward the end of the forecast window, mirroring the persistent under-coverage of the $\text{VAR}(4)$ intervals.
 
-In the right panel, the delta-method standard error and the empirical standard deviation show almost no deviation at $\rho = 0.5$ and $\rho = 0.7$. At $\rho = 0.95$, a vertical gap emerges, with the empirical dispersion sitting visibly above the analytical standard error over the short and intermediate horizons.
+Overall, the coverage ranking established in the baseline is preserved under dynamic misspecification: $\text{LP}(4)$ retains near-nominal coverage at low and intermediate persistence and degrades only mildly near the unit root, whereas the $\text{VAR}(4)$ delta-method intervals remain miscalibrated and strongly persistence-sensitive, with the sharpest deterioration at $\rho = 0.95$.
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -200,8 +197,8 @@ In the right panel, the delta-method standard error and the empirical standard d
 strongest misspecification \(\tau=0.6\), \(T=250\), \(B=5{,}000\). \emph{Left:} coverage of
 VAR(4) (black), VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line marking
 the nominal \(95\%\) level; VAR\((q)\) intervals use the delta method, LP(4)
-heteroskedasticity-robust SEs. \emph{Right:} the VAR(4) delta-method SE against the empirical
-Monte Carlo sampling SD of \(\hat\theta_h\). Panels \(\rho \in \{0.5,0.7,0.95\}\).
+heteroskedasticity-robust SEs. \emph{Right:} the VAR(4) delta-method SE (orange) against the empirical
+Monte Carlo sampling SD of \(\hat\theta_h\) (blue). Panels \(\rho \in \{0.5,0.7,0.95\}\).
 \end{minipage}
 
 \end{figure}
@@ -219,22 +216,12 @@ theta verschiebt sich der Schnittpunkt von LP(4) mit der Komplexitäts-Frontier 
 
 Limitation:
 
+Discussion of Results aus Extension 1 unter der Lupe von Ludwigs Equivalence Results 
+und 
 
 
-The baseline results in Figure~\ref{fig:BL_CI} already establish 
-the inferential ranking of VAR(4), VAR(23), and LP(4) under correct 
-specification: VAR(4) over-covers at low persistence due to 
-delta-method inflation, VAR(23) tracks the empirical sampling 
-dispersion more closely at longer horizons, and LP(4) maintains 
-nominal coverage throughout. Whether this ranking is preserved 
-or disrupted under dynamic misspecification remains an open 
-question, as the coverage analysis in Extension~1 compares only 
-VAR(4) and LP(4). Extending the complexity-frontier coverage 
-comparison to include VAR(23) under moving-average misspecification 
-is a natural direction for future work, and would clarify whether 
-LP(4)'s inferential stability reflects a genuine robustness 
-advantage or is confounded by the choice of standard error 
-estimator.
+
+
 
 
 
