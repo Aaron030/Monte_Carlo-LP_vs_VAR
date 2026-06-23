@@ -29,16 +29,7 @@ misspecification increases. This is the setting in which local projections are c
 expected to dominate, as the conjectured robustness of the direct projection should bind 
 precisely where the iterated VAR is misspecified \parencite{jorda2005estimation, li2024local,olea2024double}.
 
-Our baseline findings follow the established notion that under correct specification the conventional point-estimation 
-advantage of equal-lag VARs over LP persists, but it is largely an artifact of 
-mismatched model complexity. A fixed LP(4) already operates like a highly parameterized 
-system, sitting high on the complexity-adjusted VAR frontier (beyond $q \approx 15$). 
-This efficiency comes at a cost in inference, as VAR coverage deteriorates sharply near 
-the unit-root boundary while local projections hold near-nominal coverage across 
-persistence regimes. Introducing dynamic misspecification through a VARMA(4,1) process 
-does not overturn the point-estimation ranking, since the equal-lag VAR(4) still strictly 
-dominates LP(4) on root mean squared error. It instead sharpens the divergence in inference, 
-where local projections retain their decisive advantage.
+Our baseline findings follow the established notion that under correct specification the conventional point-estimation advantage of equal-lag VARs over LPs persists, but it is largely an artifact of mismatched model complexity. A fixed LP(4) already operates like a highly parameterized system, sitting high on the complexity-adjusted VAR frontier (beyond $q \approx 15$). This low-order efficiency comes at a cost in inference, as VAR(4) coverage deteriorates sharply near the unit-root boundary while local projections hold near-nominal coverage across persistence regimes. Introducing dynamic misspecification through a VARMA(4,1)process does not overturn the point-estimation ranking, since the equal-lag VAR(4) still strictly dominates LP(4) on root mean squared error. It instead sharpens the divergence in inference between the equal-lag models, where local projections retain their decisive advantage. However, this disparity is strictly a function of the lag restriction. Once the local projection is evaluated against appropriately higher-order VARs on the complexity frontier, the finite-sample gap systematically closes. A sufficiently flexible VAR successfully absorbs the unmodeled moving-average dynamics, catching up to the LP(4) in terms of bias reduction and matching its robust coverage levels, even near the non-stationary boundary.
 
 The remainder of the paper is structured as follows. Section 2 reviews vector autoregressions 
 and local projections, the empirical literature on their bias-variance trade-off at equal 
