@@ -68,7 +68,7 @@ with the heteroskedasticity rather than with any movement in the estimand.
 
 
 % ----------------------------------- True IRF
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \caption{True IRF Functions by Nonlinearity Strength}
 \label{fig:NON_LIN_IRF}
@@ -160,9 +160,7 @@ inflated, asymptotically vanishing variance rather than through bias.
 \end{minipage}
 
 \end{figure}
-\FloatBarrier
 \newpage
-
 The point-estimation figures (Figures \ref{fig:NON_LIN_POINT_EST_SAMPLE} and
 \ref{fig:NON_LIN_POINT_EST_ASYMPTOTIC}) sharpen the equivalence further. In small samples the bias
 is noisy, with each VAR tracking the $\text{LP}(4)$ bias up to its own lag order and the
@@ -193,7 +191,7 @@ long horizons.
 
 
 % ----------------------------------- Sample Point Estimation (Keep)
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \caption{Sample Point Estimates under Strong Nonlinearity}
 \label{fig:NON_LIN_POINT_EST_SAMPLE}
@@ -218,10 +216,9 @@ long horizons.
 \end{minipage}
 
 \end{figure}
-\clearpage
 
 % ----------------------------------- Point Estimation Asymptotic (Keep)
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \caption{Asymptotic Point Estimates under Strong Nonlinearity}
 \label{fig:NON_LIN_POINT_EST_ASYMPTOTIC}
@@ -246,7 +243,7 @@ long horizons.
 \end{minipage}
 
 \end{figure}
-
+\newpage
 Figure \ref{fig:NOLIN_COVERAGE} reports coverage at the strongest nonlinearity $\gamma=0.6$ for
 variable~1, alongside the $\text{VAR}(4)$ delta-method standard error against its empirical
 sampling standard deviation. The heteroskedasticity splits the estimators as expected. The
@@ -267,7 +264,7 @@ projection stays calibrated under the nonlinearity.
 
 
 % ----------------------------------- Coverage (Keep)
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \caption{Confidence-Interval Coverage under Nonlinear Lag Misspecification}
 \label{fig:NOLIN_COVERAGE}
@@ -293,7 +290,7 @@ projection stays calibrated under the nonlinearity.
 
 \end{figure}
 
-
+\FloatBarrier
 \subsection{Discussion of Results}
 The results confirm that the population equivalence of \textcite{plagborg2021local} survives this
 functional misspecification. Because the centred lag-quadratic is approximately orthogonal to the
