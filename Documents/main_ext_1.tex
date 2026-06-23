@@ -10,8 +10,6 @@
 
 \thispagestyle{empty}
 
-%\input{chap/Abstract_A.tex}
-
 \renewcommand{\contentsname}{Table of Contents}
 \tableofcontents 
 \pagenumbering{Roman}
@@ -22,16 +20,11 @@
 \listoffigures
 \addcontentsline{toc}{section}{\listfigurename}
 
-%\clearpage
-%\section*{List of Abbreviations}
-%\addcontentsline{toc}{section}{List of Abbreviations}
-%\input{section/0_Abbrev}
 
 \clearpage
 \pagenumbering{arabic}
 
 % ===== Extension 1 build: Dynamic (VARMA) misspecification =====
-% Differs from main_ext_2 only in: introduction, extension chapter, conclusion.
 \input{chap/chap_1A.tex}   % Introduction (Ext 1)
 \input{chap/chap_2.tex}    % Theoretical background (shared)
 \input{chap/chap_3.tex}    % Baseline (shared)
