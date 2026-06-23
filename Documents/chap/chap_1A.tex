@@ -13,7 +13,7 @@ equal lag lengths, however, LPs were often viewed as less sensitive to misspecif
 statistically efficient \parencite{li2024local, olea2025local}. \textcite{ludwig2026local} 
 explains this finite-sample bias-variance tradeoff analytically, showing that an LP can be 
 represented as a sequence of VAR estimations of increasing lag length as the horizon grows, 
-and therefore argues for comparing LPs and VARs by effective complexity rather than lag length.
+and therefore argues for comparing LPs and VARs by effective complexity rather than equal lag length.
 
 Our paper asks two questions. First, under correct specification, where does a fixed LP 
 estimator sit relative to the full complexity-adjusted VAR frontier, and does the conventional 
@@ -27,7 +27,7 @@ the baseline VAR(4) with a moving-average component, yielding a VARMA(4,1) DGP, 
 how LP(4), the equal-lag VAR(4), and higher-order VARs respond as the degree of 
 misspecification increases.
 
-Our findings suggest that under correct specification the conventional point-estimation 
+Our baseline findings follow the established notion that under correct specification the conventional point-estimation 
 advantage of equal-lag VARs over the LP persists, but it is largely an artifact of 
 mismatched model complexity. A fixed LP(4) already operates like a highly parameterized 
 system, sitting high on the complexity-adjusted VAR frontier (beyond $q \approx 15$). 

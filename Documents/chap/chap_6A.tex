@@ -4,11 +4,11 @@
 This paper applied the complexity-adjusted benchmark of \textcite{ludwig2026local} to the
 finite-sample comparison of Vector Autoregressions and Local Projections, replacing the
 conventional equal-lag contest with one that holds effective complexity constant. Under correct
-specification a fixed $LP(4)$ already behaves like a highly parameterized $VAR(q \approx 15)$, so
+specification a fixed LP(4) already behaves like a highly parameterized VAR($q \approx 15$), so
 the familiar point-estimation edge of low-order VARs is largely an artifact of parsimony rather
 than an intrinsic advantage of the iterated method. Dynamic misspecification, introduced through
-a $VARMA(4,1)$ process, sharpens this reading without overturning it. The $LP(4)$ shifts toward
-an increasingly parsimonious position on the frontier, yet the equal-lag $VAR(4)$ keeps its mean
+a VARMA(4,1) process, sharpens this reading without overturning it. The LP(4) shifts toward
+an increasingly parsimonious position on the frontier, yet the equal-lag VAR(4) keeps its mean
 squared error dominance at every persistence and misspecification level, because the induced
 truncation bias stays too small to offset the variance cost of the direct regressions. The
 robustness of local projections in point estimation is therefore relative, never an absolute edge.
@@ -21,10 +21,10 @@ lesson is that estimand equivalence in population does not imply inferential equ
 samples. The choice between the two methods is objective-dependent, weighing the efficiency of the
 VAR point estimate against the interval validity of the direct projection.
 
-Three limitations bound these conclusions. First, the full VAR sweep up to $VAR(23)$ makes sample
+Three limitations bound these conclusions. First, the full VAR sweep up to VAR(23) makes sample
 sizes below the applied median of $T = 100$ infeasible, leaving the small-sample region, where the
 bias-variance trade-off is sharpest and an LP advantage most plausible, unexplored. Second, the
-$VARMA(4,1)$ design is invertible throughout, so it probes only approximable dynamic
+VARMA(4,1) design is invertible throughout, so it probes only approximable dynamic
 misspecification and stays silent on non-invertible settings such as news or anticipation shocks,
 where instrument-augmented local projections might gain a genuine point-estimation edge. Third,
 the VAR coverage failure reflects the default delta-method standard error rather than the iterated

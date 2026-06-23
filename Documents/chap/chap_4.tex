@@ -13,17 +13,17 @@ theoretically binds.
 
 \subsection{Simulation Design}
 
-Only the data-generating process changes, and the structural estimand, the 
+The structural estimand, the 
 recursive Cholesky identification, and all performance measures, including the 
 $B = 5{,}000$ replication count, are inherited unchanged from the baseline, while the baseline 
 $\text{VAR}(4)$ is augmented by a first-order moving-average component to yield a 
-$\text{VARMA}(4,1)$ DGP:
+$\text{VARMA}(4,1)$ DGP of the following form,
 
 
 \begin{equation}
     y_t = A_1 y_{t-1} + A_2 y_{t-2} + A_3 y_{t-3} + A_4 y_{t-4} 
     + u_t + \Theta u_{t-1}, \quad u_t = B\varepsilon_t, \quad 
-    \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2)
+    \varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(\mathbf{0}, I_2),
 \end{equation}
 
 where $\Theta = \tau I_2$ is a scalar-scaled MA impact matrix on the lagged reduced-form 
@@ -94,7 +94,7 @@ serves as a stress test of the estimator ranking.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel shows the true structural impulse responses of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons \(h = 1, \ldots, 20\). Panels correspond to the persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). The blue line is the response of \(y_1\) to \(\varepsilon_1\), which is the estimand \(\theta_h\), and the grey line is the response of \(y_2\) to \(\varepsilon_1\).
+\textit{Note.} Each panel shows the true structural impulse responses of variable $y_1$ to a one-standard-deviation shock in the first structural innovation $\varepsilon_1$, traced over horizons $h = 1, \ldots, 20$, for misspecification strengths $\tau \in \{0, 0.1, 0.3, 0.6\}$. Panels correspond to the persistence regimes $\rho \in \{0.5, 0.7, 0.95\}$. Colours represent MA strength: purple $\tau = 0$ (baseline), blue $\tau = 0.1$, green $\tau = 0.3$, and yellow $\tau = 0.6$.
 \end{minipage}
 \end{figure}
 

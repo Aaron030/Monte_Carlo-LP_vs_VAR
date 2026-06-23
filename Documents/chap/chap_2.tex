@@ -7,7 +7,7 @@ Following \textcite{koop1996impulse}, it can be defined nonparametrically as the
 difference between two forecasts of $y_{t+h}$. Both forecasts use the same controls
 $\mathbf{x}_t$ and differ only in the time-$t$ value of the variable of interest $s_t$.
 One forecast sets $s_t = s_0 + \delta$, raising the baseline $s_0$ by a shock of size
-$\delta$, and the other keeps it at $s_0$. The controls $\mathbf{x}_t$ hold fixed the
+$\delta$, while the other is kept at $s_0$. The controls $\mathbf{x}_t$ hold fixed the
 information used to identify the response, namely the lags of the system and, under some
 identification schemes, contemporaneous variables. Following \textcite{ramey2016macroeconomic},
 a shock is an exogenous and unanticipated movement that is uncorrelated with the controls in
@@ -26,11 +26,10 @@ object in finite samples. A VAR, introduced by \textcite{sims1980macroeconomics}
 joint dynamics of all variables as one autoregressive system and reads impulse responses off
 the estimated model by iterating it forward. A local projection, introduced by
 \textcite{jorda2005estimation}, instead estimates the response at each horizon with its own
-OLS regression of the future outcome on current and past data. Because they build the response
-so differently, the two estimators accumulate estimation error in different ways across
+OLS regression of the future outcome on current and past data. Because they build the response differently, the two estimators accumulate estimation error in different ways across
 horizons. At an equal lag order they sit at opposite ends of a bias-variance spectrum, with
 local projections carrying more variance and VARs more bias under misspecification
-\parencites{li2024local}{olea2025local}. \textcite{ludwig2026local} argues that even this
+\parencites{li2024local}{olea2025local}. \textcite{ludwig2026local} argues that this
 equal-order comparison is misleading, because at a given lag order $p$ an LP$(p)$ is strictly
 more flexible than a VAR$(p)$. The usual bias-variance trade-off therefore mixes the choice of
 estimator with the choice of model complexity.
