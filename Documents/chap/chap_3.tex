@@ -99,12 +99,7 @@ in finite samples.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the true structural impulse response function of 
-variables one and two to a one-standard-deviation shock in the first structural innovation, 
-traced over horizons 
-\(h = 1, \ldots, 20\). Panels correspond to persistence regimes 
-\(\rho \in \{0.5, 0.7, 0.95\}\). Blue line represents $y_1 \leftarrow \epsilon_1 
-($\textit{estimand} $ \theta_h)$, while grey line shows $y_2 \leftarrow \epsilon_1$.
+\textit{Note.} Each panel shows the true structural impulse responses of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons \(h = 1, \ldots, 20\). Panels correspond to the persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). The blue line is the response of \(y_1\) to \(\varepsilon_1\), which is the estimand \(\theta_h\), and the grey line is the response of \(y_2\) to \(\varepsilon_1\).
 \end{minipage}
 
 \end{figure}
@@ -220,11 +215,7 @@ shrinks away.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate as a function of VAR order 
-\(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference 
-line of the same colour (dashed), for each sample size \(T \in \{100, 250, 500\}\). The vertical
-dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels correspond to persistence 
-\(\rho \in \{0.5, 0.7, 0.95\}\). Colors blue, red, yellow represent sample sizes 100, 250, 500, respectively.
+\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate as a function of VAR order \(q = 1, \ldots, 23\) (solid lines), with the fixed LP(4) estimator shown as a horizontal reference line of the same colour (dashed), for each sample size \(T \in \{100, 250, 500\}\). The vertical dotted line marks the equal-lag VAR(4), and \(B = 5{,}000\) replications are used. Panels correspond to the persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). The colours blue, red, and yellow represent sample sizes 100, 250, and 500, respectively.
 \end{minipage}
 
 \end{figure}
@@ -277,13 +268,7 @@ takes a distinctly arched profile.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses 
-\(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon for \(h = 1, \ldots, 20\), 
-computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 250\). The fixed LP(4) reference line is 
-compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to persistence regimes 
-\(\rho \in \{0.5, 0.7, 0.95\}\). Shaded area in bias represents 95\% band from Monte Carlo standard 
-errors. Line color represents model architecture, with blue, black, light green, dark green, 
-lilac, red, representing VAR(2), VAR(4), VAR(8), VAR(16), VAR(23), and LP(4), respectively.
+\textit{Note.} Each panel reports bias, variance, and RMSE of the estimated impulse responses \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon by horizon for \(h = 1, \ldots, 20\), computed across \(B = 5{,}000\) Monte Carlo replications with \(T = 250\). The fixed LP(4) reference line is compared against the complexity-adjusted VAR\((q)\) sweep. Panels correspond to the persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). The shaded area in the bias panel is the 95\% band from the Monte Carlo standard errors. Line colour denotes the model, where blue, black, light green, dark green, lilac, and red represent VAR(2), VAR(4), VAR(8), VAR(16), VAR(23), and LP(4), respectively.
 \end{minipage}
 
 \end{figure}
@@ -340,17 +325,7 @@ window.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each subfigure corresponds to a persistence regime \(\rho \in \{0.5, 0.7, 0.95\}\) 
-and contains two panels. The \emph{left panel} reports the empirical coverage of nominal \(95\%\) 
-confidence intervals --- the fraction of replications in which the interval contains the true 
-estimand \(\theta_h\) --- horizon-by-horizon for \(h = 1, \ldots, 20\), with \(T = 250\) and 
-\(B = 5{,}000\). Coverage is shown for VAR(4) (black), VAR(23) (green), and LP(4) (red), with 
-the dotted horizontal line marking the nominal \(95\%\) level. VAR\((q)\) intervals are 
-constructed via the delta method; LP(4) intervals use heteroskedasticity-robust standard errors. 
-The \emph{right panel} validates the VAR(4) delta-method standard error against the empirical Monte 
-Carlo sampling standard deviation of \(\hat\theta_h\): the empirical SD is shown in blue and the mean 
-delta-method SE in orange, so that close agreement indicates an accurate analytical SE while a gap 
-signals that it mis-states the true sampling dispersion.
+\textit{Note.} Each subfigure corresponds to a persistence regime \(\rho \in \{0.5, 0.7, 0.95\}\) and contains two panels. The \emph{left panel} reports the empirical coverage of nominal \(95\%\) confidence intervals, the fraction of replications in which the interval contains the true estimand \(\theta_h\), horizon by horizon for \(h = 1, \ldots, 20\), with \(T = 250\) and \(B = 5{,}000\). Coverage is shown for VAR(4) (black), VAR(23) (green), and LP(4) (red), with the dotted horizontal line marking the nominal \(95\%\) level. VAR\((q)\) intervals are constructed via the delta method, and LP(4) intervals use heteroskedasticity-robust standard errors. The \emph{right panel} validates the VAR(4) delta-method standard error against the empirical Monte Carlo sampling standard deviation of \(\hat\theta_h\). The empirical SD is shown in blue and the mean delta-method SE in orange, so that close agreement indicates an accurate analytical SE while a gap signals that it misstates the true sampling dispersion.
 \end{minipage}
 
 \end{figure}

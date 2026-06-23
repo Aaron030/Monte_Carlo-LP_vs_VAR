@@ -159,11 +159,7 @@ inflated, asymptotically vanishing variance rather than through bias.
 
 \begin{minipage}{0.98\textwidth}
 \small
-\textit{Note.} Horizon-averaged RMSE of the structural IRF against VAR order \(q=1,\ldots,23\) (solid), 
-with LP(4) a same-colour horizontal dashed reference and the vertical dotted line marking the equal-lag 
-VAR(4). One colour per nonlinearity strength: purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), yellow 
-\(\gamma=0.6\). Top row (a, b) is the small-sample frontier \(T=250\), bottom row (c, d) the asymptotic 
-frontier \(T=10{,}000\); within each row \(\rho \in \{0.5,0.7\}\).
+\textit{Note.} Horizon-averaged RMSE of the structural IRF against VAR order \(q=1,\ldots,23\) (solid), with LP(4) a same-colour horizontal dashed reference and the vertical dotted line marking the equal-lag VAR(4). There is one colour per nonlinearity strength, with purple \(\gamma=0\) (baseline), teal \(\gamma=0.3\), and yellow \(\gamma=0.6\). The top row (a, b) is the small-sample frontier \(T=250\) and the bottom row (c, d) the asymptotic frontier \(T=10{,}000\). Within each row \(\rho \in \{0.5,0.7\}\).
 \end{minipage}
 
 \end{figure}
@@ -220,11 +216,7 @@ long horizons.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Bias, variance, MSE, and RMSE of \(\hat\theta_h\) relative to the true (linear-projection) 
-estimand \(\theta_h\) for the nonlinear lag-quadratic DGP, at \(T=250\), \(B=5{,}000\), \(\gamma=0.6\). 
-LP(4) (red) is compared against a representative VAR\((q)\) set: VAR(2) blue, VAR(4) black, VAR(8) light 
-green, VAR(16) dark green, VAR(23) purple. Rows: \(\rho \in \{0.5,0.7\}\); the shaded band on bias is the 
-\(95\%\) Monte Carlo standard-error band.
+\textit{Note.} Bias, variance, MSE, and RMSE of \(\hat\theta_h\) relative to the true (linear-projection) estimand \(\theta_h\) for the nonlinear lag-quadratic DGP, at \(T=250\), \(B=5{,}000\), \(\gamma=0.6\). LP(4) (red) is compared against a representative VAR\((q)\) set, namely VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, and VAR(23) purple. Rows correspond to \(\rho \in \{0.5,0.7\}\). The shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
 \end{minipage}
 
 \end{figure}
@@ -252,9 +244,7 @@ green, VAR(16) dark green, VAR(23) purple. Rows: \(\rho \in \{0.5,0.7\}\); the s
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} As in the sample point-estimation figure but at \(T=10{,}000\) (approximating the asymptotic limit), 
-\(B=5{,}000\), \(\gamma=0.6\). Estimators: LP(4) red, VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, 
-VAR(23) purple. Rows: \(\rho \in \{0.5,0.7\}\); the shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
+\textit{Note.} As in the sample point-estimation figure but at \(T=10{,}000\) (approximating the asymptotic limit), \(B=5{,}000\), \(\gamma=0.6\). The estimators are LP(4) red, VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, and VAR(23) purple. Rows correspond to \(\rho \in \{0.5,0.7\}\). The shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
 \end{minipage}
 
 \end{figure}
@@ -301,13 +291,7 @@ projection stays calibrated under the nonlinearity.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) for the response of 
-variable~1 to shock~1 under the nonlinear lag-quadratic DGP at the strongest nonlinearity \(\gamma=0.6\), 
-\(T=10{,}000\), \(B=5{,}000\). In each subfigure the \emph{left} panel reports coverage of VAR(4) (black), 
-VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line at the nominal \(95\%\) level. The 
-\emph{right} panel validates the VAR(4) delta-method SE against the empirical Monte Carlo sampling SD of 
-\(\hat\theta_h\). VAR\((q)\) intervals use the delta method, LP(4) heteroskedasticity-robust SEs. Subfigures 
-span \(\rho \in \{0.5,0.7\}\).
+\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) for the response of variable~1 to shock~1 under the nonlinear lag-quadratic DGP at the strongest nonlinearity \(\gamma=0.6\), \(T=10{,}000\), \(B=5{,}000\). In each subfigure the \emph{left} panel reports coverage of VAR(4) (black), VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line at the nominal \(95\%\) level. The \emph{right} panel validates the VAR(4) delta-method SE against the empirical Monte Carlo sampling SD of \(\hat\theta_h\). VAR\((q)\) intervals use the delta method, and LP(4) uses heteroskedasticity-robust SEs. Subfigures span \(\rho \in \{0.5,0.7\}\).
 \end{minipage}
 
 \end{figure}

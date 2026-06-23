@@ -94,12 +94,7 @@ serves as a stress test of the estimator ranking.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Each panel reports the true structural impulse response 
-function of variables one and two to a one-standard-deviation shock in the 
-first structural innovation, traced over horizons 
-\(h = 1, \ldots, 20\). Panels correspond to persistence regimes 
-\(\rho \in \{0.5, 0.7, 0.95\}\). Blue line represents $y_1 \leftarrow \epsilon_1 
-($\textit{estimand} $ \theta_h)$, while grey line shows $y_2 \leftarrow \epsilon_1$.
+\textit{Note.} Each panel shows the true structural impulse responses of variables one and two to a one-standard-deviation shock in the first structural innovation, traced over horizons \(h = 1, \ldots, 20\). Panels correspond to the persistence regimes \(\rho \in \{0.5, 0.7, 0.95\}\). The blue line is the response of \(y_1\) to \(\varepsilon_1\), which is the estimand \(\theta_h\), and the grey line is the response of \(y_2\) to \(\varepsilon_1\).
 \end{minipage}
 \end{figure}
 
@@ -155,11 +150,7 @@ $\text{VAR}(23)$ at the far right.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate against VAR 
-order \(q = 1,\ldots,23\) (solid), with LP(4) as a same-colour horizontal dashed 
-reference; the vertical dotted line marks the equal-lag VAR(4). One colour per MA 
-strength: purple \(\tau=0\) (baseline), blue \(\tau=0.1\), green \(\tau=0.3\), 
-yellow \(\tau=0.6\). \(T=250\), \(B=5{,}000\); panels \(\rho \in \{0.5,0.7,0.95\}\). 
+\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate against VAR order \(q = 1,\ldots,23\) (solid), with LP(4) as a same-colour horizontal dashed reference. The vertical dotted line marks the equal-lag VAR(4). There is one colour per MA strength, with purple \(\tau=0\) (baseline), blue \(\tau=0.1\), green \(\tau=0.3\), and yellow \(\tau=0.6\). Here \(T=250\) and \(B=5{,}000\), and panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\).
 \end{minipage}
 
 \end{figure}
@@ -215,7 +206,7 @@ takes the same arched profile as the baseline, scaled up.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Bias, variance, MSE, and RMSE of \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon-by-horizon, at the strongest misspecification \(\tau=0.6\), \(T=250\), \(B=5{,}000\). LP(4) (red) is compared against a representative VAR\((q)\) set: VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, VAR(23) purple. Panels \(\rho \in \{0.5,0.7,0.95\}\); the shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
+\textit{Note.} Bias, variance, MSE, and RMSE of \(\hat\theta_h\) relative to the true estimand \(\theta_h\), horizon by horizon, at the strongest misspecification \(\tau=0.6\), with \(T=250\) and \(B=5{,}000\). LP(4) (red) is compared against a representative VAR\((q)\) set, namely VAR(2) blue, VAR(4) black, VAR(8) light green, VAR(16) dark green, and VAR(23) purple. Panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\). The shaded band on bias is the \(95\%\) Monte Carlo standard-error band.
 \end{minipage}
 
 \end{figure}
@@ -275,12 +266,7 @@ close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) at the
-strongest misspecification \(\tau=0.6\), \(T=250\), \(B=5{,}000\). \emph{Left:} coverage of
-VAR(4) (black), VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line marking
-the nominal \(95\%\) level; VAR\((q)\) intervals use the delta method, LP(4)
-heteroskedasticity-robust SEs. \emph{Right:} the VAR(4) delta-method SE (orange) against the empirical
-Monte Carlo sampling SD of \(\hat\theta_h\) (blue). Panels \(\rho \in \{0.5,0.7,0.95\}\).
+\textit{Note.} Empirical coverage of nominal \(95\%\) CIs by horizon (\(h=1,\ldots,20\)) at the strongest misspecification \(\tau=0.6\), with \(T=250\) and \(B=5{,}000\). The \emph{left panel} shows coverage of VAR(4) (black), VAR(23) (green), and LP(4) (crimson), with the dashed horizontal line marking the nominal \(95\%\) level. VAR\((q)\) intervals use the delta method, and LP(4) uses heteroskedasticity-robust SEs. The \emph{right panel} shows the VAR(4) delta-method SE (orange) against the empirical Monte Carlo sampling SD of \(\hat\theta_h\) (blue). Panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\).
 \end{minipage}
 
 \end{figure}
