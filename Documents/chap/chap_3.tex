@@ -167,33 +167,29 @@ the structural shock under recursive identification \parencite{plagborg2021local
 
 \subsection{Simulation Results}
 
-Figure \ref{fig:BL_COMPLEXITY} introduces the complexity frontier, the horizon-averaged 
-root mean squared error of the VAR impulse response plotted against the estimation lag 
-order $q$. It is traced from $q=1$ to $q=23$ for the three persistence regimes 
-$\rho \in \{0.5, 0.7, 0.95\}$ and sample sizes $T \in \{100, 250, 500\}$, with the fixed 
-$\text{LP}(4)$ drawn as a horizontal reference line for each sample size.
+Figure \ref{fig:BL_COMPLEXITY} traces the horizon-averaged root mean squared error against VAR
+order $q$ for the three persistence regimes and sample sizes, with $\text{LP}(4)$ as a horizontal
+reference. Two level effects set the stage. The error falls monotonically with the sample size
+and rises with persistence, so the whole frontier and its $\text{LP}(4)$ line shift down as $T$
+grows and up as $\rho$ grows. At the conventional equal-lag point $q=4$, the VAR sits below its
+$\text{LP}(4)$ line in every panel, the familiar reading that low-order VARs are the more
+efficient point estimators.
 
-Two patterns govern the overall level of the error. First, a larger sample size lowers it 
-monotonically, while higher persistence raises it. Within every persistence regime the VAR 
-curve and its $\text{LP}(4)$ reference line for $T=500$ lie entirely below those for $T=250$, 
-which lie below those for $T=100$. Additionally, moving across the panels from left to right, 
-the entire frontier and its reference lines shift upward as the system becomes more 
-persistent.
+What the frontier adds is where $\text{LP}(4)$ sits once the equal-lag restriction is dropped.
+The optimum is a low VAR order, a shallow minimum near $q=2$, and the curve rises beyond it into a
+U-shape that sharpens with persistence, from smooth at $\rho=0.5$ to a steep drop and clear U near
+the unit-root boundary. At $T=100$ the rising frontier crosses the $\text{LP}(4)$ line only near
+$q \approx 15$ at low and intermediate persistence, and at a slightly lower order at $\rho=0.95$,
+so the fixed $\text{LP}(4)$ already carries the effective complexity of a heavily parameterized
+VAR rather than a parsimonious one.
 
-At the conventional equal-lag point $q=4$, the solid VAR curves lie below the dashed 
-$\text{LP}(4)$ lines of the same color in every panel and at every sample size. Across the 
-full frontier, however, the VAR curve shape varies with persistence. At $\rho=0.5$ it is 
-smooth, rising monotonically after a shallow minimum near $q=2$. At $\rho=0.7$ a mild kink 
-appears before the four-lag mark. At $\rho=0.95$ this feature becomes pronounced, the curve 
-dropping steeply to a distinct minimum around $q=2$ to $q=3$ before rising into a clear 
-U-shape.
-
-Sample size also reshapes the curves. As $T$ grows they flatten and their minimum shifts 
-right, so the lowest error is reached at a higher lag order and the rise beyond it is more 
-gradual. The point where the rising frontier crosses the horizontal $\text{LP}(4)$ benchmark 
-therefore moves right as well. This crossing is clearest at $T=100$, where the curves are 
-steepest. At $\rho=0.5$ and $\rho=0.7$ the $\text{LP}(4)$ line meets the $T=100$ frontier 
-near $q \approx 15$, while at $\rho=0.95$ it shifts to a slightly lower VAR order.
+The sample size sharpens this picture. As $T$ grows the frontier flattens and its minimum drifts
+to higher orders, and at $T=500$ the VAR frontier and the $\text{LP}(4)$ reference line draw
+together, the gap between them narrowing markedly relative to the smaller samples. This
+convergence is the finite-sample counterpart of the population equivalence of
+\textcite{plagborg2021local}. As the sample grows the iterated VAR and the direct projection
+recover the same linear model, and the finite-sample gap that the complexity frontier exposes
+shrinks away.
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -233,37 +229,23 @@ dotted line marks the equal-lag VAR(4); \(B = 5{,}000\) replications. Panels cor
 
 \end{figure}
 
-Figure \ref{fig:BL_PE} reports the bias, variance, and root mean squared error at a fixed 
-$T=250$, horizon by horizon and grouped by persistence, comparing the fixed $\text{LP}(4)$ 
-against a representative set of VAR orders. Across all regimes the horizon at which the 
-estimators' variance paths begin to diverge stays roughly constant, increasing slightly with 
-persistence.
+Figure \ref{fig:BL_PE} reports bias, variance, MSE, and RMSE at $T=250$, horizon by horizon
+across the three persistence regimes, with $\text{LP}(4)$ against a representative VAR set. Bias
+and variance are ordered by lag length, the classic tradeoff. The low-order VARs are the most
+biased but shed it fastest, and higher orders track the $\text{LP}(4)$ bias path progressively
+longer, with $\text{VAR}(23)$ following it throughout. In variance the ordering reverses, the
+low-order VARs collapsing toward zero earliest while the heavily parameterized $\text{VAR}(16)$
+and $\text{VAR}(23)$ overshoot $\text{LP}(4)$ before matching it later. $\text{LP}(4)$ itself
+stays the stable middle reference, and root mean squared error follows variance apart from a
+short-horizon $\text{VAR}(2)$ spike that carries its bias.
 
-Under low persistence ($\rho=0.5$), absolute bias grows until the second or third horizon 
-before the paths split. The under-parameterized $\text{VAR}(2)$ is erratic at short horizons, 
-but returns to unbiasedness fastest around horizon eight with $\text{VAR}(4)$. Higher VAR 
-orders initially track the $\text{LP}(4)$ reference line before shrinking toward zero at 
-intermediate horizons, and $\text{VAR}(23)$ coincides with $\text{LP}(4)$ throughout. 
-Variance, and hence root mean squared error, follows a similar pattern. The parsimonious 
-$\text{VAR}(2)$ to $\text{VAR}(8)$ track $\text{LP}(4)$ until horizon two before falling 
-toward zero, with $\text{VAR}(2)$ fastest, while the heavily parameterized $\text{VAR}(16)$ 
-and $\text{VAR}(23)$ overshoot the LP variance at first but decline at intermediate and long 
-horizons. The $\text{LP}(4)$ variance stays comparatively stable throughout.
-
-At intermediate persistence ($\rho=0.7$), the bias keeps the same shape but grows in absolute 
-terms. $\text{VAR}(2)$ now overshoots completely, leaving the correctly specified 
-$\text{VAR}(4)$ as the most accurate model. $\text{VAR}(8)$ and $\text{VAR}(16)$ track the 
-$\text{LP}(4)$ trajectory for longer before their bias dissipates, and $\text{VAR}(23)$ again 
-mirrors $\text{LP}(4)$ across the full horizon. Variance rises only slightly relative to low 
-persistence, with the decline from the early peak now stretched over a longer horizon. Because 
-bias stays small for most specifications, root mean squared error closely tracks variance.
-
-Near the unit-root boundary ($\rho=0.95$), the picture changes considerably. Absolute bias is 
-high across all specifications, with $\text{VAR}(2)$ especially erratic, while the remaining 
-VARs and $\text{LP}(4)$ share a common downward trajectory and roughly track each other. 
-Variance is elevated throughout, lowest for $\text{VAR}(4)$ and then $\text{VAR}(2)$. Unlike 
-the less persistent regimes, no specification regains efficiency at longer horizons, leaving 
-dispersion high and giving the root mean squared error a distinctly arched profile.
+Persistence scales this pattern rather than changing it. The horizon at which the estimators
+diverge moves slightly later as $\rho$ rises, and the levels grow. At $\rho=0.7$ the same ordering
+holds, with $\text{VAR}(2)$ now overshooting enough to leave the correctly specified
+$\text{VAR}(4)$ the most accurate. Near the unit-root boundary at $\rho=0.95$ everything is
+elevated, $\text{VAR}(2)$ turns erratic, the remaining VARs and $\text{LP}(4)$ share a common
+downward path, and because none regains efficiency at long horizons the root mean squared error
+takes a distinctly arched profile.
 
 
 % ----------------------------------- Point Estimates
@@ -308,31 +290,26 @@ lilac, red, representing VAR(2), VAR(4), VAR(8), VAR(16), VAR(23), and LP(4), re
 
 \clearpage
 
-Figure \ref{fig:BL_COV} shows the empirical coverage of nominal 95 percent confidence 
-intervals in the left column and the VAR(4) delta-method standard error against the 
-empirical sampling standard deviation in the right, plotted horizon by horizon across the 
-three persistence regimes at $T=250$.
+Figure \ref{fig:BL_COV} reports the empirical coverage of nominal 95 percent confidence intervals
+at $T=250$ across the three persistence regimes, alongside the $\text{VAR}(4)$ delta-method
+standard error against its empirical sampling standard deviation. The $\text{LP}(4)$ holds near
+nominal throughout, while the $\text{VAR}(4)$ delta-method intervals are strongly
+persistence-sensitive, over-covering at low persistence and under-covering badly near the unit
+root.
 
-Under low persistence ($\rho=0.5$), all models share roughly the same coverage up to the 
-third horizon, then diverge from the fourth. VAR(4) coverage rises rapidly to full coverage 
-by the seventh horizon, and the over-parameterized VAR(23) drifts toward 1.0 by the end of 
-the window, while LP(4) stays tight around 0.95 throughout. In the right panel the 
-delta-method standard error closely tracks the empirical standard deviation, deviating only 
-slightly around the initial peak.
+Persistence drives the pattern. The $\text{LP}(4)$ stays tight around $0.95$ at low and
+intermediate persistence and slips only to about $0.90$ at $\rho=0.95$. The $\text{VAR}(4)$
+instead swings with persistence, climbing to full coverage at $\rho=0.5$ and then deteriorating
+until it falls below $0.80$ at $\rho=0.95$, the worst of the three. The high-order $\text{VAR}(23)$
+tracks the same arc more gently, drifting above nominal at low persistence and settling near the
+$\text{LP}(4)$ around $0.90$ at the boundary.
 
-At intermediate persistence ($\rho=0.7$), all coverage paths stay tightly aligned until the 
-sixth horizon. Beyond it, VAR(4) coverage steadily deteriorates toward the end of the window, 
-VAR(23) drifts slightly upward, and LP(4) holds near the nominal target. The right column 
-shows the analytical standard error and the empirical standard deviation lying almost 
-perfectly on top of each other.
-
-Near the unit-root boundary ($\rho=0.95$), coverage changes substantially. The models track 
-each other only until the second horizon, after which none reach the nominal 95 percent 
-target. VAR(4) deteriorates severely, dropping below 0.8 at longer horizons, while VAR(23) 
-does slightly better, tracking LP(4) at roughly 0.9 across the rest of the horizon. In the 
-right column a distinct vertical gap opens, as the empirical sampling dispersion sits visibly 
-above the analytical delta-method standard error at short and intermediate horizons before 
-the two converge toward the end of the window.
+The right column shows the miscalibration is not a broken standard error. At $\rho=0.5$ and
+$\rho=0.7$ the $\text{VAR}(4)$ delta-method standard error and the empirical sampling standard
+deviation are nearly indistinguishable, so the coverage gaps there are structural. Only at
+$\rho=0.95$ does a vertical gap open, with the empirical dispersion sitting above the analytical
+standard error at short and intermediate horizons before the two converge by the end of the
+window.
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
