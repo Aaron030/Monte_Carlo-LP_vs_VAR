@@ -63,5 +63,6 @@ CH3_Findings.md
 CH4_Findings.md
 main_ext_1.pdf
 main_ext_2.pdf
+*.pdf
 # Generated chapter character/word counts (latexmk success hook)
-*.counts.txt
+.counts.txt

@@ -1,0 +1,17 @@
+Character / word counts -- chapter content only (chars include spaces).
+Source: main_ext_1.tex    Regenerated after each successful compile.
+LaTeX markup and math excluded (via detex); figure Note blocks and
+auto-generated front/back matter (TOC, lists, references, title page) not counted.
+Appendix files are listed but excluded from the TOTAL.
+
+chapter            chars(+spaces)      words
+------------------ -------------- ----------
+chap_1A                      5390        721
+chap_2                       8169       1186
+chap_3                      22194       3093
+chap_4                      13420       1817
+chap_6A                      2680        354
+appendix                    16558       2396   (excluded)
+------------------ -------------- ----------
+TOTAL (excl. app.)          51853       7171
+appendix subtotal           16558       2396   (excluded)

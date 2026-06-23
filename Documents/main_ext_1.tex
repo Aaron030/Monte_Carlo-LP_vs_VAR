@@ -43,10 +43,17 @@
 \input{chap/chap_6A.tex}   % Conclusion (Ext 1)
 
 
-
 \clearpage
 \printbibliography
 \addcontentsline{toc}{section}{\numberline{} References}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{\numberline{} Appendix}
+\section*{Appendix}
+\setcounter{subsection}{0}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\input{chap/appendix.tex}  % appendix (shared)
 
 \clearpage
 \section*{Declaration of AI Usage}
