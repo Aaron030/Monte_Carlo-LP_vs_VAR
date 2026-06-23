@@ -11,8 +11,9 @@
 # are excluded), and drops the figure "Note" blocks (the
 # \begin{minipage}...\end{minipage} captions under pictures).
 #
-# Appendix files (any \input whose path contains "appendix") are still listed,
-# but tagged "(excluded)" and NOT added to the TOTAL -- the total is body only.
+# Appendix files (any \input whose path contains "appendix") and abstract files
+# (any \input whose path contains "abstract") are still listed, but tagged
+# "(excluded)" and NOT added to the TOTAL -- the total is body only.
 #
 # Characters include spaces; LaTeX markup and math are stripped by detex.
 
@@ -43,6 +44,7 @@ count_file () {
 
 body_c=0; body_w=0
 app_c=0;  app_w=0
+abs_c=0;  abs_w=0
 rows=""
 for f in $chaps; do
     case "$f" in *.tex) ;; *) f="${f}.tex" ;; esac
@@ -53,6 +55,10 @@ for f in $chaps; do
     case "$f" in
         *[Aa]ppendix*)
             app_c=$((app_c + c)); app_w=$((app_w + w))
+            rows="${rows}$(printf '%-18s %14s %10s   %s' "$name" "$c" "$w" '(excluded)')
+" ;;
+        *[Aa]bstract*)
+            abs_c=$((abs_c + c)); abs_w=$((abs_w + w))
             rows="${rows}$(printf '%-18s %14s %10s   %s' "$name" "$c" "$w" '(excluded)')
 " ;;
         *)
@@ -74,9 +80,12 @@ done
     printf '%s' "$rows"
     printf '%-18s %14s %10s\n' "------------------" "--------------" "----------"
     printf '%-18s %14s %10s\n' "TOTAL (excl. app.)" "$body_c" "$body_w"
+    if [ "$abs_c" -gt 0 ]; then
+        printf '%-18s %14s %10s   %s\n' "abstract subtotal" "$abs_c" "$abs_w" "(excluded)"
+    fi
     if [ "$app_c" -gt 0 ]; then
         printf '%-18s %14s %10s   %s\n' "appendix subtotal" "$app_c" "$app_w" "(excluded)"
     fi
 } > "$out"
 
-echo "wordcount: wrote $out (body $body_c chars / $body_w words; appendix excluded $app_c chars / $app_w words)"
+echo "wordcount: wrote $out (body $body_c chars / $body_w words; excluded abstract $abs_c chars / $abs_w words, appendix $app_c chars / $app_w words)"

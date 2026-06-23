@@ -1,0 +1,22 @@
+% !TEX root = ../main_ext_1.tex
+
+\section*{Abstract}
+\thispagestyle{empty}
+
+Vector autoregressions (VARs) and local projections (LPs) estimate the same population impulse
+responses, yet they are usually compared at a common lag order, which confounds the choice of
+estimator with the choice of model complexity. We revisit this comparison in a Monte Carlo study
+that holds effective complexity constant, following the complexity-adjusted benchmark of
+\textcite{ludwig2026local}. Under correct specification, a fixed LP(4) already behaves like a
+highly parameterized VAR of order $q \approx 15$, so the familiar point-estimation edge of
+low-order VARs reflects parsimony rather than an intrinsic advantage of the iterated method. We
+then introduce dynamic misspecification through a VARMA(4,1) process. This does not overturn the
+point-estimation ranking, as the equal-lag VAR(4) keeps its root mean squared error advantage over
+LP(4) at every level of persistence and misspecification. The decisive difference is inferential.
+Standard VAR confidence intervals understate the sampling dispersion and undercover badly near the
+unit-root boundary, while the heteroskedasticity-robust intervals of the local projection stay near
+nominal. Population equivalence of the two estimands therefore does not carry over to finite-sample
+inference, and the better method depends on whether the researcher prioritizes the efficiency of the
+VAR point estimate or the interval validity of the direct projection.
+
+\clearpage
