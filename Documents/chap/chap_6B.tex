@@ -41,10 +41,36 @@ methodological limitations that clear the path for future research.
 
 First, our complexity-adjusted benchmarking design imposes strict constraints on the available 
 sample size space. Because evaluating the full VAR frontier requires estimating highly 
-parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the empirical median of $T = 100$ (or $T = 240$ in the non-linear extension) is computationally unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order companion matrices rank-deficient and the resulting OLS estimates numerically unstable. Consequently, we are structurally unable to explore small macro-samples, precisely the territory where the finite-sample bias-variance trade-off is most aggressive and where the localized robustness of LPs against dynamic or functional distortions might yield a tangible MSE advantage over tightly restricted VARs.
+parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the 
+empirical median of $T = 100$ (or $T = 240$ in the non-linear extension) is computationally 
+unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order 
+companion matrices rank-deficient and the resulting OLS estimates numerically unstable. 
+Consequently, we are structurally unable to explore small macro-samples, precisely the 
+territory where the finite-sample bias-variance trade-off is most aggressive and where the 
+localized robustness of LPs against dynamic or functional distortions might yield a tangible 
+MSE advantage over tightly restricted VARs.
 
-Second, the introduction of non-linear polynomial terms in lagged state variables inherently destabilizes the simulated systems. The quadratic terms drastically elevate the risk of generating explosive or non-stationary paths during the Monte Carlo replications, particularly when the underlying linear dynamics are highly persistent. To preserve covariance stationarity and ensure a well-defined linear projection estimand, we were forced to restrict the persistence parameter space in the non-linear extension to $\rho \in \{0.5, 0.7\}$, leaving the boundary region near the unit root ($\rho = 0.95$) unexamined. This represents a meaningful omission, as the interaction between high persistence and functional misspecification is precisely where inferential fragility is expected to be most pronounced.
+Second, the introduction of non-linear polynomial terms in lagged state variables inherently 
+destabilizes the simulated systems. The quadratic terms drastically elevate the risk of 
+generating explosive or non-stationary paths during the Monte Carlo replications, particularly 
+when the underlying linear dynamics are highly persistent. To preserve covariance stationarity 
+and ensure a well-defined linear projection estimand, we were forced to restrict the persistence 
+parameter space in the non-linear extension to $\rho \in \{0.5, 0.7\}$, leaving the boundary 
+region near the unit root ($\rho = 0.95$) unexamined. This represents a meaningful omission, 
+as the interaction between high persistence and functional misspecification is precisely where 
+inferential fragility is expected to be most pronounced.
 
-Third, our analysis exposes a structural caveat regarding the found supremacy of local projections in inference. The failure of the VAR intervals is not an unfixable flaw of the iterated architecture itself, but rather a limitation of the default homoskedastic delta-method specification used in standard applied workflows. If the VAR sweep were to be systematically equipped with robust or wild bootstrap standard errors capable of accommodating residual conditional heteroskedasticity, the inferential gap between the two estimators would likely diminish. 
+Third, our analysis exposes a structural caveat regarding the found supremacy of local 
+projections in inference. The failure of the VAR intervals is not an unfixable flaw of the 
+iterated architecture itself, but rather a limitation of the default homoskedastic delta-method 
+specification used in standard applied workflows. If the VAR sweep were to be systematically 
+equipped with robust or wild bootstrap standard errors capable of accommodating residual 
+conditional heteroskedasticity, the inferential gap between the two estimators would likely 
+diminish. 
 
-Future research should therefore aim to extend the complexity-adjusted frontier to alternative non-linear frameworks that allow for high persistence without entering explosive regimes. Additionally, formalizing a complexity adjustment for bootstrap-based inference procedures would provide a cleaner horse race, isolating whether the local projection's robust coverage is an intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of heteroskedasticity-robust variance estimators.
+Future research should therefore aim to extend the complexity-adjusted frontier to alternative 
+non-linear frameworks that allow for high persistence without entering explosive regimes. 
+Additionally, formalizing a complexity adjustment for bootstrap-based inference procedures would 
+provide a cleaner horse race, isolating whether the local projection's robust coverage is an 
+intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of 
+heteroskedasticity-robust variance estimators.
