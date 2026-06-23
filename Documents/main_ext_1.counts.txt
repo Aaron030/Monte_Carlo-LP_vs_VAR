@@ -9,9 +9,9 @@ chapter            chars(+spaces)      words
 chap_1A                      5390        721
 chap_2                       8169       1186
 chap_3                      22194       3093
-chap_4                      13420       1817
-chap_6A                      2680        354
+chap_4                      14405       1976
+chap_6A                      2681        354
 appendix                    16558       2396   (excluded)
 ------------------ -------------- ----------
-TOTAL (excl. app.)          51853       7171
+TOTAL (excl. app.)          52839       7330
 appendix subtotal           16558       2396   (excluded)
