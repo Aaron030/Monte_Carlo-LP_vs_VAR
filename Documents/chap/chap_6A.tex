@@ -1,18 +1,38 @@
 % Patricks conclusion
 \section{Conclusion}
 
-In this paper, we operationalized the complexity-adjusted benchmarking framework proposed by \textcite{ludwig2026local} to re-evaluate the finite-sample performance of Vector Autoregressions and Local Projections. By moving away from conventional equal-lag comparisons, which conflate estimation mechanics with effective model complexity, our baseline simulation demonstrated that a fixed $LP(4)$ estimator operates at a complexity level equivalent to a highly parameterized $VAR(q)$ with $q \approx 15$. This shifting perspective reveals that the standard point-estimation advantage of low-order VARs under correct specification is primarily an artifact of parsimony rather than an intrinsic architectural superiority of the iterated method. 
+This paper applied the complexity-adjusted benchmark of \textcite{ludwig2026local} to the
+finite-sample comparison of Vector Autoregressions and Local Projections, replacing the
+conventional equal-lag contest with one that holds effective complexity constant. Under correct
+specification a fixed $LP(4)$ already behaves like a highly parameterized $VAR(q \approx 15)$, so
+the familiar point-estimation edge of low-order VARs is largely an artifact of parsimony rather
+than an intrinsic advantage of the iterated method. Dynamic misspecification, introduced through
+a $VARMA(4,1)$ process, sharpens this reading without overturning it. The $LP(4)$ shifts toward
+an increasingly parsimonious position on the frontier, yet the equal-lag $VAR(4)$ keeps its mean
+squared error dominance at every persistence and misspecification level, because the induced
+truncation bias stays too small to offset the variance cost of the direct regressions. The
+robustness of local projections in point estimation is therefore relative, never an absolute edge.
 
-Our extension into dynamic misspecification via a $VARMA(4,1)$ data-generating process provided a rigorous finite-sample test of the local projection robustness narrative. Introducing a moving-average component deliberately injects a population-level truncation bias into the finite-order VAR approximation. Viewed through the complexity-adjusted lens, this misspecification causes a profound relative shift: the $LP(4)$ estimator becomes algebraically equivalent to an increasingly parsimonious VAR. In absolute terms, however, the equal-lag $VAR(4)$ strictly preserves its mean squared error dominance across all persistence regimes and misspecification strengths. The truncation bias injected by the MA component remains too small to offset the massive variance penalty incurred by the direct, horizon-by-horizon regressions of the local projection.
+The advantage that is absolute is inferential. Standard VAR confidence intervals, built on the
+delta method, understate the true sampling dispersion and under-cover badly near the unit-root
+boundary, a failure that the misspecification only deepens, whereas the heteroskedasticity-robust
+intervals of the local projection stay near nominal across the persistence spectrum. The broader
+lesson is that estimand equivalence in population does not imply inferential equivalence in finite
+samples. The choice between the two methods is objective-dependent, weighing the efficiency of the
+VAR point estimate against the interval validity of the direct projection.
 
-Conversely, the theoretical robustness of the local projection firmly manifests in inferential validity. The MA contamination introduces additional sampling dispersion that an analytical standard error built on the misspecified $VAR(4)$ cannot capture. Because standard VAR confidence intervals rely on the delta method, they systematically understate the true empirical sampling dispersion, leading to severe under-coverage near the unit-root boundary ($\rho = 0.95$). Local projections, by relying on heteroskedasticity-robust standard errors that do not assume a correctly specified propagation model, maintain stable, near-nominal coverage across the persistence spectrum. This crucial divergence underscores a broader econometric lesson: estimand consistency under misspecification does not guarantee point-estimation superiority in finite samples. The choice between these two approaches is thus inherently objective-dependent, balancing the parametric efficiency of the VAR point estimate against the robust interval validity of the direct projection method.
+Three limitations bound these conclusions. First, the full VAR sweep up to $VAR(23)$ makes sample
+sizes below the applied median of $T = 100$ infeasible, leaving the small-sample region, where the
+bias-variance trade-off is sharpest and an LP advantage most plausible, unexplored. Second, the
+$VARMA(4,1)$ design is invertible throughout, so it probes only approximable dynamic
+misspecification and stays silent on non-invertible settings such as news or anticipation shocks,
+where instrument-augmented local projections might gain a genuine point-estimation edge. Third,
+the VAR coverage failure reflects the default delta-method standard error rather than the iterated
+architecture itself, and equipping the VAR sweep with robust or wild-bootstrap standard errors
+would likely narrow the inferential gap.
 
-Despite the robust insights gained, our simulation study is subject to several notable methodological limitations that clear the path for future research. 
-
-First, our complexity-adjusted benchmarking design imposes strict constraints on the available sample size space. Because evaluating the full VAR frontier requires estimating highly parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the empirical median of $T = 100$ is computationally unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order companion matrices rank-deficient and the resulting OLS estimates numerically unstable. Consequently, we are structurally unable to explore small macro-samples, precisely the territory where the finite-sample bias-variance trade-off is most aggressive and where the localized robustness of LPs against dynamic distortions might yield a tangible MSE advantage over tightly restricted VARs.
-
-Second, our dynamic misspecification design strictly restricts the nature of the moving-average component. The evaluated $VARMA(4,1)$ DGP is invertible for all considered misspecification strengths, meaning it inherently admits an infinite-order VAR representation. This condition is mathematically necessary for the complexity argument and the convergence of the high-order VAR sweep to remain well-defined. However, it restricts our conclusions to \emph{approximable} dynamic misspecification. The design remains completely silent on non-fundamental or non-invertible settings---such as those arising from anticipation effects or news shocks---where the structural shock cannot be spanned by current and past observables. In such environments, the invertibility-robustness of instrument-augmented local projections could plausibly generate a point-estimation advantage that recursive VARs inherently cannot match.
-
-Third, our analysis exposes a structural caveat regarding the found supremacy of local projections in inference. The failure of the VAR intervals is not necessarily an unfixable flaw of the iterated architecture itself, but rather a limitation of the default analytical delta-method specification used in standard applied workflows. If the VAR sweep were to be systematically equipped with robust or wild bootstrap standard errors capable of accommodating residual misspecification dispersion, the inferential gap between the two estimators would likely diminish. 
-
-Future research should therefore aim to extend the complexity-adjusted frontier to non-invertible frameworks, perhaps by integrating instrumental variable identification into the sweep. Additionally, formalizing a complexity adjustment for bootstrap-based inference procedures would provide a cleaner horse race, isolating whether the local projection's robust coverage is an intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of robust variance estimators.dures would provide a cleaner horse race, isolating whether the local projection's robust coverage is an intrinsic virtue of direct multi-step forecasting or merely a mechanical benefit of heteroskedasticity-robust variance estimators.
+Future work should extend the complexity-adjusted frontier to non-invertible settings, perhaps by
+folding instrumental-variable identification into the sweep, and should formalize a complexity
+adjustment for bootstrap-based inference. The latter would deliver a cleaner horse race, isolating
+whether the robust coverage of local projections is an intrinsic virtue of direct multi-step
+forecasting or merely a mechanical benefit of robust variance estimation.
