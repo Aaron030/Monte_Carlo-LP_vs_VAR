@@ -1,27 +1,25 @@
 """Monte Carlo driver.
 
-Runs many replications of (simulate from DGP) -> (fit each estimator)
--> (record IRFs and diagnostics), with optional parallelization via joblib.
+Runs many replications of (simulate from DGP) -> (fit each estimator) ->
+(record IRFs and diagnostics), with optional parallelisation via joblib.
 
-The driver is deliberately agnostic about the model under study. It commits
-to only two minimal contracts, so the DGP, the data dimensionality, and the
-set of estimators can all change without editing this file:
+The driver is deliberately agnostic about the model under study. It relies on
+only two minimal contracts, so the DGP, the data dimensionality, and the set of
+estimators can all change without editing this file.
 
-* DGP contract       -- ``dgp_spec`` is a callable ``(rng, T) -> data`` (a DGP
-                        that ignores the sample size may also be a plain
-                        ``(rng) -> data``), or any object exposing a
-                        ``.simulate(rng, T)`` method. ``data`` is whatever the
-                        estimators understand (1-D series, T x k panel, ...).
-* Estimator contract -- each value in ``cfg.estimators`` is a callable
-                        ``(data) -> np.ndarray`` returning that estimator's IRF
-                        for one sample. Bind extra arguments (lag order,
-                        horizon, ...) with ``functools.partial`` so every
-                        estimator presents the same one-argument interface,
-                        e.g. ``partial(estimate_var_irf, p=4, horizon=20)``.
+* DGP contract. ``dgp_spec`` is a callable ``(rng, T) -> data`` (a DGP that
+  ignores the sample size may also be a plain ``(rng) -> data``), or any object
+  exposing a ``.simulate(rng, T)`` method. ``data`` is whatever the estimators
+  understand (a 1-D series, a T by k panel, and so on).
+* Estimator contract. Each value in ``cfg.estimators`` is a callable
+  ``(data) -> np.ndarray`` returning that estimator's IRF for one sample. Bind
+  extra arguments (lag order, horizon, and so on) with ``functools.partial`` so
+  every estimator presents the same one-argument interface, for example
+  ``partial(estimate_var_irf, p=4, horizon=20)``.
 
-``run`` returns the *raw* stacked IRF estimates rather than summary statistics,
-so bias / variance / MSE / RMSE / coverage can be computed afterwards against
-whatever true estimand the chosen DGP implies (see :mod:`mcsim.irf`).
+``run`` returns the raw stacked IRF estimates rather than summary statistics, so
+bias, variance, MSE, RMSE, and coverage can all be computed afterwards against
+whatever true estimand the chosen DGP implies.
 """
 
 from __future__ import annotations
@@ -65,11 +63,11 @@ def _simulate(dgp_spec, cfg: MCConfig, rng: np.random.Generator):
 
 
 def _single_rep(dgp_spec, cfg: MCConfig, seed) -> dict:
-    """One replication: simulate -> fit each estimator -> collect IRFs.
+    """One replication: simulate, fit each estimator, collect the IRFs.
 
     Returns ``{name: irf_array or None}``. An estimator that raises on a given
-    sample (e.g. a singular moment matrix) yields ``None`` for that replication
-    instead of aborting the whole experiment.
+    sample (for example a singular moment matrix) yields ``None`` for that
+    replication instead of aborting the whole experiment.
     """
     rng = np.random.default_rng(seed)
     data = _simulate(dgp_spec, cfg, rng)
@@ -103,17 +101,17 @@ def run(dgp_spec, cfg: MCConfig) -> dict:
            "n_failures": {name: int}, "n_reps": int, "config": cfg}``.
         Replications in which an estimator failed (raised, or returned a
         differently shaped array) are filled with ``np.nan`` so every
-        estimator's stack is rectangular; the count is reported in
+        estimator's stack is rectangular, and the count is reported in
         ``n_failures``.
 
     Notes
     -----
     Each replication gets an independent, reproducible RNG stream derived from
-    ``cfg.seed`` via :class:`numpy.random.SeedSequence`, so results do not
-    depend on ``n_jobs`` and are bit-for-bit reproducible.
+    ``cfg.seed`` via numpy.random.SeedSequence, so results do not depend on
+    ``n_jobs`` and are bit-for-bit reproducible.
 
     For ``n_jobs != 1`` joblib uses process-based parallelism, so ``dgp_spec``
-    and every estimator must be picklable -- use module-level functions and
+    and every estimator must be picklable. Use module-level functions and
     ``functools.partial`` rather than lambdas or locally defined closures.
     """
     if not cfg.estimators:
