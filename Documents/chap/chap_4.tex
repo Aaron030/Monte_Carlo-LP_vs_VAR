@@ -281,47 +281,25 @@ close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
 
 This extension asks whether dynamic misspecification gives local projections a genuine 
 finite-sample advantage. In point estimation it does not, and on the complexity frontier the 
-picture is one of continuity rather than repositioning: $\text{LP}(4)$ remains equivalent to a 
+picture is one of continuity rather than repositioning. The LP(4) remains equivalent to a 
 heavily parameterized VAR under misspecification just as under correct specification. The one 
 decisive edge is again inferential.
 
 Adding the MA component raises the absolute root mean squared error of every specification, but 
 not uniformly. The low-order segment of the frontier lifts most sharply, most visibly in the 
-jagged $\text{VAR}(2)$ spike at $\rho=0.95$ and $\tau=0.6$. The reason is the truncation bias of 
-Section~2.1: under an MA process a finite-order VAR is generically misspecified and carries a 
-population-level bias that does not vanish asymptotically 
-\parencite{braun1993misspecifications,ravenna2007vector}, and this bias bites hardest at the 
+jagged VAR(2) spike at $\rho=0.95$ and $\tau=0.6$. The reason is the truncation bias of 
+Section~2.1: Under an MA process a finite-order VAR is generically misspecified and carries a population-level bias that does not vanish asymptotically 
+\parencite{braun1993misspecifications,ravenna2007vector} which bites hardest at the 
 parsimonious end. Because the local projection reads each horizon off a separate regression 
 rather than compounding misspecified short-run dynamics through $\hat{A}^{h}$, its error inflates 
 far less \parencite{olea2024double}. $\text{LP}(4)$'s standing relative to the low-order VAR 
-class therefore improves, even as its own absolute error rises. The $\text{LP}(4)$ crossing 
-itself, by contrast, is close to invariant: holding $T=250$ fixed it stays near $q\approx 16$ to 
-$19$ across the full misspecification range and shifts by at most a single VAR order between 
+class therefore improves, even as its own absolute error rises. 
+The intersection point on the frontier, by contrast, is close to invariant. Holding $T=250$ fixed, it stays near $q \approx 16$ to 19 across the full misspecification range and shifts by at most a single VAR order between 
 $\tau=0$ and $\tau=0.6$, while persistence moves it more, from $q\approx 19$ at $\rho=0.5$ to 
 $q\approx 17$ at $\rho=0.95$.
 
-In any case the point-estimation ranking is untouched. The equal-lag $\text{VAR}(4)$ stays 
-strictly below the $\text{LP}(4)$ line at every persistence level and misspecification strength, 
-because at the $\tau$ considered the truncation bias is too small to offset the variance gulf 
-between them. Consistent with broader evidence, a genuine bias-variance trade-off exists under 
-approximable misspecification, but the VAR remains MSE-preferable unless bias reduction is 
-weighted very heavily \parencite{li2024local}. The robustness of local projections to dynamic 
-misspecification thus shows up only in bias, not in point-estimation accuracy.
+In any case, the baseline point-estimation ranking between the equal-lag models is untouched. The equal-lag $\text{VAR}(4)$ stays strictly below the $\text{LP}(4)$ reference line at every persistence level and misspecification strength, because at the $\tau$ values considered, the truncation bias is simply too small to offset the variance gulf between them. Consistent with broader evidence, a genuine bias--variance trade-off exists under approximable dynamic misspecification, but the low-order VAR remains MSE-preferable unless bias reduction is weighted very heavily \parencite{li2024local}. The robustness of local projections to dynamic misspecification thus shows up only in the bias dimension, not in overall point-estimation accuracy. Even within this bias dimension, the advantage is horizon-dependent: at short horizons, the $\text{LP}(4)$ is notably less biased than the parsimonious $\text{VAR}(2)$ or $\text{VAR}(4)$, settling into a small, roughly constant distortion. The low-order VARs, by contrast, suffer from higher initial truncation bias but shed it as the horizon grows. Crucially, however, this bias advantage is not exclusive to the direct projection method. Once evaluated along the full complexity frontier, higher-order VARs successfully absorb the moving-average contamination. As the lag order grows, these heavily parameterized systems shed their truncation bias entirely and their point-estimation performance converges toward that of the $\text{LP}(4)$. The $\text{LP}(4)$'s lower bias under misspecification is therefore not a unique architectural advantage, but simply the mechanical result of operating at a high effective complexity.
 
-The surviving advantage is inferential, and here too the extension mirrors the baseline. 
-$\text{LP}(4)$ holds near-nominal coverage at $\rho=0.5$ and $\rho=0.7$ and slips only mildly 
-near the unit root, while the $\text{VAR}(4)$ delta-method intervals stay miscalibrated and fall 
-to roughly $0.74$ at $\rho=0.95$. One feature is new. At $\rho=0.95$ the gap between the 
-empirical sampling dispersion and the delta-method standard error no longer closes at long 
-horizons, because the MA contamination injects dispersion that a standard error built on the 
-misspecified $\text{VAR}(4)$ cannot capture, compounding the near-unit-root breakdown of the 
-Taylor approximation \parencite{kilian1998small,kilian1999finite} with the spuriously tight 
-intervals of an underparameterized model \parencite{kilian2001impulse}. Local-projection 
-inference avoids both channels, since its heteroskedasticity-robust standard errors do not 
-assume a correctly specified propagation model \parencite{montiel2021local}. The edge is not 
-uniform, however, as the flexible $\text{VAR}(23)$ approximates the VARMA dynamics well enough 
-to match or slightly exceed $\text{LP}(4)$ coverage even at $\rho=0.95$, exactly as the 
-complexity-frontier logic predicts.
-
+While the point-estimation ranking remains unchanged, the estimators diverge in their inferential reliability. Here too, the extension directly mirrors the baseline. $\text{LP}(4)$ holds near-nominal coverage at $\rho=0.5$ and $\rho=0.7$ and slips only mildly near the unit root, while the $\text{VAR}(4)$ delta-method intervals stay miscalibrated and fall to roughly $0.74$ at $\rho=0.95$. The mechanism behind this coverage failure remains identical to the correctly specified case; the dynamic misspecification simply scales the entire phenomenon up. The moving-average contamination injects additional actual sampling variance into the finite-sample distribution, shifting the overall dispersion profile to a higher level. Because the $\text{VAR}(4)$ fundamentally relies on the same truncated model, its analytical standard error reproduces the baseline's underestimation pattern at this elevated scale, preserving the persistent gap to the true empirical uncertainty across the intermediate and long-horizon window. This repeats the near-unit-root breakdown of the Taylor approximation \parencite{kilian1998small,kilian1999finite} compounded by the spuriously tight intervals of an underparameterized model \parencite{kilian2001impulse}, just at a higher absolute variance level. Local-projection inference avoids both channels, since its heteroskedasticity-robust standard errors do not assume a correctly specified propagation model \parencite{montiel2021local}. However, framing this as an absolute inferential advantage of the local projection would be misleading. Just as with the bias reduction, this apparent edge is strictly a function of the lag restriction. A flexible, over-parameterized model like the $\text{VAR}(23)$ approximates the VARMA dynamics well enough to absorb the unmodeled residual dispersion, matching or even slightly exceeding the $\text{LP}(4)$ coverage at the highly persistent boundary. Ultimately, the purported robustness of the local projection under dynamic misspecification---both in bias and in coverage---is not an intrinsic virtue of the direct multi-step architecture, but rather the natural consequence of its high effective complexity.
 
 \FloatBarrier

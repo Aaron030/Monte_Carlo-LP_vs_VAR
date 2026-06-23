@@ -8,7 +8,7 @@ his central implication in a controlled, correctly specified setting. Rather tha
 fixed $\text{LP}(4)$ to a single equal-lag $\text{VAR}(4)$, we locate it on the full VAR-order 
 frontier from $\text{VAR}(1)$ to $\text{VAR}(p+H-1)$, rendering the implicit complexity of the 
 direct projection visible as a position on that frontier. Because the identity in Equation 
-()\ref{eq:ludwig_identity}) maps $\text{LP}(p)$ to a sequence of VARs rather than to any single 
+(\ref{eq:ludwig_identity}) maps $\text{LP}(p)$ to a sequence of VARs rather than to any single 
 higher-order VAR, no individual VAR is its perfect counterpart, so the $\text{LP}(4)$ is read 
 as a reference line against the frontier, against which its bias, variance, and coverage are 
 located. Beyond operationalizing the complexity argument, this correctly specified design 
@@ -325,7 +325,7 @@ the frontier reveals where it actually falls. The $\text{LP}(4)$ does not sit ne
 parsimonious end. It behaves like a highly parameterized system, intersecting the sweep beyond 
 $q \approx 15$.
 
-The bias-variance tradeoff is governed by persistence. Under low persistence the frontier is 
+The bias--variance tradeoff is governed by persistence. Under low persistence the frontier is 
 monotonic, so the variance penalty for over-parameterization outweighs any bias reduction once 
 the impulse response decays quickly. Near the unit-root boundary the pronounced U-shape instead 
 exposes the cost of lag truncation, where the downward bias in the autoregressive coefficients 
@@ -342,7 +342,12 @@ persistence the first-order Taylor approximation behind the delta method breaks 
 understates the dispersion of the skewed finite-sample distribution \parencite{kilian1999finite}, 
 producing steep under-coverage. The $\text{LP}(4)$, by contrast, holds near-nominal coverage 
 across all regimes, with its heteroskedasticity-robust standard errors remaining valid even as 
-the process approaches non-stationarity \parencite{montiel2021local}.
+the process approaches non-stationarity \parencite{montiel2021local}. Crucially, however, this 
+inferential fragility is largely a consequence of the strict parsimony imposed by the equal-lag 
+comparison. When evaluating the full complexity frontier, the finite-sample gap between the two 
+estimator classes systematically closes. A sufficiently over-parameterized model, such as the 
+$\text{VAR}(23)$, mimics the flexible behavior of the direct projection, matching its bias reduction 
+and nearly replicating its robust coverage levels even at high persistence.
 
 
 \FloatBarrier
