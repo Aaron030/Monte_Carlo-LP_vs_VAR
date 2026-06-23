@@ -18,7 +18,7 @@ More recently, however, \textcite{ludwig2026local} shows that the equal-order co
 
 \subsection{Introduction to VARS}
 
-Following \textcite{lutkepohl2005}, we start by defining a VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model the model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
+Following \textcite{lutkepohl2005}, we start by defining a VAR(p) population model of the form where the outcome of interest, $y_t$, is a $K \times 1$ random vector, $A_i$ are fixed $K\times K$ coefficient matrices and $u_t$ are a K dimensional white noise processes with $\mathbb{E}\left[ u_t\right] = 0$, $\mathbb{E}\left[ u_tu_t{'}\right] = \Sigma_u$, i.e. being a nonsingular covariance matrix, and $\mathbb{E}\left[ u_tu_s{'}\right] = 0$ for $t\neq s$. Instead of writing out the full lag structure model, we can rewrite the full VAR(p) in its corresponding VAR(1) companion form such that
 %
 \begin{equation}
     Y_t =\mathbf{\nu} + \mathbf{A} Y_{t-1} + U_t
@@ -122,7 +122,7 @@ The impact matrix $\hat{B}$ is the Cholesky factor of $\hat{\Sigma}_u$, and redu
     \label{eq:var_wold_recursion}
 \end{equation}
 %
-so that the structural impulse response estimator $\hat{\theta}_h^{ij} = g(\hat{\alpha}, \hat{\sigma})$, with $\alpha = \mathrm{vec}(A)$ and $\sigma = \mathrm{vech}(\Sigma_u)$, is a smooth nonlinear function of the first-stage estimates,
+so that the structural impulse response estimator $\hat{\theta}_h^{ij} = g(\hat{\alpha}, \hat{\sigma})$, with $\alpha = \mathrm{vec}(A)$ and $\sigma = \mathrm{vec}(\Sigma_u)$, is a smooth nonlinear function of the first-stage estimates,
 %
 \begin{equation}
     \hat{\theta}_h^{ij} = \bigl[\hat{\Psi}_h\,\hat{B}\bigr]_{ij}.
