@@ -112,14 +112,17 @@ line, so misspecification does not overturn the baseline point-estimation rankin
 
 What misspecification changes is LP's position on the frontier. The optimal VAR order stays low, 
 near $\text{VAR}(1)$ to $\text{VAR}(2)$ and drifting up only at the most extreme $\rho$ and 
-$\tau$, while the rising frontier crosses the $\text{LP}(4)$ line only at high orders. That 
-crossing moves steadily left as $\tau$ grows, so $\text{LP}(4)$ becomes equivalent to an 
-increasingly parsimonious VAR even as its absolute error rises. The low-order models bear the 
-cost of stronger misspecification, most visibly at $\rho=0.95$ and $\tau=0.6$, where 
-$\text{VAR}(2)$ spikes into a jagged low-order end while staying below the heavily parameterized 
-$\text{VAR}(23)$ at the far right.
-
-
+$\tau$. While the rising frontier crosses the $\text{LP}(4)$ line only at high orders, this crossing 
+moves steadily leftward as $\tau$ grows. At $\rho=0.5$, the intersection falls from $q=19$ under 
+correct specification ($\tau=0$) to approximately $q=18$ at intermediate misspecification levels, 
+settling exactly at $q=18$ for $\tau=0.6$. This leftward drift is mirrored at intermediate 
+persistence ($\rho=0.7$), where the intersection decreases from $q=18$ to roughly $q=17$. Near 
+the unit root boundary ($\rho=0.95$), the equivalence occurs at generally lower lag orders across 
+the board, shifting from approximately $q=17$ at $\tau=0$ down to $q=16$ at the strongest 
+misspecification level. Consequently, $\text{LP}(4)$ becomes equivalent to an increasingly 
+parsimonious VAR even as its absolute error rises. The low-order models bear the cost of stronger 
+misspecification, most visibly at $\rho=0.95$ and $\tau=0.6$, where $\text{VAR}(2)$ spikes into a 
+jagged low-order end while staying below the heavily parameterized $\text{VAR}(23)$ at the far right.
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -150,7 +153,7 @@ $\text{VAR}(23)$ at the far right.
 
 \begin{minipage}{0.9\textwidth}
 \small
-\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate against VAR order \(q = 1,\ldots,23\) (solid), with LP(4) as a same-colour horizontal dashed reference. The vertical dotted line marks the equal-lag VAR(4). There is one colour per MA strength, with purple \(\tau=0\) (baseline), blue \(\tau=0.1\), green \(\tau=0.3\), and yellow \(\tau=0.6\). Here \(T=250\) and \(B=5{,}000\), and panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\).
+\textit{Note.} Horizon-averaged RMSE of the structural IRF estimate against VAR order \(q = 1,\ldots,23\) (solid), with LP(4) as a same-colour horizontal dashed reference. The vertical dotted line marks the equal-lag VAR(4). Colours represent MA strength: purple $\tau = 0$ (baseline), blue $\tau = 0.1$, green $\tau = 0.3$, and yellow $\tau = 0.6$. Panels correspond to persistence \(\rho \in \{0.5,0.7,0.95\}\) with \(T=250\) and \(B=5{,}000\).
 \end{minipage}
 
 \end{figure}
@@ -277,27 +280,33 @@ close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
 \subsection{Discussion of Results}
 
 This extension asks whether dynamic misspecification gives local projections a genuine 
-finite-sample advantage. In point estimation it does not, but the misspecification repositions 
-$\text{LP}(4)$ on the complexity frontier and leaves robust inference as its one decisive edge.
+finite-sample advantage. In point estimation it does not, and on the complexity frontier the 
+picture is one of continuity rather than repositioning: $\text{LP}(4)$ remains equivalent to a 
+heavily parameterized VAR under misspecification just as under correct specification. The one 
+decisive edge is again inferential.
 
 Adding the MA component raises the absolute root mean squared error of every specification, but 
-it shifts the $\text{LP}(4)$ crossing point on the VAR frontier leftward as $\tau$ grows. The 
-reason is the truncation bias of Section~2.1. Under an MA process a finite-order VAR is 
-generically misspecified and carries a population-level bias that does not vanish asymptotically 
-\parencite{braun1993misspecifications,ravenna2007vector}. Because the local projection reads 
-each horizon off a separate regression rather than compounding misspecified short-run dynamics 
-through $\hat{A}^{h}$, this bias inflates the low-order VAR segment of the frontier far more than 
-it inflates $\text{LP}(4)$ \parencite{olea2024double}. $\text{LP}(4)$ therefore becomes 
-equivalent to an increasingly parsimonious VAR, and its efficiency relative to the low-order 
-class improves even though its absolute error rises.
+not uniformly. The low-order segment of the frontier lifts most sharply, most visibly in the 
+jagged $\text{VAR}(2)$ spike at $\rho=0.95$ and $\tau=0.6$. The reason is the truncation bias of 
+Section~2.1: under an MA process a finite-order VAR is generically misspecified and carries a 
+population-level bias that does not vanish asymptotically 
+\parencite{braun1993misspecifications,ravenna2007vector}, and this bias bites hardest at the 
+parsimonious end. Because the local projection reads each horizon off a separate regression 
+rather than compounding misspecified short-run dynamics through $\hat{A}^{h}$, its error inflates 
+far less \parencite{olea2024double}. $\text{LP}(4)$'s standing relative to the low-order VAR 
+class therefore improves, even as its own absolute error rises. The $\text{LP}(4)$ crossing 
+itself, by contrast, is close to invariant: holding $T=250$ fixed it stays near $q\approx 16$ to 
+$19$ across the full misspecification range and shifts by at most a single VAR order between 
+$\tau=0$ and $\tau=0.6$, while persistence moves it more, from $q\approx 19$ at $\rho=0.5$ to 
+$q\approx 17$ at $\rho=0.95$.
 
-The repositioning is relative only. The equal-lag $\text{VAR}(4)$ stays strictly below the 
-$\text{LP}(4)$ line at every persistence level and misspecification strength, because at the 
-$\tau$ considered the truncation bias is too small to offset the variance gulf between them. 
-Consistent with broader evidence, a genuine bias-variance trade-off exists under approximable 
-misspecification, but the VAR remains MSE-preferable unless bias reduction is weighted very 
-heavily \parencite{li2024local}. The robustness of local projections to dynamic misspecification 
-thus shows up only in bias, not in point-estimation accuracy.
+In any case the point-estimation ranking is untouched. The equal-lag $\text{VAR}(4)$ stays 
+strictly below the $\text{LP}(4)$ line at every persistence level and misspecification strength, 
+because at the $\tau$ considered the truncation bias is too small to offset the variance gulf 
+between them. Consistent with broader evidence, a genuine bias-variance trade-off exists under 
+approximable misspecification, but the VAR remains MSE-preferable unless bias reduction is 
+weighted very heavily \parencite{li2024local}. The robustness of local projections to dynamic 
+misspecification thus shows up only in bias, not in point-estimation accuracy.
 
 The surviving advantage is inferential, and here too the extension mirrors the baseline. 
 $\text{LP}(4)$ holds near-nominal coverage at $\rho=0.5$ and $\rho=0.7$ and slips only mildly 

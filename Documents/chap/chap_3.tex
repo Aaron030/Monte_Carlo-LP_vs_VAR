@@ -162,30 +162,12 @@ the structural shock under recursive identification \parencite{plagborg2021local
 
 \subsection{Simulation Results}
 
-Figure \ref{fig:BL_COMPLEXITY} traces the horizon-averaged root mean squared error against VAR
-order $q$ for the three persistence regimes and sample sizes, with $\text{LP}(4)$ as a horizontal
-reference. Two level effects set the stage. The error falls monotonically with the sample size
-and rises with persistence, so the whole frontier and its $\text{LP}(4)$ line shift down as $T$
-grows and up as $\rho$ grows. At the conventional equal-lag point $q=4$, the VAR sits below its
-$\text{LP}(4)$ line in every panel, the familiar reading that low-order VARs are the more
-efficient point estimators.
+Figure \ref{fig:BL_COMPLEXITY} traces the horizon-averaged root mean squared error against VAR order $q$ for the three persistence regimes and sample sizes, with $\text{LP}(4)$ as a horizontal reference. Two level effects set the stage. The error falls monotonically with the sample size and rises with persistence, so the whole frontier and its $\text{LP}(4)$ line shift down as $T$ grows and up as $\rho$ grows. At the conventional equal-lag point $q=4$, the VAR sits below its $\text{LP}(4)$ line in every panel, representing the familiar reading that low-order VARs are the more efficient point estimators.
 
-What the frontier adds is where $\text{LP}(4)$ sits once the equal-lag restriction is dropped.
-The optimum is a low VAR order, a shallow minimum near $q=2$, and the curve rises beyond it into a
-U-shape that sharpens with persistence, from smooth at $\rho=0.5$ to a steep drop and clear U near
-the unit-root boundary. At $T=100$ the rising frontier crosses the $\text{LP}(4)$ line only near
-$q \approx 15$ at low and intermediate persistence, and at a slightly lower order at $\rho=0.95$,
-so the fixed $\text{LP}(4)$ already carries the effective complexity of a heavily parameterized
-VAR rather than a parsimonious one.
+What the frontier adds is where $\text{LP}(4)$ sits once the equal-lag restriction is dropped. The optimal model is a low VAR order, passing a shallow minimum near $q=2$, before the curve rises into a U-shape that sharpens with persistence ranging from a smooth curve at $\rho=0.5$ to a steep drop and a pronounced U-shape near the unit-root boundary. At the smallest sample size ($T=100$), the rising frontier crosses the $\text{LP}(4)$ line at $q=15$ for $\rho=0.5$, and at $q=14$ for both $\rho=0.7$ and $\rho=0.95$. Thus, even in small samples, the fixed $\text{LP}(4)$ already carries the effective complexity of a heavily parameterized VAR rather than a parsimonious one.
 
-The sample size sharpens this picture. As $T$ grows the frontier flattens and its minimum drifts
-to higher orders, and at $T=500$ the VAR frontier and the $\text{LP}(4)$ reference line draw
-together, the gap between them narrowing markedly relative to the smaller samples. This
-convergence is the finite-sample counterpart of the population equivalence of
-\textcite{plagborg2021local}. As the sample grows the iterated VAR and the direct projection
-recover the same linear model, and the finite-sample gap that the complexity frontier exposes
-shrinks away.
-
+The sample size sharpens this picture. As $T$ grows, the frontier flattens and its minimum drifts to higher orders. At $T=250$, the equivalence point shifts rightward to $q=19$, $q=18$, and approximately $q=17$ across the three respective persistence regimes. At $T=500$, the convergence is almost complete, with intersections reaching $q=20$ for both $\rho=0.5$ and $\rho=0.7$, and $q=19$ for $\rho=0.95$. 
+%This narrowing gap is the finite-sample counterpart of the population equivalence of \textcite{plagborg2021local}. As the sample grows, the iterated VAR and the direct projection recover the same linear model, and the finite-sample complexity gap shrinks away.
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
 \centering
