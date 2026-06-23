@@ -322,9 +322,11 @@ dimensions we measure. In point estimation the $\text{VAR}(4)$ keeps the mean sq
 advantage, because both carry the same small bias and the difference is variance, and the direct
 per-horizon regressions of the local projection absorb more sampling noise than the iterated VAR.
 In inference the ranking reverses. The lagged-state nonlinearity injects conditional
-heteroskedasticity into the residuals, which the homoskedastic delta-method interval of the VAR
-cannot accommodate, so the $\text{VAR}(4)$ under-covers more strongly as $\gamma$ and persistence
-rise, while the heteroskedasticity-robust interval of the $\text{LP}(4)$ stays near nominal.
+heteroskedasticity into the residuals, which the homoskedastic delta-method intervals cannot
+accommodate, so the equal-lag $\text{VAR}(4)$ under-covers most severely as $\gamma$ and persistence
+rise. Higher-order VARs recover part of the way as their richer parameterization absorbs more of the
+dynamics, while the heteroskedasticity-robust interval of the $\text{LP}(4)$ stays near nominal
+throughout.
 
 These coverage differences are about inference, not the point estimand, so they do not contradict
 the equivalence. The two estimators still target the same impulse response, and only their
