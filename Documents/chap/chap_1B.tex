@@ -3,82 +3,49 @@
 % INTRODUCTION AARON
 
 \section{Introduction}
-
-
-To infer statements about the dynamic response to exogenous shocks, the estimation of 
-the corresponding impulse response has relied on two fundamental approaches, either 
-through vector autoregressive (VAR) or Local Projection (LP) models. Since the 
-introduction of the latter, an extensive literature has emerged discussing the relative 
-merits of the two. A first strand of literature has established that, under relatively 
-general conditions, LPs and VARs estimate the same population impulse responses 
-\parencite{plagborg2021local, fusari2026more}. However, in the discussion of finite-sample 
-behavior, LPs were often viewed as less sensitive to misspecification 
+Impulse responses to exogenous shocks are estimated through two main approaches, 
+vector autoregressive (VAR) and Local Projection (LP) models. Since the introduction of the 
+latter, an extensive literature has compared the two. One strand establishes that, under 
+relatively general conditions, LPs and VARs estimate the same population impulse responses 
+\parencite{plagborg2021local, fusari2026more}. In finite samples at equal lag lengths, 
+however, LPs were often viewed as less sensitive to misspecification 
 \parencite{jorda2005estimation, ramey2016macroeconomic}, a property that 
-\textcite{olea2024double} subsequently formalise, whereas VARs were seen as potentially 
-more statistically efficient \parencite{li2024local, olea2025local}. 
-\textcite{ludwig2026local} offers an analytical explanation of the observed finite-sample 
-bias-variance tradeoff. He shows that LPs can be represented as a sequence of VAR 
-estimations increasing in lag length as the estimated horizon increases, and thus argues 
-for a renewed thinking about how we can compare LPs and VARs, not by lag length, 
-but by effective complexity.
+\textcite{olea2024double} subsequently formalise, whereas VARs were seen as more 
+statistically efficient \parencite{li2024local, olea2025local}. \textcite{ludwig2026local} 
+explains this finite-sample bias-variance tradeoff analytically, showing that an LP can be 
+represented as a sequence of VAR estimations of increasing lag length as the horizon grows, 
+and therefore argues for comparing LPs and VARs by effective complexity rather than lag length.
 
-Our paper asks two questions. First, under correct specification, where does a fixed 
-LP estimator sit relative to the full complexity-adjusted VAR frontier, and does the 
-conventional equal-lag ranking survive once that frontier is made visible? Second, once 
+Our paper asks two questions. First, under correct specification, where does a fixed LP 
+estimator sit relative to the full complexity-adjusted VAR frontier, and does the conventional 
+equal-lag ranking survive once LP(4) is compared against the entire 
+VAR-order frontier rather than only the equal-lag VAR(4)? To answer this, we benchmark a 
+fixed LP(4) against progressively higher-order VAR specifications \parencite{de2025long} across 
+empirically relevant sample sizes \parencite[see e.g.][]{herbst2024bias}. Second, once 
 controlled functional misspecification is introduced through a nonlinear DGP, does any 
-genuine LP advantage emerge, and if so, does it manifest in point estimation, in 
-inference, or both?
+genuine LP advantage emerge, and does it manifest in point estimation, in inference, or 
+both? Since \textcite{plagborg2021local} establish that LP and VAR target the same best 
+linear approximation in population regardless of whether the DGP is linear, we augment the 
+baseline VAR(4) with a mean-zero quadratic term in lagged state variables and examine how 
+LP(4), the equal-lag VAR(4), and higher-order VARs respond as the nonlinearity strengthens.
 
-The first part of this paper operationalizes \textcite{ludwig2026local}'s central 
-implication through a complexity-adjusted benchmarking exercise in which a fixed LP(4) 
-estimator is compared to progressively higher-order VAR specifications that proxy 
-increasing effective dynamic flexibility \parencite{de2025long}. This comparison is 
-conducted across empirically relevant sample sizes \parencite[see e.g.][]{herbst2024bias} 
-to assess how the resulting bias-variance tradeoff depends on the available data.
+Our findings suggest that under correct specification the conventional point-estimation 
+advantage of equal-lag VARs over the LP persists, but it is largely an artifact of mismatched 
+model complexity. A fixed $LP(4)$ already operates like a highly parameterized system, 
+sitting high on the complexity-adjusted VAR frontier (beyond $q \approx 15$), while that 
+parametric efficiency leaves VAR inference fragile and sharply under-covering near the 
+unit-root boundary, where local projections retain near-nominal coverage. Introducing 
+functional misspecification through a nonlinear lag-quadratic DGP leaves the shared best 
+linear estimand almost unchanged, so the equal-lag VAR(4) keeps its mean squared error 
+edge over LP(4) and the finite-sample gap is driven purely by variance. The nonlinearity 
+instead surfaces as conditional heteroskedasticity in the residuals, which homoskedastic 
+VAR delta-method intervals cannot accommodate but LP's heteroskedasticity-robust intervals 
+can. Local projections therefore deliver the only valid inference, the first setting in 
+this study where their robustness yields a tangible advantage.
 
-The second part introduces controlled functional misspecification. While the baseline 
-experiment studies complexity-adjusted LP-VAR comparisons under correctly specified 
-linear dynamics, the main practical argument for LPs concerns their robustness when 
-the estimated linear model is only an approximation to the true DGP 
-\parencite{montiel2021local}. Crucially, \textcite{plagborg2021local} establish that 
-both LP and VAR estimate the same best linear approximation to the true impulse 
-response in population, regardless of whether the DGP is linear. To study whether 
-this population equivalence translates into symmetric finite-sample performance, the 
-paper augments the baseline VAR(4) with a mean-zero quadratic term in lagged state 
-variables, and examines how the relative performance of LP(4), equal-lag VAR(4), and 
-higher-order VARs changes as the degree of nonlinearity increases.
-
-For each estimator, horizon, DGP, and sample size, we compute bias, variance, mean 
-squared error, and empirical coverage rates. Bias and variance describe the 
-finite-sample tradeoff in point estimation, while coverage assesses whether the 
-corresponding inference procedures remain reliable under increasing functional 
-misspecification.
-
-Our findings suggest that under correct specification, the conventional point-estimation 
-advantage of equal-lag Vector Autoregressions (VARs) persists, but this superiority is 
-largely an artifact of mismatched model complexities. By locating a fixed $LP(4)$ estimator 
-on the complexity-adjusted VAR frontier, we reveal that it operates inherently at the level 
-of a highly parameterized system, intersecting the VAR sweep at orders higher than $q \approx 15$. 
-However, evaluating performance solely through point estimation obscures a critical divergence in 
-inference: local projections (LPs) maintain robust, near-nominal coverage across all persistence regimes, 
-whereas the parametric efficiency of VARs comes at the cost of severe inferential fragility, 
-leading to dramatic under-coverage near the unit root boundary. 
-
-When controlled functional misspecification is introduced via a nonlinear data-generating process 
-featuring a quadratic lag term, a genuine LP advantage emerges exclusively in terms of inferential 
-stability rather than point estimation. Because both estimators target the same best linear 
-approximation in population, their finite-sample divergence in point estimation is driven purely by 
-variance. Consequently, the equal-lag $VAR(4)$ continues to strictly dominate the $LP(4)$ reference 
-line in finite-sample mean squared error. However, the nonlinear term induces conditional 
-heteroskedasticity in the projection residuals. The true merit of the direct projection method under 
-functional misspecification thus lies in its robust inference. $LP(4)$ preserves near-nominal confidence 
-interval coverage using heteroskedasticity-robust standard errors, while the coverage of homoskedastic VAR 
-delta-method intervals substantially deteriorates and undercovers.
-
-The remainder of the paper is structured as follows. Section 2 provides a theoretical overview of vector 
-autoregressions and local projections. It also reviews the empirical literature regarding their bias-variance 
-trade-off at equal lag lengths and discusses their asymptotic and finite-sample equivalence. Section 3 presents 
-our baseline simulation study under correct specification. Section 4 extends this framework by introducing 
-dynamic misspecification. Section 5 concludes.
-
+The remainder of the paper is structured as follows. Section 2 reviews vector autoregressions 
+and local projections, the empirical literature on their bias-variance trade-off at equal lag 
+lengths, and their asymptotic and finite-sample equivalence. Section 3 presents the baseline 
+simulation study under correct specification, Section 4 introduces functional misspecification 
+through a nonlinear DGP, and Section 5 concludes.
 \FloatBarrier
