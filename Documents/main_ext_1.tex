@@ -34,32 +34,19 @@
 \clearpage
 \pagenumbering{arabic}
 
-\input{chap/chap_1A.tex}
-
-%\input{chap/chap_1B.tex}
-
-\input{chap/chap_2.tex}
-
-\input{chap/chap_3.tex}
-
-\input{chap/chap_4.tex}
-
-%\input{chap/chap_5.tex}
-
-\input{chap/chap_6A.tex}
-
-%\input{chap/chap_6B.tex}
+% ===== Extension 1 build: Dynamic (VARMA) misspecification =====
+% Differs from main_ext_2 only in: introduction, extension chapter, conclusion.
+\input{chap/chap_1A.tex}   % Introduction (Ext 1)
+\input{chap/chap_2.tex}    % Theoretical background (shared)
+\input{chap/chap_3.tex}    % Baseline (shared)
+\input{chap/chap_4.tex}    % Extension 1 --- Dynamic misspecification
+\input{chap/chap_6A.tex}   % Conclusion (Ext 1)
 
 
 
 \clearpage
 \printbibliography
 \addcontentsline{toc}{section}{\numberline{} References}
-
-\clearpage
-\section*{Appendix}
-\input{chap/x_appendix.tex}
-\addcontentsline{toc}{section}{\numberline{} Appendix}
 
 \clearpage
 \section*{Declaration of AI Usage}
