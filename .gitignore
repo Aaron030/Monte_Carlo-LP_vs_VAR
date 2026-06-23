@@ -65,4 +65,7 @@ main_ext_1.pdf
 main_ext_2.pdf
 *.pdf
 # Generated chapter character/word counts (latexmk success hook)
-.counts.txt
+main_ext_2.counts.txt
+main_ext_1.counts.txt
+# LaTeX auto-generated files (aux dir set in Documents/.latexmkrc)
+latex_logs/
