@@ -1,15 +1,47 @@
 % Aarons conclusion
 \section{Conclusion}
 
-In this paper, we operationalized the complexity-adjusted benchmarking framework proposed by \textcite{ludwig2026local} to re-evaluate the finite-sample performance of Vector Autoregressions and Local Projections. By moving away from conventional equal-lag comparisons, which conflate estimation mechanics with effective model complexity, our baseline simulation demonstrated that a fixed $LP(4)$ estimator operates at a complexity level equivalent to a highly parameterized $VAR(q)$ with $q \approx 15$. This shifting perspective reveals that the standard point-estimation advantage of low-order VARs under correct specification is primarily an artifact of parsimony rather than an intrinsic architectural superiority of the iterated method. 
+In this paper, we operationalized the complexity-adjusted benchmarking framework proposed by 
+\textcite{ludwig2026local} to re-evaluate the finite-sample performance of Vector 
+Autoregressions and Local Projections. By moving away from conventional equal-lag 
+comparisons, which conflate estimation mechanics with effective model complexity, our 
+baseline simulation demonstrated that a fixed $LP(4)$ estimator operates at a complexity 
+level equivalent to a highly parameterized $VAR(q)$ with $q \approx 15$. This shifting 
+perspective reveals that the standard point-estimation advantage of low-order VARs under 
+correct specification is primarily an artifact of parsimony rather than an intrinsic 
+architectural superiority of the iterated method. 
 
-Our extension into functional misspecification via a non-linear lag-quadratic data-generating process provided a rigorous finite-sample test of the population equivalence established by \textcite{plagborg2021local}. Because the centered quadratic term is approximately orthogonal to the linear lag space, the true structural impulse response functions remain nearly invariant to the strength of the nonlinearity. Asymptotically ($T = 10,000$), both $LP(4)$ and adequately lagged VAR specifications collapse onto this identical best linear approximation, confirming that population equivalence survives functional misspecification without an asymptotic bias boundary. In finite samples ($T = 250$), however, a stark division emerges between point estimation and inference. In point estimation, the $VAR(4)$ preserves its strict mean squared error dominance over $LP(4)$ because the direct, horizon-by-horizon regressions of the local projection propagate sampling noise independently, resulting in a substantially larger variance footprint. 
+Our extension into functional misspecification via a non-linear lag-quadratic data-generating 
+process provided a rigorous finite-sample test of the population equivalence established by 
+\textcite{plagborg2021local}. Because the centered quadratic term is approximately orthogonal 
+to the linear lag space, the true structural impulse response functions remain nearly 
+invariant to the strength of the nonlinearity. Asymptotically ($T = 10,000$), both $LP(4)$ 
+and adequately lagged VAR specifications collapse onto this identical best linear approximation, 
+confirming that population equivalence survives functional misspecification without an 
+asymptotic bias boundary. In finite samples ($T = 250$), however, a stark division emerges 
+between point estimation and inference. In point estimation, the $VAR(4)$ preserves its strict 
+mean squared error dominance over $LP(4)$ because the direct, horizon-by-horizon regressions of 
+the local projection propagate sampling noise independently, resulting in a substantially 
+larger variance footprint. 
 
-Conversely, the ranking reverses when evaluating inferential validity. The unmodeled quadratic state variables inject conditional heteroskedasticity into the projection residuals. Because standard VAR confidence intervals rely on the homoskedastic delta method, their analytical standard errors systematically understate the true empirical sampling dispersion, leading to severe under-coverage that exacerbates with increasing persistence and nonlinearity strength. Local projections, by leveraging heteroskedasticity-robust standard errors by default, maintain stable, near-nominal 95\% coverage across all examined horizons and persistence regimes. This crucial divergence underscores a broader econometric lesson. Estimand equivalence in population does not imply inferential equivalence in finite samples. The choice between these two approaches is thus inherently objective-dependent, balancing the parametric efficiency of the VAR point estimate against the robust interval validity of the direct projection method.
+Conversely, the ranking reverses when evaluating inferential validity. The unmodeled quadratic 
+state variables inject conditional heteroskedasticity into the projection residuals. Because 
+standard VAR confidence intervals rely on the homoskedastic delta method, their analytical 
+standard errors systematically understate the true empirical sampling dispersion, leading to 
+severe under-coverage that exacerbates with increasing persistence and nonlinearity strength. 
+Local projections, by leveraging heteroskedasticity-robust standard errors by default, maintain 
+stable, near-nominal 95\% coverage across all examined horizons and persistence regimes. This 
+crucial divergence underscores a broader econometric lesson. Estimand equivalence in population 
+does not imply inferential equivalence in finite samples. The choice between these two 
+approaches is thus inherently objective-dependent, balancing the parametric efficiency of the 
+VAR point estimate against the robust interval validity of the direct projection method.
 
-Despite the robust insights gained, our simulation study is subject to several notable methodological limitations that clear the path for future research. 
+Despite the robust insights gained, our simulation study is subject to several notable 
+methodological limitations that clear the path for future research. 
 
-First, our complexity-adjusted benchmarking design imposes strict constraints on the available sample size space. Because evaluating the full VAR frontier requires estimating highly parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the empirical median of $T = 100$ (or $T = 240$ in the non-linear extension) is computationally unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order companion matrices rank-deficient and the resulting OLS estimates numerically unstable. Consequently, we are structurally unable to explore small macro-samples, precisely the territory where the finite-sample bias-variance trade-off is most aggressive and where the localized robustness of LPs against dynamic or functional distortions might yield a tangible MSE advantage over tightly restricted VARs.
+First, our complexity-adjusted benchmarking design imposes strict constraints on the available 
+sample size space. Because evaluating the full VAR frontier requires estimating highly 
+parameterized systems up to a $VAR(23)$ specification, pushing the sample size below the empirical median of $T = 100$ (or $T = 240$ in the non-linear extension) is computationally unfeasible. Doing so would rapidly exhaust degrees of freedom, rendering the high-order companion matrices rank-deficient and the resulting OLS estimates numerically unstable. Consequently, we are structurally unable to explore small macro-samples, precisely the territory where the finite-sample bias-variance trade-off is most aggressive and where the localized robustness of LPs against dynamic or functional distortions might yield a tangible MSE advantage over tightly restricted VARs.
 
 Second, the introduction of non-linear polynomial terms in lagged state variables inherently destabilizes the simulated systems. The quadratic terms drastically elevate the risk of generating explosive or non-stationary paths during the Monte Carlo replications, particularly when the underlying linear dynamics are highly persistent. To preserve covariance stationarity and ensure a well-defined linear projection estimand, we were forced to restrict the persistence parameter space in the non-linear extension to $\rho \in \{0.5, 0.7\}$, leaving the boundary region near the unit root ($\rho = 0.95$) unexamined. This represents a meaningful omission, as the interaction between high persistence and functional misspecification is precisely where inferential fragility is expected to be most pronounced.
 

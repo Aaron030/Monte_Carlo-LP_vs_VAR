@@ -7,11 +7,11 @@ Appendix files are listed but excluded from the TOTAL.
 chapter            chars(+spaces)      words
 ------------------ -------------- ----------
 chap_1B                      5555        739
-chap_2                       8169       1186
+chap_2                      24560       3557
 chap_3                      22194       3093
 chap_5                      17513       2390
 chap_6B                      5529        714
-appendix                    16558       2396   (excluded)
+appendix                        1          0   (excluded)
 ------------------ -------------- ----------
-TOTAL (excl. app.)          58960       8122
-appendix subtotal           16558       2396   (excluded)
+TOTAL (excl. app.)          75351      10493
+appendix subtotal               1          0   (excluded)
