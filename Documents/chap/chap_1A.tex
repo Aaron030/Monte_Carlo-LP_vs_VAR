@@ -2,34 +2,11 @@
 
 % INTRODUCTION PATRICK
 \section{Introduction}
-Impulse responses to exogenous shocks are estimated through two main approaches, 
-vector autoregressive (VAR) and local projection (LP) models. Since the introduction 
-of the latter, an extensive literature has compared the two. One strand establishes 
-that, under relatively general conditions, LPs and VARs estimate the same population 
-impulse responses \parencite{plagborg2021local, fusari2026more}. In finite samples at 
-equal lag lengths, however, LPs were often viewed as less sensitive to misspecification 
-\parencite{jorda2005estimation, ramey2016macroeconomic}, a property that 
-\textcite{olea2024double} subsequently formalise, whereas VARs were seen as more 
-statistically efficient \parencite{li2024local, olea2025local}. \textcite{ludwig2026local} 
-explains this finite-sample bias-variance tradeoff analytically, showing that an LP can be 
-represented as a sequence of VAR estimations of increasing lag length as the horizon grows, 
-and therefore argues for comparing LPs and VARs by effective complexity rather than equal lag length.
+Impulse responses are primarily estimated via vector autoregressive (VAR) or local projection (LP) models. While LPs and VARs estimate the same population impulse responses under general conditions \parencite{plagborg2021local, fusari2026more}, their finite-sample behavior differs. At equal lag lengths, LPs are viewed as less sensitive to misspecification \parencite{jorda2005estimation, ramey2016macroeconomic}---a property formalised by \textcite{olea2024double}---whereas VARs appear more statistically efficient \parencite{li2024local, olea2025local}. \textcite{ludwig2026local} analytically explains this bias-variance tradeoff: an LP mathematically represents a sequence of VARs of increasing lag length. He thus argues for comparing estimators by effective complexity rather than equal lag length.
 
-Our paper asks two questions. First, under correct specification, where does a fixed LP 
-estimator sit relative to the full complexity-adjusted VAR frontier, and does the conventional 
-equal-lag ranking survive once LP(4) is compared against the entire 
-VAR-order frontier rather than only the equal-lag VAR(4)? To answer this, we use Monte Carlo 
-simulation to benchmark a fixed LP(4) against progressively higher-order VAR specifications 
-\parencite{de2025long} across empirically relevant sample sizes \parencite[see e.g.][]{herbst2024bias}. 
-Second, once controlled dynamic misspecification is introduced, does any genuine LP advantage 
-emerge, and does it manifest in point estimation, in inference, or both? Here we augment 
-the baseline VAR(4) with a moving-average component, yielding a VARMA(4,1) DGP, and track 
-how LP(4), the equal-lag VAR(4), and higher-order VARs respond as the degree of 
-misspecification increases. This is the setting in which local projections are conventionally 
-expected to dominate, as the conjectured robustness of the direct projection should bind 
-precisely where the iterated VAR is misspecified \parencite{jorda2005estimation, li2024local,olea2024double}.
+Our paper asks two questions. First, where does a fixed $\text{LP}(4)$ sit relative to the complexity-adjusted VAR frontier under correct specification, and does the conventional equal-lag ranking survive? We benchmark a fixed $\text{LP}(4)$ against progressively higher-order VAR specifications \parencite{de2025long} across empirically relevant sample sizes \parencite[see e.g.][]{herbst2024bias}. Second, once controlled dynamic misspecification is introduced, does any genuine LP advantage emerge in point estimation, inference, or both? By augmenting the baseline with a moving-average component to yield a $\text{VARMA}(4,1)$ DGP, we track how $\text{LP}(4)$ and the VAR sweep respond. This is the setting where LPs are conventionally expected to dominate, as their conjectured robustness should bind precisely where finite-order VARs are misspecified \parencite{jorda2005estimation, li2024local,olea2024double}.
 
-Our baseline findings follow the established notion that under correct specification the conventional point-estimation advantage of equal-lag VARs over LPs persists, but it is largely an artifact of mismatched model complexity. A fixed LP(4) already operates like a highly parameterized system, sitting high on the complexity-adjusted VAR frontier (beyond $q \approx 15$). This low-order efficiency comes at a cost in inference, as VAR(4) coverage deteriorates sharply near the unit-root boundary while local projections hold near-nominal coverage across persistence regimes. Introducing dynamic misspecification through a VARMA(4,1)process does not overturn the point-estimation ranking, since the equal-lag VAR(4) still strictly dominates LP(4) on root mean squared error. It instead sharpens the divergence in inference between the equal-lag models, where local projections retain their decisive advantage. However, this disparity is strictly a function of the lag restriction. Once the local projection is evaluated against appropriately higher-order VARs on the complexity frontier, the finite-sample gap systematically closes. A sufficiently flexible VAR successfully absorbs the unmodeled moving-average dynamics, catching up to the LP(4) in terms of bias reduction and matching its robust coverage levels, even near the non-stationary boundary.
+Under correct specification, the point-estimation advantage of equal-lag VARs persists, but largely as an artifact of mismatched model complexity. A fixed $\text{LP}(4)$ operates like a highly parameterized system, sitting high on the VAR frontier (beyond $q \approx 15$). This low-order efficiency comes at a cost in inference, as $\text{VAR}(4)$ coverage deteriorates sharply near the unit root while LPs hold near-nominal coverage. Introducing dynamic misspecification does not overturn the point-estimation ranking; the equal-lag $\text{VAR}(4)$ still strictly dominates $\text{LP}(4)$ in root mean squared error. It instead sharpens the inferential divergence, where LPs retain their advantage. However, this disparity stems strictly from the lag restriction. When evaluated against appropriately higher-order VARs on the complexity frontier, the finite-sample gap systematically closes. A sufficiently flexible VAR successfully absorbs the unmodeled moving-average dynamics, catching up to the $\text{LP}(4)$ in bias reduction and matching its robust coverage levels, even near the non-stationary boundary.
 
 The remainder of the paper is structured as follows. Section 2 reviews vector autoregressions 
 and local projections, the empirical literature on their bias-variance trade-off at equal 

@@ -1,34 +1,9 @@
 % Patricks conclusion
 \section{Conclusion}
 
-This paper applied the complexity-adjusted benchmark of \textcite{ludwig2026local} to the finite-sample 
-comparison of Vector Autoregressions and Local Projections. Under correct specification, the equal-lag 
-$\text{VAR}(4)$ strictly dominates the $\text{LP}(4)$ in overall point-estimation accuracy. However, 
-replacing the conventional equal-lag contest with one that holds effective complexity constant reveals 
-that a fixed $\text{LP}(4)$ already behaves like a highly parameterized VAR ($q \approx 15$). The 
-familiar point-estimation edge of low-order VARs is thus largely an artifact of parsimony rather than 
-an intrinsic advantage of the iterated method. Dynamic misspecification, introduced through a 
-$\text{VARMA}(4,1)$ process, sharpens this reading without overturning the root mean squared error 
-ranking. The equal-lag $\text{VAR}(4)$ keeps its point-estimation dominance because the induced 
-truncation bias stays too small to offset the heavy variance cost of the direct regressions.
+This paper applied the complexity-adjusted benchmark of \textcite{ludwig2026local} to the finite-sample comparison of Vector Autoregressions and Local Projections. Under correct specification, the equal-lag VAR(4) strictly dominates the LP(4) in overall point-estimation accuracy. However, replacing the conventional equal-lag contest with one that holds effective complexity constant reveals that a fixed LP(4) already behaves like a highly parameterized VAR ($q \approx 15$). The familiar point-estimation edge of low-order VARs is thus largely an artifact of parsimony rather than an intrinsic advantage of the iterated method. Dynamic misspecification, introduced through a VARMA(4,1) process, sharpens this reading without overturning the root mean squared error ranking. The equal-lag VAR(4) keeps its point-estimation dominance because the induced truncation bias stays too small to offset the heavy variance cost of the direct regressions.
 
-The textbook robustness of local projections does emerge, but strictly in the bias dimension and in 
-inferential validity. While the $\text{VAR}(4)$ delta-method intervals under-cover badly near the 
-unit-root boundary, the heteroskedasticity-robust intervals of the local projection stay near 
-nominal across the persistence spectrum. Crucially, however, neither this bias reduction nor the 
-robust coverage are exclusive virtues of the direct projection architecture. When evaluated along 
-the full complexity frontier, higher-order VARs successfully absorb the unmodeled moving-average 
-dynamics. A sufficiently flexible system, such as the $\text{VAR}(23)$, completely sheds its 
-truncation bias and catches up to the $\text{LP}(4)$, matching or even slightly exceeding its 
-robust coverage levels. However, this flexibility comes at a steep dimensional cost. Because an 
-unrestricted VAR must estimate parameters for every variable across all $q$ lags, its parameter 
-space expands rapidly, quickly exhausting available degrees of freedom. A low-order local projection, 
-by contrast, restricts its regressors to $p$ lags while mathematically embedding higher-order dynamics 
-into the horizon-specific projections. This allows the local projection to remain estimable in small 
-samples where its equivalent high-order VAR becomes numerically degenerate. Estimand equivalence in 
-population therefore only translates to finite-sample equivalence if the sample size can accommodate 
-the required VAR complexity. The local projection's edge is thus relative, but its parsimonious parameter 
-footprint grants it a genuine practical advantage when data is scarce.
+The textbook robustness of local projections does emerge, but strictly in the bias dimension and in inferential validity. While the VAR(4) delta-method intervals under-cover badly near the unit-root boundary, the heteroskedasticity-robust intervals of the local projection stay near nominal across the persistence spectrum. Crucially, however, neither this bias reduction nor the robust coverage are exclusive virtues of the direct projection architecture. When evaluated along the full complexity frontier, higher-order VARs successfully absorb the unmodeled moving-average dynamics. A sufficiently flexible system, such as the VAR(23), completely sheds its truncation bias and catches up to the LP(4), matching or even slightly exceeding its robust coverage levels. However, this flexibility comes at a steep dimensional cost. Because an unrestricted VAR must estimate parameters for every variable across all $q$ lags, its parameter space expands rapidly, quickly exhausting available degrees of freedom. A low-order local projection, by contrast, restricts its regressors to $p$ lags while mathematically embedding higher-order dynamics into the horizon-specific projections. This allows the local projection to remain estimable in small samples where its equivalent high-order VAR becomes numerically degenerate. Estimand equivalence in population therefore only translates to finite-sample equivalence if the sample size can accommodate the required VAR complexity. The local projection's edge is thus relative, but its parsimonious parameter footprint grants it a genuine practical advantage when data is scarce.
 
 Three limitations bound these conclusions. First, the full VAR sweep up to VAR(23) makes sample
 sizes below the applied median of $T = 100$ infeasible, leaving the small-sample region, where the

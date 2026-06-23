@@ -64,7 +64,7 @@ U_t := \underset{Kp\times 1}{\begin{bmatrix} u_t \\ 0 \\ \vdots \\ 0 \end{bmatri
 If $Y_t$ satisfies the stability condition, so that all roots $z$ of the characteristic
 equation lie strictly outside the unit circle, the process is covariance stationary and admits
 a Wold moving-average (MA) representation
-%
+
 \begin{equation}
 \det(I_{Kp} - \mathbf{A}z) \neq 0 \text{ for } |z| \le 1 \iff Y_t = \mathbf{\mu} +
 \sum_{\ell=0}^{\infty}\mathbf{A}^{l}U_{t-\ell}, \qquad \text{where }\mathbf{\mu} := \mathbb{E}(Y_t)
@@ -130,7 +130,7 @@ Because the structural shocks are mutually and serially uncorrelated, with
 $\varepsilon_t \sim (0, I_K)$, projecting $y_{t+h}$ on the date-$t$ shock $\varepsilon_t$ keeps
 only the $\ell = h$ term, since all leads and lags are orthogonal to $\varepsilon_t$. The
 response of variable $i$ to a unit innovation in shock $j$ at horizon $h$ is therefore
-%
+
 \begin{equation}
 \theta_h^{ij}
 = \frac{\partial\, \mathbb{E}\!\left[y_{i,t+h} \mid \varepsilon_{j,t}\right]}
@@ -328,7 +328,7 @@ With the simplified local projection of Equation \eqref{eq:lp_shock}, the $h$-st
 and recursive substitution of the AR(1) law of motion into \eqref{eq:lp_ar1}, writing
 $\beta(\rho, h)$ for the LP IRF estimator of $\rho^h$ and $\xi(\rho, h)$ for the corresponding
 residual, yields
-%
+
 \begin{equation}
     y_{t+h} = \beta(\rho, h) y_t + \xi(\rho, h) , \qquad \xi(\rho, h) = \sum_{j=1}^{h} \rho^{h-j}\, u_{t+j}.
     \label{eq:ar1_recursive}

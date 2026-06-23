@@ -13,11 +13,7 @@ theoretically binds.
 
 \subsection{Simulation Design}
 
-The structural estimand, the 
-recursive Cholesky identification, and all performance measures, including the 
-$B = 5{,}000$ replication count, are inherited unchanged from the baseline, while the baseline 
-$\text{VAR}(4)$ is augmented by a first-order moving-average component to yield a 
-$\text{VARMA}(4,1)$ DGP of the following form,
+The structural estimand, the recursive Cholesky identification, and all performance measures, including the $B = 5{,}000$ replication count, are inherited unchanged from the baseline, while the baseline $\text{VAR}(4)$ is augmented by a first-order moving-average component to yield a $\text{VARMA}(4,1)$ DGP of the following form,
 
 
 \begin{equation}
@@ -31,39 +27,6 @@ innovation $u_{t-1}$, with misspecification strength $\tau \in \{0.1, 0.3, 0.6\}
 recovering the baseline $\text{VAR}(4)$. The autoregressive matrices $A_1, \ldots, A_4$ and the 
 impact matrix $B$ are inherited from the baseline, so all variation across scenarios comes from 
 the MA component.
-
-The $\text{VARMA}(4,1)$ is invertible for all $\tau \in \{0.1, 0.3, 0.6\}$, since the roots of 
-$\det(I_2 + \Theta z)$ lie outside the unit circle, so the process admits an infinite-order VAR 
-representation. The misspecification is therefore approximable. A higher-order $\text{VAR}(q)$ 
-recovers the true dynamics as $q \to \infty$, whereas the equal-lag $\text{VAR}(4)$ carries a 
-truncation bias that does not vanish, and the $\text{LP}(4)$ stays consistent by virtue of its 
-zero asymptotic bias \parencite{olea2025local}.
-
-Persistence is again varied across $\rho \in \{0.5, 0.7, 0.95\}$ via the spectral radius of the 
-companion matrix, which matters here as the MA distortion to the finite-sample VAR 
-approximation grows with persistence. At high $\rho$ shocks decay slowly, so the MA term stays 
-influential at longer horizons and amplifies the approximation bias. To isolate this MA channel 
-from the finite-sample effects already documented in the baseline, the sample size is fixed at 
-$T = 250$ after a 200-period burn-in, and $\tau$ is varied jointly with persistence in a two-way 
-design.
-
-The structural estimand keeps the baseline form $\theta_h = \Psi_h B e_1$ but is now built from 
-the true VARMA Wold matrices $\Psi_h^{\mathrm{VARMA}}$, which solve $A(L)\Psi(L) = I_2 + \Theta L$ 
-and are computed analytically before each run via
-\begin{equation}
-    \Psi_0 = I_2, \qquad 
-    \Psi_h = \sum_{i=1}^{\min(h,4)} A_i \Psi_{h-i} + \Theta_h, 
-    \qquad \Theta_h = \begin{cases} \Theta & h = 1 \\ \mathbf{0} & h > 1 \end{cases}
-\end{equation}
-so that the additive MA term $\Theta_h$ enters only at horizon $h = 1$. Both estimators are 
-applied without modification to the VARMA data, so the misspecification is absorbed into their 
-finite-sample performance rather than accommodated by the estimation. The complexity frontier 
-aggregates root mean squared error across the full grid of $\tau$, while the horizon-by-horizon 
-bias, variance, and mean squared error decomposition is reported only at the strongest 
-misspecification $\tau = 0.6$, which isolates the approximation error at its most pronounced and 
-serves as a stress test of the estimator ranking.
-
-
 % ----------------------------------- True IRF
 \begin{figure}[htbp]
 \centering
@@ -98,6 +61,32 @@ serves as a stress test of the estimator ranking.
 \end{minipage}
 \end{figure}
 
+The $\text{VARMA}(4,1)$ is invertible for all $\tau \in \{0.1, 0.3, 0.6\}$, since the roots of 
+$\det(I_2 + \Theta z)$ lie outside the unit circle, so the process admits an infinite-order VAR 
+representation. The misspecification is therefore approximable. A higher-order $\text{VAR}(q)$ 
+recovers the true dynamics as $q \to \infty$, whereas the equal-lag $\text{VAR}(4)$ carries a 
+truncation bias that does not vanish, and the $\text{LP}(4)$ stays consistent by virtue of its 
+zero asymptotic bias \parencite{olea2025local}.
+
+Persistence is again varied across $\rho \in \{0.5, 0.7, 0.95\}$ via the spectral radius of the 
+companion matrix, which matters here as the MA distortion to the finite-sample VAR 
+approximation grows with persistence. At high $\rho$ shocks decay slowly, so the MA term stays 
+influential at longer horizons and amplifies the approximation bias. To isolate this MA channel 
+from the finite-sample effects already documented in the baseline, the sample size is fixed at 
+$T = 250$ after a 200-period burn-in, and $\tau$ is varied jointly with persistence in a two-way 
+design.
+
+
+The structural estimand keeps the baseline form $\theta_h = \Psi_h B e_1$ but is now built from 
+the true VARMA Wold matrices $\Psi_h^{\mathrm{VARMA}}$, which solve $A(L)\Psi(L) = I_2 + \Theta L$ 
+and are computed analytically before each run via
+\begin{equation}
+    \Psi_0 = I_2, \qquad 
+    \Psi_h = \sum_{i=1}^{\min(h,4)} A_i \Psi_{h-i} + \Theta_h, 
+    \qquad \Theta_h = \begin{cases} \Theta & h = 1 \\ \mathbf{0} & h > 1 \end{cases}
+\end{equation}
+so that the additive MA term $\Theta_h$ enters only at horizon $h = 1$. Both estimators are applied without modification to the VARMA data, so the misspecification is absorbed into their finite-sample performance rather than accommodated by the estimation. The complexity frontier aggregates root mean squared error across the full grid of $\tau$, while the horizon-by-horizon  bias, variance, and mean squared error decomposition is reported only at the strongest misspecification $\tau = 0.6$, which isolates the approximation error at its most pronounced and serves as a stress test of the estimator ranking.
+
 \FloatBarrier
 
 \subsection{Simulation Results}
@@ -123,6 +112,12 @@ misspecification level. Consequently, $\text{LP}(4)$ becomes equivalent to an in
 parsimonious VAR even as its absolute error rises. The low-order models bear the cost of stronger 
 misspecification, most visibly at $\rho=0.95$ and $\tau=0.6$, where $\text{VAR}(2)$ spikes into a 
 jagged low-order end while staying below the heavily parameterized $\text{VAR}(23)$ at the far right.
+
+Figure \ref{fig:DYN_MISSPEC_POINT_ESTIMATION} reports bias, variance, MSE, and RMSE at the 
+strongest misspecification $\tau=0.6$ and $T=250$, horizon by horizon across the three 
+persistence regimes, with $\text{LP}(4)$ against a representative VAR set. The picture is 
+qualitatively the baseline's, scaled up by the misspecification, and as persistence rises the 
+levels grow and the horizon at which the estimators diverge moves later.
 
 % ----------------------------------- Complexity Frontier
 \begin{figure}[htbp]
@@ -157,12 +152,6 @@ jagged low-order end while staying below the heavily parameterized $\text{VAR}(2
 \end{minipage}
 
 \end{figure}
-
-Figure \ref{fig:DYN_MISSPEC_POINT_ESTIMATION} reports bias, variance, MSE, and RMSE at the 
-strongest misspecification $\tau=0.6$ and $T=250$, horizon by horizon across the three 
-persistence regimes, with $\text{LP}(4)$ against a representative VAR set. The picture is 
-qualitatively the baseline's, scaled up by the misspecification, and as persistence rises the 
-levels grow and the horizon at which the estimators diverge moves later.
 
 Both bias and variance are ordered by lag length. In bias, $\text{LP}(4)$ settles to a small, 
 roughly constant negative value, the under-parameterized $\text{VAR}(2)$ is the most biased but 
@@ -214,31 +203,6 @@ takes the same arched profile as the baseline, scaled up.
 
 \end{figure}
 
-\newpage
-
-Figure \ref{fig:DYN_MISSPEC_COVERAGE} reports the empirical coverage of nominal 95 percent 
-confidence intervals over $h = 1$ to $20$ at the strongest misspecification $\tau = 0.6$ and 
-$T = 250$, for the equal-lag $\text{VAR}(4)$, the high-order $\text{VAR}(23)$, and the 
-$\text{LP}(4)$, alongside the $\text{VAR}(4)$ delta-method standard error against its empirical 
-sampling standard deviation. The baseline coverage ranking survives the misspecification. The 
-$\text{LP}(4)$ stays near nominal except for a mild slip near the unit root, while the 
-$\text{VAR}(4)$ delta-method intervals remain miscalibrated and strongly persistence-sensitive.
-
-Persistence, not the misspecification, drives the differences. The $\text{LP}(4)$ is the most 
-stable throughout, holding around $0.95$ at low and intermediate persistence and slipping only 
-to about $0.88$ at $\rho = 0.95$. The $\text{VAR}(4)$ instead swings with persistence, 
-over-covering at $\rho = 0.5$ as it climbs to full coverage and under-covering severely at 
-$\rho = 0.95$, where it falls monotonically to roughly $0.74$. The high-order $\text{VAR}(23)$ 
-sits between the two, drifting above nominal at low persistence and tracking the $\text{LP}(4)$ 
-near $0.90$ at the boundary.
-
-The right column locates the cause. At $\rho = 0.5$ and $\rho = 0.7$ the $\text{VAR}(4)$ 
-delta-method standard error and the empirical sampling standard deviation are nearly 
-indistinguishable, so the miscalibration there reflects a structural feature of the response 
-rather than a broken standard error. At $\rho = 0.95$ a persistent gap opens, with the empirical 
-dispersion sitting above the analytical standard error, and unlike the baseline it does not 
-close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
-
 
 % ----------------------------------- Coverage
 \begin{figure}[htbp]
@@ -274,7 +238,28 @@ close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
 
 \end{figure}
 
+Figure \ref{fig:DYN_MISSPEC_COVERAGE} reports the empirical coverage of nominal 95 percent 
+confidence intervals over $h = 1$ to $20$ at the strongest misspecification $\tau = 0.6$ and 
+$T = 250$, for the equal-lag $\text{VAR}(4)$, the high-order $\text{VAR}(23)$, and the 
+$\text{LP}(4)$, alongside the $\text{VAR}(4)$ delta-method standard error against its empirical 
+sampling standard deviation. The baseline coverage ranking survives the misspecification. The 
+$\text{LP}(4)$ stays near nominal except for a mild slip near the unit root, while the 
+$\text{VAR}(4)$ delta-method intervals remain miscalibrated and strongly persistence-sensitive.
 
+Persistence, not the misspecification, drives the differences. The $\text{LP}(4)$ is the most 
+stable throughout, holding around $0.95$ at low and intermediate persistence and slipping only 
+to about $0.88$ at $\rho = 0.95$. The $\text{VAR}(4)$ instead swings with persistence, 
+over-covering at $\rho = 0.5$ as it climbs to full coverage and under-covering severely at 
+$\rho = 0.95$, where it falls monotonically to roughly $0.74$. The high-order $\text{VAR}(23)$ 
+sits between the two, drifting above nominal at low persistence and tracking the $\text{LP}(4)$ 
+near $0.90$ at the boundary.
+
+The right column locates the cause. At $\rho = 0.5$ and $\rho = 0.7$ the $\text{VAR}(4)$ 
+delta-method standard error and the empirical sampling standard deviation are nearly 
+indistinguishable, so the miscalibration there reflects a structural feature of the response 
+rather than a broken standard error. At $\rho = 0.95$ a persistent gap opens, with the empirical 
+dispersion sitting above the analytical standard error, and unlike the baseline it does not 
+close at long horizons, mirroring the sustained $\text{VAR}(4)$ under-coverage.
 
 \FloatBarrier
 \subsection{Discussion of Results}
