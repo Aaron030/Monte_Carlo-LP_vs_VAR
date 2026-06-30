@@ -1,0 +1,245 @@
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+
+\input{settings/settings.tex}
+
+
+
+% Definiere eine eigene Umgebung für Beispiele ohne Titel
+\newtcolorbox{myexample}{
+    colback=green!10,   % Hintergrundfarbe (leichtes Grün)
+    colframe=white,     % Kein sichtbarer Rahmen
+    sharp corners,      % Keine abgerundeten Ecken
+    boxrule=0pt         % Keine Rahmenlinie
+}
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Local Projections or VARs: \\ Evidence from Monte-Carlo Simulations}
+\subtitle{Aaron Liebig \& Patrick Tenner}
+
+\author{Superv.: Prof. Dr. Derya Uysal}
+
+\institute
+{
+    SPS Seminar \\
+    Summer Semester 26
+}
+\date{\today} % Date, can be changed to a custom date
+
+%----------------------------------------------------------------------------------------
+%    PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    % Print the title page as the first slide
+    \titlepage
+\end{frame}
+
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item VARs and Local Projection used for Impulse Response Analysis, think Unemployment and Interest Rate, Oil Prices and Inflation, ...
+        \item finite sample comparison (VAR(p) vs. LP(p))
+        \begin{enumerate}
+            \item In finite samples, bias-variance puzzle 
+            \item VARs more efficient, LPs more robust to misspecification 
+        \end{enumerate}
+        \item In Population both estimate the same Impulse Response
+        \item Ludwig identity shows that equal lag comparison is inherently flawed 
+    \end{itemize}
+
+\begin{myexample}
+    \textbf{(BL:)} Where does a fixed LP(4) sit on the VAR complexity frontier and does the conventional equal-lag ranking sruvive? \\
+    \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
+\end{myexample}
+
+\end{frame}
+
+
+%-----------------------------------------------------------------------------------
+\begin{frame}{Agenda}
+    \tableofcontents
+\end{frame}
+
+
+%-----------------------------------------------------------------------------------
+
+\section{Theory}
+
+\begin{frame}{VARs}
+
+\begin{equation}
+    Y_t =\mathbf{\nu} + \mathbf{A} Y_{t-1} + U_t \xRightarrow[restr. K]{A1}  y_t = \mu + \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell},
+\qquad \Psi_\ell := [\mathbf{A}^\ell]
+\end{equation}
+
+\textbf{Identification:} As $\sum_u = \mathbb{E}[u_tu_t'] \neq I_K$, Define $u_t=B\varepsilon_t$ where $\varepsilon_t \sim (0, I_k)$
+
+
+\begin{equation}
+    y_{t+h} = \mu + \sum_{\ell=0}^{\infty} \Theta_\ell\, \varepsilon_{t+h-\ell} \qquad 
+    \label{eq:sma_forward}
+\end{equation}
+
+% Which 
+% \begin{itemize}
+%     \item are asymptotically normal and efficient (under homoskedasticity)
+% \end{itemize}
+Suffer from
+\begin{itemize}
+    \item LS bias compunds as horizon grows Kilian 1998 
+    \item near-unit root behavior 
+    \item misspecification through MA dynamics or lag order
+\end{itemize}
+\end{frame}
+
+\begin{frame}{LPs}
+
+    \begin{equation}
+    y_{t+h} = \alpha_h + \beta_h\, s_t
+            + \boldsymbol{\gamma}_h'\, \mathbf{x}_t
+            + \xi_{t+h}^{(h)},
+    \qquad h = 0, 1, \ldots, H,
+    \label{eq:lp_shock}
+\end{equation}
+    
+\end{frame}
+
+\begin{frame}{Equivalence and Ludwig identity}
+
+
+\end{frame}
+
+\section{DGP}
+
+\begin{frame}{DGPs}
+        
+\end{frame}
+
+\section{Results}
+
+\begin{frame}{Baseline Results - Complexity Frontier}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
+    \vspace*{-0.2cm}
+    \caption{}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Complexity Frontier - varying $\rho$}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
+            \caption{Kausaleffekte von Mentoring auf Sek. I Zuordnung}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
+            \caption{Vergleich Treatment mit Kontrollgruppen}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{RMSE and Coverage}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
+            \caption{Kausaleffekte von Mentoring auf Sek. I Zuordnung}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
+            \caption{Vergleich Treatment mit Kontrollgruppen}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Introducing Misspecification (1)}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
+    \vspace*{-0.2cm}
+    \caption{}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introducing Misspecification (2)}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
+    \vspace*{-0.2cm}
+    \caption{}
+\end{figure}
+\end{frame}
+
+
+
+%------------------------------------------------
+\section{Discussion of Results}
+\begin{frame}{Discussion of Results}
+
+    Ludwig identity observable in the data. 
+    
+\end{frame}
+
+%------------------------------------------------
+
+\section{Conclusion}
+
+
+\begin{frame}{Conclusion}
+    \begin{enumerate}
+        \item 
+        \item 
+        \item 
+    \end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}
+
+Vielen Dank für Ihre Aufmerksamkeit!
+
+\end{frame}
+
+% \begin{frame}[allowframebreaks]{Literaturverzeichnis}
+
+%   \bibliography{references.bib}
+%   \bibliographystyle{abbrv}
+
+% \end{frame}
+
+
+% \begin{frame}{Appendix}
+% \appendix
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.35\linewidth]{}
+%     \caption{}
+% \end{figure}
+% \end{frame}
+
+%------------------------------------------------
+
+\end{document}
