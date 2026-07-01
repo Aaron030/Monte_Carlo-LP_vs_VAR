@@ -10,8 +10,16 @@
 
 
 % Definiere eine eigene Umgebung für Beispiele ohne Titel
-\newtcolorbox{myexample}{
+\newtcolorbox{myexample_gr}{
     colback=green!10,   % Hintergrundfarbe (leichtes Grün)
+    colframe=white,     % Kein sichtbarer Rahmen
+    sharp corners,      % Keine abgerundeten Ecken
+    boxrule=0pt         % Keine Rahmenlinie
+}
+
+% Definiere eine eigene Umgebung für Beispiele ohne Titel
+\newtcolorbox{myexample_or}{
+    colback=orange!10,   % Hintergrundfarbe (leichtes Orange)
     colframe=white,     % Kein sichtbarer Rahmen
     sharp corners,      % Keine abgerundeten Ecken
     boxrule=0pt         % Keine Rahmenlinie
@@ -46,23 +54,28 @@
 
 \begin{frame}{Motivation}
     \begin{itemize}
-        \item VARs and Local Projection used for Impulse Response Analysis, think Unemployment and Interest Rate, Oil Prices and Inflation, ...
-        \item finite sample comparison (VAR(p) vs. LP(p))
+        \item<1-> VARs and Local Projection used for Impulse Response Analysis, think Unemployment and Interest Rate, Oil Prices and Inflation, ...
+        \item<2-> finite sample comparison (VAR(p) vs. LP(p))
         \begin{enumerate}
-            \item In finite samples, bias-variance puzzle 
-            \item VARs more efficient, LPs more robust to misspecification 
+            \item<2-> In finite samples, bias-variance puzzle 
+            \item<2-> VARs more efficient, LPs more robust to misspecification 
         \end{enumerate}
-        \item In Population both estimate the same Impulse Response
-        \item Ludwig identity shows that equal lag comparison is inherently flawed 
+        \item<3-> In Population both estimate the same Impulse Response
+        \item<4-> Ludwig identity shows that equal lag comparison is inherently flawed 
     \end{itemize}
 
-\begin{myexample}
-    \textbf{(BL:)} Where does a fixed LP(4) sit on the VAR complexity frontier and does the conventional equal-lag ranking sruvive? \\
-    \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
-\end{myexample}
+    % \begin{myexample_gr}<5->
+    %     \textbf{(BL:)} Where does a fixed LP(4) sit on the VAR complexity frontier and does the conventional equal-lag ranking sruvive?\\
+    %     \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
+    % \end{myexample_gr}
 
+    \uncover<5->{                          % ← Box einwickeln
+        \begin{myexample_gr}
+            \textbf{(BL:)} Where does a fixed LP(4) sit on the VAR complexity frontier and does the conventional equal-lag ranking sruvive?\\
+            \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
+        \end{myexample_gr}
+    }
 \end{frame}
-
 
 %-----------------------------------------------------------------------------------
 \begin{frame}{Agenda}
