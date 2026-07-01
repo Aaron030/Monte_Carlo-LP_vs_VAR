@@ -117,6 +117,7 @@ Suffer from
 
 
 \end{frame}
+%-----------------------------------------------------------------------------------
 
 \section{Study Design}
 
@@ -127,6 +128,7 @@ Suffer from
 \begin{frame}{Method}
         
 \end{frame}
+%-----------------------------------------------------------------------------------
 
 \section{Results}
 
@@ -174,51 +176,163 @@ Suffer from
         \end{minipage}
     \end{figure}
 \end{frame}
+%-----------------------------------------------------------------------------------
 
 \begin{frame}{Bias}
     \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{BASE_BIAS_VAR_0.5.png}
-        \caption{Bias Variance $\rho = 0.5$}
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_BIAS_0.5.png}
+            \caption{Bias at $\rho = 0.5$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_BIAS_0.95.png}
+            \caption{Bias at $\rho = 0.95$}
+        \end{minipage}
     \end{figure}
 \end{frame}
+
+\begin{frame}[noframenumbering]{Bias}
+    \addtocounter{figure}{-2} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_BIAS_0.5.png}
+            \caption{Bias at $\rho = 0.5$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_BIAS_0.95.png}
+            \caption{Bias at $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------------
 
 \begin{frame}{Variance}
     \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{BASE_BIAS_VAR_0.5.png}
-        \caption{Bias Variance $\rho = 0.5$}
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_VAR_0.5.png}
+            \caption{Variance at $\rho = 0.5$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_VAR_0.95.png}
+            \caption{Variance at $\rho = 0.95$}
+        \end{minipage}
     \end{figure}
 \end{frame}
+
+\begin{frame}[noframenumbering]{Variance}
+    \addtocounter{figure}{-2} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_VAR_0.5.png}
+            \caption{Variance at $\rho = 0.5$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_VAR_0.95.png}
+            \caption{Variance at $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------------
 
 \begin{frame}{Coverage}
     \begin{figure}
         \centering
         \begin{minipage}{0.59\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
-            \caption{Kausaleffekte von Mentoring auf Sek. I Zuordnung}
+            \includegraphics[width=\textwidth]{BASE_CI_0.5.png}
+            \caption{Coverage at $\rho = 0.5$}
         \end{minipage}
         \hfill
         \begin{minipage}{0.39\textwidth}
             \centering
-            \includegraphics[width=0.8\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
-            \caption{Vergleich Treatment mit Kontrollgruppen}
+            \includegraphics[width=\textwidth]{BASE_CI_0.95.png}
+            \caption{Coverage at $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Coverage}
+    \addtocounter{figure}{-2} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_CI_0.5.png}
+            \caption{Coverage at $\rho = 0.5$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_CI_0.95.png}
+            \caption{Coverage at $\rho = 0.95$}
         \end{minipage}
     \end{figure}
 \end{frame}
 %------------------------------------------------
-\begin{frame}{Introducing Misspecification (1)}
+\begin{frame}{Introducing Dynamic Misspecification}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
+    \includegraphics[width=0.7\linewidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.5_T=250.png}
     \vspace*{-0.2cm}
-    \caption{}
+    \caption{Complexity Frontier $\rho = 0.5$}
 \end{figure}
 \end{frame}
 
-\begin{frame}{Introducing Misspecification (2)}
+\begin{frame}{Dynamic Misspecification - varying $\rho$} %1
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.7$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Dynamic Misspecification - varying $\rho$} %2
+     \addtocounter{figure}{-2} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.7$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Introducing Functional Misspecification}
 
 \begin{figure}
     \centering
@@ -262,8 +376,8 @@ Suffer from
 
 
 \begin{frame}
+Thank you for your Attention! Questions?
 
-Vielen Dank für Ihre Aufmerksamkeit!
 
 \end{frame}
 
