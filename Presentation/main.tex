@@ -55,13 +55,14 @@
 \begin{frame}{Motivation}
     \begin{itemize}
         \item<1-> VARs and Local Projection used for Impulse Response Analysis, think Unemployment and Interest Rate, Oil Prices and Inflation, ...
-        \item<2-> finite sample comparison (VAR(p) vs. LP(p))
+        \item<2-> In population both estimate the same Impulse Response
+        \item<3-> finite sample comparison (VAR(p) vs. LP(p))
         \begin{enumerate}
-            \item<2-> In finite samples, bias-variance puzzle 
-            \item<2-> VARs more efficient, LPs more robust to misspecification 
+            \item<4-> In finite samples, bias-variance puzzle 
+            \item<5-> VARs more efficient, LPs more robust to misspecification 
         \end{enumerate}
-        \item<3-> In Population both estimate the same Impulse Response
-        \item<4-> Ludwig identity shows that equal lag comparison is inherently flawed 
+        
+        \item<6-> Ludwig identity shows that equal lag comparison is inherently flawed 
     \end{itemize}
 
     % \begin{myexample_gr}<5->
@@ -69,7 +70,7 @@
     %     \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
     % \end{myexample_gr}
 
-    \uncover<5->{                          % ← Box einwickeln
+    \uncover<7->{                          % ← Box einwickeln
         \begin{myexample_gr}
             \textbf{(BL:)} Where does a fixed LP(4) sit on the VAR complexity frontier and does the conventional equal-lag ranking sruvive?\\
             \textbf{(EX:)} Does any genuine LP advantage emerge once misspecification is introduced?
