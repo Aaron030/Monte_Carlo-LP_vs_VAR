@@ -1,0 +1,44 @@
+
+\begin{frame}{VARs}
+
+\begin{equation}
+    Y_t =\mathbf{\nu} + \mathbf{A} Y_{t-1} + U_t \xRightarrow[restr. K]{A1}  y_t = \mu + \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell},
+\qquad \Psi_\ell := [\mathbf{A}^\ell]
+\end{equation}
+
+\textbf{Identification:} As $\sum_u = \mathbb{E}[u_tu_t'] \neq I_K$, Define $u_t=B\varepsilon_t$ where $\varepsilon_t \sim (0, I_k)$
+
+
+\begin{equation}
+    y_{t+h} = \mu + \sum_{\ell=0}^{\infty} \Theta_\ell\, \varepsilon_{t+h-\ell} \qquad 
+    \label{eq:sma_forward}
+\end{equation}
+
+% Which 
+% \begin{itemize}
+%     \item are asymptotically normal and efficient (under homoskedasticity)
+% \end{itemize}
+Suffer from
+\begin{itemize}
+    \item LS bias compunds as horizon grows Kilian 1998 
+    \item near-unit root behavior 
+    \item misspecification through MA dynamics or lag order
+\end{itemize}
+\end{frame}
+
+\begin{frame}{LPs}
+
+    \begin{equation}
+    y_{t+h} = \alpha_h + \beta_h\, s_t
+            + \boldsymbol{\gamma}_h'\, \mathbf{x}_t
+            + \xi_{t+h}^{(h)},
+    \qquad h = 0, 1, \ldots, H,
+    \label{eq:lp_shock}
+\end{equation}
+    
+\end{frame}
+
+\begin{frame}{Equivalence and Ludwig identity}
+
+
+\end{frame}

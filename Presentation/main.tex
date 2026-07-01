@@ -74,305 +74,34 @@
 
 \section{Theory}
 
-\begin{frame}{VARs}
-
-\begin{equation}
-    Y_t =\mathbf{\nu} + \mathbf{A} Y_{t-1} + U_t \xRightarrow[restr. K]{A1}  y_t = \mu + \sum_{\ell=0}^{\infty} \Psi_\ell\, u_{t-\ell},
-\qquad \Psi_\ell := [\mathbf{A}^\ell]
-\end{equation}
-
-\textbf{Identification:} As $\sum_u = \mathbb{E}[u_tu_t'] \neq I_K$, Define $u_t=B\varepsilon_t$ where $\varepsilon_t \sim (0, I_k)$
-
-
-\begin{equation}
-    y_{t+h} = \mu + \sum_{\ell=0}^{\infty} \Theta_\ell\, \varepsilon_{t+h-\ell} \qquad 
-    \label{eq:sma_forward}
-\end{equation}
-
-% Which 
-% \begin{itemize}
-%     \item are asymptotically normal and efficient (under homoskedasticity)
-% \end{itemize}
-Suffer from
-\begin{itemize}
-    \item LS bias compunds as horizon grows Kilian 1998 
-    \item near-unit root behavior 
-    \item misspecification through MA dynamics or lag order
-\end{itemize}
-\end{frame}
-
-\begin{frame}{LPs}
-
-    \begin{equation}
-    y_{t+h} = \alpha_h + \beta_h\, s_t
-            + \boldsymbol{\gamma}_h'\, \mathbf{x}_t
-            + \xi_{t+h}^{(h)},
-    \qquad h = 0, 1, \ldots, H,
-    \label{eq:lp_shock}
-\end{equation}
-    
-\end{frame}
-
-\begin{frame}{Equivalence and Ludwig identity}
-
-
-\end{frame}
+\input{chap/1_theory.tex}
 %-----------------------------------------------------------------------------------
 
 \section{Study Design}
 
-\begin{frame}{DGPs}
-        
-\end{frame}
+\input{chap/2_studydesign.tex}
 
-\begin{frame}{Method}
-        
-\end{frame}
 %-----------------------------------------------------------------------------------
 
 \section{Results}
 
-\begin{frame}{Baseline Results - Complexity Frontier}
+\input{chap/3A_baseline.tex}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
-    \vspace*{-0.2cm}
-    \caption{Complexity Frontier $\rho = 0.5$}
-\end{figure}
-\end{frame}
+\input{chap/3B_dynamic.tex}
 
-\begin{frame}{Complexity Frontier - varying $\rho$} %1
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
-            \caption{Complexity Frontier $\rho = 0.7$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
-            \caption{Complexity Frontier $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
+\input{chap/3C_functional.tex}
 
-\begin{frame}[noframenumbering]{Complexity Frontier - varying $\rho$} %2
-     \addtocounter{figure}{-2} 
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.7.png}
-            \caption{Complexity Frontier $\rho = 0.7$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_COMPLEXITY_FRONTIER_rho=0.95.png}
-            \caption{Complexity Frontier $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
 %-----------------------------------------------------------------------------------
 
-\begin{frame}{Bias}
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_BIAS_0.5.png}
-            \caption{Bias at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_BIAS_0.95.png}
-            \caption{Bias at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
+\section{Discussion}
 
-\begin{frame}[noframenumbering]{Bias}
-    \addtocounter{figure}{-2} 
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_BIAS_0.5.png}
-            \caption{Bias at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_BIAS_0.95.png}
-            \caption{Bias at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
+\input{chap/4_discussion.tex}
+
 %-----------------------------------------------------------------------------------
-
-\begin{frame}{Variance}
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_VAR_0.5.png}
-            \caption{Variance at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_VAR_0.95.png}
-            \caption{Variance at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Variance}
-    \addtocounter{figure}{-2} 
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_VAR_0.5.png}
-            \caption{Variance at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_VAR_0.95.png}
-            \caption{Variance at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-%-----------------------------------------------------------------------------------
-
-\begin{frame}{Coverage}
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_CI_0.5.png}
-            \caption{Coverage at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_CI_0.95.png}
-            \caption{Coverage at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Coverage}
-    \addtocounter{figure}{-2} 
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_CI_0.5.png}
-            \caption{Coverage at $\rho = 0.5$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{BASE_CI_0.95.png}
-            \caption{Coverage at $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-%------------------------------------------------
-\begin{frame}{Introducing Dynamic Misspecification}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.5_T=250.png}
-    \vspace*{-0.2cm}
-    \caption{Complexity Frontier $\rho = 0.5$}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Dynamic Misspecification - varying $\rho$} %1
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
-            \caption{Complexity Frontier $\rho = 0.7$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
-            \caption{Complexity Frontier $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Dynamic Misspecification - varying $\rho$} %2
-     \addtocounter{figure}{-2} 
-    \begin{figure}
-        \centering
-        \begin{minipage}{0.39\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
-            \caption{Complexity Frontier $\rho = 0.7$}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.59\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
-            \caption{Complexity Frontier $\rho = 0.95$}
-        \end{minipage}
-    \end{figure}
-\end{frame}
-
-
-%------------------------------------------------
-\begin{frame}{Introducing Functional Misspecification}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{BASE_COMPLEXITY_FRONTIER_rho=0.5.png}
-    \vspace*{-0.2cm}
-    \caption{}
-\end{figure}
-\end{frame}
-
-
-
-%------------------------------------------------
-\section{Discussion of Results}
-\begin{frame}{Discussion of Results}
-
-    \begin{itemize}
-        \item As $T$ decreases, LP(4) is equal to a less parsimonous VAR $\to$ relatively better
-        \item As $\rho$ increases, LP(4) is equal to a less parsimonous VAR $\to$ relatively better
-        \item As $\tau$ increases, LP(4) is equal to a less parsimonous VAR $\to$ relatively better
-        \item At equal lags, VAR(p) is preferable choice if applicable, except for coverage
-        \item higher order VARs closes coverage gap, at cost of bias and variance
-    \end{itemize}
-    
-    
-\end{frame}
-
-%------------------------------------------------
 
 \section{Conclusion}
 
-
-\begin{frame}{Conclusion}
-    \begin{enumerate}
-        \item Ludwig identity largely consistent with MC findings
-        \item 
-        \item 
-    \end{enumerate}
-
-
-\end{frame}
+\input{chap/5_conclusion.tex}
 
 
 \begin{frame}

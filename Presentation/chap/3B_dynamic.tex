@@ -1,0 +1,147 @@
+
+%------------------------------------------------
+\begin{frame}{Introducing Dynamic Misspecification}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.5_T=250.png}
+    \vspace*{-0.2cm}
+    \caption{Complexity Frontier $\rho = 0.5$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Dynamic Misspecification - varying $\rho$} %1
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.7$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Dynamic Misspecification - varying $\rho$} %2
+     \addtocounter{figure}{-2} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.7_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.7$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_MISSPEC_COMPLEXITY_FRONTIER_rho=0.95_T=250.png}
+            \caption{Complexity Frontier $\rho = 0.95$}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+%--------------------------------------------------------------
+
+\begin{frame}{Bias - Correct vs. Misspecification - $\tau = 0.6$}
+    \setcounter{figure}{3}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_BIAS_0.5.png}
+            \caption{Baseline at $\rho = 0.5$}          
+        \end{minipage}
+        \hfill
+        \setcounter{figure}{12}                         
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_BIAS_0.5.png}
+            \caption{Dyn. Misspecification at $\tau = 0.6$}  % → Figure 13
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{Bias - Correct vs. Misspecification - $\rho = 0.95$}
+%     \setcounter{figure}{5}
+%     \begin{figure}
+%         \centering
+%         \begin{minipage}{0.39\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{BASE_BIAS_0.95.png}
+%             \caption{Baseline at $\rho = 0.95$}          % this needs correction if included
+%         \end{minipage}
+%         \hfill
+%         \setcounter{figure}{13}                         % this needs correction if included
+%         \begin{minipage}{0.59\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{DYN_BIAS_0.95.png}
+%             \caption{Dyn. Misspecification at $\rho = 0.95$ and $\tau = 0.6$}  % → Figure 13
+%         \end{minipage}
+%     \end{figure}
+% \end{frame}
+
+%--------------------------------------------------------------
+
+\begin{frame}{Variance - Correct vs. Misspecification - $\tau= 0.6$}
+    \setcounter{figure}{5}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_VAR_0.5.png}
+            \caption{Baseline at $\rho = 0.5$}          
+        \end{minipage}
+        \hfill
+        \setcounter{figure}{13}                         
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_VAR_0.5.png}
+            \caption{Dyn. Misspecification at $\tau = 0.6$}  % → Figure 13
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{Variance - Correct vs. Misspecification - $\rho = 0.95$}
+%     \setcounter{figure}{5}
+%     \begin{figure}
+%         \centering
+%         \begin{minipage}{0.39\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{BASE_VAR_0.95.png}
+%             \caption{Baseline at $\rho = 0.95$}          % this needs correction if included
+%         \end{minipage}
+%         \hfill
+%         \setcounter{figure}{13}                         % this needs correction if included
+%         \begin{minipage}{0.59\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{DYN_VAR_0.95.png}
+%             \caption{Dyn. Misspecification at $\rho = 0.95$ and $\tau = 0.6$}  % → Figure 13
+%         \end{minipage}
+%     \end{figure}
+% \end{frame}
+
+%--------------------------------------------------------------
+
+\begin{frame}{Coverage - Correct vs. Misspecification - $\tau = 0.6$}
+    \setcounter{figure}{7}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.39\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{BASE_CI_0.5.png}
+            \caption{Baseline at $\rho = 0.5$}          
+        \end{minipage}
+        \hfill
+        \setcounter{figure}{14}                         
+        \begin{minipage}{0.59\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{DYN_CI_0.5.png}
+            \caption{Dyn. Misspecification at $\tau = 0.6$}  % → Figure 13
+        \end{minipage}
+    \end{figure}
+\end{frame}
